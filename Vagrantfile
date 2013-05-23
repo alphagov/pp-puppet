@@ -80,7 +80,7 @@ Vagrant::Config.run do |config|
 
       c.ssh.forward_agent = true
       # We don't need this yet # c.vm.share_folder "govuk", "/var/govuk", "..", :nfs => true
-
+      c.vm.provision :shell, :path => "shell/provision-upgrade-puppet.sh"
       c.vm.provision :puppet do |puppet|
         puppet.manifest_file = "site.pp"
         puppet.manifests_path = "./manifests"
