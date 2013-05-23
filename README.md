@@ -10,6 +10,13 @@ You will need access to the repos:
 - `pp-puppet` obviously, DUH!
 - `pp-puppet-secrets` for secrets when provisioning _real_ environments
 
+# WARNING: This is a Public Repo
+
+It is not expected that any secret data (keys, certificates, your inside leg measurement) is
+committed to this repo. Anything in here is in the public domain and should only be used for
+test environments. Secret data for real environments should be in the `pp-puppet-secrets` repo
+and will be combined with this when deploying real machines.
+
 # Setup
 
 The preferred method of installing Vagrant is through Bundler. This allows us
