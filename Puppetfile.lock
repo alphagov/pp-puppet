@@ -1,0 +1,10 @@
+FORGE
+  remote: http://forge.puppetlabs.com
+  specs:
+    puppetlabs/gcc (0.0.3)
+    puppetlabs/stdlib (4.1.0)
+
+DEPENDENCIES
+  puppetlabs/gcc (>= 0)
+  puppetlabs/stdlib (>= 0)
+

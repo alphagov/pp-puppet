@@ -1,4 +1,5 @@
 require 'json'
+require 'librarian/puppet/vagrant'
 
 # Construct box name and URL from distro and version.
 def get_box(dist, version)
@@ -82,11 +83,8 @@ Vagrant::Config.run do |config|
 
       c.vm.provision :puppet do |puppet|
         puppet.manifest_file = "site.pp"
-        puppet.manifests_path = "./puppet/manifests"
-        puppet.module_path = [
-          "./puppet/modules",
-          "./puppet/vendor/modules",
-        ]
+        puppet.manifests_path = "./manifests"
+        puppet.module_path = "./modules"
         puppet.options = ["--environment", "vagrant"]
         puppet.facter = {
           :machine_class => node_opts["class"],
