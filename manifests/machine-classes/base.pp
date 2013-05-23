@@ -1,6 +1,6 @@
 class machine_classes::base {
     exec { 'apt-get-update':
-                command => '/usr/bin/apt-get update || true',
+        command => '/usr/bin/apt-get update || true',
     }
     file { '/etc/environment':
         ensure  => present,
