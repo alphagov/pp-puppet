@@ -19,7 +19,7 @@ def nodes_from_json
   json_local = File.expand_path("../nodes.local.json", __FILE__)
 
   unless File.exists?(json_dir)
-    puts "Unable to find nodes in 'vcloud-templates' repo"
+    puts "Unable to find nodes in 'machine-templates' directory"
     puts
     return {}
   end
