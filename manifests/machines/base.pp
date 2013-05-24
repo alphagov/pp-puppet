@@ -1,4 +1,4 @@
-class machine_classes::base {
+class machines::base {
     exec { 'apt-get-update':
         command => '/usr/bin/apt-get update || true',
     }

@@ -6,7 +6,7 @@ node default {
         notify { "${warn_head} ${warn_body}": }
     } else {
         $underscored_machine_class = regsubst($::machine_class, '-', '_')
-        $node_class_name = "machine_classes::${underscored_machine_class}"
+        $node_class_name = "machines::${underscored_machine_class}"
         include $node_class_name
     }
 }
