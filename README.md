@@ -76,7 +76,6 @@ be configured to inherit the base class (machines::base) for definitions that ap
 ```puppet
 class machines::jumpbox inherits machines::base {
     notify { 'Included the Jumpbox class': }
-    }
 }
 ```
 
