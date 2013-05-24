@@ -15,4 +15,6 @@ FACTER_machine_class=${machine_class}
     }
     # Manage /etc/hosts
     create_resources( 'host', hiera_hash("hosts") )
+    # Create user accounts
+    create_resources( 'account', hiera("accounts") )
 }
