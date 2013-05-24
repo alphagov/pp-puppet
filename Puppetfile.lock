@@ -1,6 +1,8 @@
 FORGE
   remote: http://forge.puppetlabs.com
   specs:
+    attachmentgenie/ssh (1.1.0)
+      puppetlabs/stdlib (>= 2.2.1)
     attachmentgenie/ufw (1.2.0)
       puppetlabs/stdlib (>= 2.2.1)
     puppetlabs/gcc (0.0.3)
@@ -8,6 +10,7 @@ FORGE
     torrancew/account (0.0.3)
 
 DEPENDENCIES
+  attachmentgenie/ssh (>= 0)
   attachmentgenie/ufw (>= 0)
   puppetlabs/gcc (>= 0)
   puppetlabs/stdlib (>= 0)
