@@ -83,7 +83,7 @@ class machines::jumpbox inherits machines::base {
 It is expected that additional resources that are not already defined as native Puppet Types will be utilised by 
 including external modules with `librarian-puppet` from http://forge.puppetlabs.com - an example of this is UFW:
 
-```
+```sh
 # grep ufw ./Puppetfile
 mod 'attachmentgenie/ufw'
 
