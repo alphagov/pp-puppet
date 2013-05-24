@@ -1,0 +1,4 @@
+hosts:
+    jumpbox-1.management.production:
+            ip: 10.0.0.100
+            host_aliases: jumpbox-1

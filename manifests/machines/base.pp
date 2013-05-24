@@ -13,4 +13,6 @@ FACTER_machine_class=${machine_class}
         port => 22,
         ip   => 'any'
     }
+    # Manage /etc/hosts
+    create_resources( 'host', hiera_hash("hosts") )
 }

@@ -80,6 +80,16 @@ class machines::jumpbox inherits machines::base {
 }
 ```
 
+It is important to also create the proper `/etc/hosts` entry for this machine on all the other machines. This can
+be accomplished by extending the hosts section of `hiera/data/common.yaml` with a definition for your new host:
+
+```
+hosts:
+    jumpbox-1.management.production:
+        ip: 10.0.0.100
+        host_aliases: jumpbox-1
+```
+
 It is expected that additional resources that are not already defined as native Puppet Types will be utilised by 
 including external modules with `librarian-puppet` from http://forge.puppetlabs.com - an example of this is UFW:
 

@@ -1,5 +1,6 @@
 require 'json'
 require 'librarian/puppet/vagrant'
+require 'vagrant-hiera'
 
 # Construct box name and URL from distro and version.
 def get_box(dist, version)
@@ -79,8 +80,11 @@ Vagrant::Config.run do |config|
       c.vm.customize(modifyvm_args)
 
       c.ssh.forward_agent = true
-      # We don't need this yet # c.vm.share_folder "govuk", "/var/govuk", "..", :nfs => true
       c.vm.provision :shell, :path => "bin/provision-upgrade-puppet.sh"
+      c.hiera.config_path    = 'hiera'
+      c.hiera.config_file    = 'hiera.yaml'
+      c.hiera.data_path      = 'hiera/data'
+      c.hiera.puppet_version = '3.1.1-1puppetlabs1'
       c.vm.provision :puppet do |puppet|
         puppet.manifest_file = "site.pp"
         puppet.manifests_path = "./manifests"
