@@ -45,26 +45,58 @@ Physical attributes like `memory` and `num_cores` will be ignored because
 they don't scale appropriately to local VMs, but can still be customised as
 described below.
 
-## Customisation
+## Creating new node types
 
-Node definitions can be overridden with a `nodes.local.json` file in the
-vagrant-govuk directory. This is merged on top of all other node
-definitions. The following keys are currently available for customisation:
+### Creating the definition of the machine for provisioning
 
-- `box_dist` Ubuntu distribution. Currently "precise" (default) or "lucid".
-- `box_version` Internal version number of the GDS basebox.
-- `memory` Amount of RAM. Default is "384".
-- `ip` IP address for hostonly networking. Currently all subnets are /16.
-- `class` Name of the Puppet class/role.
-
-For example to increase the amount of RAM on a PuppetMaster:
+The Vagrantfile will bring up nodes defined in the `machine-templates` directory. Here is an example:
 ```json
 {
-  "puppet-1.management": {
-    "memory": 768
-  }
+    "class":     "jumpbox",
+    "zone":      "management",
+    "vm_name":   "jumpbox-1",
+    "ip":        "10.0.0.100",
+    "num_cores": "2",
+    "memory":    "2048"
 }
 ```
+ - `class`:     The puppet class (defined in `manifests/machines/${class}.pp`) which will be applied to the machine
+ - `zone`:      A logical or network grouping of machines (examples might be `management`, `frontend`). The machine
+                json template lives in a directory also named after the zone.
+ - `vm_name`:   The name of the VM - it should be unique
+ - `ip`:        The IP assigned to the first interface on a real machine or second interface on a Vagrant VM
+ - `num_cores`: Vagrant will ignore this, however it will be used for provisioning the real machine
+ - `memory`:    Vagrant will ignore this (it defaults to 256MB), however it will be used for provisioning the real machine
+
+## Configuring machines
+
+Machines are configured according to the `class` as configured in `manifests/machines/${class}.pp`. Machines should
+be configured to inherit the base class (machines::base) for definitions that apply to all machines (e.g. hosts, users).
+
+```puppet
+class machines::jumpbox inherits machines::base {
+    notify { 'Included the Jumpbox class': }
+    }
+}
+```
+
+It is expected that additional resources that are not already defined as native Puppet Types will be utilised by 
+including external modules with `librarian-puppet` from http://forge.puppetlabs.com - an example of this is UFW:
+
+```
+# grep ufw ./Puppetfile
+mod 'attachmentgenie/ufw'
+
+# class used in manifests/machines/base.pp
+include ufw
+ufw::allow { "allow-ssh-from-all":
+    port => 22,
+    ip   => 'any'
+}
+```
+
+On that note, when configuring software which listens on network ports, don't forget to add an appropriate Firewall
+rule with UFW!
 
 ## Errors
 
