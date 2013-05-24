@@ -80,7 +80,7 @@ class machines::jumpbox inherits machines::base {
 ```
 
 It is important to also create the proper `/etc/hosts` entry for this machine on all the other machines. This can
-be accomplished by extending the hosts section of `hiera/data/common.yaml` with a definition for your new host:
+be accomplished by extending the hosts section of `config/hiera/data/common.yaml` with a definition for your new host:
 
 ```
 hosts:
@@ -109,7 +109,7 @@ rule with UFW!
 
 ## Adding user accounts
 
-User accounts are managed in 'hiera/data/common.yaml'. They look like this:
+User accounts are managed in 'config/hiera/data/common.yaml'. They look like this:
 
 ```
 accounts:
