@@ -16,11 +16,11 @@ end
 # Load node definitions from the JSON in the vcloud-templates repo parallel
 # to this.
 def nodes_from_json
-  json_dir = File.expand_path("../machine-templates", __FILE__)
+  json_dir = File.expand_path("../config/vm-templates", __FILE__)
   json_local = File.expand_path("../nodes.local.json", __FILE__)
 
   unless File.exists?(json_dir)
-    puts "Unable to find nodes in 'machine-templates' directory"
+    puts "Unable to find nodes in 'config/vm-templates' directory"
     puts
     return {}
   end

@@ -49,7 +49,7 @@ described below.
 
 ### Creating the definition of the machine for provisioning
 
-The Vagrantfile will bring up nodes defined in the `machine-templates` directory. Here is an example:
+The Vagrantfile will bring up nodes defined in the `config/vm-templates` directory. Here is an example:
 ```json
 {
     "class":     "jumpbox",
