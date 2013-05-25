@@ -45,6 +45,41 @@ Physical attributes like `memory` and `num_cores` will be ignored because
 they don't scale appropriately to local VMs, but can still be customised as
 described below.
 
+### Bringing up the MongoDB cluster
+
+MongoDB Replicaset configuration requires that all nodes are up and running Mongo first, so as we
+bring up nodes one at a time, it will silently fail on the first two nodes. It is likely to fail
+on the 3rd node as well, because mongodb might have started, but is not actually available by the
+time the script runs. To fix this (before we have a cronjob to run puppet), simply reprovision one
+of the nodes:
+
+```
+vagrant provision mongo-1.backend"
+```
+
+To verify that mongo is working, do `vagrant ssh mongo-1.backend`, run `mongo` and then issue the
+command `rs.isMaster()` - you should see output something like this:
+
+```
+production:SECONDARY> rs.isMaster()
+{
+    "setName" : "production",
+    "ismaster" : false,
+    "secondary" : true,
+    "hosts" : [
+            "mongo-2.backend:27017",
+            "mongo-3.backend:27017",
+            "mongo-1.backend:27017"
+    ],
+    "primary" : "mongo-1.backend:27017",
+    "me" : "mongo-2.backend:27017",
+    "maxBsonObjectSize" : 16777216,
+    "maxMessageSizeBytes" : 48000000,
+    "localTime" : ISODate("2013-05-25T14:11:09.095Z"),
+    "ok" : 1
+}
+```
+
 ## Creating new node types
 
 ### Creating the definition of the machine for provisioning
