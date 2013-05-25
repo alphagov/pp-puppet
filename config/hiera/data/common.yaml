@@ -1,4 +1,11 @@
 domain_name: perfplat.dev
+accounts:
+    ssharpe:
+        home_dir: /home/ssharpe
+        comment: Sam J Sharpe
+        ssh_key: AAAAB3NzaC1yc2EAAAABIwAAAQEAyNoMftFLf3w0NOW7J0KUwOx9897CU352n3zKD3p/GCcdH4eMv1QI0BhjItZplWG8TzFSBfWOOSruRh1Gksa1l1jiQcisEio6Wr7kZ7bpvMMA45ZoaDc26HTB+r0BZkNn7Lwwxxvy+1pbqStnnKzb9OTYIyVkb495LS0x1EL/P9S/NWtpm8ZULa1JDplYMA5SqMZnhmlGAXdh8UnjdcdOgOm2ngA+geJBSzVbABECiIAklHU1PRzOtrq8SuO8JmXW6NkuL0aabdTgE6noIm+Nn7T5ufZpOpIGYimVI8+mu+efcBzAp5Q0vTRgSBLfggdczZbFfPXpIt1Ib+LEf+Cuqw==
+        groups:
+            - admin
 hosts:
     jumpbox-1.management:
         ip: 10.0.0.11
@@ -48,13 +55,6 @@ hosts:
     mongo-3.backend:
         ip: 10.2.1.13
         host_aliases: mongo-3
-accounts:
-    ssharpe:
-        home_dir: /home/ssharpe
-        comment: Sam J Sharpe
-        ssh_key: AAAAB3NzaC1yc2EAAAABIwAAAQEAyNoMftFLf3w0NOW7J0KUwOx9897CU352n3zKD3p/GCcdH4eMv1QI0BhjItZplWG8TzFSBfWOOSruRh1Gksa1l1jiQcisEio6Wr7kZ7bpvMMA45ZoaDc26HTB+r0BZkNn7Lwwxxvy+1pbqStnnKzb9OTYIyVkb495LS0x1EL/P9S/NWtpm8ZULa1JDplYMA5SqMZnhmlGAXdh8UnjdcdOgOm2ngA+geJBSzVbABECiIAklHU1PRzOtrq8SuO8JmXW6NkuL0aabdTgE6noIm+Nn7T5ufZpOpIGYimVI8+mu+efcBzAp5Q0vTRgSBLfggdczZbFfPXpIt1Ib+LEf+Cuqw==
-        groups:
-            - admin
 ssl::params::ssl_path: '/etc/ssl'
 ssl::params::ssl_cert_file: %{ssl_path}/certs/ssl-cert-snakeoil.pem
 ssl::params::ssl_key_file: %{ssl_path}/private/ssl-cert-snakeoil.key
