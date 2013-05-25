@@ -1,4 +1,6 @@
 #!/bin/bash
+#Patch basebox to remove "stdin is not a tty" errors by removing "mesg n" from this file
+echo "" >/root/.profile
 echo "... Installing the correct librarian-puppet and facter versions"
 # Remove puppet 2.7.19 which is installed on this basebox
 gem uninstall puppet -v '2.7.19' >/dev/null
