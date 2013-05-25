@@ -1,4 +1,5 @@
 :hierarchy:
+        - environment
         - common
 :backends:
         - yaml
