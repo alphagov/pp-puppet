@@ -1,3 +1,4 @@
+import 'machines/*'
 node default {
     if $::machine_class == '' {
         $warn_head = '$::machine_class is blank, not doing any initialization!'

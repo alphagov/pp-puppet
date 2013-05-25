@@ -5,6 +5,6 @@ class machines::deploy inherits machines::base {
     ufw::allow { 'allow-jenkins-from-jumpbox':
         port => 8080,
         ip   => 'any',
-        from => $::hosts['jumpbox-1.management']['ip']
+        from => $hosts['jumpbox-1.management']['ip']
     }
 }
