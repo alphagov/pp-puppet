@@ -34,10 +34,19 @@ GIT
   specs:
     ssl (0.0.1)
 
+GIT
+  remote: git://github.com/alphagov/puppetlabs-mongodb.git
+  ref: master
+  sha: cac584b10f69e598c5ad712782c1a78119ba0501
+  specs:
+    mongodb (0.1.0)
+      puppetlabs/apt (>= 0.0.2)
+
 DEPENDENCIES
   attachmentgenie/ssh (= 1.1.0)
   attachmentgenie/ufw (= 1.2.0)
   jenkins (>= 0)
+  mongodb (>= 0)
   nginx (>= 0)
   puppetlabs/gcc (= 0.0.3)
   puppetlabs/stdlib (= 4.1.0)

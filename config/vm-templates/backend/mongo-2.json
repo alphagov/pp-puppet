@@ -1,0 +1,8 @@
+{
+  "class":            "mongo",
+  "zone":             "backend",
+  "vm_name":          "mongo-2",
+  "ip":               "10.2.1.12",
+  "num_cores":        "2",
+  "memory":           "2048"
+}
