@@ -40,6 +40,7 @@ GEM
     puppet (3.1.1)
       facter (~> 1.6)
       hiera (~> 1.0)
+    rake (0.9.2.2)
     sahara (0.0.13)
       popen4 (~> 0.1.2)
       thor (> 0.14)
@@ -65,6 +66,7 @@ DEPENDENCIES
   librarian-puppet (= 0.9.8)
   librarian-puppet-vagrant
   puppet (= 3.1.1)
+  rake
   sahara
   vagrant (~> 1.0)
   vagrant-hiera
