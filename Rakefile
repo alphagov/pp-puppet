@@ -14,4 +14,5 @@ task :deb do
   FileUtils.cp 'src/hiera.yaml', 'target/etc/puppet'
   args = "-s dir -t deb -a all -n pp-puppet -C target -v #{version} -p pp_puppet_#{version}.deb .".split
   FPM::Command.run(File.basename($0), args)
+  FileUtils.rm_rf 'target'
 end

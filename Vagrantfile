@@ -83,7 +83,7 @@ Vagrant::Config.run do |config|
       c.ssh.forward_agent = true
       c.vm.provision :shell, :path => "bin/provision-upgrade-puppet.sh"
       c.hiera.config_path    = 'config/hiera'
-      c.hiera.config_file    = 'hiera.yaml'
+      c.hiera.config_file    = 'hiera_dev.yaml'
       c.hiera.data_path      = 'config/hiera/data'
       c.hiera.puppet_version = '3.1.1-1puppetlabs1'
       c.vm.provision :puppet do |puppet|
