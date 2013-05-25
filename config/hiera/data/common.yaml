@@ -56,5 +56,5 @@ hosts:
         ip: 10.2.1.13
         host_aliases: mongo-3
 ssl::params::ssl_path: '/etc/ssl'
-ssl::params::ssl_cert_file: %{ssl_path}/certs/ssl-cert-snakeoil.pem
-ssl::params::ssl_key_file: %{ssl_path}/private/ssl-cert-snakeoil.key
+ssl::params::ssl_cert_file: '%{ssl_path}/certs/ssl-cert-snakeoil.pem'
+ssl::params::ssl_key_file: '%{ssl_path}/private/ssl-cert-snakeoil.key'
