@@ -37,7 +37,7 @@ GIT
 GIT
   remote: git://github.com/alphagov/puppetlabs-mongodb.git
   ref: master
-  sha: cac584b10f69e598c5ad712782c1a78119ba0501
+  sha: b9afea72117a322836117ba07963dee8a2611703
   specs:
     mongodb (0.1.0)
       puppetlabs/apt (>= 0.0.2)
