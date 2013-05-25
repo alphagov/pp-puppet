@@ -25,4 +25,7 @@ FACTER_machine_class=${machine_class}
 
     # Create user accounts
     create_resources( 'account', hiera("accounts") )
+
+    # Store the list of hosts for use later
+    $hosts = hiera('hosts')
 }
