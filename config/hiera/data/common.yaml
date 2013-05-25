@@ -55,6 +55,10 @@ hosts:
     mongo-3.backend:
         ip: 10.2.1.13
         host_aliases: mongo-3
+networks:
+    management: 10.0.0.0/16
+    frontend:   10.1.0.0/16
+    backend:    10.2.0.0/16
 ssl::params::ssl_path: '/etc/ssl'
 ssl::params::ssl_cert_file: '%{ssl_path}/certs/ssl-cert-snakeoil.pem'
 ssl::params::ssl_key_file: '%{ssl_path}/private/ssl-cert-snakeoil.key'

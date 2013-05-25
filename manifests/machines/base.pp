@@ -28,4 +28,5 @@ FACTER_machine_class=${machine_class}
 
     # Store the list of hosts for use later
     $hosts = hiera('hosts')
+    $networks = hiera('networks')
 }
