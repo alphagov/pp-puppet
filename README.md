@@ -179,3 +179,15 @@ specific to the linux distro you're using for more information on how to do this
 This seems to be caused by a combination of OSX, VirtualBox, and Cisco
 AnyConnect. Try temporarily disconnecting from the VPN when bringing up a
 new node.
+
+### hiera errors
+```
+[manifests/machines:master●]$ vagrant up jumpbox-1.management
+There was a problem with the configuration of Vagrant. The error message(s)
+are printed below:
+
+hiera:
+* Config file not found at '/Users/sam/Projects/gds/pp-puppet/manifests/machines/config/hiera/hiera.yaml'.
+* Data directory not found at '/Users/sam/Projects/gds/pp-puppet/manifests/machines/config/hiera/data'.
+```
+This simply means you are not in the root directory (where the `Vagrantfile` live), just cd there and you will be fine
