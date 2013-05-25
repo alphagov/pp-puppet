@@ -49,7 +49,7 @@ rs.initiate(replicaSetConfig());
 "
     }
     exec { 'configure-replica-set':
-      command => "/usr/bin/mongo --host ${mongo_hosts[0]} /etc/mongodb/configure-replica-set.js",
+      command => "echo '/usr/bin/mongo --host ${mongo_hosts[0]} /etc/mongodb/configure-replica-set.js' | at now + 3min",
       unless  => "/usr/bin/mongo --host ${mongo_hosts[0]} --quiet --eval 'rs.status().ok' | grep -q 1",
       require => [
         File['/etc/mongodb/configure-replica-set.js'],

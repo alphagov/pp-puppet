@@ -64,14 +64,14 @@ described below.
 
 ### Bringing up the MongoDB cluster
 
-MongoDB Replicaset configuration requires that all nodes are up and running Mongo first, so as we
-bring up nodes one at a time, it will silently fail on the first two nodes. It is likely to fail
-on the 3rd node as well, because mongodb might have started, but is not actually available by the
-time the script runs. To fix this (before we have a cronjob to run puppet), simply reprovision one
-of the nodes:
+MongoDB Replicaset configuration requires that all nodes are up and running Mongo first, on
+initialisation, each node will background a job for 2 minutes later to configure the replicaset. This
+means that it may take a couple of minutes after the last mongo node is provisioned before the replicaset
+is available. If it doesn't work, then simply triggering provisionig on a node with the following command
+and then waiting 2 minutes should make it work.
 
 ```
-vagrant provision mongo-1.backend"
+vagrant provision mongo-1.backend
 ```
 
 To verify that mongo is working, do `vagrant ssh mongo-1.backend`, run `mongo` and then issue the
