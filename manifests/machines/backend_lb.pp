@@ -5,8 +5,10 @@ class machines::backend_lb inherits machines::base {
         ip   => 'any'
     }
     include nginx::server
+    $workers = grep(keys($hosts),'backend-app')
     nginx::loadbalancer { 'backend-lb':
         port    => 80,
-        workers => grep(keys($hosts),'backend-app')
+        workers => $workers,
+        require => Host[$workers],
     }
 }
