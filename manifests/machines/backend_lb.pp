@@ -1,6 +1,7 @@
+# Rather dumb loadbalancer class
 class machines::backend_lb inherits machines::base {
     #Loadbalance to backend-app machines
-    ufw::allow { "allow-http-from-all":
+    ufw::allow { 'allow-http-from-all':
         port => 80,
         ip   => 'any'
     }

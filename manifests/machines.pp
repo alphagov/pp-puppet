@@ -1,7 +1,7 @@
 node default {
     if $::machine_class == '' {
         $warn_head = '$::machine_class is blank, not doing any initialization!'
-        $warn_body = 'Consider sourcing `/etc/environment` or running with `sudo -i`'
+        $warn_body = 'Consider sourcing `/etc/environment` or using `sudo -i`'
         warning($warn_head)
         notify { "${warn_head} ${warn_body}": }
     } else {
