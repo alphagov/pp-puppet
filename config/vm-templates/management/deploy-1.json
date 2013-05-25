@@ -1,0 +1,8 @@
+{
+  "class":            "deploy",
+  "zone":             "management",
+  "vm_name":          "deploy-1",
+  "ip":               "10.0.0.12",
+  "num_cores":        "2",
+  "memory":           "2048"
+}
