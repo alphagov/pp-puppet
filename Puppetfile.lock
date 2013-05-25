@@ -5,13 +5,25 @@ FORGE
       puppetlabs/stdlib (>= 2.2.1)
     attachmentgenie/ufw (1.2.0)
       puppetlabs/stdlib (>= 2.2.1)
+    puppetlabs/apt (1.1.0)
+      puppetlabs/stdlib (>= 2.2.1)
     puppetlabs/gcc (0.0.3)
     puppetlabs/stdlib (4.1.0)
     torrancew/account (0.0.3)
 
+GIT
+  remote: git://github.com/jenkinsci/puppet-jenkins.git
+  ref: master
+  sha: 4c7990fa8495b6d84292c2153993ac91c3b2916d
+  specs:
+    jenkins (0.2.4)
+      puppetlabs/apt (>= 0.0.3)
+      puppetlabs/stdlib (>= 2.0.0)
+
 DEPENDENCIES
   attachmentgenie/ssh (>= 0)
   attachmentgenie/ufw (>= 0)
+  jenkins (>= 0)
   puppetlabs/gcc (>= 0)
   puppetlabs/stdlib (>= 0)
   torrancew/account (>= 0)
