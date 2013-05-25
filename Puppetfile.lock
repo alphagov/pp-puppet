@@ -12,7 +12,7 @@ FORGE
     torrancew/account (0.0.3)
 
 GIT
-  remote: git://github.com/jenkinsci/puppet-jenkins.git
+  remote: git://github.com/alphagov/puppet-jenkins.git
   ref: master
   sha: 4c7990fa8495b6d84292c2153993ac91c3b2916d
   specs:
@@ -21,26 +21,26 @@ GIT
       puppetlabs/stdlib (>= 2.0.0)
 
 GIT
-  remote: git://github.com/puppetlabs-operations/puppet-nginx.git
+  remote: git://github.com/alphagov/puppet-nginx.git
   ref: master
   sha: c5737d68d24c48a644917544f1958279a58b9a19
   specs:
-    ploperations/nginx (0.0.1)
+    nginx (0.0.1)
 
 GIT
-  remote: git://github.com/puppetlabs-operations/puppet-ssl.git
+  remote: git://github.com/alphagov/puppet-ssl.git
   ref: master
   sha: 23bbb5ab57f26269acce3d4b43e643781747a551
   specs:
-    ploperations/ssl (0.0.1)
+    ssl (0.0.1)
 
 DEPENDENCIES
-  attachmentgenie/ssh (>= 0)
-  attachmentgenie/ufw (>= 0)
+  attachmentgenie/ssh (= 1.1.0)
+  attachmentgenie/ufw (= 1.2.0)
   jenkins (>= 0)
-  ploperations/nginx (>= 0)
-  ploperations/ssl (>= 0)
-  puppetlabs/gcc (>= 0)
-  puppetlabs/stdlib (>= 0)
-  torrancew/account (>= 0)
+  nginx (>= 0)
+  puppetlabs/gcc (= 0.0.3)
+  puppetlabs/stdlib (= 4.1.0)
+  ssl (>= 0)
+  torrancew/account (= 0.0.3)
 
