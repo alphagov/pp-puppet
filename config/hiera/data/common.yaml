@@ -1,7 +1,53 @@
 hosts:
-    jumpbox-1.management.production:
-            ip: 10.0.0.100
-            host_aliases: jumpbox-1
+    jumpbox-1.management:
+        ip: 10.0.0.11
+        host_aliases: jumpbox-1
+    deploy-1.management:
+        ip: 10.0.0.12
+        host_aliases: deploy-1
+    logging-1.management:
+        ip: 10.0.0.13
+        host_aliases:
+            - logging-1
+            - logging.cluster
+    monitoring-1.management:
+        ip: 10.0.0.14
+        host_aliases:
+            - monitoring-1
+            - monitoring.cluster
+            - graphite.cluster
+    frontend-lb-1.backend:
+        ip: 10.1.0.11
+        host_aliases:
+            - frontend-lb-1
+            - frontend.cluster
+    frontend-app-1.backend:
+        ip: 10.1.0.13
+        host_aliases: frontend-app-1
+    frontend-app-2.backend:
+        ip: 10.1.0.14
+        host_aliases: frontend-app-2
+    backend-lb-1.backend:
+        ip: 10.2.0.11
+        host_aliases:
+            - backend-lb-1
+            - backend.cluster
+    backend-app-1.backend:
+        ip: 10.2.0.13
+        host_aliases: backend-app-1
+    backend-app-2.backend:
+        ip: 10.2.0.14
+        host_aliases: backend-app-2
+    mongo-1.backend:
+        ip: 10.2.1.11
+        host_aliases: mongo-1
+    mongo-2.backend:
+        ip: 10.2.1.12
+        host_aliases: mongo-2
+    mongo-3.backend:
+        ip: 10.2.1.13
+        host_aliases: mongo-3
+
 accounts:
     ssharpe:
         home_dir: /home/ssharpe
