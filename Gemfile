@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'facter', '1.7.1'
+gem 'fpm'
 gem 'librarian-puppet', '0.9.8'
 gem 'librarian-puppet-vagrant'
 gem 'puppet', '3.1.1'
