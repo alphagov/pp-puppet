@@ -1,12 +1,11 @@
 class machines::jumpbox inherits machines::base {
     notify { 'Included the Jumpbox class': }
-    include nginx
-    include nginx::server
     # Proxy Jenkins to the Deploy Server
     ufw::allow { "allow-http-from-all":
         port => 80,
         ip   => 'any'
     }
+    include nginx::server
     nginx::vhost::proxy { 'deploy-vhost':
         port            => 80,
         servername      => join(['deploy',hiera("domain_name")],'.'),
