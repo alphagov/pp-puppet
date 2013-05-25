@@ -28,23 +28,6 @@ can also set this up for you. Alternatively you can read about how to do it
 yourself [here](https://github.com/sstephenson/rbenv/#homebrew-on-mac-os-x)
 and [here](http://dan.carley.co/blog/2012/02/07/rbenv-and-bundler/).
 
-## Usage
-
-You need only bring up the subset of nodes that you're working on. For
-example, to bring up a frontend and backend:
-```sh
-vagrant up jumpbox-1.management frontend-1.frontend
-```
-
-Vagrant will run the Puppet provisioner against the node when it boots up.
-Nodes should look almost identical to that of a real environment, including
-network addresses. To access a node's services like HTTP/HTTPS you can point
-your `hosts` file to the host-only IP address (eth1).
-
-Physical attributes like `memory` and `num_cores` will be ignored because
-they don't scale appropriately to local VMs, but can still be customised as
-described below.
-
 ## Tests!
 
 The intention is that this repo refers to external well-tested modules via the Puppetfile.
@@ -61,6 +44,23 @@ There is support for building a .deb package of the Puppet code, with the intent
 this and any environment-specific hiera data (from `pp-puppet-secrets`) to the environment. You can
 build a debian package with `BUILD_NUMBER=212121 bundle exec rake deb`, however the exact mechanism
 for deploying this to an environment is yet to be defined.
+
+## Usage
+
+You need only bring up the subset of nodes that you're working on. For
+example, to bring up a frontend and backend:
+```sh
+vagrant up jumpbox-1.management frontend-1.frontend
+```
+
+Vagrant will run the Puppet provisioner against the node when it boots up.
+Nodes should look almost identical to that of a real environment, including
+network addresses. To access a node's services like HTTP/HTTPS you can point
+your `hosts` file to the host-only IP address (eth1).
+
+Physical attributes like `memory` and `num_cores` will be ignored because
+they don't scale appropriately to local VMs, but can still be customised as
+described below.
 
 ### Bringing up the MongoDB cluster
 
