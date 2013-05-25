@@ -72,6 +72,7 @@ Vagrant::Config.run do |config|
       # Isolate guests from host networking.
       modifyvm_args << "--natdnsproxy1" << "on"
       modifyvm_args << "--natdnshostresolver1" << "on"
+      modifyvm_args << "--name" << "perfplat-#{node_name}"
 
       if node_opts.has_key?("memory")
         modifyvm_args << "--memory" << node_opts["memory"]
