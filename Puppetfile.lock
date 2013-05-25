@@ -20,10 +20,26 @@ GIT
       puppetlabs/apt (>= 0.0.3)
       puppetlabs/stdlib (>= 2.0.0)
 
+GIT
+  remote: git://github.com/puppetlabs-operations/puppet-nginx.git
+  ref: master
+  sha: c5737d68d24c48a644917544f1958279a58b9a19
+  specs:
+    ploperations/nginx (0.0.1)
+
+GIT
+  remote: git://github.com/puppetlabs-operations/puppet-ssl.git
+  ref: master
+  sha: 23bbb5ab57f26269acce3d4b43e643781747a551
+  specs:
+    ploperations/ssl (0.0.1)
+
 DEPENDENCIES
   attachmentgenie/ssh (>= 0)
   attachmentgenie/ufw (>= 0)
   jenkins (>= 0)
+  ploperations/nginx (>= 0)
+  ploperations/ssl (>= 0)
   puppetlabs/gcc (>= 0)
   puppetlabs/stdlib (>= 0)
   torrancew/account (>= 0)
