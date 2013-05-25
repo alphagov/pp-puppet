@@ -5,6 +5,10 @@ class machines::jumpbox inherits machines::base {
         port => 80,
         ip   => 'any'
     }
+    ufw::allow { "allow-ssh-from-anywhere":
+        port => 22,
+        ip   => 'any',
+    }
     include nginx::server
     nginx::vhost::proxy { 'deploy-vhost':
         port            => 80,
