@@ -37,13 +37,30 @@ vagrant up jumpbox-1.management frontend-1.frontend
 ```
 
 Vagrant will run the Puppet provisioner against the node when it boots up.
-Nodes should look almost identical to that of a real environment, including 
-network addresses. To access a node's services like HTTP/HTTPS you can point 
+Nodes should look almost identical to that of a real environment, including
+network addresses. To access a node's services like HTTP/HTTPS you can point
 your `hosts` file to the host-only IP address (eth1).
 
 Physical attributes like `memory` and `num_cores` will be ignored because
 they don't scale appropriately to local VMs, but can still be customised as
 described below.
+
+## Tests!
+
+The intention is that this repo refers to external well-tested modules via the Puppetfile.
+Given that, the tests for the puppet code in the `manifests` directory are deliberately minimal.
+Running `bundle exec rake test` will:
+
+1. Check that no nasty lint has been introduced into the puppet code
+2. Run rspec-puppet to test that the individual machine manifests compile
+3. Check that the Puppetfile does not contain any references to `git@github` style URLs
+
+## Building a .deb file from the Puppet code
+
+There is support for building a .deb package of the Puppet code, with the intention of deploying
+this and any environment-specific hiera data (from `pp-puppet-secrets`) to the environment. You can
+build a debian package with `BUILD_NUMBER=212121 bundle exec rake deb`, however the exact mechanism
+for deploying this to an environment is yet to be defined.
 
 ### Bringing up the MongoDB cluster
 
