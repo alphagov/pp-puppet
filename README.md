@@ -175,7 +175,7 @@ accounts:
 
 ## Errors
 
-Some errors that you might encounter..
+Some errors that you might encounter...
 
 ### Ruby warnings
 ```
