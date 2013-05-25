@@ -24,15 +24,15 @@ hosts:
             - monitoring-1
             - monitoring.cluster
             - graphite.cluster
-    frontend-lb-1.backend:
+    frontend-lb-1.frontend:
         ip: 10.1.0.11
         host_aliases:
             - frontend-lb-1
             - frontend.cluster
-    frontend-app-1.backend:
+    frontend-app-1.frontend:
         ip: 10.1.0.13
         host_aliases: frontend-app-1
-    frontend-app-2.backend:
+    frontend-app-2.frontend:
         ip: 10.1.0.14
         host_aliases: frontend-app-2
     backend-lb-1.backend:
