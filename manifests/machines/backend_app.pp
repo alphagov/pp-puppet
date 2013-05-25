@@ -1,5 +1,4 @@
 class machines::backend_app inherits machines::base {
-    notify { 'Included the Backend-App class': }
     ufw::allow { "allow-http-from-backend-lb-1":
         port => 80,
         ip   => 'any',

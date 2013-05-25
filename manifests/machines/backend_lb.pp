@@ -1,5 +1,4 @@
 class machines::backend_lb inherits machines::base {
-    notify { 'Included the Backend-lb class': }
     #Loadbalance to backend-app machines
     ufw::allow { "allow-http-from-all":
         port => 80,

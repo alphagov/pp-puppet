@@ -1,5 +1,4 @@
 class machines::frontend_app inherits machines::base {
-    notify { 'Included the Frontend-App class': }
     ufw::allow { "allow-http-from-frontend-lb-1":
         port => 80,
         ip   => 'any',

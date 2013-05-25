@@ -1,5 +1,4 @@
 class machines::jumpbox inherits machines::base {
-    notify { 'Included the Jumpbox class': }
     # Proxy Jenkins to the Deploy Server
     ufw::allow { "allow-http-from-all":
         port => 80,

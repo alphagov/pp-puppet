@@ -1,5 +1,4 @@
 class machines::mongo inherits machines::base {
-    notify { 'Included the mongo class': }
     ufw::allow { "allow-mongo-from-backend":
         port => 27017,
         ip   => 'any',
