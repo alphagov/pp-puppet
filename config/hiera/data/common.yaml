@@ -1,3 +1,4 @@
+environment: undefined
 hosts:
     jumpbox-1.management:
         ip: 10.0.0.11
