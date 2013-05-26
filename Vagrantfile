@@ -76,6 +76,8 @@ Vagrant::Config.run do |config|
 
       if node_opts.has_key?("memory")
         modifyvm_args << "--memory" << node_opts["memory"]
+      else
+        modifyvm_args << "--memory" << "256"
       end
 
       c.vm.customize(modifyvm_args)
