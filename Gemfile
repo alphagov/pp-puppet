@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'facter', '1.7.1'
-gem 'fpm'
+gem 'fpm', '0.4.6'
 gem 'hiera-puppet-helper'
 gem 'librarian-puppet', '0.9.8'
 gem 'librarian-puppet-vagrant'
