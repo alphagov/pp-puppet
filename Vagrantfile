@@ -1,14 +1,12 @@
 require 'json'
-require 'librarian/puppet/vagrant'
-require 'vagrant-hiera'
 
 # Construct box name and URL from distro and version.
 def get_box(dist, version)
   dist    ||= "precise"
   version ||= "20130220"
 
-  name  = "govuk_dev_#{dist}64_#{version}"
-  url   = "http://gds-boxes.s3.amazonaws.com/#{name}.box"
+  name  = "precise64_vmware_fusion"
+  url   = "http://files.vagrantup.com/precise64_vmware_fusion.box"
 
   return name, url
 end
@@ -51,7 +49,7 @@ def nodes_from_json
   nodes
 end
 
-Vagrant::Config.run do |config|
+Vagrant.configure("2") do |config|
   nodes_from_json.each do |node_name, node_opts|
     config.vm.define node_name do |c|
       box_name, box_url = get_box(
@@ -61,38 +59,23 @@ Vagrant::Config.run do |config|
       c.vm.box = box_name
       c.vm.box_url = box_url
 
-      c.vm.host_name = node_name
-      c.vm.network :hostonly, node_opts["ip"], :netmask => "255.255.000.000"
+      c.vm.hostname = node_name
+      c.vm.network :private_network, ip: node_opts["ip"], netmask: '255.000.000.000'
 
-      modifyvm_args = ['modifyvm', :id]
 
-      # Mitigate boot hangs.
-      modifyvm_args << "--rtcuseutc" << "on"
-
-      # Isolate guests from host networking.
-      modifyvm_args << "--natdnsproxy1" << "on"
-      modifyvm_args << "--natdnshostresolver1" << "on"
-      modifyvm_args << "--name" << "perfplat-#{node_name}"
-
-      if node_opts.has_key?("memory")
-        modifyvm_args << "--memory" << node_opts["memory"]
-      else
-        modifyvm_args << "--memory" << "256"
+      c.vm.provider :vmware_fusion do |f|
+        f.vmx["memsize"] = "256"
+        f.vmx["numvcpus"] = "1"
+        f.vmx["displayName"] = node_name
       end
-
-      c.vm.customize(modifyvm_args)
 
       c.ssh.forward_agent = true
       c.vm.provision :shell, :path => "bin/provision-upgrade-puppet.sh"
-      c.hiera.config_path    = 'config/hiera'
-      c.hiera.config_file    = 'hiera_dev.yaml'
-      c.hiera.data_path      = 'config/hiera/data'
-      c.hiera.puppet_version = '3.1.1-1puppetlabs1'
       c.vm.provision :puppet do |puppet|
         puppet.manifest_file = "site.pp"
         puppet.manifests_path = "./manifests"
         puppet.module_path = "./modules"
-        puppet.options = ["--environment", "vagrant"]
+        puppet.options = ["--environment", "vagrant", "--hiera_config", "/vagrant/config/hiera/hiera_dev.yaml"]
         puppet.facter = {
           :machine_class => node_opts["class"],
         }
