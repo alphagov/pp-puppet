@@ -17,6 +17,7 @@ GEM
       json
     hiera (1.2.1)
       json_pure
+    hiera-puppet-helper (1.0.1)
     json (1.7.7)
     json_pure (1.8.0)
     librarian-puppet (0.9.8)
@@ -53,6 +54,7 @@ PLATFORMS
 DEPENDENCIES
   facter (= 1.7.1)
   fpm (= 0.4.6)
+  hiera-puppet-helper
   librarian-puppet (= 0.9.8)
   puppet (= 3.1.1)
   puppet-lint (= 0.3.2)

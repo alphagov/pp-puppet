@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'facter', '1.7.1'
 gem 'fpm', '0.4.6'
+gem 'hiera-puppet-helper'
 gem 'librarian-puppet', '0.9.8'
 gem 'puppet', '3.1.1'
 gem 'puppet-lint', '0.3.2'
