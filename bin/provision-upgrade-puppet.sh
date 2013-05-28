@@ -8,7 +8,7 @@ echo "... Installing the correct librarian-puppet and facter versions"
 gem list puppet | grep "3.1.1" >/dev/null || gem install --no-rdoc --no-ri --version "3.1.1" puppet >/dev/null
 gem list facter | grep "1.7.1" >/dev/null || gem install --no-rdoc --no-ri --version "1.7.1" facter >/dev/null
 gem list librarian-puppet | grep "0.9.8" >/dev/null || gem install --no-rdoc --no-ri --version "0.9.8" librarian-puppet >/dev/null
-echo "... Running `apt-get update`"
+echo "... Running 'apt-get update'"
 apt-get -qq -y update >/dev/null 2>&1
 echo "... Installing git"
 apt-get -qq -y install git >/dev/null 2>&1
