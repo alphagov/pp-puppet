@@ -50,12 +50,27 @@ end
       c.vm.hostname = node_name
       c.vm.network :private_network, ip: node_opts["ip"], netmask: '255.000.000.000'
 
-      c.vm.provider :vmware_fusion do |f|
+      c.vm.provider :virtualbox do |vb, override|
+        modifyvm_args = ['modifyvm', :id]
+        # Mitigate boot hangs.
+        modifyvm_args << "--rtcuseutc" << "on"
+        # Isolate guests from host networking.
+        modifyvm_args << "--natdnsproxy1" << "on"
+        modifyvm_args << "--natdnshostresolver1" << "on"
+        modifyvm_args << "--name" << "#{node_name}"
         if node_opts.has_key?("memory")
-          f.vmx["memsize"] = "256"
+          modifyvm_args << "--memory" << node_opts["memory"]
         else
-          f.vmx["memsize"] = node_opts["memory"]
+          modifyvm_args << "--memory" << "256"
         end
+        override.vm.customize(modifyvm_args)
+      end
+
+      c.vm.provider :vmware_fusion do |f, override|
+        vf_box_name, vf_box_url = get_box("vmware")
+        override.vm.box = vf_box_name
+        override.vm.box_url = vf_box_url
+        f.vmx["memsize"] = "256"
         f.vmx["numvcpus"] = "1"
         f.vmx["displayName"] = node_name
       end
