@@ -4,4 +4,4 @@
 :backends:
         - yaml
 :yaml:
-      :datadir: /tmp/vagrant-hiera/data
+      :datadir: /vagrant/config/hiera/data

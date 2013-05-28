@@ -1,101 +1,71 @@
-require 'json'
-require 'librarian/puppet/vagrant'
-require 'vagrant-hiera'
-
-# Construct box name and URL from distro and version.
-def get_box(dist, version)
-  dist    ||= "precise"
-  version ||= "20130220"
-
-  name  = "govuk_dev_#{dist}64_#{version}"
-  url   = "http://gds-boxes.s3.amazonaws.com/#{name}.box"
-
-  return name, url
+if File.exist? 'vagrant/Vagrantfile.common'
+    instance_eval File.read('vagrant/Vagrantfile.common'), 'Vagrantfile.common'
+else
+    abort("Cannot find vagrant/Vagrantfile.common")
 end
 
-# Load node definitions from the JSON in the vcloud-templates repo parallel
-# to this.
-def nodes_from_json
-  json_dir = File.expand_path("../config/vm-templates", __FILE__)
-  json_local = File.expand_path("../nodes.local.json", __FILE__)
-
-  unless File.exists?(json_dir)
-    puts "Unable to find nodes in 'config/vm-templates' directory"
-    puts
-    return {}
-  end
-
-  json_files = Dir.glob(
-    File.join(json_dir, "**", "*.json")
-  )
-
-  nodes = Hash[
-    json_files.map { |json_file|
-      node = JSON.parse(File.read(json_file))
-      name = node["vm_name"] + "." + node["zone"]
-
-      # Ignore physical attributes.
-      node.delete("memory")
-      node.delete("num_cores")
-
-      [name, node]
-    }
-  ]
-
-  # Local JSON file can override node properties like "memory".
-  if File.exists?(json_local)
-    nodes_local = JSON.parse(File.read(json_local))
-    nodes_local.each { |k,v| nodes[k].merge!(v) if nodes.has_key?(k) }
-  end
-
-  nodes
-end
-
-Vagrant::Config.run do |config|
+"#{Vagrant::VERSION}" < "1.1.0" and Vagrant::Config.run do |config|
   nodes_from_json.each do |node_name, node_opts|
     config.vm.define node_name do |c|
-      box_name, box_url = get_box(
-        node_opts["box_dist"],
-        node_opts["box_version"]
-      )
+      box_name, box_url = get_box("virtualbox")
       c.vm.box = box_name
       c.vm.box_url = box_url
 
       c.vm.host_name = node_name
-      c.vm.network :hostonly, node_opts["ip"], :netmask => "255.255.000.000"
+      c.vm.network :hostonly, node_opts["ip"], :netmask => "255.000.000.000"
 
-      modifyvm_args = ['modifyvm', :id]
 
-      # Mitigate boot hangs.
-      modifyvm_args << "--rtcuseutc" << "on"
-
-      # Isolate guests from host networking.
-      modifyvm_args << "--natdnsproxy1" << "on"
-      modifyvm_args << "--natdnshostresolver1" << "on"
-      modifyvm_args << "--name" << "perfplat-#{node_name}"
-
-      if node_opts.has_key?("memory")
-        modifyvm_args << "--memory" << node_opts["memory"]
+      if File.exist? 'vagrant/Vagrantfile.virtualbox'
+          instance_eval File.read('vagrant/Vagrantfile.virtualbox'), 'Vagrantfile.virtualbox'
       else
-        modifyvm_args << "--memory" << "256"
+          abort("Cannot find vagrant/Vagrantfile.virtualbox")
       end
 
-      c.vm.customize(modifyvm_args)
+      if File.exist? 'vagrant/Vagrantfile.provision'
+          instance_eval File.read('vagrant/Vagrantfile.provision'), 'Vagrantfile.provision'
+      else
+          abort("Cannot find vagrant/Vagrantfile.provision")
+      end
+    end
+  end
+end
 
-      c.ssh.forward_agent = true
-      c.vm.provision :shell, :path => "bin/provision-upgrade-puppet.sh"
-      c.hiera.config_path    = 'config/hiera'
-      c.hiera.config_file    = 'hiera_dev.yaml'
-      c.hiera.data_path      = 'config/hiera/data'
-      c.hiera.puppet_version = '3.1.1-1puppetlabs1'
-      c.vm.provision :puppet do |puppet|
-        puppet.manifest_file = "site.pp"
-        puppet.manifests_path = "./manifests"
-        puppet.module_path = "./modules"
-        puppet.options = ["--environment", "vagrant"]
-        puppet.facter = {
-          :machine_class => node_opts["class"],
-        }
+"#{Vagrant::VERSION}" >= "1.1.0" and Vagrant.configure("2") do |config|
+  nodes_from_json.each do |node_name, node_opts|
+    config.vm.define node_name do |c|
+      box_name, box_url = get_box("virtualbox")
+      c.vm.box = box_name
+      c.vm.box_url = box_url
+
+      c.vm.hostname = node_name
+      c.vm.network :private_network, ip: node_opts["ip"], netmask: '255.000.000.000'
+
+      c.vm.provider :virtualbox do |vb|
+        if File.exist? 'vagrant/Vagrantfile.virtualbox'
+          instance_eval File.read('vagrant/Vagrantfile.virtualbox'), 'Vagrantfile.virtualbox'
+        else
+          abort("Cannot find vagrant/Vagrantfile.virtualbox")
+        end
+      end
+
+
+      c.vm.provider :vmware_fusion do |f|
+        vf_box_name, vf_box_url = get_box("vmware")
+        override.vm.box = vf_box_name
+        override.vm.box_url = vf_box_url
+        if node_opts.has_key?("memory")
+          f.vmx["memsize"] = "256"
+        else
+          f.vmx["memsize"] = node_opts["memory"]
+        end
+        f.vmx["numvcpus"] = "1"
+        f.vmx["displayName"] = node_name
+      end
+
+      if File.exist? 'vagrant/Vagrantfile.provision'
+          instance_eval File.read('vagrant/Vagrantfile.provision'), 'Vagrantfile.provision'
+      else
+          abort("Cannot find vagrant/Vagrantfile.provision")
       end
     end
   end
