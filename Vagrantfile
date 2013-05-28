@@ -43,7 +43,7 @@ end
 "#{Vagrant::VERSION}" >= "1.1.0" and Vagrant.configure("2") do |config|
   nodes_from_json.each do |node_name, node_opts|
     config.vm.define node_name do |c|
-      box_name, box_url = get_box("vmware")
+      box_name, box_url = get_box("virtualbox")
       c.vm.box = box_name
       c.vm.box_url = box_url
 
@@ -63,7 +63,7 @@ end
         else
           modifyvm_args << "--memory" << "256"
         end
-        override.vm.customize(modifyvm_args)
+        vb.customize(modifyvm_args)
       end
 
       c.vm.provider :vmware_fusion do |f, override|
