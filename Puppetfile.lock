@@ -42,6 +42,21 @@ GIT
     mongodb (0.1.0)
       puppetlabs/apt (>= 0.0.2)
 
+GIT
+  remote: git://github.com/bison/puppet-upstart.git
+  ref: master
+  sha: 05a10a3a58de3543eb51bb782a249cebf71f5cd8
+  specs:
+    upstart (0.0.1)
+      puppetlabs/stdlib (>= 0.1.6)
+
+GIT
+  remote: git://github.com/stankevich/puppet-python.git
+  ref: master
+  sha: 92519602dfe62d2305c40a34b6edbdb02372924d
+  specs:
+    python (1.0.0)
+
 DEPENDENCIES
   attachmentgenie/ssh (= 1.1.0)
   attachmentgenie/ufw (= 1.2.0)
@@ -50,6 +65,8 @@ DEPENDENCIES
   nginx (>= 0)
   puppetlabs/gcc (= 0.0.3)
   puppetlabs/stdlib (= 4.1.0)
+  python (>= 0)
   ssl (>= 0)
   torrancew/account (= 0.0.3)
+  upstart (>= 0)
 
