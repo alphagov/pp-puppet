@@ -12,6 +12,13 @@ FORGE
     torrancew/account (0.0.3)
 
 GIT
+  remote: git://github.com/alphagov/puppet-backdrop.git
+  ref: master
+  sha: e78e68b6b08b94e13cfdfe18c5080e47399ad6ce
+  specs:
+    backdrop (0.0.1)
+
+GIT
   remote: git://github.com/alphagov/puppet-jenkins.git
   ref: master
   sha: 4c7990fa8495b6d84292c2153993ac91c3b2916d
@@ -60,6 +67,7 @@ GIT
 DEPENDENCIES
   attachmentgenie/ssh (= 1.1.0)
   attachmentgenie/ufw (= 1.2.0)
+  backdrop (>= 0)
   jenkins (>= 0)
   mongodb (>= 0)
   nginx (>= 0)
