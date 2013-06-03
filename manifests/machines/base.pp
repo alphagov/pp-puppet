@@ -15,6 +15,10 @@ class machines::base {
 FACTER_machine_class=${::machine_class}
 "
     }
+    package { 'curl':
+              ensure => installed,
+              name   => 'curl',
+    }
     # Default the firewall to closed
     include ufw
     # Open up SSH everywhere in development
