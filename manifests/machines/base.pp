@@ -15,6 +15,10 @@ class machines::base {
 FACTER_machine_class=${::machine_class}
 "
     }
+    package { 'curl':
+              ensure => installed,
+              name   => 'curl',
+    }
     package { 'vim':
         ensure => installed,
         name   => 'vim',
