@@ -15,6 +15,10 @@ class machines::base {
 FACTER_machine_class=${::machine_class}
 "
     }
+    package { 'vim':
+        ensure => installed,
+        name   => 'vim',
+    }
     # Default the firewall to closed
     include ufw
     # Open up SSH everywhere in development
