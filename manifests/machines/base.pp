@@ -16,8 +16,8 @@ FACTER_machine_class=${::machine_class}
 "
     }
     package { 'vim':
-        name   => 'vim',
         ensure => installed,
+        name   => 'vim',
     }
     # Default the firewall to closed
     include ufw
