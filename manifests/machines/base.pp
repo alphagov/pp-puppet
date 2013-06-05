@@ -23,6 +23,10 @@ FACTER_machine_class=${::machine_class}
         ensure => installed,
         name   => 'vim',
     }
+    package { 'htop':
+        ensure => installed,
+        name   => 'htop',
+    }
     # Default the firewall to closed
     include ufw
     # Open up SSH everywhere in development
