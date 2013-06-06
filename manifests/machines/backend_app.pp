@@ -10,17 +10,31 @@ class machines::backend_app inherits machines::base {
         ip   => 'any',
         from => $hosts['backend-lb-1.backend']['ip'],
     }
-    include nginx::server
-    nginx::vhost::proxy { 'backdrop-read-vhost':
-        port            => 80,
-        servername      => join(['read.backdrop',hiera('domain_name')],'.'),
-        ssl             => false,
-        upstream_port   => 3038,
+
+    user { 'deploy':
+        ensure => present,
     }
-    nginx::vhost::proxy { 'backdrop-write-vhost':
-        port            => 80,
-        servername      => join(['write.backdrop',hiera('domain_name')],'.'),
-        ssl             => false,
-        upstream_port   => 3039,
+
+    class { 'python':
+        version    => '2.7',
+        dev        => true,
+        virtualenv => true,
     }
+
+    backdrop::app {'read.backdrop':
+        port       => 3038,
+        app_module => 'backdrop.read.api:app',
+        domain_name => hiera('domain_name'),
+        user        => 'deploy',
+        group       => 'deploy',
+    }
+
+    backdrop::app {'write.backdrop':
+        port       => 3039,
+        app_module => 'backdrop.write.api:app',
+        domain_name => hiera('domain_name'),
+        user        => 'deploy',
+        group       => 'deploy',
+    }
+
 }

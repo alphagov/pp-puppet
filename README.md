@@ -97,6 +97,10 @@ production:SECONDARY> rs.isMaster()
 }
 ```
 
+### Installing backdrop
+
+Currently there are some [manual installation steps](https://github.com/alphagov/puppet-backdrop) for backdrop.
+
 ## Creating new node types
 
 ### Creating the definition of the machine for provisioning
