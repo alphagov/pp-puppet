@@ -35,6 +35,13 @@ GIT
     nginx (0.0.1)
 
 GIT
+  remote: git://github.com/alphagov/puppet-rbenv.git
+  ref: master
+  sha: e04e539aa3340d1087e6e9c81c3b180183a7b96f
+  specs:
+    rbenv (0.0.1)
+
+GIT
   remote: git://github.com/alphagov/puppet-ssl.git
   ref: master
   sha: 23bbb5ab57f26269acce3d4b43e643781747a551
@@ -71,9 +78,11 @@ DEPENDENCIES
   jenkins (>= 0)
   mongodb (>= 0)
   nginx (>= 0)
+  puppetlabs/apt (= 1.1.0)
   puppetlabs/gcc (= 0.0.3)
   puppetlabs/stdlib (= 4.1.0)
   python (>= 0)
+  rbenv (>= 0)
   ssl (>= 0)
   torrancew/account (= 0.0.3)
   upstart (>= 0)

@@ -10,6 +10,25 @@ class machines::frontend_app inherits machines::base {
         ip   => 'any',
         from => $hosts['frontend-lb-1.frontend']['ip'],
     }
+    
+
+    # install govuk deb repository - do this for all machines
+    class { 'apt': }
+    apt::ppa { 'ppa:gds/govuk': }
+
+
+    # install rbenv & ruby
+    include rbenv
+
+    rbenv::version { '1.9.3-p392':
+        bundler_version => '1.3.5'
+    }
+    rbenv::alias { '1.9.3':
+        to_version => '1.9.3-p392',
+    }
+
+
+    # create limelight environment
     include nginx::server
     nginx::vhost::proxy { 'limelight-vhost':
         port            => 80,
@@ -17,4 +36,51 @@ class machines::frontend_app inherits machines::base {
         ssl             => false,
         upstream_port   => 3040,
     }
+    
+    # -- install packages required by gems
+    package { [ 'build-essential', 'libxslt-dev', 'libxml2-dev' ] :
+        ensure => present,
+    }
+
+    # -- install packages required by rails runtime
+    package { [ 'nodejs' ]:
+        ensure => present,
+    }
+
+    # create deploy user
+    user { 'deploy':
+        ensure => present,
+    }
+  
+    $user = 'deploy'
+    $group = 'deploy'
+
+    $appname = 'limelight'
+
+    $app_path = "/opt/${appname}"
+    $log_path = "/var/log/${appname}"
+    $config_path = "/etc/opt/${appname}"
+
+    file { ["$app_path", "$log_path", "$config_path"]:
+        ensure => directory,
+        owner  => $user,
+        group  => $group,
+    }  
+
+    include upstart
+    upstart::job { "$appname":
+        description   => $appname,
+        respawn       => true,
+        respawn_limit => '5 10',
+        user          => $user,
+        group         => $group,
+        chdir         => $app_path,
+        environment   => {
+            'GOVUK_ENV' => 'production',
+            'RAILS_ENV' => 'production',
+            'GOVUK_APP_DOMAIN' => 'this_is_govuk_app_domain'
+        },
+        exec          => 'bundle exec unicorn_rails',
+    }
 }
+
