@@ -11,6 +11,15 @@ class machines::frontend_app inherits machines::base {
         from => $hosts['frontend-lb-1.frontend']['ip'],
     }
     
+    # create deploy user
+    $user = 'deploy'
+    $group = 'deploy'
+
+    user { $user:
+        ensure => present,
+        shell  => "/bin/bash",
+        managehome => true,
+    }
 
     # install govuk deb repository - do this for all machines
     class { 'apt': }
@@ -46,14 +55,6 @@ class machines::frontend_app inherits machines::base {
     package { [ 'nodejs' ]:
         ensure => present,
     }
-
-    # create deploy user
-    user { 'deploy':
-        ensure => present,
-    }
-  
-    $user = 'deploy'
-    $group = 'deploy'
 
     $appname = 'limelight'
 
