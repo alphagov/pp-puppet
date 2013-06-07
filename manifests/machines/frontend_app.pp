@@ -85,7 +85,7 @@ class machines::frontend_app inherits machines::base {
             'RAILS_ENV' => 'production',
             'GOVUK_APP_DOMAIN' => 'this_is_govuk_app_domain'
         },
-        exec          => 'bundle exec unicorn_rails',
+        exec          => 'bundle exec unicorn_rails -p 3040',
     }
 }
 
