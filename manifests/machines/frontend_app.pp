@@ -25,6 +25,10 @@ class machines::frontend_app inherits machines::base {
     class { 'apt': }
     apt::ppa { 'ppa:gds/govuk': }
 
+    # For librarian-puppet
+    package { ['ruby1.9.1', 'ruby1.9.1-dev']:
+        ensure => $version,
+    }
 
     # install rbenv & ruby
     include rbenv
