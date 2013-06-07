@@ -11,4 +11,5 @@ mod 'ssl', :git => 'git://github.com/alphagov/puppet-ssl.git'
 mod 'torrancew/account', '0.0.3'
 mod 'python', :git => 'git://github.com/stankevich/puppet-python.git'
 mod 'upstart', :git => 'git://github.com/bison/puppet-upstart.git'
-mod 'backdrop', :git => 'git://github.com/alphagov/puppet-backdrop.git'
+mod 'backdrop', :git => 'git://github.com/alphagov/puppet-backdrop.git', :ref => 'c72aa3600a77f72a65eff0ab9d40871ad3630680'
+
