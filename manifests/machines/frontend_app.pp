@@ -83,7 +83,8 @@ class machines::frontend_app inherits machines::base {
         environment   => {
             'GOVUK_ENV' => 'production',
             'RAILS_ENV' => 'production',
-            'GOVUK_APP_DOMAIN' => 'this_is_govuk_app_domain'
+            'GOVUK_APP_DOMAIN' => 'production.alphagov.co.uk',
+            'BACKDROP_URL' => 'read.backdrop',
         },
         exec          => 'bundle exec unicorn_rails -p 3040',
     }
