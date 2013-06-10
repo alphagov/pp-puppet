@@ -25,6 +25,9 @@ class machines::frontend_app inherits machines::base {
     class { 'apt': }
     apt::ppa { 'ppa:gds/govuk': }
 
+    # Ensure that the govuk ppa is installed before any other packages are installed
+    Apt::Ppa['ppa:gds/govuk'] -> Package <| title != 'python-software-properties' and title != 'software-properties-common' |>
+
     # For librarian-puppet
     package { ['ruby1.9.1', 'ruby1.9.1-dev']:
         ensure => $version,
