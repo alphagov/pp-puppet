@@ -1,7 +1,7 @@
 :hierarchy:
-        - environment
-        - common
+    - environment
+    - common
 :backends:
-        - yaml
+    - yaml
 :yaml:
-      :datadir: /vagrant/config/hiera/data
+    :datadir: /vagrant/config/hiera/data

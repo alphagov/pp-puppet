@@ -1,8 +1,7 @@
----
+:hierarchy:
+    - environment
+    - common
 :backends:
     - yaml
 :yaml:
     :datadir: /etc/puppet/hieradata
-:hierarchy:
-    - 'environment'
-    - 'common'
