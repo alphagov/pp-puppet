@@ -20,6 +20,9 @@ class machines::base {
 FACTER_machine_class=${::machine_class}
 "
     }
+    file {'/etc/gds':
+        ensure => directory,
+    }
     package {
       [
         'curl',
