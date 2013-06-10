@@ -48,7 +48,7 @@ end
       c.vm.box_url = box_url
 
       c.vm.hostname = node_name
-      c.vm.network :private_network, ip: node_opts["ip"], netmask: '255.000.000.000'
+      c.vm.network :private_network, ip: node_opts["ip"], netmask: '255.0.0.0'
 
       c.vm.provider :virtualbox do |vb, override|
         modifyvm_args = ['modifyvm', :id]
