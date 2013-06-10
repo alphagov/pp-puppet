@@ -5,8 +5,13 @@ class machines::base {
     $networks = hiera('networks')
     $environment = hiera('environment')
 
+    # install govuk deb repository
+    class { 'apt': }
+    apt::ppa { 'ppa:gds/govuk': }
+
     exec { 'apt-get-update':
         command => '/usr/bin/apt-get update || true',
+        require => Apt::Ppa['ppa:gds/govuk'],
     }
 
     file { '/etc/environment':
