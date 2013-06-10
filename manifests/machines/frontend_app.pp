@@ -32,22 +32,11 @@ class machines::frontend_app inherits machines::base {
 
     # install rbenv & ruby
     include rbenv
-
     rbenv::version { '1.9.3-p392':
         bundler_version => '1.3.5'
     }
     rbenv::alias { '1.9.3':
         to_version => '1.9.3-p392',
-    }
-
-
-    # create limelight environment
-    include nginx::server
-    nginx::vhost::proxy { 'limelight-vhost':
-        port            => 80,
-        servername      => join(['limelight',hiera('domain_name')],'.'),
-        ssl             => false,
-        upstream_port   => 3040,
     }
     
     # -- install packages required by gems
@@ -60,33 +49,11 @@ class machines::frontend_app inherits machines::base {
         ensure => present,
     }
 
-    $appname = 'limelight'
-
-    $app_path = "/opt/${appname}"
-    $log_path = "/var/log/${appname}"
-    $config_path = "/etc/opt/${appname}"
-
-    file { ["$app_path", "$log_path", "$config_path"]:
-        ensure => directory,
-        owner  => $user,
-        group  => $group,
-    }  
-
-    include upstart
-    upstart::job { "$appname":
-        description   => $appname,
-        respawn       => true,
-        respawn_limit => '5 10',
-        user          => $user,
-        group         => $group,
-        chdir         => $app_path,
-        environment   => {
-            'GOVUK_ENV' => 'production',
-            'RAILS_ENV' => 'production',
-            'GOVUK_APP_DOMAIN' => 'production.alphagov.co.uk',
-            'BACKDROP_URL' => 'read.backdrop',
-        },
-        exec          => 'bundle exec unicorn_rails -p 3040',
+    limelight::app {'limelight':
+        port        => 3040,
+        user        => $user,
+        group       => $group,
+        domain_name => hiera('domain_name'),
     }
 }
 
