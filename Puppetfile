@@ -14,3 +14,5 @@ mod 'torrancew/account', '0.0.3'
 mod 'python', :git => 'git://github.com/stankevich/puppet-python.git'
 mod 'upstart', :git => 'git://github.com/bison/puppet-upstart.git'
 mod 'backdrop', :git => 'git://github.com/alphagov/puppet-backdrop.git'
+mod 'limelight', :git => 'git://github.com/alphagov/puppet-limelight.git',
+                 :ref => '8c4eb614c410aad0963d9005ceb47ca8cb0245e8'

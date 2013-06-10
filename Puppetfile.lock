@@ -28,6 +28,13 @@ GIT
       puppetlabs/stdlib (>= 2.0.0)
 
 GIT
+  remote: git://github.com/alphagov/puppet-limelight.git
+  ref: 8c4eb614c410aad0963d9005ceb47ca8cb0245e8
+  sha: 8c4eb614c410aad0963d9005ceb47ca8cb0245e8
+  specs:
+    limelight (0.0.1)
+
+GIT
   remote: git://github.com/alphagov/puppet-nginx.git
   ref: master
   sha: c5737d68d24c48a644917544f1958279a58b9a19
@@ -76,6 +83,7 @@ DEPENDENCIES
   attachmentgenie/ufw (= 1.2.0)
   backdrop (>= 0)
   jenkins (>= 0)
+  limelight (>= 0)
   mongodb (>= 0)
   nginx (>= 0)
   puppetlabs/apt (= 1.1.0)
