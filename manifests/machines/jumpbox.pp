@@ -15,9 +15,10 @@ class machines::jumpbox inherits machines::base {
     include nginx::server
     nginx::vhost::proxy { 'deploy-vhost':
         port            => 80,
-        servername      => join(['deploy',hiera('domain_name')],'.'),
+        servername      => join(['management',hiera('domain_name')],'.'),
         ssl             => false,
-        upstream_server => 'deploy-1.management',
+        upstream_server => 'localhost',
         upstream_port   => 8080,
     }
+    include jenkins
 }

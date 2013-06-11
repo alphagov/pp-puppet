@@ -11,9 +11,6 @@ hosts:
     jumpbox-1.management:
         ip: 10.0.0.11
         host_aliases: jumpbox-1
-    deploy-1.management:
-        ip: 10.0.0.12
-        host_aliases: deploy-1
     logging-1.management:
         ip: 10.0.0.13
         host_aliases:
