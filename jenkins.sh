@@ -9,6 +9,6 @@ bundle exec librarian-puppet install --strip-dot-git
 bundle exec rake test
 # Remove old debfiles
 rm -rf build/*
-# Build the deb package
-bundle exec rake deb
-echo "Built package: pp_puppet_${BUILD_NUMBER}"
+# Build the tar package
+bundle exec rake tar
+echo "Built package version ${BUILD_NUMBER}: pp_puppet.tar.gz"
