@@ -39,6 +39,8 @@ hosts:
     backend-lb-1.backend:
         ip: 10.2.0.11
         host_aliases:
+            - read.backdrop
+            - write.backdrop
             - backend-lb-1
             - backend.cluster
     backend-app-1.backend:

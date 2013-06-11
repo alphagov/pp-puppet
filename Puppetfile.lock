@@ -28,11 +28,25 @@ GIT
       puppetlabs/stdlib (>= 2.0.0)
 
 GIT
+  remote: git://github.com/alphagov/puppet-limelight.git
+  ref: 8c4eb614c410aad0963d9005ceb47ca8cb0245e8
+  sha: 8c4eb614c410aad0963d9005ceb47ca8cb0245e8
+  specs:
+    limelight (0.0.1)
+
+GIT
   remote: git://github.com/alphagov/puppet-nginx.git
   ref: master
   sha: c5737d68d24c48a644917544f1958279a58b9a19
   specs:
     nginx (0.0.1)
+
+GIT
+  remote: git://github.com/alphagov/puppet-rbenv.git
+  ref: master
+  sha: e04e539aa3340d1087e6e9c81c3b180183a7b96f
+  specs:
+    rbenv (0.0.1)
 
 GIT
   remote: git://github.com/alphagov/puppet-ssl.git
@@ -69,11 +83,14 @@ DEPENDENCIES
   attachmentgenie/ufw (= 1.2.0)
   backdrop (>= 0)
   jenkins (>= 0)
+  limelight (>= 0)
   mongodb (>= 0)
   nginx (>= 0)
+  puppetlabs/apt (= 1.1.0)
   puppetlabs/gcc (= 0.0.3)
   puppetlabs/stdlib (= 4.1.0)
   python (>= 0)
+  rbenv (>= 0)
   ssl (>= 0)
   torrancew/account (= 0.0.3)
   upstart (>= 0)
