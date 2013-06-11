@@ -4,4 +4,4 @@
 :backends:
     - yaml
 :yaml:
-    :datadir: /etc/puppet/hieradata
+    :datadir: hieradata
