@@ -11,10 +11,17 @@ class machines::frontend_app inherits machines::base {
         from => $hosts['frontend-lb-1.frontend']['ip'],
     }
     include nginx::server
-    nginx::vhost::proxy { 'limelight-vhost':
+    include varnish
+    nginx::vhost::proxy { 'admin-vhost':
         port            => 80,
-        servername      => join(['limelight',hiera('domain_name')],'.'),
+        servername      => join(['admin',hiera('domain_name')],'.'),
         ssl             => false,
-        upstream_port   => 3040,
+        upstream_port   => 8080,
+    }
+    nginx::vhost::proxy { 'www-vhost':
+        port            => 80,
+        servername      => join(['www',hiera('domain_name')],'.'),
+        ssl             => false,
+        upstream_port   => 8080,
     }
 }

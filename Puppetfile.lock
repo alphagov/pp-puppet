@@ -35,6 +35,13 @@ GIT
     nginx (0.0.1)
 
 GIT
+  remote: git://github.com/alphagov/puppet-pp-varnish.git
+  ref: master
+  sha: 1a466a2422a06931c9c5c84363fb0c183a5f57c3
+  specs:
+    varnish (0.0.1)
+
+GIT
   remote: git://github.com/alphagov/puppet-ssl.git
   ref: master
   sha: 23bbb5ab57f26269acce3d4b43e643781747a551
@@ -77,4 +84,5 @@ DEPENDENCIES
   ssl (>= 0)
   torrancew/account (= 0.0.3)
   upstart (>= 0)
+  varnish (>= 0)
 
