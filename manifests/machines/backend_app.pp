@@ -1,14 +1,14 @@
 # Setup a backend application server
 class machines::backend_app inherits machines::base {
-    ufw::allow { 'allow-http-from-backend-lb-1':
+    ufw::allow { 'allow-http-from-frontend-app-1':
         port => 80,
         ip   => 'any',
-        from => $hosts['backend-lb-1.backend']['ip'],
+        from => $hosts['frontend-app-1.frontend']['ip'],
     }
-    ufw::allow { 'allow-https-from-backend-lb-1':
-        port => 443,
+    ufw::allow { 'allow-http-from-frontend-app-2':
+        port => 80,
         ip   => 'any',
-        from => $hosts['backend-lb-1.backend']['ip'],
+        from => $hosts['frontend-app-2.frontend']['ip'],
     }
 
     user { 'deploy':
