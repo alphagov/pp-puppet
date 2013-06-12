@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: git://github.com/alphagov/puppet-jenkins.git
-  ref: master
+  ref: 4c7990fa8495b6d84292c2153993ac91c3b2916d
   sha: 4c7990fa8495b6d84292c2153993ac91c3b2916d
   specs:
     jenkins (0.2.4)
@@ -29,7 +29,7 @@ GIT
 
 GIT
   remote: git://github.com/alphagov/puppet-nginx.git
-  ref: master
+  ref: c5737d68d24c48a644917544f1958279a58b9a19
   sha: c5737d68d24c48a644917544f1958279a58b9a19
   specs:
     nginx (0.0.1)
@@ -43,14 +43,14 @@ GIT
 
 GIT
   remote: git://github.com/alphagov/puppet-ssl.git
-  ref: master
+  ref: 23bbb5ab57f26269acce3d4b43e643781747a551
   sha: 23bbb5ab57f26269acce3d4b43e643781747a551
   specs:
     ssl (0.0.1)
 
 GIT
   remote: git://github.com/alphagov/puppetlabs-mongodb.git
-  ref: master
+  ref: b9afea72117a322836117ba07963dee8a2611703
   sha: b9afea72117a322836117ba07963dee8a2611703
   specs:
     mongodb (0.1.0)
@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: git://github.com/bison/puppet-upstart.git
-  ref: master
+  ref: 05a10a3a58de3543eb51bb782a249cebf71f5cd8
   sha: 05a10a3a58de3543eb51bb782a249cebf71f5cd8
   specs:
     upstart (0.0.1)
@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: git://github.com/stankevich/puppet-python.git
-  ref: master
+  ref: 92519602dfe62d2305c40a34b6edbdb02372924d
   sha: 92519602dfe62d2305c40a34b6edbdb02372924d
   specs:
     python (1.0.0)
