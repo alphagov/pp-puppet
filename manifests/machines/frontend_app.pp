@@ -13,13 +13,13 @@ class machines::frontend_app inherits machines::base {
         port            => 80,
         servername      => join(['admin',hiera('domain_name')],'.'),
         ssl             => false,
-        upstream_port   => 8080,
+        upstream_port   => 7999,
     }
     nginx::vhost::proxy { 'www-vhost':
         port            => 80,
         servername      => join(['www',hiera('domain_name')],'.'),
         ssl             => false,
-        upstream_port   => 8080,
+        upstream_port   => 7999,
     }
     include varnish
 }
