@@ -20,5 +20,5 @@ mod 'torrancew/account',    '0.0.3'
 mod 'upstart',              :git => 'git://github.com/bison/puppet-upstart.git',
                             :ref => '05a10a3a58de3543eb51bb782a249cebf71f5cd8'
 mod 'varnish',              :git => 'git://github.com/alphagov/puppet-pp-varnish.git',
-                            :ref => '5b4924c6b008820992a82508acd37c75226dfab4'
+                            :ref => '68e6ccbdbe0620016156b244c03ecec346fb1ea7'
 

@@ -36,8 +36,8 @@ GIT
 
 GIT
   remote: git://github.com/alphagov/puppet-pp-varnish.git
-  ref: 5b4924c6b008820992a82508acd37c75226dfab4
-  sha: 5b4924c6b008820992a82508acd37c75226dfab4
+  ref: 68e6ccbdbe0620016156b244c03ecec346fb1ea7
+  sha: 68e6ccbdbe0620016156b244c03ecec346fb1ea7
   specs:
     varnish (0.0.1)
 
