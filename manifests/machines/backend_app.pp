@@ -24,7 +24,6 @@ class machines::backend_app inherits machines::base {
     backdrop::app {'read.backdrop':
         port        => 3038,
         app_module  => 'backdrop.read.api:app',
-        domain_name => '',
         user        => 'deploy',
         group       => 'deploy',
     }
@@ -32,7 +31,6 @@ class machines::backend_app inherits machines::base {
     backdrop::app {'write.backdrop':
         port        => 3039,
         app_module  => 'backdrop.write.api:app',
-        domain_name => '',
         user        => 'deploy',
         group       => 'deploy',
     }
