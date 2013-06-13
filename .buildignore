@@ -1,0 +1,7 @@
+.git
+.tmp
+.bundle
+.librarian
+puppet.tgz
+*.gem
+.vagrant
