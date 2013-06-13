@@ -3,6 +3,22 @@ accounts:
     deploy:
         groups:
             - sudo
+backdrop_apps:
+    read.backdrop:
+        port:       3038
+        app_module: 'backdrop.read.api:app'
+        user:       'deploy'
+        group:      'deploy'
+    write.backdrop:
+        port:       3039
+        app_module: 'backdrop.write.api:app'
+        user:       'deploy'
+        group:      'deploy'
+parameterised_classes:
+    python:
+        version:    '2.7'
+        dev:        true
+        virtualenv: true
 ufw_rules:
     allow-http-from-frontend-app-1:
         port: 80

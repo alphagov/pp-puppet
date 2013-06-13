@@ -1,4 +1,6 @@
 ---
+included_classes:
+    - 'performanceplatform::mongo'
 ufw_rules:
     allow-mongo-from-backend-app-1:
         port: 27017

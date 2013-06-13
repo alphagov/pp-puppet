@@ -1,5 +1,5 @@
 # Install mongodb in a replicaset
-class machines::mongo inherits machines::base {
+class performanceplatform::mongo {
     class { 'mongodb':
         enable_10gen => true,
         replSet      => 'production',
@@ -12,7 +12,7 @@ class machines::mongo inherits machines::base {
         group   => 'root',
         mode    => '0644',
     }
-    $mongo_hosts = grep(keys($hosts),'mongo')
+    $mongo_hosts = grep(keys(hiera('hosts')),'mongo')
     $mongo_members_tmp = join($mongo_hosts,'","')
     $mongo_members = "[\"${mongo_members_tmp}\"]"
     file { '/etc/mongodb/configure-replica-set.js':

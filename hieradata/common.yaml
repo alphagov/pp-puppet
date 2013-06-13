@@ -1,6 +1,7 @@
 ---
 included_classes:
     - 'apt'
+    - 'performanceplatform::base'
     - 'ssh::server'
     - 'ufw'
 system_packages:
