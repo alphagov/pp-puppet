@@ -1,0 +1,22 @@
+---
+included_classes:
+    - 'nginx::server'
+    - 'varnish'
+ufw_rules:
+    allow-http-from-anywhere:
+        port: 80
+        ip:   'any'
+    allow-https-from-anywhere:
+        port: 443
+        ip:   'any'
+vhost_proxies:
+    admin-vhost:
+        port:          80
+        servername:    "%{::admin_vhost}"
+        ssl:           false
+        upstream_port: 7999
+    www-vhost:
+        port:          80
+        servername:    "%{::www_vhost}"
+        ssl:           false
+        upstream_port: 7999

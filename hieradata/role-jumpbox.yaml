@@ -1,0 +1,17 @@
+included_classes:
+    - 'nginx::server'
+    - 'jenkins'
+ufw_rules:
+    allowhttpfromall:
+        port: 80
+        ip:   'any'
+    allowsshfromanywhere:
+        port: 22
+        ip:   'any'
+vhost_proxies:
+    deploy-vhost:
+        port:            80
+        servername:      "%{::management_vhost}"
+        ssl:             false
+        upstream_server: 'localhost'
+        upstream_port:   8080
