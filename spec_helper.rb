@@ -15,7 +15,7 @@ shared_context "hieradata" do
     { :backends  => ['yaml'],
       :hierarchy => ['%{::hostname}','%{::server_role}','%{::hmrc_platform}'],
       :yaml      => {:datadir => File.join(HERE, 'hieradata')},
-      :rspec => respond_to?(:hiera_data) ? hiera_data : {}•
+      :rspec => respond_to?(:hiera_data) ? hiera_data : {}
     }
   end
 end
