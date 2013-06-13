@@ -2,7 +2,6 @@
 class machines::base {
     # Store the list of hosts for use later
     $hosts = hiera('hosts')
-    $networks = hiera('networks')
     $environment = hiera('environment')
 
     # install govuk deb repository

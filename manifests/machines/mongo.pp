@@ -1,9 +1,29 @@
 # Install mongodb in a replicaset
 class machines::mongo inherits machines::base {
-    ufw::allow { 'allow-mongo-from-backend':
+    ufw::allow { 'allow-mongo-from-backend-app-1':
         port => 27017,
         ip   => 'any',
-        from => $networks['backend']
+        from => $hosts['backend-app-1']['ip']
+    }
+    ufw::allow { 'allow-mongo-from-backend-app-2':
+        port => 27017,
+        ip   => 'any',
+        from => $hosts['backend-app-2']['ip']
+    }
+    ufw::allow { 'allow-mongo-from-mongo-1':
+        port => 27017,
+        ip   => 'any',
+        from => $hosts['mongo-1']['ip']
+    }
+    ufw::allow { 'allow-mongo-from-mongo-2':
+        port => 27017,
+        ip   => 'any',
+        from => $hosts['mongo-2']['ip']
+    }
+    ufw::allow { 'allow-mongo-from-mongo-3':
+        port => 27017,
+        ip   => 'any',
+        from => $hosts['mongo-3']['ip']
     }
     class { 'mongodb':
         enable_10gen => true,

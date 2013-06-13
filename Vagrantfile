@@ -1,18 +1,40 @@
-if File.exist? 'vagrant/Vagrantfile.common'
-    instance_eval File.read('vagrant/Vagrantfile.common'), 'Vagrantfile.common'
-else
-    abort("Cannot find vagrant/Vagrantfile.common")
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Node definitions
+hosts = [
+  { name: 'backend-app-1',  ip: '172.27.1.21' },
+  { name: 'backend-app-2',  ip: '172.27.1.22' },
+  { name: 'frontend-app-1', ip: '172.27.1.11' },
+  { name: 'frontend-app-2', ip: '172.27.1.12' },
+  { name: 'jumpbox-1',      ip: '172.27.1.2' },
+  { name: 'mongo-1',        ip: '172.27.1.31' },
+  { name: 'mongo-2',        ip: '172.27.1.32' },
+  { name: 'mongo-3',        ip: '172.27.1.33' },
+]
+
+def get_box(provider)
+  provider    ||= "virtualbox"
+  case provider
+  when "vmware"
+    name  = "precise64_vmware_fusion"
+    url   = "http://files.vagrantup.com/precise64_vmware_fusion.box"
+  else
+    name  = "precise64"
+    url   = "http://files.vagrantup.com/precise64.box"
+  end
+  return name, url
 end
 
 "#{Vagrant::VERSION}" < "1.1.0" and Vagrant::Config.run do |config|
-  nodes_from_json.each do |node_name, node_opts|
-    config.vm.define node_name do |c|
+  hosts.each do |host|
+    config.vm.define host[:name] do |c|
       box_name, box_url = get_box("virtualbox")
       c.vm.box = box_name
       c.vm.box_url = box_url
 
-      c.vm.host_name = node_name
-      c.vm.network :hostonly, node_opts["ip"], :netmask => "255.000.000.000"
+      c.vm.host_name = host[:name] + '.localdomain'
+      c.vm.network :hostonly, host[:ip], :netmask => "255.255.255.0"
 
       modifyvm_args = ['modifyvm', :id]
 
@@ -22,33 +44,24 @@ end
       # Isolate guests from host networking.
       modifyvm_args << "--natdnsproxy1" << "on"
       modifyvm_args << "--natdnshostresolver1" << "on"
-      modifyvm_args << "--name" << "#{node_name}"
+      modifyvm_args << "--name" << host[:name]
 
-      if node_opts.has_key?("memory")
-          modifyvm_args << "--memory" << node_opts["memory"]
-      else
-          modifyvm_args << "--memory" << "256"
-      end
       c.vm.customize(modifyvm_args)
-
-      if File.exist? 'vagrant/Vagrantfile.provision'
-          instance_eval File.read('vagrant/Vagrantfile.provision'), 'Vagrantfile.provision'
-      else
-          abort("Cannot find vagrant/Vagrantfile.provision")
-      end
+      c.ssh.forward_agent = true
+      c.vm.provision :shell, :path => "tools/bootstrap-vagrant"
     end
   end
 end
 
 "#{Vagrant::VERSION}" >= "1.1.0" and Vagrant.configure("2") do |config|
-  nodes_from_json.each do |node_name, node_opts|
-    config.vm.define node_name do |c|
+  hosts.each do |host|
+    config.vm.define host[:name] do |c|
       box_name, box_url = get_box("virtualbox")
       c.vm.box = box_name
       c.vm.box_url = box_url
 
-      c.vm.hostname = node_name
-      c.vm.network :private_network, ip: node_opts["ip"], netmask: '255.0.0.0'
+      c.vm.hostname = host[:name] + '.localdomain'
+      c.vm.network :private_network, ip: host[:ip], netmask: '255.255.255.0'
 
       c.vm.provider :virtualbox do |vb, override|
         modifyvm_args = ['modifyvm', :id]
@@ -57,12 +70,7 @@ end
         # Isolate guests from host networking.
         modifyvm_args << "--natdnsproxy1" << "on"
         modifyvm_args << "--natdnshostresolver1" << "on"
-        modifyvm_args << "--name" << "#{node_name}"
-        if node_opts.has_key?("memory")
-          modifyvm_args << "--memory" << node_opts["memory"]
-        else
-          modifyvm_args << "--memory" << "256"
-        end
+        modifyvm_args << "--name" << host[:name]
         vb.customize(modifyvm_args)
       end
 
@@ -72,14 +80,11 @@ end
         override.vm.box_url = vf_box_url
         f.vmx["memsize"] = "256"
         f.vmx["numvcpus"] = "1"
-        f.vmx["displayName"] = node_name
+        f.vmx["displayName"] = host[:name]
       end
 
-      if File.exist? 'vagrant/Vagrantfile.provision'
-          instance_eval File.read('vagrant/Vagrantfile.provision'), 'Vagrantfile.provision'
-      else
-          abort("Cannot find vagrant/Vagrantfile.provision")
-      end
+      c.ssh.forward_agent = true
+      c.vm.provision :shell, :path => "tools/bootstrap-vagrant"
     end
   end
 end

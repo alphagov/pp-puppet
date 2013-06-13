@@ -1,0 +1,76 @@
+#!/bin/bash
+
+set -eu
+
+pp() {
+  local blue="\033[34m"
+  local reset="\033[0m"
+  while read line; do
+    echo -e "${blue}[bootstrap]${reset} ${line}"
+  done
+}
+
+quieten_sudo() {
+  echo "--> Set root profile to quieten sudo tty message" | pp
+  echo '[[ $(test -t 0) ]] && mesg n' > /root/.profile
+}
+
+# Sometimes Virtualbox gets confused, often after moving between networks
+set_dns_server() {
+  echo "--> Set nameserver to 8.8.8.8" | pp
+  if ! fgrep -q 'managed by puppet' /etc/resolv.conf; then
+    echo 'nameserver 8.8.8.8' > /etc/resolv.conf
+  fi
+}
+
+set_uk_apt_sources() {
+  echo "--> Set sources.list to gb and update apt cache" | pp
+  sed -i 's|http://us|http://gb|' /etc/apt/sources.list
+  apt-get update -qq
+}
+
+check_ruby() {
+  echo "--> Check for Ruby" | pp
+  [[ $(dpkg -s ruby1.9.1 >/dev/null 2>&1) ]] || \
+    apt-get install -qq ruby1.9.1 2>&1 | pp
+}
+
+check_bundler() {
+  echo "--> Check for Bundler" | pp
+  echo 'gem: --quiet --no-rdoc --no-ri' > /root/.gemrc
+  # FIXME: bundler search -i doesn't say if something isn't installed
+  local out=$(gem list bundler | grep bundler)
+  [[ -n $out ]] || gem install bundler 2>&1 | pp
+}
+
+bundle_gems() {
+  echo "--> Bundle gems" | pp
+  cd /vagrant
+  bundle --path vendor/bundle \
+         --deployment \
+         --standalone \
+         --binstubs \
+         --without build \
+         --quiet 2>&1 | pp
+}
+
+do_puppet_run() {
+  echo "--> Run Puppet" | pp
+  cd /vagrant
+  ./bin/puppet apply --confdir=. \
+                     --modulepath=modules:vendor/modules \
+                     manifests/site.pp 2>&1 | pp
+}
+
+main() {
+  quieten_sudo
+  set_dns_server
+  set_uk_apt_sources
+  check_ruby
+  check_bundler
+  bundle_gems
+  do_puppet_run
+}
+
+main
+

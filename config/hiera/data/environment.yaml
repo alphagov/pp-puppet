@@ -1,5 +1,0 @@
-environment: development
-domain_name: perfplat.dev
-ssl::params::ssl_path: '/etc/ssl'
-ssl::params::ssl_cert_file: '%{ssl_path}/certs/ssl-cert-snakeoil.pem'
-ssl::params::ssl_key_file: '%{ssl_path}/private/ssl-cert-snakeoil.key'

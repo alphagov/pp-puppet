@@ -1,14 +1,13 @@
 source 'https://rubygems.org'
 
-gem 'facter', '1.7.1'
-gem 'fpm', '0.4.6'
-gem 'hiera-puppet-helper'
-gem 'librarian-puppet', '0.9.8'
 gem 'puppet', '3.1.1'
-gem 'puppet-lint', '0.3.2'
-gem 'puppetlabs_spec_helper', '~>0.4'
-gem 'rake'
-gem 'rspec', '2.12.0'
-gem 'rspec-expectations', '2.12.1'
-gem 'rspec-mocks', '2.12.2'
-gem 'rspec-puppet', '~> 0.1'
+
+group :build do
+    gem 'facter', '1.7.1'
+    gem 'hiera-puppet-helper'
+    gem 'librarian-puppet', '0.9.8'
+    gem 'puppet-lint', '0.3.2'
+    gem 'puppetlabs_spec_helper', '~>0.4'
+    gem 'rake'
+    gem 'rspec-puppet', '~> 0.1'
+end

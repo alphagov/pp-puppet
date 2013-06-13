@@ -1,8 +1,0 @@
-{
-  "class":            "frontend-app",
-  "zone":             "frontend",
-  "vm_name":          "frontend-app-2",
-  "ip":               "10.1.0.14",
-  "num_cores":        "1",
-  "memory":           "2048"
-}

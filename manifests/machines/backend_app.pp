@@ -3,12 +3,12 @@ class machines::backend_app inherits machines::base {
     ufw::allow { 'allow-http-from-frontend-app-1':
         port => 80,
         ip   => 'any',
-        from => $hosts['frontend-app-1.frontend']['ip'],
+        from => $hosts['frontend-app-1']['ip'],
     }
     ufw::allow { 'allow-http-from-frontend-app-2':
         port => 80,
         ip   => 'any',
-        from => $hosts['frontend-app-2.frontend']['ip'],
+        from => $hosts['frontend-app-2']['ip'],
     }
 
     user { 'deploy':

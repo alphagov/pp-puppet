@@ -1,0 +1,20 @@
+---
+environment: undefined
+domain_name: undefined.domain
+hosts:
+    jumpbox-1:
+        ip: 172.27.1.2
+    frontend-app-1:
+        ip: 172.27.1.11
+    frontend-app-2:
+        ip: 172.27.1.12
+    backend-app-1:
+        ip: 172.27.1.21
+    backend-app-2:
+        ip: 172.27.1.22
+    mongo-1:
+        ip: 172.27.1.31
+    mongo-2:
+        ip: 172.27.1.32
+    mongo-3:
+        ip: 172.27.1.33

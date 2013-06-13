@@ -1,11 +1,7 @@
-require 'rspec-puppet'
-namespace :spec do
-  desc "Run machines class specs"
-  RSpec::Core::RakeTask.new(:machines) do |t|
-          t.pattern = 'manifests/spec/machines_spec.rb'
-          t.ruby_opts = '-W0'
-          t.rspec_opts = '--color -fd'
-  end
+require 'rspec/core/rake_task'
+
+RSpec::Core::RakeTask.new(:spec) do |t|
+  desc "Run Puppet specs with rspec-puppet"
+  t.pattern = FileList[*get_modules.map { |x| "#{x}/spec/**/*_spec.rb" }]
+  $stderr.puts '---> Running Puppet specs'
 end
-desc "Run rspec"
-task :spec => 'spec:machines'

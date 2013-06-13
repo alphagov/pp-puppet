@@ -1,8 +1,0 @@
-{
-  "class":            "backend-app",
-  "zone":             "backend",
-  "vm_name":          "backend-app-1",
-  "ip":               "10.2.0.13",
-  "num_cores":        "1",
-  "memory":           "2048"
-}
