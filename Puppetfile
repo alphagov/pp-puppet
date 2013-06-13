@@ -19,6 +19,4 @@ mod 'ssl',                  :git => 'git://github.com/alphagov/puppet-ssl.git',
 mod 'torrancew/account',    '0.0.3'
 mod 'upstart',              :git => 'git://github.com/bison/puppet-upstart.git',
                             :ref => '05a10a3a58de3543eb51bb782a249cebf71f5cd8'
-mod 'varnish',              :git => 'git://github.com/alphagov/puppet-pp-varnish.git',
-                            :ref => '262a56c306d880b5a6edc93a143b97f54f4e9959'
 
