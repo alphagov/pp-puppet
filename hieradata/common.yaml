@@ -1,4 +1,17 @@
 ---
+included_classes:
+    - 'apt'
+    - 'ssh::server'
+    - 'ufw'
+system_packages:
+    curl:
+        ensure: installed
+    htop:
+        ensure: installed
+    vim:
+        ensure: installed
+    at:
+        ensure: installed
 environment: undefined
 domain_name: undefined.domain
 hosts:

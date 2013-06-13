@@ -1,30 +1,5 @@
 # Install mongodb in a replicaset
 class machines::mongo inherits machines::base {
-    ufw::allow { 'allow-mongo-from-backend-app-1':
-        port => 27017,
-        ip   => 'any',
-        from => $hosts['backend-app-1']['ip']
-    }
-    ufw::allow { 'allow-mongo-from-backend-app-2':
-        port => 27017,
-        ip   => 'any',
-        from => $hosts['backend-app-2']['ip']
-    }
-    ufw::allow { 'allow-mongo-from-mongo-1':
-        port => 27017,
-        ip   => 'any',
-        from => $hosts['mongo-1']['ip']
-    }
-    ufw::allow { 'allow-mongo-from-mongo-2':
-        port => 27017,
-        ip   => 'any',
-        from => $hosts['mongo-2']['ip']
-    }
-    ufw::allow { 'allow-mongo-from-mongo-3':
-        port => 27017,
-        ip   => 'any',
-        from => $hosts['mongo-3']['ip']
-    }
     class { 'mongodb':
         enable_10gen => true,
         replSet      => 'production',
@@ -68,7 +43,6 @@ function replicaSetConfig() {
 rs.initiate(replicaSetConfig());
 "
     }
-    package { 'at': ensure => installed }
     exec { 'configure-replica-set':
       command => "echo '/usr/bin/mongo --host ${mongo_hosts[0]} /etc/mongodb/configure-replica-set.js' | at now + 3min",
       unless  => "/usr/bin/mongo --host ${mongo_hosts[0]} --quiet --eval 'rs.status().ok' | grep -q 1",

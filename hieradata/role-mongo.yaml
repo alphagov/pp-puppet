@@ -1,0 +1,22 @@
+---
+ufw_rules:
+    allow-mongo-from-backend-app-1:
+        port: 27017
+        ip:   'any'
+        from: "172.27.1.21"
+    allow-mongo-from-backend-app-2:
+        port: 27017
+        ip:   'any'
+        from: "172.27.1.22"
+    allow-mongo-from-mongo-1:
+        port: 27017
+        ip:   'any'
+        from: "172.27.1.31"
+    allow-mongo-from-mongo-2:
+        port: 27017
+        ip:   'any'
+        from: "172.27.1.32"
+    allow-mongo-from-mongo-3:
+        port: 27017
+        ip:   'any'
+        from: "172.27.1.33"
