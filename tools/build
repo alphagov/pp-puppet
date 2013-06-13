@@ -1,0 +1,41 @@
+#!/bin/sh
+
+set -eu
+
+status () {
+  echo "---> ${@}" >&2
+}
+
+abort () {
+  echo "$@" >&2
+  exit 1
+}
+
+main () {
+  cd "$(dirname "$0")"
+  cd ..
+
+  status "bundling for build"
+  bundle --path vendor/bundle \
+         --deployment \
+         --without NONEXISTENT >&2 # hack to make sure all groups are installed
+
+  status "fetching 3rd-party modules"
+  bundle exec librarian-puppet install >&2
+
+  status "running tests"
+  bundle exec rake SPEC_OPTS="--format documentation" >&2
+
+  status "bundling for deployment"
+  bundle --path vendor/bundle \
+         --deployment \
+         --standalone \
+         --binstubs \
+         --without build >&2
+  bundle clean >&2
+
+  status "creating tarball at puppet.tgz"
+  tar zcf puppet.tgz -X .buildignore .
+}
+
+main
