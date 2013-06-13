@@ -8,25 +8,25 @@ Contains the puppet code and Vagrant definitions to provision environments for P
 You will need access to the repos:
 
 - `pp-puppet` obviously, DUH!
-- `pp-puppet-secrets` for secrets when provisioning _real_ environments
+- `pp-deployment` for secrets when provisioning _real_ environments
 
 # WARNING: This is a Public Repo
 
 It is not expected that any secret data (keys, certificates, your inside leg measurement) is
 committed to this repo. Anything in here is in the public domain and should only be used for
-test environments. Secret data for real environments should be in the `pp-puppet-secrets` repo
+test environments. Secret data for real environments should be in the `pp-deployment` repo
 and will be combined with this when deploying real machines.
 
 # Setup
-
-The preferred method of installing Vagrant is through Bundler. This allows us
-to pin specific versions. However if you already have a system-wide
-installation that should also work.
 
 It is recommended that you use Ruby 1.9 through rbenv. `alphagov/gds-boxen`
 can also set this up for you. Alternatively you can read about how to do it
 yourself [here](https://github.com/sstephenson/rbenv/#homebrew-on-mac-os-x)
 and [here](http://dan.carley.co/blog/2012/02/07/rbenv-and-bundler/).
+
+You will need to install all the gems:
+
+    bundle install --without NONEXISTENT
 
 ## Tests!
 
@@ -38,29 +38,21 @@ Running `bundle exec rake test` will:
 2. Run rspec-puppet to test that the individual machine manifests compile
 3. Check that the Puppetfile does not contain any references to `git@github` style URLs
 
-## Building a .deb file from the Puppet code
-
-There is support for building a .deb package of the Puppet code, with the intention of deploying
-this and any environment-specific hiera data (from `pp-puppet-secrets`) to the environment. You can
-build a debian package with `BUILD_NUMBER=212121 bundle exec rake deb`, however the exact mechanism
-for deploying this to an environment is yet to be defined.
-
 ## Usage
 
 You need only bring up the subset of nodes that you're working on. For
 example, to bring up a frontend and backend:
 ```sh
-vagrant up jumpbox-1.management frontend-1.frontend
+vagrant up jumpbox-1 frontend-1
 ```
 
-Vagrant will run the Puppet provisioner against the node when it boots up.
+Vagrant will run the Puppet against the node when it boots up.
 Nodes should look almost identical to that of a real environment, including
 network addresses. To access a node's services like HTTP/HTTPS you can point
 your `hosts` file to the host-only IP address (eth1).
 
 Physical attributes like `memory` and `num_cores` will be ignored because
-they don't scale appropriately to local VMs, but can still be customised as
-described below.
+they don't scale appropriately to local VMs (especially when running 10 of them)
 
 ### Bringing up the MongoDB cluster
 
@@ -101,29 +93,6 @@ production:SECONDARY> rs.isMaster()
 
 Currently there are some [manual installation steps](https://github.com/alphagov/puppet-backdrop) for backdrop.
 
-## Creating new node types
-
-### Creating the definition of the machine for provisioning
-
-The Vagrantfile will bring up nodes defined in the `config/vm-templates` directory. Here is an example:
-```json
-{
-    "class":     "jumpbox",
-    "zone":      "management",
-    "vm_name":   "jumpbox-1",
-    "ip":        "10.0.0.100",
-    "num_cores": "2",
-    "memory":    "2048"
-}
-```
- - `class`:     The puppet class (defined in `manifests/machines/${class}.pp`) which will be applied to the machine
- - `zone`:      A logical or network grouping of machines (examples might be `management`, `frontend`). The machine
-                json template lives in a directory also named after the zone.
- - `vm_name`:   The name of the VM - it should be unique
- - `ip`:        The IP assigned to the first interface on a real machine or second interface on a Vagrant VM
- - `num_cores`: Vagrant will ignore this, however it will be used for provisioning the real machine
- - `memory`:    Vagrant will ignore this (it defaults to 256MB), however it will be used for provisioning the real machine
-
 ## Configuring machines
 
 Machines are configured according to the `class` as configured in `manifests/machines/${class}.pp`. Machines should
@@ -140,9 +109,8 @@ be accomplished by extending the hosts section of `config/hiera/data/common.yaml
 
 ```
 hosts:
-    jumpbox-1.management.production:
-        ip: 10.0.0.100
-        host_aliases: jumpbox-1
+    jumpbox-1:
+        ip: 172.27.1.2
 ```
 
 It is expected that additional resources that are not already defined as native Puppet Types will be utilised by 
@@ -165,7 +133,7 @@ rule with UFW!
 
 ## Adding user accounts
 
-User accounts are managed in 'config/hiera/data/common.yaml'. They look like this:
+User accounts are managed in 'config/hiera/data/environment.yaml'. They look like this:
 
 ```
 accounts:
@@ -174,7 +142,7 @@ accounts:
         comment: Sam J Sharpe
         ssh_key: AAAAB3NzaC1yc2EAAAABIwAAAQEAyNoMftFLf3w0NOW7J0KUwOx9897CU352n3zKD3p/GCcdH4eMv1QI0BhjItZplWG8TzFSBfWOOSruRh1Gksa1l1jiQcisEio6Wr7kZ7bpvMMA45ZoaDc26HTB+r0BZkNn7Lwwxxvy+1pbqStnnKzb9OTYIyVkb495LS0x1EL/P9S/NWtpm8ZULa1JDplYMA5SqMZnhmlGAXdh8UnjdcdOgOm2ngA+geJBSzVbABECiIAklHU1PRzOtrq8SuO8JmXW6NkuL0aabdTgE6noIm+Nn7T5ufZpOpIGYimVI8+mu+efcBzAp5Q0vTRgSBLfggdczZbFfPXpIt1Ib+LEf+Cuqw==
         groups:
-                - admin
+            - admin
 ```
 
 ## Errors
@@ -191,7 +159,7 @@ with Ruby 1.9
 
 ### NFS failed mounts
 ```
-[frontend-1.frontend] Mounting NFS shared folders...
+[frontend-1] Mounting NFS shared folders...
 Mounting NFS shared folders failed. This is most often caused by the NFS
 client software not being installed on the guest machine. Please verify
 that the NFS client software is properly installed, and consult any resources
