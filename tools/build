@@ -33,9 +33,9 @@ main () {
          --binstubs \
          --without build >&2
   bundle clean >&2
-
+  test -d build || mkdir build
   status "creating tarball at puppet.tgz"
-  tar zcf puppet.tgz -X .buildignore .
+  tar zcf build/puppet.tgz -X .buildignore .
 }
 
 main

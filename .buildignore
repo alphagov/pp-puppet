@@ -2,6 +2,6 @@
 .tmp
 .bundle
 .librarian
-puppet.tgz
+build
 *.gem
 .vagrant
