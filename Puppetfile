@@ -3,7 +3,7 @@ forge "http://forge.puppetlabs.com"
 mod 'attachmentgenie/ssh',  '1.1.0'
 mod 'attachmentgenie/ufw',  '1.2.0'
 mod 'backdrop',             :git => 'git://github.com/alphagov/puppet-backdrop.git',
-                            :ref => '064cd9e7322b322c7003cc2ee65ed789007a7f52'
+                            :ref => '93086e4ca978d6e028d72dc8c3649906096634de'
 mod 'jenkins',              :git => 'git://github.com/alphagov/puppet-jenkins.git',
                             :ref => '4c7990fa8495b6d84292c2153993ac91c3b2916d'
 mod 'mongodb',              :git => 'git://github.com/alphagov/puppetlabs-mongodb.git',
