@@ -8,6 +8,12 @@ accounts:
             ssh_key: AAAAB3NzaC1yc2EAAAABIwAAAQEAyNoMftFLf3w0NOW7J0KUwOx9897CU352n3zKD3p/GCcdH4eMv1QI0BhjItZplWG8TzFSBfWOOSruRh1Gksa1l1jiQcisEio6Wr7kZ7bpvMMA45ZoaDc26HTB+r0BZkNn7Lwwxxvy+1pbqStnnKzb9OTYIyVkb495LS0x1EL/P9S/NWtpm8ZULa1JDplYMA5SqMZnhmlGAXdh8UnjdcdOgOm2ngA+geJBSzVbABECiIAklHU1PRzOtrq8SuO8JmXW6NkuL0aabdTgE6noIm+Nn7T5ufZpOpIGYimVI8+mu+efcBzAp5Q0vTRgSBLfggdczZbFfPXpIt1Ib+LEf+Cuqw==
             groups:
                 - sudo
+        alexmuller:
+        	home_dir: /home/alexmuller
+        	comment: Alex Muller
+        	ssh_key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDxuVkxqVy8kRncaG0cm/B8p7YTk7UjwE6xgUkfzIV97xAaRfNyZUI9Ur/w2x945r5IiuKGp61UHMzsGBEgmsDDNvukguY/a02yXZRySxf3ThlsqG/w7DX9uNwVEeLAA95es4P+6iApbRnBTQX7Nx/XsIa3hy8Uwr3T+pcrXCRIczhfuaiugQ/jh9IlkIC1I6UHbYoli8o5upTh9SbnimU/VXiUIO4v5z1CyLgQHfeE6VBxYO6HCQqRJg7uB4vNS5wAWyTYx4XinkS3ScjKmQr+wExyRy0vgnj5f+oVFNLgARh9lh2ViJ6ntGw8ww10b3xY/Bc/qoeFZKJjb89aMhLb alexmuller@GDS386.local
+        	groups:
+        		- sudo
 ssl::params::ssl_path: '/etc/ssl'
 ssl::params::ssl_cert_file: '%{ssl_path}/certs/ssl-cert-snakeoil.pem'
 ssl::params::ssl_key_file: '%{ssl_path}/private/ssl-cert-snakeoil.key'
