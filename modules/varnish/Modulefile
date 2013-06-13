@@ -1,0 +1,9 @@
+name 'puppet-pp-varnish'
+version '0.0.1'
+
+author 'GDS Team'
+license 'MIT Licence'
+project_page 'https://github.com/alphagov/puppet-pp-varnish'
+source 'git://github.com/alphagov/puppet-pp-varnish.git'
+summary 'Puppet module for the Varnish config for Performance Platform'
+description 'Installs Varnish on Ubuntu 12.04 and sets up routing for Performance Platform apps'

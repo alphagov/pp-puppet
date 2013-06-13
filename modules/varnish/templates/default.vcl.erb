@@ -1,0 +1,210 @@
+# Varnish will append its default logic to any overwritten subroutine. If
+# you're not sure what that is, see here:
+#
+#   https://www.varnish-cache.org/trac/browser/bin/varnishd/default.vcl?rev=2.0
+
+acl purge_acl {
+  "localhost";
+}
+
+# Define the healthcheck probes
+probe admin_healthcheck {
+    .request = "GET /_status HTTP/1.1"
+               "Host: admin.backdrop"
+               "Connection: close";
+}
+probe write_healthcheck {
+    .request = "GET /_status HTTP/1.1"
+               "Host: write.backdrop"
+               "Connection: close";
+}
+probe read_healthcheck {
+    .request = "GET /_status HTTP/1.1"
+               "Host: read.backdrop"
+               "Connection: close";
+}
+
+
+# Defining the backends per-director so we can have separate healthchecks later
+backend admin_backend_1 {
+    .host = "backend-app-1.backend";
+    .probe = admin_healthcheck;
+}
+backend admin_backend_2 {
+    .host = "backend-app-2.backend";
+    .probe = admin_healthcheck;
+}
+backend write_backend_1 {
+    .host = "backend-app-1.backend";
+    .probe = write_healthcheck;
+}
+backend write_backend_2 {
+    .host = "backend-app-2.backend";
+    .probe = write_healthcheck;
+}
+backend read_backend_1 {
+    .host = "backend-app-1.backend";
+    .probe = read_healthcheck;
+}
+backend read_backend_2 {
+    .host = "backend-app-2.backend";
+    .probe = read_healthcheck;
+}
+
+# Per-host directors, so we can have per-host healthchecks later
+director admin_director round-robin {
+    {
+        .backend = admin_backend_1;
+    }
+    {
+        .backend = admin_backend_2;
+    }
+}
+director write_director round-robin {
+    {
+        .backend = write_backend_1;
+    }
+    {
+        .backend = write_backend_2;
+    }
+}
+
+director read_director round-robin {
+    {
+        .backend = read_backend_1;
+    }
+    {
+        .backend = read_backend_2;
+    }
+}
+
+sub vcl_recv {
+  # Routing
+  # Allow all HTTP Methods for admin
+  if (req.http.Host ~ "^admin\..*") {
+    set req.http.Host = "admin.backdrop";
+    set req.backend   = admin_director;
+  # Send POST requests to the write api
+  } else if (req.request == "POST") {
+    if (req.http.Authorization ~ "^Bearer .*") {
+      set req.http.Host = "write.backdrop";
+      set req.backend   = write_director;
+    } else {
+      error 401 "Bearer token not set";
+    }
+  # Send read requests to the read api
+  } else if (req.request ~ "^(GET|HEAD|OPTIONS)$") {
+    set req.http.Host = "read.backdrop";
+    set req.backend   = read_director;
+  } else {
+    # Ban all other requests
+    error 405 "Method not allowed";
+  }
+
+  # http://example.org/foo/ -> http://example.org/foo
+  # vcl_error completes the redirect
+  # Don't redirect "/" to "".
+  if (req.url ~ "(.+)/$") {
+    set req.http.x-Redir-Url = regsub(req.url, "^(.+)/$", "\1");
+    error 667 req.http.x-Redir-Url;
+  }
+
+  # normalize Accept-Encoding header
+  if (req.http.Accept-Encoding) {
+    if (req.url ~ "\.(jpeg|jpg|png|gif|gz|tgz|bz2|tbz|zip|flv|pdf|mp3|ogg)$") {
+      remove req.http.Accept-Encoding; # already compressed
+    }
+    elsif (req.http.Accept-Encoding ~ "gzip") {
+      set req.http.Accept-Encoding = "gzip";
+    }
+    elsif (req.http.Accept-Encoding ~ "deflate") {
+      set req.http.Accept-Encoding = "deflate";
+    }
+    else {
+      remove req.http.Accept-Encoding;
+    }
+  }
+
+  # Serve stale period. This is the period for which Varnish is *allowed* to
+  # serve stale content beyond the object TTL in the event of errors from
+  # origin.
+  set req.grace = 6h;
+
+  # purge individual URLs from the cache
+  if (req.request == "PURGE") {
+    if (!client.ip ~ purge_acl) {
+      error 405 "Not allowed";
+    } else {
+      ban("req.url == " + req.url);
+      error 200 "Purged";
+    }
+  }
+}
+
+sub vcl_fetch {
+  # Serve stale period. This is the period for which Varnish is allowed to
+  # keep an object, beyond its specified TTL. It should always be as long or
+  # longer than req.grace in vcl_recv.
+  set beresp.grace = 6h;
+
+  # Don't cache 5xx errors from backends. Keep retrying and let them present
+  # their own errors pages if necessary.
+  if (beresp.status >= 500 && beresp.status <= 504) {
+    # Don't cache the decision to not cache
+    set beresp.ttl = 0s;
+    return(hit_for_pass);
+  }
+
+  # hide some internal headers
+  unset beresp.http.X-Runtime;
+
+  # If the backend says no-cache or no-store, we should not cache
+  if (beresp.http.cache-control ~ "no-cache" || beresp.http.cache-control ~ "no-store") {
+    # Don't cache the decision to not cache
+    set beresp.ttl = 0s;
+    return(hit_for_pass);
+  }
+
+  # If neither a Cache-Control or Expires header is provided, Varnish will
+  # automatically set the TTL to the default_ttl. This *won't* however, set
+  # this for downstreams. Explicitly set a C-C header if we intercept a
+  # response with no useable caching information.
+  if (!beresp.http.Cache-Control && !beresp.http.Expires) {
+    set beresp.http.X-Varnish-Defaulted = "1";
+    set beresp.http.Cache-Control = "max-age=<%= scope.lookupvar('varnish::default_ttl') %>";
+  }
+
+  # if we get a 503 error then server stale content
+  if (beresp.status >= 503 && beresp.status <= 504) {
+    set beresp.saintmode = 30s;
+    if (req.restarts > 0) {
+      return(restart);
+    }
+  }
+
+}
+
+sub vcl_hash {
+  hash_data(req.url);
+  hash_data(req.http.Host);
+  return(hash);
+}
+
+sub vcl_deliver {
+  # Add a custom header to indicate whether we hit the cache or not
+  if (obj.hits > 0) {
+    set resp.http.X-Cache = "HIT";
+  } else {
+    set resp.http.X-Cache = "MISS";
+  }
+}
+
+sub vcl_error {
+  # 667 errors are our internal "redirect wanted" errors
+  # They're raised in vcl_recv.
+  if (obj.status == 667) {
+    set obj.http.Location = obj.response;
+    set obj.status = 301;
+    return(deliver);
+  }
+}
