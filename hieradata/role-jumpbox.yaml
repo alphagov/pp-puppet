@@ -2,10 +2,10 @@ included_classes:
     - 'nginx::server'
     - 'jenkins'
 ufw_rules:
-    allow-http-from-all:
+    allowhttpfromall:
         port: 80
         ip:   'any'
-    allow-ssh-from-anywhere:
+    allowsshfromanywhere:
         port: 22
         ip:   'any'
 vhost_proxies:

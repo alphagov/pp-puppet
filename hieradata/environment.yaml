@@ -24,6 +24,6 @@ ssl::params::ssl_path: '/etc/ssl'
 ssl::params::ssl_cert_file: '%{ssl_path}/certs/ssl-cert-snakeoil.pem'
 ssl::params::ssl_key_file: '%{ssl_path}/private/ssl-cert-snakeoil.key'
 ufw_rules:
-    allow-ssh-from-anywhere:
+    allowsshfromanywhere:
         port: 22
         ip:   'any'

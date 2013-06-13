@@ -20,11 +20,11 @@ parameterised_classes:
         dev:        true
         virtualenv: true
 ufw_rules:
-    allow-http-from-frontend-app-1:
+    allowhttpfromfrontendapp1:
         port: 80
         ip:   'any'
         from: '172.27.1.11'
-    allow-http-from-frontend-app-2:
+    allowhttpfromfrontendapp2:
         port: 80
         ip:   'any'
         from: '172.27.1.12'

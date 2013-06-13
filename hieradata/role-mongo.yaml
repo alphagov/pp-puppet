@@ -2,23 +2,23 @@
 included_classes:
     - 'performanceplatform::mongo'
 ufw_rules:
-    allow-mongo-from-backend-app-1:
+    allowmongofrombackendapp1:
         port: 27017
         ip:   'any'
         from: "172.27.1.21"
-    allow-mongo-from-backend-app-2:
+    allowmongofrombackendapp2:
         port: 27017
         ip:   'any'
         from: "172.27.1.22"
-    allow-mongo-from-mongo-1:
+    allowmongofrommongo1:
         port: 27017
         ip:   'any'
         from: "172.27.1.31"
-    allow-mongo-from-mongo-2:
+    allowmongofrommongo2:
         port: 27017
         ip:   'any'
         from: "172.27.1.32"
-    allow-mongo-from-mongo-3:
+    allowmongofrommongo3:
         port: 27017
         ip:   'any'
         from: "172.27.1.33"
