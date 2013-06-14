@@ -16,7 +16,8 @@ system_packages:
         ensure: installed
     htop:
         ensure: installed
-    ssl-cert:
+    sslcert:
+        name:   ssl-cert
         ensure: installed
     vim:
         ensure: installed
