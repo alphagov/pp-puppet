@@ -1,0 +1,23 @@
+# File managed by puppet
+
+domain-needed
+bogus-priv
+cache-size=15000
+local=/internal/
+expand-hosts
+domain=internal
+no-negcache
+strict-order
+
+# load additional host definitions from /etc/hosts.dns
+addn-hosts=/etc/hosts.dns
+
+# alias external IPs to local IPs
+<%- @aliases.each do |src, dst| -%>
+alias=<%= src %>,<%= dst %>
+<%- end -%>
+
+# cname apps and other vhosts to node roles
+<%- @cnames.each do |src, dst| -%>
+cname=<%= src %>,<%= dst %>
+<%- end -%>

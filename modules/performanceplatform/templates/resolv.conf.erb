@@ -1,0 +1,19 @@
+# File managed by puppet
+
+domain <%= @domainname %>
+<% if !@searchpath.empty? -%>
+<% if @searchpath.kind_of? Array -%>
+search <%= @searchpath.join(" ") %>
+<% else -%>
+search <%= @searchpath %>
+<% end -%>
+<% end -%>
+<% if @use_local_resolver == true -%>
+nameserver 127.0.0.1
+<% end -%>
+<% @nameservers.each do |ns| -%>
+nameserver <%= ns %>
+<% end -%>
+<% if @options && !@options.empty? -%>
+options <%= @options.join(" ") %>
+<% end -%>

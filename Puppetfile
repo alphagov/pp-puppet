@@ -16,6 +16,7 @@ mod 'puppetlabs/gcc',       '0.0.3'
 mod 'puppetlabs/stdlib',    '4.1.0'
 mod 'python',               :git => 'git://github.com/stankevich/puppet-python.git',
                             :ref => '92519602dfe62d2305c40a34b6edbdb02372924d'
+mod 'saz/dnsmasq',          '1.0.1'
 mod 'ssl',                  :git => 'git://github.com/alphagov/puppet-ssl.git',
                             :ref => '23bbb5ab57f26269acce3d4b43e643781747a551'
 mod 'torrancew/account',    '0.0.3'

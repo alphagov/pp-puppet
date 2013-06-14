@@ -11,10 +11,6 @@ node default {
 
     # Environment specific variables
     $environment      = hiera('environment')
-    $hosts            = hiera('hosts')
-
-    # Manage /etc/hosts
-    create_resources( 'host', hiera_hash('hosts') )
 
     # Create user accounts
     create_resources( 'account', hiera_hash('accounts') )
@@ -31,6 +27,7 @@ node default {
 
     # Firewall rules
     create_resources( 'ufw::allow', hiera_hash('ufw_rules') )
+
     # Create nginx proxies
     $vhost_proxies = hiera_hash( 'vhost_proxies', {} )
     if !empty($vhost_proxies) {

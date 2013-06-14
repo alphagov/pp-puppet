@@ -1,0 +1,9 @@
+# File managed by puppet
+
+listen-address=127.0.0.1
+no-negcache
+strict-order
+
+# Don't bind to LXC interface (for machines with LXC/docker on)
+bind-interfaces
+except-interface=lxcbr0
