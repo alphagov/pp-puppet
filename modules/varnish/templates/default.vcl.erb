@@ -27,27 +27,27 @@ probe read_healthcheck {
 
 # Defining the backends per-director so we can have separate healthchecks later
 backend admin_backend_1 {
-    .host = "backend-app-1.backend";
+    .host = "backend-app-1";
     .probe = admin_healthcheck;
 }
 backend admin_backend_2 {
-    .host = "backend-app-2.backend";
+    .host = "backend-app-2";
     .probe = admin_healthcheck;
 }
 backend write_backend_1 {
-    .host = "backend-app-1.backend";
+    .host = "backend-app-1";
     .probe = write_healthcheck;
 }
 backend write_backend_2 {
-    .host = "backend-app-2.backend";
+    .host = "backend-app-2";
     .probe = write_healthcheck;
 }
 backend read_backend_1 {
-    .host = "backend-app-1.backend";
+    .host = "backend-app-1";
     .probe = read_healthcheck;
 }
 backend read_backend_2 {
-    .host = "backend-app-2.backend";
+    .host = "backend-app-2";
     .probe = read_healthcheck;
 }
 
