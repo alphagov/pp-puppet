@@ -1,5 +1,5 @@
 :hierarchy:
-    - "role-%{::machine_class}"
+    - "role-%{::machine_role}"
     - environment
     - common
 :backends:

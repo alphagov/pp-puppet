@@ -10,7 +10,7 @@ class performanceplatform::base {
     file { '/etc/environment':
         ensure  => present,
         content => "PATH=\"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\"
-FACTER_machine_class=${::machine_class}
+FACTER_machine_role=${::machine_role}
 "
     }
     file {'/etc/gds':
