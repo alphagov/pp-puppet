@@ -23,6 +23,10 @@ accounts:
                 - admin
 domain_name: perfplat.dev
 environment: development
+performanceplatform::mongo::mongo_hosts:
+    - mongo-1
+    - mongo-2
+    - mongo-3
 ssl::params::ssl_path: '/etc/ssl'
 ssl::params::ssl_cert_file: 'certs/ssl-cert-snakeoil.pem'
 ssl::params::ssl_key_file: 'private/ssl-cert-snakeoil.key'
