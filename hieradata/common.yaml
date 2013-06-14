@@ -1,6 +1,7 @@
 ---
 included_classes:
     - 'apt'
+    - 'harden'
     - 'performanceplatform::base'
     - 'ssh::server'
     - 'ufw'

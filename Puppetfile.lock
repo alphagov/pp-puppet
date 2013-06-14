@@ -19,6 +19,13 @@ GIT
     backdrop (0.0.1)
 
 GIT
+  remote: git://github.com/alphagov/puppet-harden.git
+  ref: 0966c98cc3f54815c9aac0ebe6e900b70f85182d
+  sha: 0966c98cc3f54815c9aac0ebe6e900b70f85182d
+  specs:
+    harden (0.0.1)
+
+GIT
   remote: git://github.com/alphagov/puppet-jenkins.git
   ref: 4c7990fa8495b6d84292c2153993ac91c3b2916d
   sha: 4c7990fa8495b6d84292c2153993ac91c3b2916d
@@ -68,6 +75,7 @@ DEPENDENCIES
   attachmentgenie/ssh (= 1.1.0)
   attachmentgenie/ufw (= 1.2.0)
   backdrop (>= 0)
+  harden (>= 0)
   jenkins (>= 0)
   mongodb (>= 0)
   nginx (>= 0)
