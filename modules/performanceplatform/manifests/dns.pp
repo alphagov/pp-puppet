@@ -24,7 +24,8 @@ class performanceplatform::dns {
   $searchpath = 'internal'
   $options    = ['timeout:1']
   $use_local_resolver = true
-  file { '/etc/resolv.conf':
+
+  file { '/etc/resolvconf/resolv.conf.d/head':
     ensure  => 'present',
     owner   => 'root',
     group   => 'root',
