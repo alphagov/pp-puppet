@@ -1,6 +1,7 @@
 ---
 classes:
     - python
+    - backdrop
 
 accounts:
     deploy:
@@ -22,6 +23,10 @@ backdrop_apps:
 python::version:    '2.7'
 python::dev:        true
 python::virtualenv: true
+
+backdrop::user: 'deploy'
+backdrop::group: 'deploy'
+backdrop::pip_cache_path: '/var/cache/pip-download-cache'
 
 ufw_rules:
     allowhttp:

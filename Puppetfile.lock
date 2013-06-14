@@ -15,8 +15,8 @@ FORGE
 
 GIT
   remote: git://github.com/alphagov/puppet-backdrop.git
-  ref: 93086e4ca978d6e028d72dc8c3649906096634de
-  sha: 93086e4ca978d6e028d72dc8c3649906096634de
+  ref: c4ceab4d8dd73d306a6a98a077cdd8eb24ad43fd
+  sha: c4ceab4d8dd73d306a6a98a077cdd8eb24ad43fd
   specs:
     backdrop (0.0.1)
 
