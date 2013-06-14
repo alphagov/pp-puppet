@@ -16,4 +16,11 @@ FACTER_machine_role=${::machine_role}
     file {'/etc/gds':
         ensure => directory,
     }
+    # Make sure we are in UTC
+    file { '/etc/localtime':
+        source => '/usr/share/zoneinfo/Etc/UTC'
+    }
+    file { '/etc/timezone':
+        content => 'Etc/UTC'
+    }
 }

@@ -10,6 +10,7 @@ FORGE
     puppetlabs/gcc (0.0.3)
     puppetlabs/stdlib (4.1.0)
     saz/dnsmasq (1.0.1)
+    saz/ntp (2.0.3)
     torrancew/account (0.0.3)
 
 GIT
@@ -84,6 +85,7 @@ DEPENDENCIES
   puppetlabs/stdlib (= 4.1.0)
   python (>= 0)
   saz/dnsmasq (= 1.0.1)
+  saz/ntp (= 2.0.3)
   ssl (>= 0)
   torrancew/account (= 0.0.3)
   upstart (>= 0)

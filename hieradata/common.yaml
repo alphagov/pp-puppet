@@ -2,6 +2,7 @@
 classes:
     - 'apt'
     - 'harden'
+    - 'ntp'
     - 'performanceplatform::base'
     - 'performanceplatform::dns'
     - 'performanceplatform::hosts'
