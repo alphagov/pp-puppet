@@ -18,9 +18,9 @@ FACTER_machine_role=${::machine_role}
     }
     # Make sure we are in UTC
     file { '/etc/localtime':
-        source => '/usr/share/zoneinfo/Etc/UTC'
+        source => '/usr/share/zoneinfo/UTC'
     }
     file { '/etc/timezone':
-        content => 'Etc/UTC'
+        content => 'UTC'
     }
 }
