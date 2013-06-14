@@ -1,6 +1,7 @@
 classes:
-    - 'nginx::server'
     - 'jenkins'
+    - 'performanceplatform::deploy'
+    - 'nginx::server'
 ufw_rules:
     allowhttpfromall:
         port: 80
