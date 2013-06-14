@@ -6,13 +6,16 @@ ufw_rules:
     allowhttpfromall:
         port: 80
         ip:   'any'
+    allowhttpsfromall:
+        port: 443
+        ip:   'any'
     allowsshfromanywhere:
         port: 22
         ip:   'any'
 vhost_proxies:
     deploy-vhost:
-        port:            80
         servername:      "%{::management_vhost}"
-        ssl:             false
+        ssl:             true
+        ssl_redirect:    true
         upstream_server: 'localhost'
         upstream_port:   8080

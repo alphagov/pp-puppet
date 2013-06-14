@@ -11,12 +11,14 @@ ufw_rules:
         ip:   'any'
 vhost_proxies:
     admin-vhost:
-        port:          80
+        port:          443
         servername:    "%{::admin_vhost}"
-        ssl:           false
+        ssl:           true
+        ssl_redirect:  true
         upstream_port: 7999
     www-vhost:
-        port:          80
+        port:          443
         servername:    "%{::www_vhost}"
-        ssl:           false
+        ssl:           true
+        ssl_redirect:  true
         upstream_port: 7999

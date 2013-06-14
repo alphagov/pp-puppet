@@ -10,13 +10,15 @@ classes:
     - 'ufw'
 
 system_packages:
+    at:
+        ensure: installed
     curl:
         ensure: installed
     htop:
         ensure: installed
-    vim:
+    ssl-cert:
         ensure: installed
-    at:
+    vim:
         ensure: installed
 
 environment: undefined

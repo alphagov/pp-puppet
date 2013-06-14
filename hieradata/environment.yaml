@@ -24,8 +24,8 @@ accounts:
 domain_name: perfplat.dev
 environment: development
 ssl::params::ssl_path: '/etc/ssl'
-ssl::params::ssl_cert_file: '%{ssl_path}/certs/ssl-cert-snakeoil.pem'
-ssl::params::ssl_key_file: '%{ssl_path}/private/ssl-cert-snakeoil.key'
+ssl::params::ssl_cert_file: 'certs/ssl-cert-snakeoil.pem'
+ssl::params::ssl_key_file: 'private/ssl-cert-snakeoil.key'
 ufw_rules:
     allowsshfromanywhere:
         port: 22
