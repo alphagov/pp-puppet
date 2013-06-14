@@ -1,5 +1,5 @@
 ---
-included_classes:
+classes:
     - 'performanceplatform::mongo'
 ufw_rules:
     allowmongo:

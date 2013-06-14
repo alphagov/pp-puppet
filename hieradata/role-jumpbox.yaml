@@ -1,4 +1,4 @@
-included_classes:
+classes:
     - 'nginx::server'
     - 'jenkins'
 ufw_rules:

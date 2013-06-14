@@ -19,11 +19,7 @@ node default {
     create_resources( 'package', hiera_hash('system_packages') )
 
     # Classes
-    hiera_include('included_classes')
-    $parameterised_classes = hiera_hash( 'parameterised_classes', {} )
-    if !empty($parameterised_classes) {
-        create_resources( 'class', $parameterised_classes )
-    }
+    hiera_include('classes')
 
     # Firewall rules
     create_resources( 'ufw::allow', hiera_hash('ufw_rules') )

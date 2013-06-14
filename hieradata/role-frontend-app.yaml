@@ -1,5 +1,5 @@
 ---
-included_classes:
+classes:
     - 'nginx::server'
     - 'varnish'
 ufw_rules:
