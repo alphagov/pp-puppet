@@ -23,4 +23,10 @@ FACTER_machine_role=${::machine_role}
     file { '/etc/timezone':
         content => 'UTC'
     }
+    group { 'gds': ensure => present }
+    file { '/etc/sudoers.d/gds':
+        ensure  => present,
+        mode    => '0440',
+        content => '%gds ALL=NOPASSWD:ALL'
+    }
 }

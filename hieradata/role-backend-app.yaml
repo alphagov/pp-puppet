@@ -5,7 +5,7 @@ classes:
 accounts:
     deploy:
         groups:
-            - sudo
+            - gds
 
 backdrop_apps:
     read.backdrop:
