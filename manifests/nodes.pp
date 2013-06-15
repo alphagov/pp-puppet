@@ -3,9 +3,12 @@
 $machine_role     = regsubst($::hostname, '^(.*)-\d$', '\1')
 
 # Nginx Vhosts for later use
-$management_vhost = join(['management',hiera('domain_name')],'.')
-$www_vhost        = join(['www',hiera('domain_name')],'.')
 $admin_vhost      = join(['admin',hiera('domain_name')],'.')
+$deploy_vhost     = join(['deploy',hiera('domain_name')],'.')
+$graphite_vhost   = join(['graphite',hiera('domain_name')],'.')
+$logging_vhost    = join(['logging',hiera('domain_name')],'.')
+$nagios_vhost     = join(['nagios',hiera('domain_name')],'.')
+$www_vhost        = join(['www',hiera('domain_name')],'.')
 
 # Classes
 hiera_include('classes')

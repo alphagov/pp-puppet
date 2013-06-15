@@ -22,7 +22,7 @@ ufw_rules:
 
 vhost_proxies:
     deploy-vhost:
-        servername:      "%{::management_vhost}"
+        servername:      "%{::deploy_vhost}"
         ssl:             true
         ssl_redirect:    true
         upstream_server: 'localhost'
