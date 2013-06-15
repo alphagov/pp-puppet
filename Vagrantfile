@@ -17,11 +17,11 @@ def get_box(provider)
   provider    ||= "virtualbox"
   case provider
   when "vmware"
-    name  = "precise64_vmware_fusion"
-    url   = "http://files.vagrantup.com/precise64_vmware_fusion.box"
+    name  = "puppetlabs-ubuntu-server-12042-x64-vf503-nocm"
+    url   = "http://puppet-vagrant-boxes.puppetlabs.com/ubuntu-svr-12042-x64-vf503-nocm.box"
   else
-    name  = "precise64"
-    url   = "http://files.vagrantup.com/precise64.box"
+    name  = "puppetlabs-ubuntu-server-12042-x64-vbox4210-nocm"
+    url   = "http://puppet-vagrant-boxes.puppetlabs.com/ubuntu-server-12042-x64-vbox4210-nocm.box"
   end
   return name, url
 end
