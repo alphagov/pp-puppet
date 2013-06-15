@@ -27,17 +27,11 @@ collectd::purge_config: true
 collectd::recurse: true
 
 system_packages:
-    at:
-        ensure: installed
-    curl:
-        ensure: installed
-    htop:
-        ensure: installed
-    sslcert:
-        name:   ssl-cert
-        ensure: installed
-    vim:
-        ensure: installed
+    - at
+    - curl
+    - htop
+    - ssl-cert
+    - vim
 
 environment: undefined
 domain_name: undefined.domain

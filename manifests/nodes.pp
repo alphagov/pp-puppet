@@ -19,7 +19,10 @@ node default {
     create_resources( 'account', hiera_hash('accounts') )
 
     # Install packages
-    create_resources( 'package', hiera_hash('system_packages') )
+    $system_packages = hiera_array( 'system_packages', [] )
+    if !empty($system_packages) {
+        package { $system_packages: ensure => installed }
+    }
 
     # Firewall rules
     create_resources( 'ufw::allow', hiera_hash('ufw_rules') )
