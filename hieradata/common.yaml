@@ -2,6 +2,7 @@
 classes:
     - 'apt'
     - 'collectd'
+    - 'gcc'
     - 'harden'
     - 'ntp'
     - 'performanceplatform::base'
@@ -41,7 +42,7 @@ nameservers:
     - 8.8.4.4
 
 performanceplatform::dns::hosts: |
-    172.27.1.2  jumpbox-1 management log
+    172.27.1.2  jumpbox-1 monitoring log
     172.27.1.11 frontend-app-1 frontend
     172.27.1.12 frontend-app-2 frontend
     172.27.1.21 backend-app-1 backend
