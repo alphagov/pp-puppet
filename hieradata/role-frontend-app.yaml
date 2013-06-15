@@ -2,6 +2,7 @@
 classes:
     - 'nginx::server'
     - 'varnish'
+
 ufw_rules:
     allow-http-from-anywhere:
         port: 80

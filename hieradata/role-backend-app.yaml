@@ -1,6 +1,6 @@
 ---
 classes:
-    - python
+    - 'python'
 
 accounts:
     deploy:

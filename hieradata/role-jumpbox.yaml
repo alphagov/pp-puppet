@@ -2,6 +2,8 @@ classes:
     - 'jenkins'
     - 'performanceplatform::deploy'
     - 'nginx::server'
+    - 'rsyslog::server'
+
 ufw_rules:
     allowhttpfromall:
         port: 80
@@ -12,6 +14,10 @@ ufw_rules:
     allowsshfromanywhere:
         port: 22
         ip:   'any'
+    allowsyslogfromanywhere:
+        port: 514
+        ip:   'any'
+
 vhost_proxies:
     deploy-vhost:
         servername:      "%{::management_vhost}"
