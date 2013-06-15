@@ -19,7 +19,6 @@ collectd_plugins:
     - 'disk'
     - 'interface'
     - 'memory'
-    - 'network'
     - 'processes'
     - 'swap'
     - 'uptime'
