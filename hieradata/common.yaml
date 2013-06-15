@@ -2,6 +2,7 @@
 classes:
     - 'apt'
     - 'collectd'
+    - 'collectd::plugin::write_graphite'
     - 'gcc'
     - 'harden'
     - 'ntp'
@@ -23,6 +24,7 @@ collectd_plugins:
     - 'swap'
     - 'uptime'
     - 'users'
+collectd::plugin::write_graphite::graphitehost: graphite
 collectd::purge: true
 collectd::purge_config: true
 collectd::recurse: true
@@ -42,7 +44,7 @@ nameservers:
     - 8.8.4.4
 
 performanceplatform::dns::hosts: |
-    172.27.1.2  jumpbox-1 monitoring log
+    172.27.1.2  jumpbox-1 monitoring log graphite
     172.27.1.11 frontend-app-1 frontend
     172.27.1.12 frontend-app-2 frontend
     172.27.1.21 backend-app-1 backend

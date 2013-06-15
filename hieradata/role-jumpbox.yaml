@@ -11,6 +11,9 @@ graphite::gr_apache_port_https: 9443
 rsyslog::server::server_dir: '/srv/log/'
 
 ufw_rules:
+    allowcarbonfromanywhere:
+        port: 2003
+        ip:   'any'
     allowhttpfromall:
         port: 80
         ip:   'any'
