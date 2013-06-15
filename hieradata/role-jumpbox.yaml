@@ -4,6 +4,8 @@ classes:
     - 'nginx::server'
     - 'rsyslog::server'
 
+rsyslog::server::server_dir: '/srv/log/'
+
 ufw_rules:
     allowhttpfromall:
         port: 80
