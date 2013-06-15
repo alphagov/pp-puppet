@@ -1,6 +1,7 @@
 ---
 classes:
     - 'apt'
+    - 'collectd'
     - 'harden'
     - 'ntp'
     - 'performanceplatform::base'
@@ -9,6 +10,21 @@ classes:
     - 'rsyslog::client'
     - 'ssh::server'
     - 'ufw'
+
+collectd_plugins:
+    - 'cpu'
+    - 'df'
+    - 'disk'
+    - 'interface'
+    - 'memory'
+    - 'network'
+    - 'processes'
+    - 'swap'
+    - 'uptime'
+    - 'users'
+collectd::purge: true
+collectd::purge_config: true
+collectd::recurse: true
 
 system_packages:
     at:

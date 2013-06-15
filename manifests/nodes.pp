@@ -7,6 +7,9 @@ $management_vhost = join(['management',hiera('domain_name')],'.')
 $www_vhost        = join(['www',hiera('domain_name')],'.')
 $admin_vhost      = join(['admin',hiera('domain_name')],'.')
 
+# Classes
+hiera_include('classes')
+
 node default {
 
     # Environment specific variables
@@ -17,9 +20,6 @@ node default {
 
     # Install packages
     create_resources( 'package', hiera_hash('system_packages') )
-
-    # Classes
-    hiera_include('classes')
 
     # Firewall rules
     create_resources( 'ufw::allow', hiera_hash('ufw_rules') )
@@ -33,6 +33,12 @@ node default {
     # Install the apps
     $backdrop_apps = hiera_hash( 'backdrop_apps', {} )
     if !empty($backdrop_apps) {
-        create_resources( 'backdrop::app', $backdrop_apps)
+        create_resources( 'backdrop::app', $backdrop_apps )
+    }
+
+    # Collect some metrics
+    $collectd_plugins = hiera_array( 'collectd_plugins', [] )
+    if !empty($collectd_plugins) {
+        collectd::plugin { $collectd_plugins: }
     }
 }

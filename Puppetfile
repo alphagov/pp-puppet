@@ -12,6 +12,7 @@ mod 'mongodb',              :git => 'git://github.com/alphagov/puppetlabs-mongod
                             :ref => 'b9afea72117a322836117ba07963dee8a2611703'
 mod 'nginx',                :git => 'git://github.com/alphagov/puppet-nginx.git',
                             :ref => 'c5737d68d24c48a644917544f1958279a58b9a19'
+mod 'pdxcat/collectd',      '0.0.3'
 mod 'puppetlabs/gcc',       '0.0.3'
 mod 'puppetlabs/stdlib',    '4.1.0'
 mod 'python',               :git => 'git://github.com/stankevich/puppet-python.git',
