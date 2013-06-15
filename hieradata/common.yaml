@@ -23,6 +23,7 @@ collectd_plugins:
     - 'swap'
     - 'uptime'
     - 'users'
+collectd::interval: 1
 collectd::plugin::write_graphite::graphitehost: graphite
 collectd::purge: true
 collectd::purge_config: true
