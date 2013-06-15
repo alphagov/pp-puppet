@@ -1,8 +1,12 @@
 classes:
+    - 'graphite'
     - 'jenkins'
     - 'performanceplatform::deploy'
     - 'nginx::server'
     - 'rsyslog::server'
+
+graphite::gr_apache_port:       9080
+graphite::gr_apache_port_https: 9443
 
 rsyslog::server::server_dir: '/srv/log/'
 
@@ -27,3 +31,9 @@ vhost_proxies:
         ssl_redirect:    true
         upstream_server: 'localhost'
         upstream_port:   8080
+    graphite-vhost:
+        servername:      "%{::graphite_vhost}"
+        ssl:             true
+        ssl_redirect:    true
+        upstream_server: 'localhost'
+        upstream_port:   9080
