@@ -27,6 +27,9 @@ set_uk_apt_sources() {
   echo "--> Set sources.list to gb and update apt cache" | pp
   sed -i 's|http://us|http://gb|' /etc/apt/sources.list
   apt-get update -qq
+  apt-get install -qq python-software-properties 2>&1 | pp
+  add-apt-repository ppa:gds/govuk 2>&1 | pp
+  apt-get update -qq
 }
 
 check_ruby() {
@@ -57,8 +60,8 @@ bundle_gems() {
 do_puppet_run() {
   echo "--> Run Puppet" | pp
   cd /vagrant
-  ./bin/puppet apply --confdir=. \
-                     --modulepath=modules:vendor/modules \
+  ./bin/puppet apply --modulepath=modules:vendor/modules \
+                     --hiera_config=/vagrant/hiera.yaml \
                      manifests/site.pp 2>&1 | pp
 }
 

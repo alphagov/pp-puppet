@@ -2,6 +2,7 @@
 classes:
     - 'nginx::server'
     - 'varnish'
+
 ufw_rules:
     allow-http-from-anywhere:
         port: 80
@@ -11,13 +12,11 @@ ufw_rules:
         ip:   'any'
 vhost_proxies:
     admin-vhost:
-        port:          443
         servername:    "%{::admin_vhost}"
         ssl:           true
         ssl_redirect:  true
         upstream_port: 7999
     www-vhost:
-        port:          443
         servername:    "%{::www_vhost}"
         ssl:           true
         ssl_redirect:  true

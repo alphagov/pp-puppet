@@ -1,13 +1,19 @@
 # Everything in this node definition depends on Hiera
-# This defines the role of the node
-$machine_role    = regsubst($::hostname, '^(.*)-\d$', '\1')
 
 # Nginx Vhosts for later use
-$management_vhost = join(['management',hiera('domain_name')],'.')
-$www_vhost        = join(['www',hiera('domain_name')],'.')
 $admin_vhost      = join(['admin',hiera('domain_name')],'.')
+$deploy_vhost     = join(['deploy',hiera('domain_name')],'.')
+$graphite_vhost   = join(['graphite',hiera('domain_name')],'.')
+$logging_vhost    = join(['logging',hiera('domain_name')],'.')
+$nagios_vhost     = join(['nagios',hiera('domain_name')],'.')
+$www_vhost        = join(['www',hiera('domain_name')],'.')
+
+# Classes
+hiera_include('classes')
 
 node default {
+    # This defines the role of the node
+    $machine_role     = regsubst($::hostname, '^(.*)-\d$', '\1')
 
     # Environment specific variables
     $environment      = hiera('environment')
@@ -16,10 +22,10 @@ node default {
     create_resources( 'account', hiera_hash('accounts') )
 
     # Install packages
-    create_resources( 'package', hiera_hash('system_packages') )
-
-    # Classes
-    hiera_include('classes')
+    $system_packages = hiera_array( 'system_packages', [] )
+    if !empty($system_packages) {
+        package { $system_packages: ensure => installed }
+    }
 
     # Firewall rules
     create_resources( 'ufw::allow', hiera_hash('ufw_rules') )
@@ -33,6 +39,12 @@ node default {
     # Install the apps
     $backdrop_apps = hiera_hash( 'backdrop_apps', {} )
     if !empty($backdrop_apps) {
-        create_resources( 'backdrop::app', $backdrop_apps)
+        create_resources( 'backdrop::app', $backdrop_apps )
+    }
+
+    # Collect some metrics
+    $collectd_plugins = hiera_array( 'collectd_plugins', [] )
+    if !empty($collectd_plugins) {
+        collectd::plugin { $collectd_plugins: }
     }
 }

@@ -1,8 +1,63 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-set -e
+set -eu
 
-wget http://apt.puppetlabs.com/puppetlabs-release-precise.deb
-sudo dpkg -i puppetlabs-release-precise.deb
-sudo apt-get update
-sudo apt-get install -y puppet ruby-bundler
+pp() {
+  local blue="\033[34m"
+  local reset="\033[0m"
+  while read line; do
+    echo -e "${blue}[bootstrap]${reset} ${line}"
+  done
+}
+
+quieten_sudo() {
+  echo "--> Set root profile to quieten sudo tty message" | pp
+  echo '[[ $(test -t 0) ]] && mesg n' > /root/.profile
+}
+
+set_uk_apt_sources() {
+  echo "--> Set sources.list to gb and update apt cache" | pp
+  sed -i 's|http://us|http://gb|' /etc/apt/sources.list
+  apt-get update -qq
+  apt-get install -qq python-software-properties curl 2>&1 | pp
+  add-apt-repository ppa:gds/govuk 2>&1 | pp
+  apt-get update -qq
+}
+
+check_ruby() {
+  echo "--> Check for Ruby" | pp
+  [[ $(dpkg -s ruby1.9.1 >/dev/null 2>&1) ]] || \
+    apt-get install -qq ruby1.9.1 2>&1 | pp
+}
+
+check_bundler() {
+  echo "--> Check for Bundler" | pp
+  echo 'gem: --quiet --no-rdoc --no-ri' > /root/.gemrc
+  # FIXME: bundler search -i doesn't say if something isn't installed
+  local out=$(gem list bundler | grep bundler)
+  [[ -n $out ]] || gem install bundler 2>&1 | pp
+}
+
+create_user() {
+  echo "--> Creating user" | pp
+  groupadd gds
+  useradd -G gds -s /bin/bash -m $1
+  mkdir /home/${1}/.ssh
+  echo "ssh-rsa $2 ${1}_user" > /home/${1}/.ssh/authorized_keys
+  chmod 700 /home/${1}/.ssh
+  chmod 644 /home/${1}/.ssh/authorized_keys
+  chown -R $1 /home/${1}/.ssh
+  echo "%gds ALL=NOPASSWD:ALL" >/etc/sudoers.d/gds
+  chmod 0440 /etc/sudoers.d/gds
+}
+
+main() {
+  quieten_sudo
+  set_uk_apt_sources
+  check_ruby
+  check_bundler
+  create_user ssharpe 'AAAAB3NzaC1yc2EAAAABIwAAAQEAyNoMftFLf3w0NOW7J0KUwOx9897CU352n3zKD3p/GCcdH4eMv1QI0BhjItZplWG8TzFSBfWOOSruRh1Gksa1l1jiQcisEio6Wr7kZ7bpvMMA45ZoaDc26HTB+r0BZkNn7Lwwxxvy+1pbqStnnKzb9OTYIyVkb495LS0x1EL/P9S/NWtpm8ZULa1JDplYMA5SqMZnhmlGAXdh8UnjdcdOgOm2ngA+geJBSzVbABECiIAklHU1PRzOtrq8SuO8JmXW6NkuL0aabdTgE6noIm+Nn7T5ufZpOpIGYimVI8+mu+efcBzAp5Q0vTRgSBLfggdczZbFfPXpIt1Ib+LEf+Cuqw=='
+}
+
+main
+
