@@ -1,6 +1,4 @@
 # Everything in this node definition depends on Hiera
-# This defines the role of the node
-$machine_role     = regsubst($::hostname, '^(.*)-\d$', '\1')
 
 # Nginx Vhosts for later use
 $admin_vhost      = join(['admin',hiera('domain_name')],'.')
@@ -14,6 +12,8 @@ $www_vhost        = join(['www',hiera('domain_name')],'.')
 hiera_include('classes')
 
 node default {
+    # This defines the role of the node
+    $machine_role     = regsubst($::hostname, '^(.*)-\d$', '\1')
 
     # Environment specific variables
     $environment      = hiera('environment')
