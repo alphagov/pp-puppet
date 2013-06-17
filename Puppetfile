@@ -10,9 +10,8 @@ mod 'saz/dnsmasq',          '1.0.1'
 mod 'saz/ntp',              '2.0.3'
 mod 'saz/rsyslog',          '2.0.0'
 mod 'torrancew/account',    '0.0.3'
-
 mod 'backdrop', :git => 'git://github.com/alphagov/puppet-backdrop.git',
-                :ref => '93086e4ca978d6e028d72dc8c3649906096634de'
+                :ref => 'c943ad81655c95d41820fb46b03fdb9eb80b9fe9'
 mod 'harden',   :git => 'git://github.com/alphagov/puppet-harden.git',
                 :ref => '0966c98cc3f54815c9aac0ebe6e900b70f85182d'
 mod 'jenkins',  :git => 'git://github.com/alphagov/puppet-jenkins.git',
