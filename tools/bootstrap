@@ -43,11 +43,12 @@ create_user() {
   groupadd gds
   useradd -G gds -s /bin/bash -m $1
   mkdir /home/${1}/.ssh
-  echo $2 > /home/${1}/.ssh/authorized_keys
+  echo "ssh-rsa $2 ${1}_user" > /home/${1}/.ssh/authorized_keys
   chmod 700 /home/${1}/.ssh
   chmod 644 /home/${1}/.ssh/authorized_keys
   chown -R $1 /home/${1}/.ssh
   echo "%gds ALL=NOPASSWD:ALL" >/etc/sudoers.d/gds
+  chmod 0440 /etc/sudoers.d/gds
 }
 
 main() {
