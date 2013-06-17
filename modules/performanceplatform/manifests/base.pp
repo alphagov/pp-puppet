@@ -27,6 +27,7 @@ FACTER_machine_role=${::machine_role}
     file { '/etc/sudoers.d/gds':
         ensure  => present,
         mode    => '0440',
-        content => '%gds ALL=NOPASSWD:ALL\n'
+        content => '%gds ALL=NOPASSWD:ALL
+'
     }
 }
