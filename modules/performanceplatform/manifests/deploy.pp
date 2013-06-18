@@ -20,7 +20,7 @@ class performanceplatform::deploy (
             require => Package['nginx'],
         }
     }
-    if ($jenkins_key} {
+    if ($jenkins_key) {
         # Install the SSH private key for Jenkins
         file { '/var/lib/jenkins/.ssh':
             ensure  => directory,
