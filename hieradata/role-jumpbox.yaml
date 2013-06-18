@@ -2,6 +2,7 @@ classes:
     - 'graphite'
     - 'jenkins'
     - 'performanceplatform::deploy'
+    - 'python'
     - 'nginx::server'
     - 'rsyslog::server'
 
@@ -27,6 +28,9 @@ jenkins::plugin_hash:
     greenballs:
         version: "1.12"
 
+python::version:    '2.7'
+python::dev:        true
+python::virtualenv: true
 
 rsyslog::server::server_dir: '/srv/log/'
 
