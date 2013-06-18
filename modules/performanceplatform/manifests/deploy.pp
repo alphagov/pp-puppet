@@ -37,5 +37,14 @@ class performanceplatform::deploy (
             group   => 'jenkins',
             require => File['/var/lib/jenkins/.ssh'],
         }
+        file { '/var/lib/jenkins/.fabricrc':
+            ensure  => present,
+            content => 'user = deploy
+',
+            mode    => '0644',
+            owner   => 'jenkins',
+            group   => 'jenkins',
+            require => Class['jenkins'],
+        }
     }
 }
