@@ -22,6 +22,8 @@ jenkins::plugin_hash:
         version: "0.2"
     saferestart:
         version: "0.3"
+    role-strategy:
+        version: "1.1.2"
     greenballs:
         version: "1.12"
 
