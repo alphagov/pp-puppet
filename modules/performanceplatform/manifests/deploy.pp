@@ -3,6 +3,7 @@ class performanceplatform::deploy (
     $vpn_user     = undef,
     $vpn_password = undef,
     $basic_auth   = undef,
+    $jenkins_key  = undef,
 ) {
     #Only phone home if the vpn credentials are set
     if ( $vpn_gateway and ( $vpn_user and $vpn_password )) {
@@ -17,6 +18,24 @@ class performanceplatform::deploy (
             ensure  => present,
             content => $basic_auth,
             require => Package['nginx'],
+        }
+    }
+    if ($jenkins_key} {
+        # Install the SSH private key for Jenkins
+        file { '/var/lib/jenkins/.ssh':
+            ensure  => directory,
+            mode    => '0700',
+            owner   => 'jenkins',
+            group   => 'jenkins',
+            require => Class['jenkins'],
+        }
+        file { '/var/lib/jenkins/.ssh/id_rsa':
+            ensure  => present,
+            content => $jenkins_key,
+            mode    => '0600',
+            owner   => 'jenkins',
+            group   => 'jenkins',
+            require => File['/var/lib/jenkins/.ssh'],
         }
     }
 }
