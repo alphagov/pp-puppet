@@ -44,6 +44,7 @@ collectd_plugins:
     - 'users'
 collectd::interval: 1
 collectd::plugin::write_graphite::graphitehost: graphite
+collectd::plugin::write_graphite::storerates: true
 collectd::purge: true
 collectd::purge_config: true
 collectd::recurse: true

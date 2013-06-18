@@ -25,6 +25,14 @@ GIT
     backdrop (0.0.1)
 
 GIT
+  remote: git://github.com/alphagov/puppet-collectd.git
+  ref: e17cb3f06f5e26299de145da8fe18a218a10f3c4
+  sha: e17cb3f06f5e26299de145da8fe18a218a10f3c4
+  specs:
+    collectd (0.0.3)
+      puppetlabs/stdlib (>= 2.0.0)
+
+GIT
   remote: git://github.com/alphagov/puppet-harden.git
   ref: 0966c98cc3f54815c9aac0ebe6e900b70f85182d
   sha: 0966c98cc3f54815c9aac0ebe6e900b70f85182d
@@ -81,6 +89,7 @@ DEPENDENCIES
   attachmentgenie/ssh (= 1.1.0)
   attachmentgenie/ufw (= 1.2.0)
   backdrop (>= 0)
+  collectd (>= 0)
   dwerder/graphite (= 2.4.1)
   harden (>= 0)
   jenkins (>= 0)

@@ -12,6 +12,8 @@ mod 'saz/rsyslog',          '2.0.0'
 mod 'torrancew/account',    '0.0.3'
 mod 'backdrop', :git => 'git://github.com/alphagov/puppet-backdrop.git',
                 :ref => 'c943ad81655c95d41820fb46b03fdb9eb80b9fe9'
+mod 'collectd', :git => 'git://github.com/alphagov/puppet-collectd.git',
+                :ref => 'e17cb3f06f5e26299de145da8fe18a218a10f3c4'
 mod 'harden',   :git => 'git://github.com/alphagov/puppet-harden.git',
                 :ref => '0966c98cc3f54815c9aac0ebe6e900b70f85182d'
 mod 'jenkins',  :git => 'git://github.com/alphagov/puppet-jenkins.git',
