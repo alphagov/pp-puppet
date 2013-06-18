@@ -18,12 +18,5 @@ class performanceplatform::deploy (
             content => $basic_auth,
             require => Package['nginx'],
         }
-        file { '/etc/nginx/conf.d/basic_auth.conf':
-            ensure  => present,
-            content => 'auth_basic "Enter username/password";
-auth_basic_user_file /etc/nginx/htpasswd.pp;',
-            require => File['/etc/nginx/htpasswd.pp'],
-            notify  => Service['nginx'],
-        }
     }
 }

@@ -60,3 +60,6 @@ vhost_proxies:
         ssl_redirect:    true
         upstream_server: 'localhost'
         upstream_port:   9080
+        magic: |
+            auth_basic "Enter username/password";
+            auth_basic_user_file /etc/nginx/htpasswd.pp;
