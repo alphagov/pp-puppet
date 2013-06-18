@@ -34,6 +34,9 @@ python::virtualenv: true
 
 rsyslog::server::server_dir: '/srv/log/'
 
+system_packages:
+    - git
+
 ufw_rules:
     allowcarbonfromanywhere:
         port: 2003
