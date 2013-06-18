@@ -3,11 +3,6 @@ classes:
     - 'python'
     - 'backdrop'
 
-accounts:
-    deploy:
-        groups:
-            - gds
-
 backdrop_apps:
     read.backdrop:
         port:       3038
