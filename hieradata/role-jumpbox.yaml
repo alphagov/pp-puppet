@@ -24,6 +24,8 @@ jenkins::plugin_hash:
         version: "0.3"
     greenballs:
         version: "1.12"
+    pam-auth:
+        version: "1.1"
 
 
 rsyslog::server::server_dir: '/srv/log/'

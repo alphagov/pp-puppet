@@ -26,4 +26,19 @@ auth_basic_user_file /etc/nginx/htpasswd.pp;',
             notify  => Service['nginx'],
         }
     }
+
+    group { 'jenkins':
+          ensure  => present,
+          require => Class['jenkins'],
+    }
+
+          # The pam_auth plugin requires Jenkins to be in the shadow group
+    user { 'jenkins':
+        ensure     => present,
+        groups     => ['jenkins', 'shadow'],
+        home       => '/var/lib/jenkins',
+        managehome => true,
+        shell      => '/bin/bash',
+        require    => Group['jenkins'],
+    }
 }
