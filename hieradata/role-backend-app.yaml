@@ -18,6 +18,7 @@ backdrop_apps:
 python::version:    '2.7'
 python::dev:        true
 python::virtualenv: true
+python::pip:        true
 
 backdrop::user: 'deploy'
 backdrop::group: 'deploy'
