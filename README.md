@@ -113,7 +113,7 @@ hosts:
         ip: 172.27.1.2
 ```
 
-It is expected that additional resources that are not already defined as native Puppet Types will be utilised by 
+It is expected that additional resources that are not already defined as native Puppet Types will be utilised by
 including external modules with `librarian-puppet` from http://forge.puppetlabs.com - an example of this is UFW:
 
 ```sh

@@ -29,7 +29,7 @@ FACTER_machine_environment=${environment}
     file { '/etc/sudoers.d/gds':
         ensure  => present,
         mode    => '0440',
-        content => '%gds ALL=NOPASSWD:ALL
+        content => '%gds ALL=(ALL) NOPASSWD: ALL
 '
     }
 }
