@@ -133,7 +133,7 @@ rule with UFW!
 
 ## Adding user accounts
 
-User accounts are managed in 'config/hiera/data/environment.yaml'. They look like this:
+User accounts are managed in 'hieradata/common.yaml'. They look like this:
 
 ```
 accounts:
