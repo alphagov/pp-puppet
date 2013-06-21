@@ -32,6 +32,7 @@ classes:
     - 'collectd'
     - 'collectd::plugin::write_graphite'
     - 'gcc'
+    - 'gstatsd'
     - 'harden'
     - 'ntp'
     - 'performanceplatform::base'
@@ -61,6 +62,9 @@ collectd::recurse: true
 
 domain_name: undefined.domain
 environment: undefined
+
+gstatsd::graphite_server: graphite
+gstatsd::flush_interval:  1
 
 nameservers:
     - 8.8.8.8
