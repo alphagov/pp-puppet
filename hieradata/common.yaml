@@ -37,6 +37,7 @@ classes:
     - 'performanceplatform::base'
     - 'performanceplatform::dns'
     - 'performanceplatform::hosts'
+    - 'python'
     - 'rsyslog::client'
     - 'ssh::server'
     - 'ufw'
@@ -79,6 +80,11 @@ performanceplatform::mongo::mongo_hosts:
     - mongo-1
     - mongo-2
     - mongo-3
+
+python::version:    '2.7'
+python::dev:        true
+python::virtualenv: true
+python::pip:        true
 
 system_packages:
     - at
