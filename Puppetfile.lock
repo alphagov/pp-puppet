@@ -34,8 +34,8 @@ GIT
 
 GIT
   remote: git://github.com/alphagov/puppet-gstatsd.git
-  ref: 9fa4c76b77a1733d6c5e69314b9b90a645f91341
-  sha: 9fa4c76b77a1733d6c5e69314b9b90a645f91341
+  ref: c7eb9b99c34194d92e9e8494bdeed1b29b43ed60
+  sha: c7eb9b99c34194d92e9e8494bdeed1b29b43ed60
   specs:
     gstatsd (0.1.0)
 
