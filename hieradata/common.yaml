@@ -28,20 +28,9 @@ accounts:
             groups:
                 - gds
 classes:
-    - 'apt'
-    - 'collectd'
-    - 'collectd::plugin::write_graphite'
-    - 'gcc'
-    - 'gstatsd'
-    - 'harden'
-    - 'ntp'
     - 'performanceplatform::base'
     - 'performanceplatform::dns'
     - 'performanceplatform::hosts'
-    - 'python'
-    - 'rsyslog::client'
-    - 'ssh::server'
-    - 'ufw'
 
 collectd_plugins:
     - 'cpu'
