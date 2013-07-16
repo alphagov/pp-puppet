@@ -87,8 +87,8 @@ GIT
 
 GIT
   remote: git://github.com/stankevich/puppet-python.git
-  ref: 92519602dfe62d2305c40a34b6edbdb02372924d
-  sha: 92519602dfe62d2305c40a34b6edbdb02372924d
+  ref: f508b71d534f3c67db12886fa914cb4ef74bbe7a
+  sha: f508b71d534f3c67db12886fa914cb4ef74bbe7a
   specs:
     python (1.0.0)
 
