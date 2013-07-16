@@ -1,12 +1,14 @@
 # Everything in this node definition depends on Hiera
 
 # Nginx Vhosts for later use
-$admin_vhost      = join(['admin',hiera('domain_name')],'.')
-$deploy_vhost     = join(['deploy',hiera('domain_name')],'.')
-$graphite_vhost   = join(['graphite',hiera('domain_name')],'.')
-$logging_vhost    = join(['logging',hiera('domain_name')],'.')
-$nagios_vhost     = join(['nagios',hiera('domain_name')],'.')
-$www_vhost        = join(['www',hiera('domain_name')],'.')
+$domain_name        = hiera('domain_name')
+$public_domain_name = hiera('public_domain_name', $domain_name)
+$admin_vhost        = join(['admin',$public_domain_name],'.')
+$deploy_vhost       = join(['deploy',$domain_name],'.')
+$graphite_vhost     = join(['graphite',$domain_name],'.')
+$logging_vhost      = join(['logging',$domain_name],'.')
+$nagios_vhost       = join(['nagios',$domain_name],'.')
+$www_vhost          = join(['www',$public_domain_name],'.')
 
 # Classes
 hiera_include('classes')
