@@ -9,7 +9,7 @@ classes:
 graphite::gr_apache_port:       9080
 graphite::gr_apache_port_https: 9443
 
-jenkins::version: 1.518
+jenkins::version: latest
 jenkins::plugin_hash:
     git-client:
         version: "1.0.6"
