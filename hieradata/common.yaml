@@ -84,4 +84,5 @@ system_packages:
     - curl
     - htop
     - ssl-cert
+    - tmux
     - vim
