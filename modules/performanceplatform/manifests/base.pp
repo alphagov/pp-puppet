@@ -9,6 +9,7 @@ class performanceplatform::base {
     include python
     include rsyslog::client
     include ssh::server
+    include tmux
     include ufw
     class {'gstatsd': require => Class['python::install'] }
 
