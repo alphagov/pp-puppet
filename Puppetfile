@@ -30,4 +30,5 @@ mod 'ssl',      :git => 'git://github.com/alphagov/puppet-ssl.git',
                 :ref => '23bbb5ab57f26269acce3d4b43e643781747a551'
 mod 'upstart',  :git => 'git://github.com/bison/puppet-upstart.git',
                 :ref => '05a10a3a58de3543eb51bb782a249cebf71f5cd8'
-
+mod 'tmux',     :git => 'git://github.com/endore-me/puppet-tmux.git',
+                :ref => '32db4ac6ad65a934c5eddd9afcf0c4f61f7c0924'
