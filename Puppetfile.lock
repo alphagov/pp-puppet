@@ -86,6 +86,13 @@ GIT
       puppetlabs/stdlib (>= 0.1.6)
 
 GIT
+  remote: git://github.com/endore-me/puppet-tmux.git
+  ref: 32db4ac6ad65a934c5eddd9afcf0c4f61f7c0924
+  sha: 32db4ac6ad65a934c5eddd9afcf0c4f61f7c0924
+  specs:
+    tmux (0.0.1)
+
+GIT
   remote: git://github.com/stankevich/puppet-python.git
   ref: f508b71d534f3c67db12886fa914cb4ef74bbe7a
   sha: f508b71d534f3c67db12886fa914cb4ef74bbe7a
@@ -111,6 +118,7 @@ DEPENDENCIES
   saz/ntp (= 2.0.3)
   saz/rsyslog (= 2.0.0)
   ssl (>= 0)
+  tmux (>= 0)
   torrancew/account (= 0.0.3)
   upstart (>= 0)
 
