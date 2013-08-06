@@ -4,6 +4,12 @@ classes:
     - 'backdrop'
 
 backdrop_apps:
+    admin.backdrop:
+        port:       3037
+        # This is a placeholder until we extract a separate app
+        app_module: 'backdrop.write.api:app'
+        user:       'deploy'
+        group:      'deploy'
     read.backdrop:
         port:       3038
         app_module: 'backdrop.read.api:app'
