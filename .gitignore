@@ -10,7 +10,7 @@
 .rspec
 .rvmrc
 .tmp/
-.vagrant/
+/.vagrant
 /.bundle/
 /.gems/
 /bin/
