@@ -9,6 +9,7 @@ $graphite_vhost     = join(['graphite',$domain_name],'.')
 $logging_vhost      = join(['logging',$domain_name],'.')
 $nagios_vhost       = join(['nagios',$domain_name],'.')
 $www_vhost          = join(['www',$public_domain_name],'.')
+$service_explorer_vhost = join(['service-explorer', $public_domain_name], '.')
 
 # Classes
 hiera_include('classes')
@@ -36,6 +37,11 @@ node default {
     $vhost_proxies = hiera_hash( 'vhost_proxies', {} )
     if !empty($vhost_proxies) {
         create_resources( 'nginx::vhost::proxy', $vhost_proxies )
+    }
+
+    $vhost_static = hiera_hash( 'vhost_static', {} )
+    if !empty($vhost_static) {
+        create_resources( 'nginx::vhost', $vhost_static )
     }
 
     # Install the apps

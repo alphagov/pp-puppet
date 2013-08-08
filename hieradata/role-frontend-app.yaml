@@ -21,3 +21,7 @@ vhost_proxies:
         ssl:           true
         ssl_redirect:  true
         upstream_port: 7999
+vhost_static:
+    service-explorer:
+        servername:   "%{::service_explorer_vhost}"
+        vhostroot:    "/opt/service-explorer/current"
