@@ -6,8 +6,8 @@ accounts:
             ssh_key: AAAAB3NzaC1yc2EAAAADAQABAAABAQDxuVkxqVy8kRncaG0cm/B8p7YTk7UjwE6xgUkfzIV97xAaRfNyZUI9Ur/w2x945r5IiuKGp61UHMzsGBEgmsDDNvukguY/a02yXZRySxf3ThlsqG/w7DX9uNwVEeLAA95es4P+6iApbRnBTQX7Nx/XsIa3hy8Uwr3T+pcrXCRIczhfuaiugQ/jh9IlkIC1I6UHbYoli8o5upTh9SbnimU/VXiUIO4v5z1CyLgQHfeE6VBxYO6HCQqRJg7uB4vNS5wAWyTYx4XinkS3ScjKmQr+wExyRy0vgnj5f+oVFNLgARh9lh2ViJ6ntGw8ww10b3xY/Bc/qoeFZKJjb89aMhLb
             groups:
                 - gds
-        bthomas:
-            home_dir: /home/bthomas
+        bt:
+            home_dir: /home/bt
             comment: Brett Thomas - ITHC
             ssh_key: AAAAB3NzaC1yc2EAAAADAQABAAABAQC8WVtkr26X+eAwIEAWZPv+DtXEt6rSVg0mgrdvxfNotAWz85UrD7ds2L+hwgcCH2Eqpk5EqTueOlk3Slz6ec4DiMvjdXgs65pFHw3+utxobmArn5NTJnm0VnM57vwsZteRsjkj8OT38COcHR8PgXvVJqU0hctkcIRbRQOxUs68pckOgNm1lTfolYXOdFZLiIFXyyg83n/YXN59Ux1fERTEmwrADE+fQBgKs+f5KDc0OmwjFEwiYXFBi0d7zy5fVTw/IqHGXo6pH5BB3/4aOH5Yrbtn9xB/lEvwvG6TVjNIjRmy/HL7b8/feWs9ckt4rv31m2StndoBx/kWCGXjlmwD
             groups:
