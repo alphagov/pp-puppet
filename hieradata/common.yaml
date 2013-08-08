@@ -79,6 +79,14 @@ python::dev:        true
 python::virtualenv: true
 python::pip:        true
 
+google_credentials::client_id: "google client id"
+google_credentials::client_secret: "google client secret"
+google_credentials::refresh_tokens:
+    analytics:
+        refresh_token: "analytics refresh token"
+    drive:
+        refresh_token: "drive refresh token"
+
 system_packages:
     - at
     - curl

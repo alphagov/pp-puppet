@@ -33,6 +33,13 @@ GIT
       puppetlabs/stdlib (>= 2.0.0)
 
 GIT
+  remote: git://github.com/alphagov/puppet-google_credentials.git
+  ref: a64f9e5c051a0d38e59441457b52a7afeeebed24
+  sha: a64f9e5c051a0d38e59441457b52a7afeeebed24
+  specs:
+    google_credentials (0.0.1)
+
+GIT
   remote: git://github.com/alphagov/puppet-gstatsd.git
   ref: c7eb9b99c34194d92e9e8494bdeed1b29b43ed60
   sha: c7eb9b99c34194d92e9e8494bdeed1b29b43ed60
@@ -105,6 +112,7 @@ DEPENDENCIES
   backdrop (>= 0)
   collectd (>= 0)
   dwerder/graphite (= 2.4.1)
+  google_credentials (>= 0)
   gstatsd (>= 0)
   harden (>= 0)
   jenkins (>= 0)
