@@ -5,6 +5,7 @@ classes:
     - 'python'
     - 'nginx::server'
     - 'rsyslog::server'
+    - 'google_credentials'
 
 graphite::gr_apache_port:       9080
 graphite::gr_apache_port_https: 9443
