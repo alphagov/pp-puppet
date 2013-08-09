@@ -22,6 +22,6 @@ vhost_proxies:
         ssl_redirect:  true
         upstream_port: 7999
 vhost_static:
-    service-explorer:
-        servername:   "%{::service_explorer_vhost}"
-        vhostroot:    "/opt/service-explorer/current"
+    transactions-explorer:
+        servername:   "%{::transactions_explorer_vhost}"
+        vhostroot:    "/opt/transactions-explorer/current"

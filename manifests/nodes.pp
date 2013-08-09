@@ -9,7 +9,7 @@ $graphite_vhost     = join(['graphite',$domain_name],'.')
 $logging_vhost      = join(['logging',$domain_name],'.')
 $nagios_vhost       = join(['nagios',$domain_name],'.')
 $www_vhost          = join(['www',$public_domain_name],'.')
-$service_explorer_vhost = join(['service-explorer', $public_domain_name], '.')
+$transactions_explorer_vhost = join(['transactions-explorer', $public_domain_name], '.')
 
 # Classes
 hiera_include('classes')
