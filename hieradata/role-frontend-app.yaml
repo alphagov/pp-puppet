@@ -2,7 +2,7 @@
 classes:
     - 'nginx::server'
     - 'varnish'
-    - 'transactions-explorer'
+    - 'transactionsexplorer'
 
 ufw_rules:
     allow-http-from-anywhere:
@@ -23,8 +23,9 @@ vhost_proxies:
         ssl_redirect:  true
         upstream_port: 7999
 
-transactions-explorer::servername: "%{::transactions_explorer_vhost}"
-transactions-explorer::user:       "deploy"
-transactions-explorer::group:      "deploy"
+transactionsexplorer::app_name:    "transactions-explorer"
+transactionsexplorer::server_name: "%{::transactions_explorer_vhost}"
+transactionsexplorer::user:        "deploy"
+transactionsexplorer::group:       "deploy"
 
 nginx::server::server_names_hash_bucket_size: 128
