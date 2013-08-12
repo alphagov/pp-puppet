@@ -39,11 +39,6 @@ node default {
         create_resources( 'nginx::vhost::proxy', $vhost_proxies )
     }
 
-    $vhost_static = hiera_hash( 'vhost_static', {} )
-    if !empty($vhost_static) {
-        create_resources( 'nginx::vhost', $vhost_static )
-    }
-
     # Install the apps
     $backdrop_apps = hiera_hash( 'backdrop_apps', {} )
     if !empty($backdrop_apps) {
