@@ -27,3 +27,5 @@ transactionsexplorer::app_name:    "transactions-explorer"
 transactionsexplorer::server_name: "%{::transactions_explorer_vhost}"
 transactionsexplorer::user:        "deploy"
 transactionsexplorer::group:       "deploy"
+
+nginx::server::server_names_hash_bucket_size: 128
