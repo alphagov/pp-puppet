@@ -26,3 +26,5 @@ vhost_proxies:
 transactions-explorer::servername: "%{::transactions_explorer_vhost}"
 transactions-explorer::user:       "deploy"
 transactions-explorer::group:      "deploy"
+
+nginx::server::server_names_hash_bucket_size: 128
