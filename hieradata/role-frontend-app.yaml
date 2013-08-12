@@ -2,6 +2,7 @@
 classes:
     - 'nginx::server'
     - 'varnish'
+    - 'transactions-explorer'
 
 ufw_rules:
     allow-http-from-anywhere:
@@ -21,7 +22,7 @@ vhost_proxies:
         ssl:           true
         ssl_redirect:  true
         upstream_port: 7999
-vhost_static:
-    transactions-explorer:
-        servername:   "%{::transactions_explorer_vhost}"
-        vhostroot:    "/opt/transactions-explorer/current"
+
+transactions-explorer::servername: "%{::transactions_explorer_vhost}"
+transactions-explorer::user:       "deploy"
+transactions-explorer::group:      "deploy"
