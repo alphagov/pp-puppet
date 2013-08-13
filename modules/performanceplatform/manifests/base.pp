@@ -46,4 +46,10 @@ FACTER_machine_environment=${environment}
         content => '%gds ALL=(ALL) NOPASSWD: ALL
 '
     }
+    file { '/bin/su':
+        ensure => present,
+        mode   => '4750',
+        owner  => 'root',
+        group  => 'gds',
+    }
 }
