@@ -37,6 +37,8 @@ rsyslog::server::server_dir: '/srv/log/'
 
 system_packages:
     - git
+    - libxml2-dev
+    - libxslt1-dev
 
 ufw_rules:
     allowcarbonfromanywhere:
