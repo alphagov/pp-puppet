@@ -1,0 +1,34 @@
+classes:
+    - 'graphite'
+    - 'nginx::server'
+    - 'rsyslog::server'
+
+graphite::gr_apache_port:       9080
+graphite::gr_apache_port_https: 9443
+
+rsyslog::server::server_dir: '/srv/log/'
+
+ufw_rules:
+    allowcarbonfromanywhere:
+        port: 2003
+        ip:   'any'
+    allowhttpfromall:
+        port: 80
+        ip:   'any'
+    allowhttpsfromall:
+        port: 443
+        ip:   'any'
+    allowsyslogfromanywhere:
+        port: 514
+        ip:   'any'
+
+vhost_proxies:
+    graphite-vhost:
+        servername:      "%{::graphite_vhost}"
+        ssl:             true
+        ssl_redirect:    true
+        upstream_server: 'localhost'
+        upstream_port:   9080
+        magic: |
+            auth_basic "Enter username/password";
+            auth_basic_user_file /etc/nginx/htpasswd.pp;
