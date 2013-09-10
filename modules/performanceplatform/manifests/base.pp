@@ -13,6 +13,7 @@ class performanceplatform::base {
     include ufw
     class {'gstatsd': require => Class['python::install'] }
 
+    class { 'fail2ban': }
 
     apt::ppa { 'ppa:gds/govuk': }
 
