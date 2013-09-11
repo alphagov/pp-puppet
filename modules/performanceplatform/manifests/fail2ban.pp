@@ -2,12 +2,8 @@
 #
 #
 class performanceplatform::fail2ban {
-    # TODO - shove hierdata ref in here
-    $whitelist_ips = hiera('whitelist_ips', '127.0.0.1')
+    $whitelist_ips = hiera('whitelist_ips')
     class { 'fail2ban':
         jails_template => content('performanceplatform/jail.local.erb')
-
-      # jails_config => 'file',
-      # jails_source => 'puppet:///modules/performanceplatform/jail.local'
     }
 }
