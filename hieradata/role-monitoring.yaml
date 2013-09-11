@@ -2,6 +2,7 @@ classes:
     - 'graphite'
     - 'nginx::server'
     - 'rsyslog::server'
+    - 'performanceplatform::monitoring'
 
 graphite::gr_apache_port:       9080
 graphite::gr_apache_port_https: 9443
@@ -31,4 +32,4 @@ vhost_proxies:
         upstream_port:   9080
         magic: |
             auth_basic "Enter username/password";
-            auth_basic_user_file /etc/nginx/htpasswd.pp;
+            auth_basic_user_file /etc/nginx/htpasswd;
