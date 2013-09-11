@@ -12,4 +12,5 @@ ufw_rules:
 # also add these to our repo in pp-deployment so we get a private version of this
 # do in deployment, etc, so we pull down whitelist
 # (DUN VIA JENKINS)
-whitelist_ips: 127.0.0.1
+# CHANGE THIS
+whitelist_ips: 1.0.0.1

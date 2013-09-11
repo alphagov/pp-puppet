@@ -39,7 +39,7 @@ accounts:
 classes:
     - 'performanceplatform::base'
     - 'performanceplatform::dns'
-    - 'performanceplatform::fail2ban'
+    - 'performanceplatform::pp_fail2ban'
     - 'performanceplatform::hosts'
 
 collectd_plugins:
