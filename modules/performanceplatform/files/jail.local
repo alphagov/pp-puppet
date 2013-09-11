@@ -18,6 +18,7 @@
 [DEFAULT]
 
 # "ignoreip" can be an IP address, a CIDR mask or a DNS host
+## ! uses space separated list
 ignoreip = 127.0.0.1
 bantime  = 600
 maxretry = 3
@@ -38,8 +39,8 @@ destemail = root@localhost
 #
 
 # Default banning action (e.g. iptables, iptables-new,
-# iptables-multiport, shorewall, etc) It is used to define 
-# action_* variables. Can be overriden globally or per 
+# iptables-multiport, shorewall, etc) It is used to define
+# action_* variables. Can be overriden globally or per
 # section within jail.local file
 banaction = iptables-multiport
 
@@ -65,10 +66,10 @@ action_mw = %(banaction)s[name=%(__name__)s, port="%(port)s", protocol="%(protoc
 # to the destemail.
 action_mwl = %(banaction)s[name=%(__name__)s, port="%(port)s", protocol="%(protocol)s]
                %(mta)s-whois-lines[name=%(__name__)s, dest="%(destemail)s", logpath=%(logpath)s]
- 
+
 # Choose default action.  To change, just override value of 'action' with the
 # interpolation to the chosen action shortcut (e.g.  action_mw, action_mwl, etc) in jail.local
-# globally (section [DEFAULT]) or per specific section 
+# globally (section [DEFAULT]) or per specific section
 action = %(action_mwl)s
 
 #
@@ -78,7 +79,7 @@ action = %(action_mwl)s
 # Next jails corresponds to the standard configuration in Fail2ban 0.6 which
 # was shipped in Debian. Enable any defined here jail by including
 #
-# [SECTION_NAME] 
+# [SECTION_NAME]
 # enabled = true
 
 #
@@ -283,23 +284,23 @@ filter   = named-refused
 logpath  = /var/log/named/security.log
 
 [nginx]
- 
+
 enabled = true
 port    = http,https
 filter  = apache-auth
 logpath = /var/log/nginx*/*error.log
 maxretry = 6
-  
+
 [nginx-noscript]
-   
+
 enabled = true
 port    = http,https
 filter  = apache-noscript
 logpath = /var/log/nginx*/*error.log
 maxretry = 6
-    
+
 [nginx-overflows]
-     
+
 enabled = true
 port    = http,https
 filter  = apache-overflows

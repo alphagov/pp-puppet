@@ -13,11 +13,6 @@ class performanceplatform::base {
     include ufw
     class {'gstatsd': require => Class['python::install'] }
 
-    class { 'fail2ban': 
-      jails_config => 'file',
-      jails_source => 'puppet:///modules/performanceplatform/jail.local'
-    } 
-
     apt::ppa { 'ppa:gds/govuk': }
 
     exec { 'apt-get-update':

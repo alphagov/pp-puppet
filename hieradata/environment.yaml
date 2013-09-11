@@ -8,3 +8,7 @@ ufw_rules:
     allowsshfromanywhere:
         port: 22
         ip:   'any'
+# add in whitelistips
+# also add these to our repo in pp-deployment so we get a private version of this
+# do in deployment, etc, so we pull down whitelist
+# (DUN VIA JENKINS)
