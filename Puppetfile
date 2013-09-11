@@ -3,7 +3,7 @@ forge "http://forge.puppetlabs.com"
 mod 'attachmentgenie/ssh',  '1.1.0'
 mod 'attachmentgenie/ufw',  '1.2.0'
 mod 'dwerder/graphite',     '2.4.1'
-mod 'pdxcat/collectd',      '0.0.3'
+mod 'pdxcat/collectd',      '0.0.4'
 mod 'puppetlabs/gcc',       '0.0.3'
 mod 'puppetlabs/stdlib',    '4.1.0'
 mod 'saz/dnsmasq',          '1.0.1'
