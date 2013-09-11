@@ -39,6 +39,12 @@ node default {
         create_resources( 'nginx::vhost::proxy', $vhost_proxies )
     }
 
+    # Create extra nginx conf
+    $nginx_conf = hiera_hash( 'nginx_conf', {} )
+    if !empty($nginx_conf) {
+        create_resources( 'nginx::conf', $nginx_conf )
+    }
+
     # Install the apps
     $backdrop_apps = hiera_hash( 'backdrop_apps', {} )
     if !empty($backdrop_apps) {

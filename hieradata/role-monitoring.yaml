@@ -30,6 +30,12 @@ vhost_proxies:
         ssl_redirect:    true
         upstream_server: 'localhost'
         upstream_port:   9080
+        access_logs:
+            '{name}.access.json.log': 'json_event'
         magic: |
             auth_basic "Enter username/password";
             auth_basic_user_file /etc/nginx/htpasswd;
+
+nginx_conf:
+    logging:
+        template: performanceplatform/nginx.logging.conf.erb
