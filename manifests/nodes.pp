@@ -1,7 +1,9 @@
 # Everything in this node definition depends on Hiera
 
 # This defines the role of the node
-$machine_role     = regsubst($::hostname, '^(.*)-\d$', '\1')
+if empty($machine_role) {
+    $machine_role   = regsubst($::hostname, '^(.*)-\d$', '\1')
+}
 
 # Nginx Vhosts for later use
 $domain_name        = hiera('domain_name')
