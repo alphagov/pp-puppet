@@ -99,7 +99,6 @@ google_credentials::refresh_tokens:
 
 system_packages:
     - at
-    - curl
     - htop
     - ssl-cert
     - vim
