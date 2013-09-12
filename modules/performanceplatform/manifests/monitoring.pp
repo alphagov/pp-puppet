@@ -3,9 +3,11 @@ class performanceplatform::monitoring (
 ) {
 
   file { '/etc/apache2/run':
-    ensure  => 'link',
-    target  => '/var/run/apache2',
-    subscribe  => Service['apache2'],
+    ensure    => 'link',
+    target    => '/var/run/apache2',
+    owner     => $::graphite::params::web_user,
+    group     => $::graphite::params::web_user,
+    subscribe => Service['apache2'],
   }
 
   file { '/etc/nginx/htpasswd':
