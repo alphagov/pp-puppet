@@ -27,6 +27,7 @@ and [here](http://dan.carley.co/blog/2012/02/07/rbenv-and-bundler/).
 You will need to install all the gems:
 
     bundle install --without NONEXISTENT
+    bundle exec librarian-puppet install
 
 ## Tests!
 
