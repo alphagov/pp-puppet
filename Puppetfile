@@ -1,15 +1,16 @@
 forge "http://forge.puppetlabs.com"
 
-mod 'attachmentgenie/ssh',  '1.1.0'
-mod 'attachmentgenie/ufw',  '1.2.0'
-mod 'dwerder/graphite',     '2.4.1'
-mod 'pdxcat/collectd',      '0.0.4'
-mod 'puppetlabs/gcc',       '0.0.3'
-mod 'puppetlabs/stdlib',    '4.1.0'
-mod 'saz/dnsmasq',          '1.0.1'
-mod 'saz/ntp',              '2.0.3'
-mod 'saz/rsyslog',          '2.0.0'
-mod 'torrancew/account',    '0.0.3'
+mod 'attachmentgenie/ssh',      '1.1.0'
+mod 'attachmentgenie/ufw',      '1.2.0'
+mod 'dwerder/graphite',         '2.4.1'
+mod 'ispavailability/logstash', '0.3.3'
+mod 'pdxcat/collectd',          '0.0.4'
+mod 'puppetlabs/gcc',           '0.0.3'
+mod 'puppetlabs/stdlib',        '4.1.0'
+mod 'saz/dnsmasq',              '1.0.1'
+mod 'saz/ntp',                  '2.0.3'
+mod 'saz/rsyslog',              '2.0.0'
+mod 'torrancew/account',        '0.0.3'
 mod 'backdrop', :git => 'git://github.com/alphagov/puppet-backdrop.git',
                 :ref => 'c943ad81655c95d41820fb46b03fdb9eb80b9fe9'
 mod 'collectd', :git => 'git://github.com/alphagov/puppet-collectd.git',

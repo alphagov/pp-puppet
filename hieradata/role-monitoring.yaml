@@ -1,5 +1,6 @@
 classes:
     - 'graphite'
+    - 'logstash'
     - 'nginx::server'
     - 'rsyslog::server'
     - 'performanceplatform::monitoring'
@@ -8,6 +9,10 @@ graphite::gr_apache_port:       9080
 graphite::gr_apache_port_https: 9443
 
 rsyslog::server::server_dir: '/srv/log/'
+
+logstash::java_install: true
+logstash::provider: 'custom'
+logstash::jarfile: '/var/tmp/logstash-1.1.9.jar'
 
 ufw_rules:
     allowcarbonfromanywhere:
