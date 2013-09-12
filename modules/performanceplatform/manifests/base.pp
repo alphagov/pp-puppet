@@ -13,7 +13,6 @@ class performanceplatform::base {
     include ufw
     class {'gstatsd': require => Class['python::install'] }
 
-
     apt::ppa { 'ppa:gds/govuk': }
 
     exec { 'apt-get-update':
