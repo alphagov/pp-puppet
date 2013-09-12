@@ -9,5 +9,5 @@ ufw_rules:
         port: 22
         ip:   'any'
 
-# TODO ensure whitelist_ips cascades down correctly from pp-deployment
-whitelist_ips: 127.0.0.1
+# modify in pp-deployment to add more
+fail2ban::whitelist_ips: 127.0.0.1
