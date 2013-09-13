@@ -41,6 +41,7 @@ classes:
     - 'performanceplatform::dns'
     - 'performanceplatform::pp_fail2ban'
     - 'performanceplatform::hosts'
+    # - 'performanceplatform::clamav'
 
 collectd_plugins:
     - 'cpu'
