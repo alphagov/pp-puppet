@@ -52,3 +52,9 @@ vhost_proxies:
         ssl_redirect:    true
         upstream_server: 'localhost'
         upstream_port:   8080
+    graphite-vhost:
+        servername:      "%{::graphite_vhost}"
+        ssl:             true
+        ssl_redirect:    true
+        upstream_server: 'graphite'
+        upstream_port:   80

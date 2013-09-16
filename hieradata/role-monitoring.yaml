@@ -31,8 +31,7 @@ ufw_rules:
 vhost_proxies:
     graphite-vhost:
         servername:      "%{::graphite_vhost}"
-        ssl:             true
-        ssl_redirect:    true
+        ssl:             false
         upstream_server: 'localhost'
         upstream_port:   9080
         access_logs:
