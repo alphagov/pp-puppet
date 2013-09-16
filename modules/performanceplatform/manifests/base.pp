@@ -1,6 +1,7 @@
 # Base resources for all PP machines
 class performanceplatform::base {
     include apt
+    include clamav
     include collectd
     include collectd::plugin::write_graphite
     include gcc
