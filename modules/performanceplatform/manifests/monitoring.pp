@@ -16,8 +16,8 @@ class performanceplatform::monitoring (
   }
 
   curl::fetch { 'logstash-jar':
-    source      => 'https://logstash.objects.dreamhost.com/release/logstash-1.1.9-monolithic.jar',
-    destination => '/var/tmp/logstash-1.1.9.jar',
+    source      => 'https://logstash.objects.dreamhost.com/release/logstash-1.1.13-monolithic.jar',
+    destination => '/var/tmp/logstash-1.1.13.jar',
     before      => Class['logstash'],
   }
 

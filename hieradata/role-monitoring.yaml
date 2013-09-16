@@ -12,7 +12,7 @@ rsyslog::server::server_dir: '/srv/log/'
 
 logstash::java_install: true
 logstash::provider: 'custom'
-logstash::jarfile: '/var/tmp/logstash-1.1.9.jar'
+logstash::jarfile: '/var/tmp/logstash-1.1.13.jar'
 
 ufw_rules:
     allowcarbonfromanywhere:
