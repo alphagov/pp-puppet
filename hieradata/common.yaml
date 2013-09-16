@@ -39,6 +39,7 @@ accounts:
 classes:
     - 'performanceplatform::base'
     - 'performanceplatform::dns'
+    - 'performanceplatform::pp_fail2ban'
     - 'performanceplatform::hosts'
     - 'lumberjack'
 

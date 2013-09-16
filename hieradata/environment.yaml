@@ -8,3 +8,6 @@ ufw_rules:
     allowsshfromanywhere:
         port: 22
         ip:   'any'
+
+# modify in pp-deployment to add more
+fail2ban::whitelist_ips: 127.0.0.1

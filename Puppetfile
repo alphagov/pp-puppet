@@ -11,6 +11,7 @@ mod 'saz/dnsmasq',                '1.0.1'
 mod 'saz/ntp',                    '2.0.3'
 mod 'saz/rsyslog',                '2.0.0'
 mod 'torrancew/account',          '0.0.3'
+mod 'netmanagers/fail2ban',       '1.1.0'
 mod 'backdrop',   :git => 'git://github.com/alphagov/puppet-backdrop.git',
                   :ref => 'c943ad81655c95d41820fb46b03fdb9eb80b9fe9'
 mod 'collectd',   :git => 'git://github.com/alphagov/puppet-collectd.git',
