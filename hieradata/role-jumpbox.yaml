@@ -1,15 +1,10 @@
 classes:
-    - 'graphite'
     - 'jenkins'
     - 'performanceplatform::deploy'
     - 'python'
     - 'nginx::server'
-    - 'rsyslog::server'
     - 'google_credentials'
     - 'phantomjs'
-
-graphite::gr_apache_port:       9080
-graphite::gr_apache_port_https: 9443
 
 jenkins::version: latest
 jenkins::plugin_hash:
@@ -34,17 +29,12 @@ python::version:    '2.7'
 python::dev:        true
 python::virtualenv: true
 
-rsyslog::server::server_dir: '/srv/log/'
-
 system_packages:
     - git
     - libxml2-dev
     - libxslt1-dev
 
 ufw_rules:
-    allowcarbonfromanywhere:
-        port: 2003
-        ip:   'any'
     allowhttpfromall:
         port: 80
         ip:   'any'
@@ -54,9 +44,6 @@ ufw_rules:
     allowsshfromanywhere:
         port: 22
         ip:   'any'
-    allowsyslogfromanywhere:
-        port: 514
-        ip:   'any'
 
 vhost_proxies:
     deploy-vhost:
@@ -65,12 +52,3 @@ vhost_proxies:
         ssl_redirect:    true
         upstream_server: 'localhost'
         upstream_port:   8080
-    graphite-vhost:
-        servername:      "%{::graphite_vhost}"
-        ssl:             true
-        ssl_redirect:    true
-        upstream_server: 'localhost'
-        upstream_port:   9080
-        magic: |
-            auth_basic "Enter username/password";
-            auth_basic_user_file /etc/nginx/htpasswd.pp;

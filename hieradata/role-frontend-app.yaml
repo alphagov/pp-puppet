@@ -16,11 +16,18 @@ vhost_proxies:
         ssl:           true
         ssl_redirect:  true
         upstream_port: 7999
+        access_logs:
+            '{name}.access.json.log': 'json_event'
     www-vhost:
         servername:    "%{::www_vhost}"
         ssl:           true
         ssl_redirect:  true
         upstream_port: 7999
+        access_logs:
+            '{name}.access.json.log': 'json_event'
 
 nginx::server::server_names_hash_bucket_size: 128
 
+nginx_conf:
+    logging:
+        template: performanceplatform/nginx.logging.conf.erb

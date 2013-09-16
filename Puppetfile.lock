@@ -9,12 +9,14 @@ FORGE
     example42/monitor (2.0.1)
       example42/puppi (>= 2.0.0)
     example42/puppi (2.1.0)
+    ispavailability/logstash (0.3.3)
+      puppetlabs/stdlib (>= 3.0.0)
     netmanagers/fail2ban (1.1.0)
       example42/monitor (>= 2.0.0)
       example42/puppi (>= 2.0.0)
       ripienaar/concat (>= 0.2.0)
-    pdxcat/collectd (0.0.3)
-      puppetlabs/stdlib (>= 2.0.0)
+    pdxcat/collectd (0.0.4)
+      puppetlabs/stdlib (>= 2.6.0)
     puppetlabs/apt (1.1.0)
       puppetlabs/stdlib (>= 2.2.1)
     puppetlabs/gcc (0.0.3)
@@ -39,6 +41,13 @@ GIT
   specs:
     collectd (0.0.3)
       puppetlabs/stdlib (>= 2.0.0)
+
+GIT
+  remote: git://github.com/alphagov/puppet-curl.git
+  ref: f4c6d175bdc6cbd71f71fbaa2544ef8f70c4ce48
+  sha: f4c6d175bdc6cbd71f71fbaa2544ef8f70c4ce48
+  specs:
+    curl (0.0.1)
 
 GIT
   remote: git://github.com/alphagov/puppet-google_credentials.git
@@ -71,9 +80,16 @@ GIT
       puppetlabs/stdlib (>= 2.0.0)
 
 GIT
+  remote: git://github.com/alphagov/puppet-lumberjack.git
+  ref: develop
+  sha: 275bc7654de6ffd5855f3d2cda2e232f92812022
+  specs:
+    lumberjack (0.0.1)
+
+GIT
   remote: git://github.com/alphagov/puppet-nginx.git
-  ref: 43bf91e28caa0330c0533b68e891de3f3af0b9d0
-  sha: 43bf91e28caa0330c0533b68e891de3f3af0b9d0
+  ref: d17ab5a4e69a45adf9da5c11daf634d04ad6f76d
+  sha: d17ab5a4e69a45adf9da5c11daf634d04ad6f76d
   specs:
     nginx (0.0.1)
 
@@ -119,15 +135,18 @@ DEPENDENCIES
   attachmentgenie/ufw (= 1.2.0)
   backdrop (>= 0)
   collectd (>= 0)
+  curl (>= 0)
   dwerder/graphite (= 2.4.1)
   google_credentials (>= 0)
   gstatsd (>= 0)
   harden (>= 0)
+  ispavailability/logstash (= 0.3.3)
   jenkins (>= 0)
+  lumberjack (>= 0)
   mongodb (>= 0)
   netmanagers/fail2ban (= 1.1.0)
   nginx (>= 0)
-  pdxcat/collectd (= 0.0.3)
+  pdxcat/collectd (= 0.0.4)
   puppetlabs/gcc (= 0.0.3)
   puppetlabs/stdlib (= 4.1.0)
   python (>= 0)
