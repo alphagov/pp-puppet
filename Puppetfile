@@ -14,6 +14,8 @@ mod 'torrancew/account',          '0.0.3'
 mod 'netmanagers/fail2ban',       '1.1.0'
 mod 'backdrop',   :git => 'git://github.com/alphagov/puppet-backdrop.git',
                   :ref => 'c943ad81655c95d41820fb46b03fdb9eb80b9fe9'
+mod 'clamav',     :git => 'git://github.com/alphagov/puppet-clamav.git',
+                  :ref => '31af4f0c2753dd25bca3dd0c7cc69d273c4d640d'
 mod 'collectd',   :git => 'git://github.com/alphagov/puppet-collectd.git',
                   :ref => 'e17cb3f06f5e26299de145da8fe18a218a10f3c4'
 mod 'curl',       :git => 'git://github.com/alphagov/puppet-curl.git',
