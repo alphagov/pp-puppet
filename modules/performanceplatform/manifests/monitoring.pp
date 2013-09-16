@@ -5,14 +5,14 @@ class performanceplatform::monitoring (
   file { '/etc/apache2/run':
     ensure  => link,
     target  => '/var/run/apache2',
-    require => Package["${::graphite::params::apache_pkg}"],
+    require => Package[$::graphite::params::apache_pkg],
     notify  => Service['apache2'],
   }
 
   file { '/etc/nginx/htpasswd':
-    ensure  => present,
-    content => 'betademo:cBxAp7qb7cNXc', # nottobes
-    subscribe  => Service['nginx'],
+    ensure    => present,
+    content   => 'betademo:cBxAp7qb7cNXc', # nottobes
+    subscribe => Service['nginx'],
   }
 
   curl::fetch { 'logstash-jar':
@@ -51,7 +51,7 @@ class performanceplatform::monitoring (
     type      => 'lumberjack',
     tags      => [ 'nginx' ],
     count     => { '%{server_name}.http_%{status}' => 1 },
-    timing    => { 
+    timing    => {
       '%{server_name}.request_time' => '%{request_time}'
     },
     namespace => 'nginx',
