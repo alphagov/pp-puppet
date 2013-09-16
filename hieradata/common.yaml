@@ -41,6 +41,12 @@ classes:
     - 'performanceplatform::dns'
     - 'performanceplatform::pp_fail2ban'
     - 'performanceplatform::hosts'
+    - 'lumberjack'
+
+lumberjack::host:        'graphite'
+lumberjack::port:        3456
+lumberjack::deb_source:  'puppet:///modules/performanceplatform/lumberjack_0.2.0_amd64.deb'
+lumberjack::cert_source: 'puppet:///modules/performanceplatform/logstash.pub'
 
 collectd_plugins:
     - 'cpu'
@@ -70,7 +76,7 @@ nameservers:
     - 8.8.4.4
 
 performanceplatform::dns::hosts: |
-    172.27.1.2  jumpbox-1 monitoring log graphite
+    172.27.1.2  jumpbox-1
     172.27.1.11 frontend-app-1 frontend
     172.27.1.12 frontend-app-2 frontend
     172.27.1.21 backend-app-1 backend
@@ -78,6 +84,7 @@ performanceplatform::dns::hosts: |
     172.27.1.31 mongo-1 mongo
     172.27.1.32 mongo-2 mongo
     172.27.1.33 mongo-3 mongo
+    172.27.1.41 monitoring-1 log graphite logstash
 
 performanceplatform::mongo::mongo_hosts:
     - mongo-1
@@ -99,7 +106,6 @@ google_credentials::refresh_tokens:
 
 system_packages:
     - at
-    - curl
     - htop
     - ssl-cert
     - vim

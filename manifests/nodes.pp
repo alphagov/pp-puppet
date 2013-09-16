@@ -1,7 +1,9 @@
 # Everything in this node definition depends on Hiera
 
 # This defines the role of the node
-$machine_role     = regsubst($::hostname, '^(.*)-\d$', '\1')
+if empty($machine_role) {
+    $machine_role   = regsubst($::hostname, '^(.*)-\d$', '\1')
+}
 
 # Nginx Vhosts for later use
 $domain_name        = hiera('domain_name')
@@ -9,6 +11,7 @@ $public_domain_name = hiera('public_domain_name', $domain_name)
 $admin_vhost        = join(['admin',$public_domain_name],'.')
 $deploy_vhost       = join(['deploy',$domain_name],'.')
 $graphite_vhost     = join(['graphite',$domain_name],'.')
+$logstash_vhost     = join(['logstash',$domain_name],'.')
 $logging_vhost      = join(['logging',$domain_name],'.')
 $nagios_vhost       = join(['nagios',$domain_name],'.')
 $www_vhost          = join(['www',$public_domain_name],'.')
@@ -39,6 +42,12 @@ node default {
         create_resources( 'nginx::vhost::proxy', $vhost_proxies )
     }
 
+    # Create extra nginx conf
+    $nginx_conf = hiera_hash( 'nginx_conf', {} )
+    if !empty($nginx_conf) {
+        create_resources( 'nginx::conf', $nginx_conf )
+    }
+
     # Install the apps
     $backdrop_apps = hiera_hash( 'backdrop_apps', {} )
     if !empty($backdrop_apps) {
@@ -49,5 +58,10 @@ node default {
     $collectd_plugins = hiera_array( 'collectd_plugins', [] )
     if !empty($collectd_plugins) {
         collectd::plugin { $collectd_plugins: }
+    }
+
+    $lumberjack_instances = hiera_hash( 'lumberjack_instances', {} )
+    if !empty($lumberjack_instances) {
+        create_resources( 'lumberjack::logshipper', $lumberjack_instances )
     }
 }
