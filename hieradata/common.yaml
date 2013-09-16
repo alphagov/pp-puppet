@@ -36,6 +36,12 @@ accounts:
             ssh_key: AAAAB3NzaC1yc2EAAAABIwAAAQEAyNoMftFLf3w0NOW7J0KUwOx9897CU352n3zKD3p/GCcdH4eMv1QI0BhjItZplWG8TzFSBfWOOSruRh1Gksa1l1jiQcisEio6Wr7kZ7bpvMMA45ZoaDc26HTB+r0BZkNn7Lwwxxvy+1pbqStnnKzb9OTYIyVkb495LS0x1EL/P9S/NWtpm8ZULa1JDplYMA5SqMZnhmlGAXdh8UnjdcdOgOm2ngA+geJBSzVbABECiIAklHU1PRzOtrq8SuO8JmXW6NkuL0aabdTgE6noIm+Nn7T5ufZpOpIGYimVI8+mu+efcBzAp5Q0vTRgSBLfggdczZbFfPXpIt1Ib+LEf+Cuqw==
             groups:
                 - gds
+        tombooth:
+            home_dir: /home/tombooth
+            comment: Tom Booth
+            ssh_key: AAAAB3NzaC1yc2EAAAADAQABAAABAQClJ8bE0B8OKPdCYNUxy28JQIzBVSBED0va9eERQ8I//YPChd/uo7x+736t5o41VNFJQXWOug3AKE8aV1qTPQn+33JUL/6OHtZDdec+lRzRXW4A+/8WMUoPDItygTB8dbMqRlg8rFDrwFKO6qZ3riHcwoj9BHAc4TlTbcq0vXgRRyHzc7uFwJzSd5wIY0nG5O7qbe4CubAij9hVfdHDS8GTMPuuqd7/YzOyjgKg72BDQWTF3u5YFECDtQgps8OZja59IlMM5L0QrZCVsJFlDtKYPRs6LcX6lEvt2ZBTfn6IPNzeNFJ1b8ltpjsEn/Yi70qA0XWq+kfLMccX4hau25kB
+            groups:
+                - gds
 classes:
     - 'performanceplatform::base'
     - 'performanceplatform::dns'
