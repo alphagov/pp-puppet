@@ -44,3 +44,8 @@ vhost_proxies:
 nginx_conf:
     logging:
         template: performanceplatform/nginx.logging.conf.erb
+
+lumberjack_instances:
+    nginx:
+        log_files: [ '/var/log/nginx/*.log' ]
+        fields: { "tag": "nginx" }

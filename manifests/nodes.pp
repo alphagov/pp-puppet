@@ -11,6 +11,7 @@ $public_domain_name = hiera('public_domain_name', $domain_name)
 $admin_vhost        = join(['admin',$public_domain_name],'.')
 $deploy_vhost       = join(['deploy',$domain_name],'.')
 $graphite_vhost     = join(['graphite',$domain_name],'.')
+$logstash_vhost     = join(['logstash',$domain_name],'.')
 $logging_vhost      = join(['logging',$domain_name],'.')
 $nagios_vhost       = join(['nagios',$domain_name],'.')
 $www_vhost          = join(['www',$public_domain_name],'.')
@@ -57,5 +58,10 @@ node default {
     $collectd_plugins = hiera_array( 'collectd_plugins', [] )
     if !empty($collectd_plugins) {
         collectd::plugin { $collectd_plugins: }
+    }
+
+    $lumberjack_instances = hiera_hash( 'lumberjack_instances', {} )
+    if !empty($lumberjack_instances) {
+        create_resources( 'lumberjack::logshipper', $lumberjack_instances )
     }
 }
