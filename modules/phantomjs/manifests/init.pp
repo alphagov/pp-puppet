@@ -9,7 +9,7 @@ class phantomjs {
   }
 
   exec { 'unpack phantomjs':
-    require => Exec['download phantomjs'],
+    require => Curl::Fetch['download phantomjs'],
     creates => '/usr/local/src/phantomjs-1.9.1-linux-x86_64',
     cwd     => '/usr/local/src',
     command => '/bin/tar -jxf ./phantomjs-1.9.1-linux-x86_64.tar.bz2'
