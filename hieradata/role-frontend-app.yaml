@@ -31,3 +31,8 @@ nginx::server::server_names_hash_bucket_size: 128
 nginx_conf:
     logging:
         template: performanceplatform/nginx.logging.conf.erb
+
+lumberjack_instances:
+    nginx:
+        log_files: [ '/var/log/nginx/*.access.json.log' ]
+        fields: { "tag": "nginx" }
