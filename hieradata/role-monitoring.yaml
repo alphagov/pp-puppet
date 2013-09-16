@@ -18,6 +18,9 @@ ufw_rules:
     allowcarbonfromanywhere:
         port: 2003
         ip:   'any'
+    allowlumberjackfromanywhere:
+        port: 3456
+        ip:   'any'
     allowhttpfromall:
         port: 80
         ip:   'any'
@@ -46,5 +49,5 @@ nginx_conf:
 
 lumberjack_instances:
     nginx:
-        log_files: [ '/var/log/nginx/*.log' ]
+        log_files: [ '/var/log/nginx/*.access.json.log' ]
         fields: { "tag": "nginx" }
