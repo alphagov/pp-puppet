@@ -42,6 +42,9 @@ backdrop::user: 'deploy'
 backdrop::group: 'deploy'
 backdrop::pip_cache_path: '/var/cache/pip-download-cache'
 
+system_packages:
+    - git
+
 ufw_rules:
     allowhttp:
         port: 80
