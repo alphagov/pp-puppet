@@ -2,6 +2,7 @@
 classes:
     - 'python'
     - 'backdrop'
+    - 'backdrop_collector'
 
 backdrop_apps:
     admin.backdrop:
@@ -21,6 +22,14 @@ backdrop_apps:
         user:       'deploy'
         group:      'deploy'
 
+backdrop_collectors:
+    backdrop-ga-collector:
+        user: 'deploy'
+        group: 'deploy'
+    backdrop-pingdom-collector:
+        user: 'deploy'
+        group: 'deploy'
+
 python::version:    '2.7'
 python::dev:        true
 python::virtualenv: true
@@ -29,6 +38,10 @@ python::pip:        true
 backdrop::user: 'deploy'
 backdrop::group: 'deploy'
 backdrop::pip_cache_path: '/var/cache/pip-download-cache'
+
+backdrop_collector::user: 'deploy'
+backdrop_collector::group: 'deploy'
+backdrop_collector::pip_cache_path: '/var/cache/pip-download-cache'
 
 ufw_rules:
     allowhttp:

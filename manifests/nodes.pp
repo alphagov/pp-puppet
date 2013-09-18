@@ -54,6 +54,12 @@ node default {
         create_resources( 'backdrop::app', $backdrop_apps )
     }
 
+    # Set up directories and whatnot for the collectors
+    $backdrop_collectors = hiera_hash( 'backdrop_collectors', {} )
+    if !empty($backdrop_collectors) {
+        create_resources( 'backdrop_collector::app', $backdrop_collectors )
+    }
+
     # Collect some metrics
     $collectd_plugins = hiera_array( 'collectd_plugins', [] )
     if !empty($collectd_plugins) {
