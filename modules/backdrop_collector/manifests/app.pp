@@ -1,6 +1,6 @@
-class backdrop_collector::app (
-    $user        = undef,
-    $group       = undef,
+define backdrop_collector::app (
+    $user  = undef,
+    $group = undef,
 ) {
     $app_path = "/opt/${title}"
     $virtualenv_path = "${app_path}/shared/venv"

@@ -1,3 +1,3 @@
-class backdrop_collector() {
+class backdrop_collector {
     # empty class
 }
