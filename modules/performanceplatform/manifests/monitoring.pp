@@ -37,10 +37,6 @@ class performanceplatform::monitoring (
     ],
   }
 
-  logstash::output::file { 'all':
-    path => '/var/log/out.logstash.log',
-  }
-
   logstash::output::statsd { 'statsd':
     type      => 'lumberjack',
     tags      => [ 'nginx' ],
