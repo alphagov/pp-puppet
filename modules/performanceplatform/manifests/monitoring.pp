@@ -15,12 +15,6 @@ class performanceplatform::monitoring (
     subscribe => Service['nginx'],
   }
 
-  curl::fetch { 'logstash-jar':
-    source      => 'https://logstash.objects.dreamhost.com/release/logstash-1.1.13-monolithic.jar',
-    destination => '/var/tmp/logstash-1.1.13.jar',
-    before      => Class['logstash'],
-  }
-
   logstash::input::lumberjack { 'lumberjack-nginx':
     format          => 'json',
     type            => 'lumberjack',
