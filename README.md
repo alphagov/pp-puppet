@@ -60,14 +60,14 @@ they don't scale appropriately to local VMs (especially when running 10 of them)
 MongoDB Replicaset configuration requires that all nodes are up and running Mongo first, on
 initialisation, each node will background a job for 2 minutes later to configure the replicaset. This
 means that it may take a couple of minutes after the last mongo node is provisioned before the replicaset
-is available. If it doesn't work, then simply triggering provisionig on a node with the following command
+is available. If it doesn't work, then simply triggering provisioning on a node with the following command
 and then waiting 2 minutes should make it work.
 
 ```
-vagrant provision mongo-1.backend
+vagrant provision mongo-1
 ```
 
-To verify that mongo is working, do `vagrant ssh mongo-1.backend`, run `mongo` and then issue the
+To verify that mongo is working, do `vagrant ssh mongo-1`, run `mongo` and then issue the
 command `rs.isMaster()` - you should see output something like this:
 
 ```
@@ -77,12 +77,12 @@ production:SECONDARY> rs.isMaster()
     "ismaster" : false,
     "secondary" : true,
     "hosts" : [
-            "mongo-2.backend:27017",
-            "mongo-3.backend:27017",
-            "mongo-1.backend:27017"
+            "mongo-2:27017",
+            "mongo-3:27017",
+            "mongo-1:27017"
     ],
-    "primary" : "mongo-1.backend:27017",
-    "me" : "mongo-2.backend:27017",
+    "primary" : "mongo-1:27017",
+    "me" : "mongo-2:27017",
     "maxBsonObjectSize" : 16777216,
     "maxMessageSizeBytes" : 48000000,
     "localTime" : ISODate("2013-05-25T14:11:09.095Z"),

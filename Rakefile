@@ -15,4 +15,6 @@ task :syntax => [:syntax_erb, :syntax_pp]
 desc "Run puppet-lint against all modules"
 task :lint
 
-task :default => [:syntax_pp, :syntax_erb, :lint, :spec]
+task :test => [:syntax, :lint, :spec]
+
+task :default => [:syntax, :lint, :spec]
