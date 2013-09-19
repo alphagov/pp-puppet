@@ -49,7 +49,7 @@ classes:
     - 'performanceplatform::hosts'
     - 'lumberjack'
 
-lumberjack::host:        'graphite'
+lumberjack::host:        'logstash'
 lumberjack::port:        3456
 lumberjack::deb_source:  'puppet:///modules/performanceplatform/lumberjack_0.2.0_amd64.deb'
 lumberjack::cert_source: 'puppet:///modules/performanceplatform/logstash.pub'
