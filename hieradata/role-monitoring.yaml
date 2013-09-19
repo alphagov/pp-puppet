@@ -1,7 +1,7 @@
 classes:
     - 'graphite'
     - 'logstash'
-    - 'nginx::server'
+    - 'performanceplatform::nginx_server'
     - 'rsyslog::server'
     - 'performanceplatform::monitoring'
 

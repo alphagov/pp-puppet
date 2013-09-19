@@ -2,7 +2,7 @@ classes:
     - 'jenkins'
     - 'performanceplatform::deploy'
     - 'python'
-    - 'nginx::server'
+    - 'performanceplatform::nginx_server'
     - 'google_credentials'
     - 'phantomjs'
 
