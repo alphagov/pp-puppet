@@ -9,8 +9,6 @@ FORGE
     example42/monitor (2.0.1)
       example42/puppi (>= 2.0.0)
     example42/puppi (2.1.0)
-    ispavailability/logstash (0.3.3)
-      puppetlabs/stdlib (>= 3.0.0)
     netmanagers/fail2ban (1.1.0)
       example42/monitor (>= 2.0.0)
       example42/puppi (>= 2.0.0)
@@ -88,6 +86,14 @@ GIT
       puppetlabs/stdlib (>= 2.0.0)
 
 GIT
+  remote: git://github.com/alphagov/puppet-logstash.git
+  ref: gen-files-should-notify
+  sha: f2b639f6f1bd84be7889df5a1fd4e341767a827e
+  specs:
+    logstash (0.3.3)
+      puppetlabs/stdlib (>= 3.0.0)
+
+GIT
   remote: git://github.com/alphagov/puppet-lumberjack.git
   ref: develop
   sha: 275bc7654de6ffd5855f3d2cda2e232f92812022
@@ -149,8 +155,8 @@ DEPENDENCIES
   google_credentials (>= 0)
   gstatsd (>= 0)
   harden (>= 0)
-  ispavailability/logstash (= 0.3.3)
   jenkins (>= 0)
+  logstash (>= 0)
   lumberjack (>= 0)
   mongodb (>= 0)
   netmanagers/fail2ban (= 1.1.0)

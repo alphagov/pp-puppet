@@ -3,7 +3,6 @@ forge "http://forge.puppetlabs.com"
 mod 'attachmentgenie/ssh',        '1.1.0'
 mod 'attachmentgenie/ufw',        '1.2.0'
 mod 'dwerder/graphite',           '2.4.1'
-mod 'ispavailability/logstash',   '0.3.3'
 mod 'pdxcat/collectd',            '0.0.4'
 mod 'puppetlabs/gcc',             '0.0.3'
 mod 'puppetlabs/stdlib',          '4.1.0'
@@ -26,6 +25,8 @@ mod 'harden',     :git => 'git://github.com/alphagov/puppet-harden.git',
                   :ref => '0966c98cc3f54815c9aac0ebe6e900b70f85182d'
 mod 'jenkins',    :git => 'git://github.com/alphagov/puppet-jenkins.git',
                   :ref => '4c7990fa8495b6d84292c2153993ac91c3b2916d'
+mod 'logstash',   :git => 'git://github.com/alphagov/puppet-logstash.git',
+                  :ref => 'gen-files-should-notify'
 mod 'lumberjack', :git => 'git://github.com/alphagov/puppet-lumberjack.git',
                   :ref => 'develop'
 mod 'mongodb',    :git => 'git://github.com/alphagov/puppetlabs-mongodb.git',

@@ -1,7 +1,7 @@
 classes:
     - 'graphite'
     - 'logstash'
-    - 'nginx::server'
+    - 'performanceplatform::nginx_server'
     - 'rsyslog::server'
     - 'performanceplatform::monitoring'
 
@@ -12,7 +12,7 @@ rsyslog::server::server_dir: '/srv/log/'
 
 logstash::java_install: true
 logstash::provider: 'custom'
-logstash::jarfile: '/var/tmp/logstash-1.1.13.jar'
+logstash::jarfile: 'puppet:///modules/performanceplatform/logstash-1.1.13-monolithic.jar'
 
 ufw_rules:
     allowcarbonfromanywhere:
