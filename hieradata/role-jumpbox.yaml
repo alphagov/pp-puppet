@@ -52,3 +52,22 @@ vhost_proxies:
         ssl_redirect:    true
         upstream_server: 'localhost'
         upstream_port:   8080
+        access_logs:
+            '{name}.access.json.log': 'json_event'
+    graphite-vhost:
+        servername:      "%{::graphite_vhost}"
+        ssl:             true
+        ssl_redirect:    true
+        upstream_server: 'graphite'
+        upstream_port:   80
+        access_logs:
+            '{name}.access.json.log': 'json_event'
+
+nginx_conf:
+    logging:
+        template: performanceplatform/nginx.logging.conf.erb
+
+lumberjack_instances:
+    nginx:
+        log_files: [ '/var/log/nginx/*.access.json.log' ]
+        fields: { "tag": "nginx" }
