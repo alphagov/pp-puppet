@@ -1,7 +1,4 @@
-define backdrop_collector::app (
-    $user  = undef,
-    $group = undef,
-) {
+define backdrop_collector::app ($user, $group) {
     $app_path = "/opt/${title}"
     $virtualenv_path = "${app_path}/shared/venv"
     $log_path = "/var/log/${title}"
