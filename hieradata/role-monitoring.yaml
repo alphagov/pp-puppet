@@ -3,6 +3,7 @@ classes:
     - 'logstash'
     - 'performanceplatform::nginx_server'
     - 'performanceplatform::monitoring'
+    - 'rabbitmq'
     - 'redis'
     - 'rsyslog::server'
 
@@ -27,6 +28,9 @@ ufw_rules:
         ip:   'any'
     allowhttpsfromall:
         port: 443
+        ip:   'any'
+    allowrabbitmqfromall:
+        port: 5672
         ip:   'any'
     allowsyslogfromanywhere:
         port: 514
