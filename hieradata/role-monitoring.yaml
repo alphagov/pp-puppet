@@ -6,11 +6,21 @@ classes:
     - 'rabbitmq'
     - 'redis'
     - 'rsyslog::server'
+    - 'sensu'
 
 graphite::gr_apache_port:       9080
 graphite::gr_apache_port_https: 9443
 
 rsyslog::server::server_dir: '/srv/log/'
+
+sensu::dashboard_port: 8090
+sensu::dashboard_user: betademo
+sensu::dashboard_password: nottobes
+sensu::rabbitmq_host: rabbitmq
+sensu::rabbitmq_password: "%{::rabbitmq_sensu_password}"
+sensu::rabbitmq_port: 5672
+sensu::server: true
+sensu::safe_mode: true
 
 logstash::java_install: true
 logstash::provider: 'custom'
@@ -47,6 +57,13 @@ vhost_proxies:
         magic: |
             auth_basic "Enter username/password";
             auth_basic_user_file /etc/nginx/htpasswd;
+    alerts-vhost:
+        servername:      "%{::alerts_vhost}"
+        ssl:             false
+        upstream_server: 'localhost'
+        upstream_port:   8090
+        access_logs:
+            '{name}.access.json.log': 'json_event'
 
 nginx_conf:
     logging:

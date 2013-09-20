@@ -17,7 +17,7 @@ class performanceplatform::monitoring (
 
   rabbitmq_user { 'sensu':
     ensure   => present,
-    password => hiera('rabbitmq_sensu_password'),
+    password => $::rabbitmq_sensu_password,
     admin    => false
   }
 

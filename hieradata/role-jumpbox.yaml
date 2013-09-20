@@ -62,6 +62,14 @@ vhost_proxies:
         upstream_port:   80
         access_logs:
             '{name}.access.json.log': 'json_event'
+    alerts-vhost:
+        servername:      "%{::alerts_vhost}"
+        ssl:             true
+        ssl_redirect:    true
+        upstream_server: 'alerts'
+        upstream_port:   80
+        access_logs:
+            '{name}.access.json.log': 'json_event'
 
 nginx_conf:
     logging:
