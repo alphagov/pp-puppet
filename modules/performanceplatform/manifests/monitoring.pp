@@ -15,6 +15,12 @@ class performanceplatform::monitoring (
     subscribe => Service['nginx'],
   }
 
+  rabbitmq_user { 'sensu':
+    ensure   => present,
+    password => hiera('rabbitmq_sensu_password'),
+    admin    => false
+  }
+
   logstash::input::lumberjack { 'lumberjack-nginx':
     format          => 'json',
     type            => 'lumberjack',
