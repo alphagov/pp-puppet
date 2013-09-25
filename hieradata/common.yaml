@@ -44,9 +44,7 @@ accounts:
                 - gds
 classes:
     - 'performanceplatform::base'
-    - 'performanceplatform::dns'
     - 'performanceplatform::pp_fail2ban'
-    - 'performanceplatform::hosts'
     - 'lumberjack'
 
 lumberjack::host:        'logstash'

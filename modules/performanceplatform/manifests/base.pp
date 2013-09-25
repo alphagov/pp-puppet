@@ -12,6 +12,16 @@ class performanceplatform::base {
     include ssh::server
     include tmux
     include ufw
+
+    stage { 'system':
+      before => Stage['main'],
+    }
+
+    class { ['performanceplatform::dns', 
+             'performanceplatform::hosts']:
+      stage => system,
+    }
+
     class {'gstatsd': require => Class['python::install'] }
 
     apt::ppa { 'ppa:gds/govuk': }
