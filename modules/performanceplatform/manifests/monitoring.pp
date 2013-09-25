@@ -15,6 +15,18 @@ class performanceplatform::monitoring (
     subscribe => Service['nginx'],
   }
 
+  class { 'sensu':
+    dashboard_port     => 8090,
+    dashboard_user     => 'betademo',
+    dashboard_password => 'nottobes',
+    rabbitmq_host      => 'rabbitmq',
+    rabbitmq_password  => $::rabbitmq_sensu_password,
+    rabbitmq_port      => 5672,
+    server             => true,
+    safe_mode          => true,
+    require            => [ Class['redis'], Class['rabbitmq'] ],
+  }
+
   rabbitmq_user { 'sensu':
     ensure   => present,
     password => $::rabbitmq_sensu_password,
