@@ -17,8 +17,8 @@ class performanceplatform::base {
       before => Stage['main'],
     }
 
-    class { ['performanceplatform::dns', 
-             'performanceplatform::hosts']:
+    class { [ 'performanceplatform::dns',
+              'performanceplatform::hosts' ]:
       stage => system,
     }
 
