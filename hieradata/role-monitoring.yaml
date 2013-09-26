@@ -1,7 +1,7 @@
 classes:
     - 'graphite'
     - 'logstash'
-    - 'performanceplatform::nginx_server'
+    - 'nginx::server'
     - 'performanceplatform::monitoring'
     - 'rabbitmq'
     - 'redis'

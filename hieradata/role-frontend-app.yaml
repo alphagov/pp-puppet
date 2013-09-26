@@ -1,6 +1,6 @@
 ---
 classes:
-    - 'performanceplatform::nginx_server'
+    - 'nginx::server'
     - 'varnish'
 
 ufw_rules:
@@ -26,7 +26,7 @@ vhost_proxies:
         access_logs:
             '{name}.access.json.log': 'json_event'
 
-performanceplatform::nginx_server::server_names_hash_bucket_size: 128
+nginx::server::server_names_hash_bucket_size: 128
 
 nginx_conf:
     logging:
