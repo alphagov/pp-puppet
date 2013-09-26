@@ -44,9 +44,7 @@ accounts:
                 - gds
 classes:
     - 'performanceplatform::base'
-    - 'performanceplatform::dns'
     - 'performanceplatform::pp_fail2ban'
-    - 'performanceplatform::hosts'
     - 'lumberjack'
 
 lumberjack::host:        'logstash'
@@ -90,7 +88,7 @@ performanceplatform::dns::hosts: |
     172.27.1.31 mongo-1 mongo
     172.27.1.32 mongo-2 mongo
     172.27.1.33 mongo-3 mongo
-    172.27.1.41 monitoring-1 log graphite logstash alerts
+    172.27.1.41 monitoring-1 log graphite logstash alerts redis rabbitmq
 
 performanceplatform::mongo::mongo_hosts:
     - mongo-1

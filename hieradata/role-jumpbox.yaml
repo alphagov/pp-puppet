@@ -2,7 +2,7 @@ classes:
     - 'jenkins'
     - 'performanceplatform::deploy'
     - 'python'
-    - 'performanceplatform::nginx_server'
+    - 'nginx::server'
     - 'google_credentials'
     - 'phantomjs'
 
@@ -59,6 +59,14 @@ vhost_proxies:
         ssl:             true
         ssl_redirect:    true
         upstream_server: 'graphite'
+        upstream_port:   80
+        access_logs:
+            '{name}.access.json.log': 'json_event'
+    alerts-vhost:
+        servername:      "%{::alerts_vhost}"
+        ssl:             true
+        ssl_redirect:    true
+        upstream_server: 'alerts'
         upstream_port:   80
         access_logs:
             '{name}.access.json.log': 'json_event'
