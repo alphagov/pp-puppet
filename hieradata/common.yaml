@@ -117,6 +117,7 @@ google_credentials::refresh_tokens:
         refresh_token: "drive refresh token"
 
 system_packages:
+    - git
     - at
     - htop
     - ssl-cert

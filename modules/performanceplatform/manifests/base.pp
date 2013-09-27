@@ -71,4 +71,16 @@ FACTER_machine_environment=${environment}
       class { 'sensu': }
     }
 
+    package {'sensu-plugin':
+      ensure   => installed,
+      provider => gem
+    }
+
+    vcsrepo { '/etc/sensu/community-plugins':
+      ensure   => present,
+      provider => git,
+      source   => 'https://github.com/sensu/sensu-community-plugins.git',
+      revision => '4e4f279bd3a16330ffc0083cc1494e7da878e730',
+    }
+
 }
