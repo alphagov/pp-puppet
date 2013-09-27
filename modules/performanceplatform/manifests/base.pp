@@ -61,4 +61,14 @@ FACTER_machine_environment=${environment}
         owner  => 'root',
         group  => 'gds',
     }
+
+    # On the monitoring box we will be running the server and we want to make sure it comes up after redis and rabbitmq have been installed and started.
+    if $machine_role == 'monitoring' {
+      class { 'sensu':
+        require => [ Class['redis'], Class['rabbitmq'] ],
+      }
+    } else {
+      class { 'sensu': }
+    }
+
 }

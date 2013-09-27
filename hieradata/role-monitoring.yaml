@@ -6,12 +6,13 @@ classes:
     - 'rabbitmq'
     - 'redis'
     - 'rsyslog::server'
-    - 'sensu'
 
 graphite::gr_apache_port:       9080
 graphite::gr_apache_port_https: 9443
 
 rsyslog::server::server_dir: '/srv/log/'
+
+sensu::server: true
 
 logstash::java_install: true
 logstash::provider: 'custom'
