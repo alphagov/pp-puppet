@@ -1,9 +1,12 @@
 classes:
     - 'graphite'
     - 'logstash'
-    - 'performanceplatform::nginx_server'
-    - 'rsyslog::server'
+    - 'nginx::server'
     - 'performanceplatform::monitoring'
+    - 'rabbitmq'
+    - 'redis'
+    - 'rsyslog::server'
+    - 'sensu'
 
 graphite::gr_apache_port:       9080
 graphite::gr_apache_port_https: 9443
@@ -27,6 +30,9 @@ ufw_rules:
     allowhttpsfromall:
         port: 443
         ip:   'any'
+    allowrabbitmqfromall:
+        port: 5672
+        ip:   'any'
     allowsyslogfromanywhere:
         port: 514
         ip:   'any'
@@ -42,6 +48,13 @@ vhost_proxies:
         magic: |
             auth_basic "Enter username/password";
             auth_basic_user_file /etc/nginx/htpasswd;
+    alerts-vhost:
+        servername:      "%{::alerts_vhost}"
+        ssl:             false
+        upstream_server: 'localhost'
+        upstream_port:   8090
+        access_logs:
+            '{name}.access.json.log': 'json_event'
 
 nginx_conf:
     logging:
