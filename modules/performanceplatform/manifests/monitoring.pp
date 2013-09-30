@@ -15,6 +15,9 @@ class performanceplatform::monitoring (
     subscribe => Service['nginx'],
   }
 
+  Class['redis'] -> Class['sensu']
+  Class['rabbitmq'] -> Class['sensu']
+
   rabbitmq_user { 'sensu':
     ensure   => present,
     password => $::rabbitmq_sensu_password,

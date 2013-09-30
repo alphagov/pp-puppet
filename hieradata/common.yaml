@@ -46,6 +46,7 @@ classes:
     - 'performanceplatform::base'
     - 'performanceplatform::pp_fail2ban'
     - 'lumberjack'
+    - 'sensu'
 
 sensu::dashboard_port: 8090
 sensu::dashboard_user: 'betademo'
