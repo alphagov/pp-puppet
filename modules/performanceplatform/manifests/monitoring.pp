@@ -21,7 +21,23 @@ class performanceplatform::monitoring (
   rabbitmq_user { 'sensu':
     ensure   => present,
     password => $::rabbitmq_sensu_password,
-    admin    => false
+    admin    => true,
+    provider => 'rabbitmqctl',
+    notify   => Class['sensu'],
+  }
+
+  rabbitmq_vhost { '/sensu':
+    ensure   => present,
+    provider => 'rabbitmqctl',
+    notify   => Class['sensu'],
+  }
+
+  rabbitmq_user_permissions { 'sensu@/sensu':
+    configure_permission => '.*',
+    read_permission      => '.*',
+    write_permission     => '.*',
+    provider             => 'rabbitmqctl',
+    notify               => Class['sensu'],
   }
 
   logstash::input::lumberjack { 'lumberjack-nginx':
