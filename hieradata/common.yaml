@@ -48,9 +48,6 @@ classes:
     - 'lumberjack'
     - 'sensu'
 
-sensu::dashboard_port: 8090
-sensu::dashboard_user: 'betademo'
-sensu::dashboard_password: 'nottobes'
 sensu::rabbitmq_host: 'rabbitmq'
 sensu::rabbitmq_password: "%{::rabbitmq_sensu_password}"
 sensu::rabbitmq_port: 5672
