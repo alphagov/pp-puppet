@@ -154,6 +154,15 @@ GIT
     tmux (0.0.1)
 
 GIT
+  remote: git://github.com/sensu/sensu-puppet.git
+  ref: v0.7.5
+  sha: 515a304bc44b9c18a93639a591914eb88c9ea2e4
+  specs:
+    sensu (0.7.5)
+      puppetlabs/apt (>= 0)
+      puppetlabs/stdlib (>= 0)
+
+GIT
   remote: git://github.com/stankevich/puppet-python.git
   ref: f508b71d534f3c67db12886fa914cb4ef74bbe7a
   sha: f508b71d534f3c67db12886fa914cb4ef74bbe7a
@@ -185,6 +194,7 @@ DEPENDENCIES
   saz/dnsmasq (= 1.0.1)
   saz/ntp (= 2.0.3)
   saz/rsyslog (= 2.0.0)
+  sensu (>= 0)
   sensu/sensu (= 0.7.5)
   ssl (>= 0)
   thomasvandoren/redis (= 0.0.9)
