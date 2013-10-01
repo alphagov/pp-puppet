@@ -43,7 +43,7 @@ ufw_rules:
 
 vhost_proxies:
     graphite-vhost:
-        servername:      "%{::graphite_vhost}"
+        servername:      "graphite"
         ssl:             false
         upstream_server: 'localhost'
         upstream_port:   9080

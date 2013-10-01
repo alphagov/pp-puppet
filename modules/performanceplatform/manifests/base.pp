@@ -70,8 +70,8 @@ FACTER_machine_environment=${environment}
     vcsrepo { '/etc/sensu/community-plugins':
       ensure   => present,
       provider => git,
-      source   => 'https://github.com/sensu/sensu-community-plugins.git',
-      revision => '4e4f279bd3a16330ffc0083cc1494e7da878e730',
+      source   => 'https://github.com/alphagov/sensu-community-plugins.git',
+      revision => '76233280a0782f8c2d41c8af46c8ab0d96784273',
     }
 
 }
