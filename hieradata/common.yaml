@@ -46,6 +46,12 @@ classes:
     - 'performanceplatform::base'
     - 'performanceplatform::pp_fail2ban'
     - 'lumberjack'
+    - 'sensu'
+
+sensu::rabbitmq_host: 'rabbitmq'
+sensu::rabbitmq_password: "%{::rabbitmq_sensu_password}"
+sensu::rabbitmq_port: 5672
+sensu::safe_mode: true
 
 lumberjack::host:        'logstash'
 lumberjack::port:        3456
@@ -109,6 +115,7 @@ google_credentials::refresh_tokens:
         refresh_token: "drive refresh token"
 
 system_packages:
+    - git
     - at
     - htop
     - ssl-cert

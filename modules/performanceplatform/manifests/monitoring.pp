@@ -15,22 +15,29 @@ class performanceplatform::monitoring (
     subscribe => Service['nginx'],
   }
 
-  class { 'sensu':
-    dashboard_port     => 8090,
-    dashboard_user     => 'betademo',
-    dashboard_password => 'nottobes',
-    rabbitmq_host      => 'rabbitmq',
-    rabbitmq_password  => $::rabbitmq_sensu_password,
-    rabbitmq_port      => 5672,
-    server             => true,
-    safe_mode          => true,
-    require            => [ Class['redis'], Class['rabbitmq'] ],
-  }
+  Class['redis'] -> Class['sensu']
+  Class['rabbitmq'] -> Class['sensu']
 
   rabbitmq_user { 'sensu':
     ensure   => present,
     password => $::rabbitmq_sensu_password,
-    admin    => false
+    admin    => true,
+    provider => 'rabbitmqctl',
+    notify   => Class['sensu'],
+  }
+
+  rabbitmq_vhost { '/sensu':
+    ensure   => present,
+    provider => 'rabbitmqctl',
+    notify   => Class['sensu'],
+  }
+
+  rabbitmq_user_permissions { 'sensu@/sensu':
+    configure_permission => '.*',
+    read_permission      => '.*',
+    write_permission     => '.*',
+    provider             => 'rabbitmqctl',
+    notify               => Class['sensu'],
   }
 
   logstash::input::lumberjack { 'lumberjack-nginx':

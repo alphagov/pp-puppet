@@ -30,7 +30,6 @@ python::dev:        true
 python::virtualenv: true
 
 system_packages:
-    - git
     - libxml2-dev
     - libxslt1-dev
 
