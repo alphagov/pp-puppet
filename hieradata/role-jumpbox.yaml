@@ -6,7 +6,7 @@ classes:
     - 'google_credentials'
     - 'phantomjs'
 
-jenkins::version: latest
+jenkins::lts: 1
 jenkins::plugin_hash:
     git-client:
         version: "1.0.6"
