@@ -62,9 +62,14 @@ FACTER_machine_environment=${environment}
         group  => 'gds',
     }
 
+    package { 'ruby1.9.1-dev':
+      ensure => present,
+    }
+
     package {'sensu-plugin':
       ensure   => installed,
-      provider => gem
+      provider => gem,
+      require  => Package['ruby1.9.1-dev'],
     }
 
     vcsrepo { '/etc/sensu/community-plugins':
