@@ -59,6 +59,7 @@ vhost_proxies:
         ssl_redirect:    true
         upstream_server: 'graphite'
         upstream_port:   80
+        forward_host_header: false
         access_logs:
             '{name}.access.json.log': 'json_event'
     alerts-vhost:
