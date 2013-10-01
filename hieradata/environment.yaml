@@ -12,4 +12,4 @@ ufw_rules:
 # modify in pp-deployment to add more
 fail2ban::whitelist_ips: 127.0.0.1
 
-rabbitmq_sensu_password: 'IEn^yM>O,x6,oU+C335(j$5k)L{nmX'
+rabbitmq_sensu_password: 'iP2O51333kzask7'
