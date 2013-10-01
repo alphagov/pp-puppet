@@ -45,6 +45,7 @@ accounts:
 classes:
     - 'performanceplatform::base'
     - 'performanceplatform::pp_fail2ban'
+    - 'performanceplatform::server_checks'
     - 'lumberjack'
     - 'sensu'
 
