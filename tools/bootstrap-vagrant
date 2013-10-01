@@ -36,8 +36,6 @@ check_ruby() {
   echo "--> Check for Ruby" | pp
   [[ $(dpkg -s ruby1.9.1 >/dev/null 2>&1) ]] || \
     apt-get install -qq ruby1.9.1 2>&1 | pp
-  [[ $(dpkg -s ruby1.9.1-dev >/dev/null 2>&1) ]] || \
-    apt-get install -qq ruby1.9.1-dev 2>&1 | pp
 }
 
 check_bundler() {
