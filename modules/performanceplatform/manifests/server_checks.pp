@@ -1,7 +1,7 @@
 class performanceplatform::server_checks(
 ) {
 
-    $graphite_fqdn = regsubst($::fqdn, '\.', '_')
+    $graphite_fqdn = regsubst($::fqdn, '\.', '_', 'G')
 
     performanceplatform::graphite_check { "check_high_cpu_${::hostname}":
       target   => "collectd.${graphite_fqdn}.cpu-0.cpu-idle",

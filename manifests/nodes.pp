@@ -41,7 +41,7 @@ node default {
     # Create nginx proxies
     $vhost_proxies = hiera_hash( 'vhost_proxies', {} )
     if !empty($vhost_proxies) {
-        create_resources( 'nginx::vhost::proxy', $vhost_proxies )
+        create_resources( 'performanceplatform::proxy_vhost', $vhost_proxies )
     }
 
     # Create extra nginx conf
