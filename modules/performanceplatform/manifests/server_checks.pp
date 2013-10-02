@@ -12,8 +12,8 @@ class performanceplatform::server_checks(
 
     performanceplatform::graphite_check { "check_low_disk_space_${::hostname}":
       target   => "collectd.${graphite_fqdn}.df-root.df_complex-free",
-      warning  => '1000000000:', # A little less than a gig
-      critical => '500000000:',  # A little less than 500MB
+      warning  => '4000000000:', # A little less than 4 gig
+      critical => '1000000000:',  # A little less than 1 gig
       interval => '10',
     }
 
