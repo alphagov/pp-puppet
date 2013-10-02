@@ -9,8 +9,11 @@ define performanceplatform::graphite_check(
     $server_config = '-s graphite -u betademo -p nottobes'
 
     sensu::check { $name:
-      command  => "${check_data_path} ${server_config} -t ${target} -w ${warning} -c ${critical} -n ${name}",
+      command  => "${check_data_path} ${server_config} -t \"${target}\" -w \"${warning}\" -c \"${critical}\" -n \"${name}\"",
       interval => $interval,
+      custom         => {
+        graphite_url => "https://${::graphite_vhost}/render?target=${target}&from=-10min",
+      },
     }
 
 }
