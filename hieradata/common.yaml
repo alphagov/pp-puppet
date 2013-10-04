@@ -42,6 +42,12 @@ accounts:
             ssh_key: AAAAB3NzaC1yc2EAAAADAQABAAABAQClJ8bE0B8OKPdCYNUxy28JQIzBVSBED0va9eERQ8I//YPChd/uo7x+736t5o41VNFJQXWOug3AKE8aV1qTPQn+33JUL/6OHtZDdec+lRzRXW4A+/8WMUoPDItygTB8dbMqRlg8rFDrwFKO6qZ3riHcwoj9BHAc4TlTbcq0vXgRRyHzc7uFwJzSd5wIY0nG5O7qbe4CubAij9hVfdHDS8GTMPuuqd7/YzOyjgKg72BDQWTF3u5YFECDtQgps8OZja59IlMM5L0QrZCVsJFlDtKYPRs6LcX6lEvt2ZBTfn6IPNzeNFJ1b8ltpjsEn/Yi70qA0XWq+kfLMccX4hau25kB
             groups:
                 - gds
+        gkoth:
+            home_dir: /home/gkoth
+            comment: Guy Koth
+            ssh_key: AAAAB3NzaC1yc2EAAAADAQABAAABAQDgPnlvgLpn/eV/iT/VJQlfsZnGrz5lczaWaJrUlSv2fjY4CvgFXIpPrMFygxGAmDC+Q010FKh2TdLSzXZthjfkDi/1RbAY+pAv0kk/8cbx7QtYfMEYNBKo0yww+9AUZmp46C7PH4t7grbAyVVobbXnXDWE9D7imfvZyD+LbOzkPB9Xv4hq+2wg+9qb9EsNrxP6qTT/Idyey/L1+9dbHrGs/hoaQEKpnrIqpqyFTpbkgqmOp0QGGuuafko6HeBdvn0q9wZNNmFp8Oqzkz2X+NCiK1ymqgSieZMkz9SCRYip+qhpKH7ypC5ShZHApf69JRb5WfG7rcdGI+YsHxlm3CbJ
+            groups:
+                - gds
 classes:
     - 'performanceplatform::base'
     - 'performanceplatform::pp_fail2ban'
