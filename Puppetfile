@@ -11,7 +11,6 @@ mod 'puppetlabs/vcsrepo',         '0.1.2'
 mod 'saz/dnsmasq',                '1.0.1'
 mod 'saz/ntp',                    '2.0.3'
 mod 'saz/rsyslog',                '2.0.0'
-mod 'sensu/sensu',                '0.7.5'
 mod 'torrancew/account',          '0.0.3'
 mod 'thomasvandoren/redis',       '0.0.9'
 mod 'netmanagers/fail2ban',       '1.1.0'
@@ -39,6 +38,8 @@ mod 'nginx',      :git => 'git://github.com/alphagov/puppet-nginx.git',
                   :ref => 'd17ab5a4e69a45adf9da5c11daf634d04ad6f76d'
 mod 'python',     :git => 'git://github.com/stankevich/puppet-python.git',
                   :ref => 'f508b71d534f3c67db12886fa914cb4ef74bbe7a'
+mod 'sensu',      :git => 'git://github.com/alphagov/sensu-puppet.git',
+                  :ref => 'fix-check-deps'
 mod 'ssl',        :git => 'git://github.com/alphagov/puppet-ssl.git',
                   :ref => '23bbb5ab57f26269acce3d4b43e643781747a551'
 mod 'upstart',    :git => 'git://github.com/bison/puppet-upstart.git',
