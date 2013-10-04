@@ -33,14 +33,20 @@ FORGE
     saz/dnsmasq (1.0.1)
     saz/ntp (2.0.3)
     saz/rsyslog (2.0.0)
-    sensu/sensu (0.7.5)
-      puppetlabs/apt (>= 0.0.0)
-      puppetlabs/stdlib (>= 0.0.0)
     stahnma/epel (0.0.5)
     thomasvandoren/redis (0.0.9)
       maestrodev/wget (>= 0.0.0)
       puppetlabs/gcc (>= 0.0.0)
     torrancew/account (0.0.3)
+
+GIT
+  remote: /Users/tombooth/govuk/sensu-puppet
+  ref: fix-check-deps
+  sha: 66d80a3c84c08074a26ce6ae967f109eeb97b77f
+  specs:
+    sensu (0.7.5)
+      puppetlabs/apt (>= 0.0.1)
+      puppetlabs/stdlib (>= 0.0.1)
 
 GIT
   remote: git://github.com/alphagov/puppet-backdrop.git
@@ -187,7 +193,7 @@ DEPENDENCIES
   saz/dnsmasq (= 1.0.1)
   saz/ntp (= 2.0.3)
   saz/rsyslog (= 2.0.0)
-  sensu/sensu (= 0.7.5)
+  sensu (>= 0)
   ssl (>= 0)
   thomasvandoren/redis (= 0.0.9)
   tmux (>= 0)

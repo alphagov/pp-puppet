@@ -19,6 +19,10 @@ define performanceplatform::proxy_vhost(
   $client_max_body_size = '10m',
   $access_logs         = { '{name}.access.log' => '' },
   $error_logs          = { '{name}.error.log' => '' },
+  $five_critical        = '~:0',
+  $five_warning         = '~:0',
+  $four_critical        = '~:0',
+  $four_warning         = '~:0',
 ) {
 
   $graphite_fqdn = regsubst($::fqdn, '\.', '_', 'G')
@@ -26,15 +30,15 @@ define performanceplatform::proxy_vhost(
 
   performanceplatform::graphite_check { "5xx_rate_${servername}":
     target   => "sumSeries(stats.nginx.${graphite_fqdn}.${graphite_servername}.http_5*)",
-    warning  => '~:0',
-    critical => '~:10',
+    warning  => $five_warning,
+    critical => $five_critical,
     interval => '10',
   }
 
   performanceplatform::graphite_check { "4xx_rate_${servername}":
     target   => "sumSeries(stats.nginx.${graphite_fqdn}.${graphite_servername}.http_4*)",
-    warning  => '~:0',
-    critical => '~:10',
+    warning  => $four_warning,
+    critical => $four_critical,
     interval => '10',
   }
 
