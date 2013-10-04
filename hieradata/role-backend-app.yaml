@@ -4,6 +4,7 @@ classes:
     - 'backdrop'
     - 'backdrop_collector'
     - 'clamav'
+    - 'performanceplatform::backdrop_checks'
 
 backdrop_apps:
     admin.backdrop:
