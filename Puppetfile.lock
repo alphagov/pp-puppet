@@ -23,6 +23,9 @@ FORGE
     puppetlabs/apt (1.1.0)
       puppetlabs/stdlib (>= 2.2.1)
     puppetlabs/gcc (0.0.3)
+    puppetlabs/nodejs (0.4.0)
+      puppetlabs/apt (>= 0.0.3)
+      puppetlabs/stdlib (>= 2.0.0)
     puppetlabs/rabbitmq (3.0.0)
       garethr/erlang (>= 0.1.0)
       puppetlabs/apt (>= 1.0.0)
@@ -38,15 +41,6 @@ FORGE
       maestrodev/wget (>= 0.0.0)
       puppetlabs/gcc (>= 0.0.0)
     torrancew/account (0.0.3)
-
-GIT
-  remote: /Users/tombooth/govuk/sensu-puppet
-  ref: fix-check-deps
-  sha: 66d80a3c84c08074a26ce6ae967f109eeb97b77f
-  specs:
-    sensu (0.7.5)
-      puppetlabs/apt (>= 0.0.1)
-      puppetlabs/stdlib (>= 0.0.1)
 
 GIT
   remote: git://github.com/alphagov/puppet-backdrop.git
@@ -139,11 +133,20 @@ GIT
 
 GIT
   remote: git://github.com/alphagov/puppetlabs-mongodb.git
-  ref: ac503036b882d08ce2700082ced748072eac784a
-  sha: ac503036b882d08ce2700082ced748072eac784a
+  ref: dc077a209efdf8d80fac40d40fec575b6a0949d2
+  sha: dc077a209efdf8d80fac40d40fec575b6a0949d2
   specs:
     mongodb (0.1.0)
       puppetlabs/apt (>= 0.0.2)
+
+GIT
+  remote: git://github.com/alphagov/sensu-puppet.git
+  ref: fix-check-deps
+  sha: 66d80a3c84c08074a26ce6ae967f109eeb97b77f
+  specs:
+    sensu (0.7.5)
+      puppetlabs/apt (>= 0.0.1)
+      puppetlabs/stdlib (>= 0.0.1)
 
 GIT
   remote: git://github.com/bison/puppet-upstart.git
@@ -186,6 +189,7 @@ DEPENDENCIES
   nginx (>= 0)
   pdxcat/collectd (= 0.0.4)
   puppetlabs/gcc (= 0.0.3)
+  puppetlabs/nodejs (= 0.4.0)
   puppetlabs/rabbitmq (= 3.0.0)
   puppetlabs/stdlib (= 4.1.0)
   puppetlabs/vcsrepo (= 0.1.2)
