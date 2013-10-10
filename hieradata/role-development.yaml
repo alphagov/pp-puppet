@@ -1,4 +1,7 @@
 ---
+classes:
+    - 'performanceplatform::nodejs'
+
 performanceplatform::dns::hosts: |
     127.0.0.1 jumpbox-1 monitoring log graphite
     127.0.0.1 frontend-app-1 frontend

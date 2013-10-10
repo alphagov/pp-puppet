@@ -1,6 +1,7 @@
 ---
 classes:
     - 'nginx::server'
+    - 'performanceplatform::nodejs'
     - 'varnish'
 
 ufw_rules:
