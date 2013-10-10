@@ -13,21 +13,24 @@ class performanceplatform::base {
     include ufw
 
     stage { 'system':
-      before => Stage['main'],
+        before => Stage['main'],
     }
 
     class { [ 'performanceplatform::dns',
               'performanceplatform::hosts' ]:
-      stage => system,
+        stage => system,
     }
 
     class {'gstatsd': require => Class['python::install'] }
 
+    # TODO: Copy required packages into our own PPA and remove the GOV.UK PPA
+    # from this repo
     apt::ppa { 'ppa:gds/govuk': }
+    apt::ppa { 'ppa:gds/performance-platform': }
 
     exec { 'apt-get-update':
         command => '/usr/bin/apt-get update || true',
-        require => Apt::Ppa['ppa:gds/govuk'],
+        require => [Apt::Ppa['ppa:gds/govuk'], Apt::Ppa['ppa:gds/performance-platform']],
     }
     $machine_role = regsubst($::hostname, '^(.*)-\d$', '\1')
     $environment = hiera('environment')
@@ -63,20 +66,20 @@ FACTER_machine_environment=${environment}
     }
 
     package { 'ruby1.9.1-dev':
-      ensure => present,
+        ensure => present,
     }
 
     package {'sensu-plugin':
-      ensure   => installed,
-      provider => gem,
-      require  => Package['ruby1.9.1-dev'],
+        ensure   => installed,
+        provider => gem,
+        require  => Package['ruby1.9.1-dev'],
     }
 
     vcsrepo { '/etc/sensu/community-plugins':
-      ensure   => present,
-      provider => git,
-      source   => 'https://github.com/alphagov/sensu-community-plugins.git',
-      revision => '76233280a0782f8c2d41c8af46c8ab0d96784273',
+        ensure   => present,
+        provider => git,
+        source   => 'https://github.com/alphagov/sensu-community-plugins.git',
+        revision => '76233280a0782f8c2d41c8af46c8ab0d96784273',
     }
 
 }
