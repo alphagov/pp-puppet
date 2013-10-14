@@ -1,0 +1,6 @@
+# Gunicorn config for <%= title %>
+bind="localhost:<%= port %>"
+workers=<%= workers %>
+accesslog="/var/log/<%= title %>/gunicorn.access.log"
+errorlog="/var/log/<%= title %>/gunicorn.error.log"
+pythonpath="/var/virtualenvs/<%= title %>"
