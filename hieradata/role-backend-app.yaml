@@ -5,6 +5,7 @@ classes:
     - 'backdrop_collector'
     - 'clamav'
     - 'performanceplatform::backdrop_checks'
+    - 'google_credentials'
 
 backdrop_apps:
     admin.backdrop:
