@@ -11,7 +11,7 @@ define performanceplatform::graphite_check(
     sensu::check { $name:
       command  => "${check_data_path} ${server_config} -t \"${target}\" -w \"${warning}\" -c \"${critical}\" -n \"${name}\"",
       interval => $interval,
-      custom         => {
+      custom   => {
         graphite_url => "https://${::graphite_vhost}/render?target=${target}&from=-10min",
       },
     }
