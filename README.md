@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/alphagov/pp-puppet.png)]
+(https://travis-ci.org/alphagov/pp-puppet)
+
 Performance Platform Puppet
 ===========================
 
