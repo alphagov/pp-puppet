@@ -1,17 +1,31 @@
 ---
 classes:
-    - 'performanceplatform::nodejs'
+  - 'nginx::server'
+  - 'performanceplatform::nodejs'
 
 performanceplatform::dns::hosts: |
-    127.0.0.1 jumpbox-1 monitoring log graphite
-    127.0.0.1 frontend-app-1 frontend
-    127.0.0.1 frontend-app-2 frontend
-    127.0.0.1 backend-app-1 backend
-    127.0.0.1 backend-app-2 backend
-    127.0.0.1 development-1 development
-    127.0.0.1 mongo-1 mongo
-    127.0.0.1 mongo-2 mongo
-    127.0.0.1 mongo-3 mongo
+  127.0.0.1 jumpbox-1 monitoring log graphite
+  127.0.0.1 frontend-app-1 frontend
+  127.0.0.1 frontend-app-2 frontend
+  127.0.0.1 backend-app-1 backend
+  127.0.0.1 backend-app-2 backend
+  127.0.0.1 development-1 development
+  127.0.0.1 mongo-1 mongo
+  127.0.0.1 mongo-2 mongo
+  127.0.0.1 mongo-3 mongo
 
 performanceplatform::mongo::mongo_hosts:
-    - 127.0.0.1
+  - 127.0.0.1
+
+ufw_rules:
+  allow-http-from-anywhere:
+    port: 80
+    ip:   'any'
+  allow-https-from-anywhere:
+    port: 443
+    ip:   'any'
+
+vhost_proxies:
+  spotlight:
+    servername:    "spotlight.dev.gov.uk"
+    upstream_port: 3057
