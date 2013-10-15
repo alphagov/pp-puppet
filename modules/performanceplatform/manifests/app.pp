@@ -7,6 +7,7 @@ define performanceplatform::app (
     $app_path     = "/opt/${title}",
     $config_path  = "/etc/gds/${title}",
     $upstart_desc = "Upstart job for ${title}",
+    $upstart_exec = "${app_path}/run-procfile.sh",
 ) {
     include nginx::server
     include upstart
@@ -38,7 +39,7 @@ define performanceplatform::app (
             "APP_NAME"   => $title,
             "APP_MODULE" => $app_module,
         },
-        exec          => "${app_path}/run-procfile.sh",
+        exec          => $upstart_exec,
     }
 
 }
