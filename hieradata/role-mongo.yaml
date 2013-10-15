@@ -1,6 +1,7 @@
 ---
 classes:
     - 'performanceplatform::mongo'
+
 ufw_rules:
     allowmongo:
         port: 27017
