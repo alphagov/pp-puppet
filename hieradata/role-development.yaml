@@ -27,5 +27,5 @@ ufw_rules:
 
 vhost_proxies:
   spotlight:
-    servername:    "spotlight.dev.gov.uk"
+    servername:    "%{::spotlight_vhost}"
     upstream_port: 3057
