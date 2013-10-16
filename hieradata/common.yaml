@@ -134,3 +134,4 @@ system_packages:
     - htop
     - ssl-cert
     - vim
+    - libcurl4-gnutls-dev

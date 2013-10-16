@@ -1,0 +1,57 @@
+require 'rubygems' if RUBY_VERSION < '1.9.0'
+require 'json'
+require 'curb'
+require 'time'
+require 'sensu-plugin/check/cli'
+
+#if the read test fails we may need to increase the sleep time
+SLEEP_CONST = 0.8
+API_TIME_TO_WRITE = 120
+class BackdropWriteReadTest< Sensu::Plugin::Check::CLI
+
+  option :url,
+         :description => 'URL address',
+         :short => '-u URL',
+         :long => '--url URL',
+         :required => true
+  option :auth_token,
+         :description => 'Bearer Token',
+         :short => '-b BEARER',
+         :long => '--bearer BEARER',
+         :required => true
+  def run
+  payload = {"_timestamp" =>Time.now.utc.iso8601()}
+  uri = URI.parse(config[:url])
+  auth = config[:auth_token]
+  content_type = "application/json"
+  write = Curl::Easy.http_post(uri.to_s, payload.to_json) do |curl|
+    curl.headers['Content-Type'] = 'application/json'
+    curl.headers['Authorization'] = "Bearer #{auth}"
+    curl.headers['Content-Type'] = content_type
+    curl.ssl_verify_peer = false
+  end
+  if  write.body.to_s.include? "ok"
+    sleep(SLEEP_CONST)
+
+    uri_sorting_and_results_limitation = config[:url] + "?sort_by=_timestamp:descending&limit=1"
+    puts uri_sorting_and_results_limitation
+    read = Curl::Easy.http_get(uri_sorting_and_results_limitation) do |curlinfo|
+      curlinfo.ssl_verify_peer = false
+    end
+    read_api_response = JSON.parse(read.body)
+    read_api_time_stamp = Time.parse(read_api_response['data'][0]['_timestamp']).utc
+    utc_time = Time.parse(payload["_timestamp"]).utc
+    if   (utc_time - read_api_time_stamp) < API_TIME_TO_WRITE
+      ok "We write and read information from the API"
+    else
+      critical "we could not read the content from the read API"
+    end
+  else
+    critical "Could not use the write API";
+  end
+
+  end
+end
+
+
+

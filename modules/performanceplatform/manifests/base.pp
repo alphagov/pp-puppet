@@ -69,10 +69,11 @@ FACTER_machine_environment=${environment}
         ensure => present,
     }
 
-    package {'sensu-plugin':
-        ensure   => installed,
-        provider => gem,
-        require  => Package['ruby1.9.1-dev'],
+    package {['curb','json','sensu-plugin']:
+      before => Class['sensu'],
+      ensure   => installed,
+      provider => gem,
+      require  => Package['ruby1.9.1-dev'],
     }
 
     vcsrepo { '/etc/sensu/community-plugins':

@@ -6,6 +6,7 @@ classes:
     - 'clamav'
     - 'performanceplatform::backdrop_checks'
     - 'google_credentials'
+    - 'performanceplatform::backdrop_smoke_tests'
 
 backdrop_apps:
     admin.backdrop:
