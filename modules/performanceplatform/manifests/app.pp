@@ -6,7 +6,7 @@ define performanceplatform::app (
   $group        = undef,
   $app_path     = "/opt/${title}",
   $config_path  = "/etc/gds/${title}",
-  $servername   = "${title}"
+  $servername   = $title,
   $extra_env    = {},
   $upstart_desc = "Upstart job for ${title}",
   $upstart_exec = "${app_path}/run-procfile.sh",

@@ -13,7 +13,7 @@ class spotlight::app (
     app_module   => $app_module,
     user         => $user,
     group        => $group,
-    servername   => "%{::spotlight_vhost}"
+    servername   => "%{::spotlight_vhost}",
     extra_env    => {
       'NODE_ENV' => 'production',
     },
