@@ -4,9 +4,10 @@ define performanceplatform::app (
   $app_module   = undef,
   $user         = undef,
   $group        = undef,
-  $extra_env    = {},
   $app_path     = "/opt/${title}",
   $config_path  = "/etc/gds/${title}",
+  $servername   = "${title}"
+  $extra_env    = {},
   $upstart_desc = "Upstart job for ${title}",
   $upstart_exec = "${app_path}/run-procfile.sh",
 ) {
@@ -24,7 +25,7 @@ define performanceplatform::app (
 
   nginx::vhost::proxy { "${title}-vhost":
     port          => 80,
-    servername    => $title,
+    servername    => $servername,
     ssl           => false,
     upstream_port => $port,
   }

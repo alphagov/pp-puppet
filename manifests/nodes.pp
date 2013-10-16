@@ -15,6 +15,7 @@ $logstash_vhost     = join(['logstash',$domain_name],'.')
 $logging_vhost      = join(['logging',$domain_name],'.')
 $alerts_vhost       = join(['alerts',$domain_name],'.')
 $www_vhost          = join(['www',$public_domain_name],'.')
+$spotlight_vhost    = join(['spotlight',$public_domain_name],'.')
 
 $rabbitmq_sensu_password = hiera('rabbitmq_sensu_password')
 
