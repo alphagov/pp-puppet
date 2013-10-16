@@ -55,6 +55,10 @@ node default {
     if !empty($backdrop_apps) {
         create_resources( 'backdrop::app', $backdrop_apps )
     }
+    $spotlight = hiera_hash( 'spotlight', {} )
+    if !empty($spotlight) {
+        create_resources( 'spotlight::app', $spotlight )
+    }
 
     # Collect some metrics
     $collectd_plugins = hiera_array( 'collectd_plugins', [] )

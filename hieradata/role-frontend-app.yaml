@@ -1,39 +1,47 @@
 ---
 classes:
-    - 'nginx::server'
-    - 'performanceplatform::nodejs'
-    - 'varnish'
+  - 'nginx::server'
+  - 'spotlight'
+  - 'varnish'
+
+spotlight:
+  spotlight:
+    port:       3057
+    app_module: 'spotlight:app'
+    user:       'deploy'
+    group:      'deploy'
 
 ufw_rules:
-    allow-http-from-anywhere:
-        port: 80
-        ip:   'any'
-    allow-https-from-anywhere:
-        port: 443
-        ip:   'any'
+  allow-http-from-anywhere:
+    port: 80
+    ip:   'any'
+  allow-https-from-anywhere:
+    port: 443
+    ip:   'any'
+
 vhost_proxies:
-    admin-vhost:
-        servername:    "%{::admin_vhost}"
-        ssl:           true
-        ssl_redirect:  true
-        upstream_port: 7999
-        access_logs:
-            '{name}.access.json.log': 'json_event'
-    www-vhost:
-        servername:    "%{::www_vhost}"
-        ssl:           true
-        ssl_redirect:  true
-        upstream_port: 7999
-        access_logs:
-            '{name}.access.json.log': 'json_event'
+  admin-vhost:
+    servername:    "%{::admin_vhost}"
+    ssl:           true
+    ssl_redirect:  true
+    upstream_port: 7999
+    access_logs:
+      '{name}.access.json.log': 'json_event'
+  www-vhost:
+    servername:    "%{::www_vhost}"
+    ssl:           true
+    ssl_redirect:  true
+    upstream_port: 7999
+    access_logs:
+      '{name}.access.json.log': 'json_event'
 
 nginx::server::server_names_hash_bucket_size: 128
 
 nginx_conf:
-    logging:
-        template: performanceplatform/nginx.logging.conf.erb
+  logging:
+    template: performanceplatform/nginx.logging.conf.erb
 
 lumberjack_instances:
-    nginx:
-        log_files: [ '/var/log/nginx/*.access.json.log' ]
-        fields: { "tag": "nginx" }
+  nginx:
+    log_files: [ '/var/log/nginx/*.access.json.log' ]
+    fields: { 'tag': 'nginx' }
