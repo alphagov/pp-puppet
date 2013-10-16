@@ -50,14 +50,10 @@ node default {
         create_resources( 'nginx::conf', $nginx_conf )
     }
 
-    # Install the apps
+    # Install the Backdrop apps
     $backdrop_apps = hiera_hash( 'backdrop_apps', {} )
     if !empty($backdrop_apps) {
         create_resources( 'backdrop::app', $backdrop_apps )
-    }
-    $spotlight = hiera_hash( 'spotlight', {} )
-    if !empty($spotlight) {
-        create_resources( 'spotlight::app', $spotlight )
     }
 
     # Collect some metrics

@@ -1,15 +1,13 @@
 ---
 classes:
   - 'nginx::server'
-  - 'spotlight'
+  - 'spotlight::app'
   - 'varnish'
 
-spotlight:
-  spotlight:
-    port:       3057
-    app_module: 'spotlight:app'
-    user:       'deploy'
-    group:      'deploy'
+spotlight::app::port:       3057
+spotlight::app::app_module: 'spotlight:app'
+spotlight::app::user:       'deploy'
+spotlight::app::group:      'deploy'
 
 ufw_rules:
   allow-http-from-anywhere:
