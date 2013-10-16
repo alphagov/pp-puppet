@@ -13,11 +13,11 @@ class spotlight::app (
     app_module   => $app_module,
     user         => $user,
     group        => $group,
-    servername   => "%{::spotlight_vhost}",
+    servername   => "${::spotlight_vhost}",
     extra_env    => {
       'NODE_ENV' => 'production',
     },
     upstart_desc => 'Spotlight job',
-    upstart_exec => "node app/server.js",
+    upstart_exec => 'node app/server.js',
   }
 }
