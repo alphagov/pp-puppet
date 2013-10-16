@@ -1,17 +1,5 @@
 # Base resources for all PP machines
 class performanceplatform::base {
-    include apt
-    include collectd
-    include collectd::plugin::write_graphite
-    include gcc
-    include harden
-    include ntp
-    include python
-    include rsyslog::client
-    include ssh::server
-    include tmux
-    include ufw
-
     stage { 'system':
         before => Stage['main'],
     }
