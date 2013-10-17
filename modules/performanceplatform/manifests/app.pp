@@ -23,11 +23,11 @@ define performanceplatform::app (
     group   => $group,
   }
 
-  nginx::vhost::proxy { "${title}-vhost":
+  performanceplatform::proxy_vhost { "${title}-vhost":
     port          => 80,
+    upstream_port => $port,
     servername    => $servername,
     ssl           => false,
-    upstream_port => $port,
   }
 
   $base_environment = {
