@@ -2,6 +2,7 @@
 classes:
   - 'nginx::server'
   - 'performanceplatform::nodejs'
+  - 'phantomjs'
 
 performanceplatform::dns::hosts: |
   127.0.0.1 jumpbox-1 monitoring log graphite
