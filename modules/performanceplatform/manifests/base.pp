@@ -69,7 +69,7 @@ FACTER_machine_environment=${environment}
         ensure => present,
     }
 
-    package {['curb','json','sensu-plugin']:
+    package {'sensu-plugin':
       before => Class['sensu'],
       ensure   => installed,
       provider => gem,
