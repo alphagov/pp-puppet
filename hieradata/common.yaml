@@ -24,6 +24,12 @@ accounts:
             ssh_key: AAAAB3NzaC1yc2EAAAADAQABAAABAQC2568vUQp+Fb7bmSML5OHn0N8gmOjQp9LSE/HPh+xybMiX6ql8JhxDhPGl2NZl2zVmhICLlhY9HcX4E1w2mHY2MgSsoE148QPomYmcjkIkcQxh6nFN4Ga++foTu6WPkUQJudah3ML/XNs/D+yMgxk8nkel6EvIqgbbswlTQp22FmqGfk9XzJqX0mfTrlggJlacYlw+Z4JT4NhoFX4EefSSX0c6qm7fipX2U7M3hJUXxsakj0jM5GOk9xrEVCRUgx5M8l3rS2DwF0W54RewAdq5J9KdnIQi5DOsbVJKnR1flpoaIVuRq1x/feZ4yqi53ctYX5MT8tb6CLc8zmuU7XyR
             groups:
                 - gds
+        pauloschneider:
+            home_dir: /home/pauloschneider
+            comment: Paulo Schneider
+            ssh_key: AAAAB3NzaC1yc2EAAAADAQABAAABAQCvvZH/S3hteksF52XP6RWyQJUYb/QdI6QyBHbx6lNnHTT0yvmHiS8DcnmI2IDbJqVxXJcaTReOwR2oqhjJ1IJSJZifutXcJsTb5Mc+7XaUWJY7gYCLkZe5PHooxif3AC5RZxhoQEIr+fMBubHhepDQQzie3g6zchr4ENxrKEwUt3VlOA/NZVE0zqmvZ4O6x7+mLJ9BeQuU558JVlJ6XkPqKOiLkLkUr58UOqgaYqU7t29T8IlFRILWoVqJ7WG6wbE6vVsTxktC0PhGUvN4IlilfFIIWh18duGo5dwQJ6E7m9uRAvIYjH+4Y5WnrGBiYt6ljQI/f+kI+iDgG45ewz9P
+            groups:
+                - gds
         robyoung:
             home_dir: /home/robyoung
             comment: Rob Young
