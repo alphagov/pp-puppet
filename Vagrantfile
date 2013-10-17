@@ -12,6 +12,7 @@ hosts = [
   { name: 'mongo-2',        ip: '172.27.1.32' },
   { name: 'mongo-3',        ip: '172.27.1.33' },
   { name: 'monitoring-1',   ip: '172.27.1.41' },
+  { name: 'logging-1',      ip: '172.27.1.51' },
 ]
 
 def get_box(provider)
