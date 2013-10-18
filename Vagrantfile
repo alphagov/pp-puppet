@@ -48,6 +48,10 @@ end
       modifyvm_args << "--natdnshostresolver1" << "on"
       modifyvm_args << "--name" << host[:name]
 
+      if host[:name] == 'monitoring-1'
+        modifyvm_args << "--memory" << "1024"
+      end
+
       c.vm.customize(modifyvm_args)
       c.ssh.forward_agent = true
       c.vm.provision :shell, :path => "tools/bootstrap-vagrant"
@@ -73,6 +77,9 @@ end
         modifyvm_args << "--natdnsproxy1" << "on"
         modifyvm_args << "--natdnshostresolver1" << "on"
         modifyvm_args << "--name" << host[:name]
+        if host[:name] == 'monitoring-1'
+          modifyvm_args << "--memory" << "1024"
+        end
         vb.customize(modifyvm_args)
       end
 

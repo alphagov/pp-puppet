@@ -1,4 +1,6 @@
 classes:
+    - 'java7'
+    - 'python'
     - 'graphite'
     - 'logstash'
     - 'nginx::server'
@@ -6,6 +8,7 @@ classes:
     - 'rabbitmq'
     - 'redis'
     - 'rsyslog::server'
+    - 'elasticsearch'
 
 graphite::gr_apache_port:       9080
 graphite::gr_apache_port_https: 9443
