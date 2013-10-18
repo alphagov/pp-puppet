@@ -6,6 +6,7 @@ class spotlight::app (
   $group      = undef,
 ) {
   include performanceplatform::nodejs
+  include performanceplatform::spotlight_checks
 
   performanceplatform::app { 'spotlight':
     port         => $port,
