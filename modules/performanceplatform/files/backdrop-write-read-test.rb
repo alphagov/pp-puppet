@@ -24,6 +24,7 @@ class BackdropWriteReadTest< Sensu::Plugin::Check::CLI
   uri = URI.parse(config[:url])
   auth = config[:auth_token]
   content_type = "application/json"
+  begin
   write = Curl::Easy.http_post(uri.to_s, payload.to_json) do |curl|
     curl.headers['Content-Type'] = 'application/json'
     curl.headers['Authorization'] = "Bearer #{auth}"
@@ -67,6 +68,9 @@ class BackdropWriteReadTest< Sensu::Plugin::Check::CLI
     critical "Could not use the write API";
   end
 
+  end
+  rescue
+    critical "Something went really wrong "
   end
 end
 
