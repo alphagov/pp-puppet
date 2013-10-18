@@ -1,0 +1,8 @@
+#
+# Fail2ban local configuration file
+#
+# Changes in here overwrite default settings in fail2ban.conf
+#
+[Definition]
+
+logtarget = SYSLOG
