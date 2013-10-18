@@ -45,13 +45,13 @@ class BackdropWriteReadTest< Sensu::Plugin::Check::CLI
       critical "Json Parse Failed from read API"
     end
     begin
-    read_api_time_stamp = Time.parse(read_api_response['data'][0]['_timestamp']).utc
+      read_api_time_stamp = Time.parse(read_api_response['data'][0]['_timestamp']).utc
     rescue TimeError => time_error
       print "Error parsing time from read api response : " + time_error
       critical "Time parse error from the read api response"
     end
     begin
-    utc_time = Time.parse(payload["_timestamp"]).utc
+      utc_time = Time.parse(payload["_timestamp"]).utc
     rescue TimeError => payload_time_error
       print "Error parsing time from the local payload : " + payload_time_error
       critical "Time parsing error from local payload"
