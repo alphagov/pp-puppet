@@ -43,7 +43,6 @@ FORGE
     thomasvandoren/redis (0.0.9)
       maestrodev/wget (>= 0.0.0)
       puppetlabs/gcc (>= 0.0.0)
-    torrancew/account (0.0.3)
 
 GIT
   remote: git://github.com/alphagov/puppet-clamav.git
@@ -166,7 +165,15 @@ GIT
   specs:
     python (1.0.0)
 
+GIT
+  remote: https://github.com/torrancew/puppet-account.git
+  ref: feature/multiple_ssh_keys
+  sha: 58191f782c189c72d037310e0dddb6fee3cf1226
+  specs:
+    account (0.0.5)
+
 DEPENDENCIES
+  account (>= 0)
   attachmentgenie/ssh (= 1.1.0)
   attachmentgenie/ufw (= 1.2.0)
   clamav (>= 0)
@@ -197,6 +204,5 @@ DEPENDENCIES
   ssl (>= 0)
   thomasvandoren/redis (= 0.0.9)
   tmux (>= 0)
-  torrancew/account (= 0.0.3)
   upstart (>= 0)
 
