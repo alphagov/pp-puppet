@@ -70,6 +70,13 @@ vhost_proxies:
         upstream_port:   80
         access_logs:
             '{name}.access.json.log': 'json_event'
+    elasticsearch-vhost:
+        servername:      "%{::elasticsearch_vhost}"
+        port:            9200
+        upstream_server: 'logging'
+        upstream_port:   9200
+        access_logs:
+            '{name}.access.json.log': 'json_event'
 
 nginx_conf:
     logging:
