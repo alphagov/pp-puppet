@@ -126,7 +126,6 @@ performanceplatform::dns::hosts: |
     172.27.1.32 mongo-2 mongo
     172.27.1.33 mongo-3 mongo
     172.27.1.41 monitoring-1 log graphite logstash alerts redis rabbitmq
-    172.27.1.51 logging-1
 
 performanceplatform::mongo::mongo_hosts:
     - mongo-1
