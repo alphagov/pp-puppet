@@ -166,9 +166,9 @@ GIT
     python (1.0.0)
 
 GIT
-  remote: https://github.com/torrancew/puppet-account.git
-  ref: feature/multiple_ssh_keys
-  sha: 58191f782c189c72d037310e0dddb6fee3cf1226
+  remote: https://github.com/alphagov/puppet-account.git
+  ref: feature/multiple-ssh-keys
+  sha: bcd1a5f3600478a4f914137e935185a498f59a79
   specs:
     account (0.0.5)
 

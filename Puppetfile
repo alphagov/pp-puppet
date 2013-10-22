@@ -15,8 +15,8 @@ mod 'saz/ntp',                    '2.0.3'
 mod 'saz/rsyslog',                '2.0.0'
 mod 'thomasvandoren/redis',       '0.0.9'
 mod 'netmanagers/fail2ban',       '1.1.0'
-mod 'account',    :git => 'https://github.com/torrancew/puppet-account.git',
-                  :ref => 'feature/multiple_ssh_keys'
+mod 'account',    :git => 'https://github.com/alphagov/puppet-account.git',
+                  :ref => 'feature/multiple-ssh-keys'
 mod 'clamav',     :git => 'git://github.com/alphagov/puppet-clamav.git',
                   :ref => '31af4f0c2753dd25bca3dd0c7cc69d273c4d640d'
 mod 'collectd',   :git => 'git://github.com/alphagov/puppet-collectd.git',
