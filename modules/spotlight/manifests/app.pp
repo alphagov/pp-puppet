@@ -14,7 +14,8 @@ class spotlight::app (
     app_module   => $app_module,
     user         => $user,
     group        => $group,
-    servername   => "${::spotlight_vhost}",
+    servername   => $::spotlight_vhost,
+    proxy_ssl    => true,
     extra_env    => {
       'NODE_ENV' => 'production',
     },

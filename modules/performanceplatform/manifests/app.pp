@@ -7,6 +7,7 @@ define performanceplatform::app (
   $app_path     = "/opt/${title}",
   $config_path  = "/etc/gds/${title}",
   $servername   = $title,
+  $proxy_ssl    = false,
   $extra_env    = {},
   $upstart_desc = "Upstart job for ${title}",
   $upstart_exec = "${app_path}/run-procfile.sh",
@@ -27,7 +28,7 @@ define performanceplatform::app (
     port          => 80,
     upstream_port => $port,
     servername    => $servername,
-    ssl           => false,
+    ssl           => $proxy_ssl,
   }
 
   $base_environment = {
