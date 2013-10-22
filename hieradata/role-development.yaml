@@ -25,6 +25,9 @@ ufw_rules:
   allow-https-from-anywhere:
     port: 443
     ip:   'any'
+  spotlight-node-debug:
+    port: 8080
+    ip:   'any'
 
 vhost_proxies:
   spotlight:
