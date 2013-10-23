@@ -6,4 +6,5 @@ before_install:
   - gem install puppet
   - gem install librarian-puppet
   - librarian-puppet install
-
+notifications:
+  email: false
