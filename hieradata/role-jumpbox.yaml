@@ -78,6 +78,7 @@ vhost_proxies:
         port:            9200
         upstream_server: 'logging'
         upstream_port:   9200
+        proxy_magic:     'limit_except GET HEAD OPTIONS { deny all; }'
         access_logs:
             '{name}.access.json.log': 'json_event'
 
