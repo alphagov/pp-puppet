@@ -43,6 +43,9 @@ ufw_rules:
     allowsyslogfromanywhere:
         port: 514
         ip:   'any'
+    allowelasticsearchfromany:
+        port: 9200
+        ip:   'any'
 
 vhost_proxies:
     graphite-vhost:

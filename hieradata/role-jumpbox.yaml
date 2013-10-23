@@ -43,6 +43,9 @@ ufw_rules:
     allowsshfromanywhere:
         port: 22
         ip:   'any'
+    allowelasticsearchfromany:
+        port: 9200
+        ip:   'any'
 
 vhost_proxies:
     deploy-vhost:
