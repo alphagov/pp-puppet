@@ -114,8 +114,8 @@ GIT
 
 GIT
   remote: git://github.com/alphagov/puppet-nginx.git
-  ref: d17ab5a4e69a45adf9da5c11daf634d04ad6f76d
-  sha: d17ab5a4e69a45adf9da5c11daf634d04ad6f76d
+  ref: a9cb8bd4d81b48719593193f4d39e73e1869100f
+  sha: a9cb8bd4d81b48719593193f4d39e73e1869100f
   specs:
     nginx (0.0.1)
 

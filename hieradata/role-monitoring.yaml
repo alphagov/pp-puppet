@@ -8,7 +8,7 @@ classes:
     - 'rabbitmq'
     - 'redis'
     - 'rsyslog::server'
-    - 'elasticsearch'
+    - 'performanceplatform::elasticsearch'
 
 graphite::gr_apache_port:       9080
 graphite::gr_apache_port_https: 9443
@@ -42,6 +42,9 @@ ufw_rules:
         ip:   'any'
     allowsyslogfromanywhere:
         port: 514
+        ip:   'any'
+    allowelasticsearchfromany:
+        port: 9200
         ip:   'any'
 
 vhost_proxies:
