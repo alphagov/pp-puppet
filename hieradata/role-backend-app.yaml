@@ -51,16 +51,3 @@ ufw_rules:
         port: 80
         ip:   'any'
 
-lumberjack_instances:
-    write.backdrop:
-        log_files: [ '/opt/write.backdrop/current/log/*.log.json' ]
-        fields: { 'tag': 'write.backdrop' }
-
-    read.backdrop:
-        log_files: [ '/opt/read.backdrop/current/log/*.log.json' ]
-        fields: { 'tag': 'read.backdrop' }
-
-    admin.backdrop:
-        log_files: [ '/opt/admin.backdrop/current/log/*.log.json' ]
-        fields: { 'tag': 'admin.backdrop' }
-

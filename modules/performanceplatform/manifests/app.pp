@@ -1,4 +1,4 @@
-define performanceplatform::app (
+}efine performanceplatform::app (
   $port         = undef,
   $workers      = 4,
   $app_module   = undef,
@@ -46,5 +46,10 @@ define performanceplatform::app (
     chdir         => "${app_path}/current",
     environment   => merge($base_environment, $extra_env),
     exec          => $upstart_exec,
+  }
+
+  lumberjack::logshipper { $title:
+    log_files => [ "/opt/${title}/current/log/*.log.json" ],
+    fields    => { 'tag': $title }
   }
 }
