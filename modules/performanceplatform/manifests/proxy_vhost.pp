@@ -60,7 +60,7 @@ define performanceplatform::proxy_vhost(
     magic                => $magic,
     isdefaultvhost       => $isdefaultvhost,
     proxy                => $proxy,
-    # proxy_magic          => $proxy_magic,
+    proxy_magic          => $proxy_magic,
     forward_host_header  => $forward_host_header,
     client_max_body_size => $client_max_body_size,
     access_logs          => $access_logs,
