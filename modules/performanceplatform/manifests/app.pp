@@ -50,6 +50,6 @@ define performanceplatform::app (
 
   lumberjack::logshipper { $title:
     log_files => [ "/opt/${title}/current/log/*.log.json" ],
-    fields    => { 'tag': $title }
+    fields    => { 'tag' => $title },
   }
 }
