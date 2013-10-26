@@ -1,4 +1,4 @@
-}efine performanceplatform::app (
+define performanceplatform::app (
   $port         = undef,
   $workers      = 4,
   $app_module   = undef,
