@@ -1,13 +1,13 @@
 classes:
-    - 'jenkins'
+    - 'performanceplatform::jenkins'
     - 'performanceplatform::deploy'
     - 'python'
     - 'nginx::server'
     - 'google_credentials'
     - 'phantomjs'
 
-jenkins::lts: 1
-jenkins::plugin_hash:
+performanceplatform::jenkins::lts: 1
+performanceplatform::jenkins::plugin_hash:
     git-client:
         version: "1.0.6"
     git:
