@@ -46,5 +46,12 @@ class performanceplatform::deploy (
             group   => 'jenkins',
             require => Class['jenkins'],
         }
+        file { '/var/lib/jenkins/.bashrc':
+          source  => 'puppet:///modules/performanceplatform/jenkins-bashrc',
+          owner   => 'jenkins',
+          group   => 'jenkins',
+          mode    => '0700',
+          require => Class['jenkins']
+        }
     }
 }
