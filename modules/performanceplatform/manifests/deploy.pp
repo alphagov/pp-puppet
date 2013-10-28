@@ -1,9 +1,10 @@
 class performanceplatform::deploy (
-    $vpn_gateway  = undef,
-    $vpn_user     = undef,
-    $vpn_password = undef,
-    $basic_auth   = undef,
-    $jenkins_key  = undef,
+    $vpn_gateway       = undef,
+    $vpn_user          = undef,
+    $vpn_password      = undef,
+    $basic_auth        = undef,
+    $jenkins_key       = undef,
+    $jenkins_publickey = undef,
 ) {
     #Only phone home if the vpn credentials are set
     if ( $vpn_gateway and ( $vpn_user and $vpn_password )) {
@@ -36,6 +37,16 @@ class performanceplatform::deploy (
             owner   => 'jenkins',
             group   => 'jenkins',
             require => File['/var/lib/jenkins/.ssh'],
+        }
+        if ($jenkins_publickey) {
+          file { '/var/lib/jenkins/.ssh/id_rsa.pub':
+              ensure  => present,
+              content => $jenkins_publickey,
+              mode    => '0600',
+              owner   => 'jenkins',
+              group   => 'jenkins',
+              require => File['/var/lib/jenkins/.ssh'],
+          }
         }
         file { '/var/lib/jenkins/.fabricrc':
             ensure  => present,
