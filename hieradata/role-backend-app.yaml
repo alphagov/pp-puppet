@@ -50,3 +50,4 @@ ufw_rules:
     allowhttp:
         port: 80
         ip:   'any'
+

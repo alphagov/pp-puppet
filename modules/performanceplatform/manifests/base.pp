@@ -58,8 +58,8 @@ FACTER_machine_environment=${environment}
     }
 
     package {'sensu-plugin':
-      before => Class['sensu'],
       ensure   => installed,
+      before   => Class['sensu'],
       provider => gem,
       require  => Package['ruby1.9.1-dev'],
     }

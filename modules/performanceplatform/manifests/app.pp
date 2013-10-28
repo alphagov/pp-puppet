@@ -47,4 +47,9 @@ define performanceplatform::app (
     environment   => merge($base_environment, $extra_env),
     exec          => $upstart_exec,
   }
+
+  lumberjack::logshipper { $title:
+    log_files => [ "/opt/${title}/current/log/*.log.json" ],
+    fields    => { 'tag' => $title },
+  }
 }
