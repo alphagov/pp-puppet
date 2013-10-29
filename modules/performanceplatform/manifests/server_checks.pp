@@ -18,7 +18,7 @@ define performanceplatform::server_checks(
       interval => '10',
     }
 
-    performanceplatform::graphite_check { "check_machine_is_down${name}":
+    performanceplatform::graphite_check { "check_machine_is_down_${name}":
       target   => "transformNull(collectd.${graphite_fqdn}.uptime.uptime)",
       warning  => '0:',
       critical => '0:',
