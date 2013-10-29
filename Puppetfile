@@ -13,6 +13,7 @@ mod 'puppetlabs/vcsrepo',         '0.1.2'
 mod 'saz/dnsmasq',                '1.0.1'
 mod 'saz/ntp',                    '2.0.3'
 mod 'saz/rsyslog',                '2.0.0'
+mod 'smarchive/archive',          '0.1.1'
 mod 'thomasvandoren/redis',       '0.0.9'
 mod 'netmanagers/fail2ban',       '1.1.0'
 mod 'account',    :git => 'https://github.com/alphagov/puppet-account.git',
@@ -36,7 +37,7 @@ mod 'lumberjack', :git => 'git://github.com/alphagov/puppet-lumberjack.git',
 mod 'mongodb',    :git => 'git://github.com/alphagov/puppetlabs-mongodb.git',
                   :ref => 'dc077a209efdf8d80fac40d40fec575b6a0949d2'
 mod 'nginx',      :git => 'git://github.com/alphagov/puppet-nginx.git',
-                  :ref => 'a9cb8bd4d81b48719593193f4d39e73e1869100f'
+                  :ref => 'e60b12ddfbf22862ad0fdcc12056b5c5f3089795'
 mod 'python',     :git => 'git://github.com/stankevich/puppet-python.git',
                   :ref => 'f508b71d534f3c67db12886fa914cb4ef74bbe7a'
 mod 'sensu',      :git => 'git://github.com/alphagov/sensu-puppet.git',
