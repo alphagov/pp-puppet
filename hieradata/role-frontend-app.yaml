@@ -42,3 +42,5 @@ nginx_conf:
 lumberjack_instances:
   nginx:
     log_files: [ '/var/log/nginx/*.access.json.log' ]
+  varnish:
+    log_files: [ '/var/log/varnish/varnishncsa.log' ]
