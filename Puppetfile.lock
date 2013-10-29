@@ -39,6 +39,7 @@ FORGE
     saz/dnsmasq (1.0.1)
     saz/ntp (2.0.3)
     saz/rsyslog (2.0.0)
+    smarchive/archive (0.1.1)
     stahnma/epel (0.0.5)
     thomasvandoren/redis (0.0.9)
       maestrodev/wget (>= 0.0.0)
@@ -114,8 +115,8 @@ GIT
 
 GIT
   remote: git://github.com/alphagov/puppet-nginx.git
-  ref: a9cb8bd4d81b48719593193f4d39e73e1869100f
-  sha: a9cb8bd4d81b48719593193f4d39e73e1869100f
+  ref: e60b12ddfbf22862ad0fdcc12056b5c5f3089795
+  sha: e60b12ddfbf22862ad0fdcc12056b5c5f3089795
   specs:
     nginx (0.0.1)
 
@@ -201,6 +202,7 @@ DEPENDENCIES
   saz/ntp (= 2.0.3)
   saz/rsyslog (= 2.0.0)
   sensu (>= 0)
+  smarchive/archive (= 0.1.1)
   ssl (>= 0)
   thomasvandoren/redis (= 0.0.9)
   tmux (>= 0)
