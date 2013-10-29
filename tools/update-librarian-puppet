@@ -1,0 +1,3 @@
+#!/bin/bash
+
+bundle install --without NONEXISTENT && bundle exec librarian-puppet install
