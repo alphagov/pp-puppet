@@ -61,6 +61,7 @@ VARNISH_STORAGE="malloc,${VARNISH_STORAGE_SIZE}"
 #
 # # Default TTL used when the backend does not specify one
 VARNISH_TTL=<%= scope.lookupvar('varnish::default_ttl') %>
+
 #
 # # DAEMON_OPTS is used by the init script.  If you add or remove options, make
 # # sure you update this section, too.
