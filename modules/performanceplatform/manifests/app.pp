@@ -48,8 +48,11 @@ define performanceplatform::app (
     exec          => $upstart_exec,
   }
 
-  lumberjack::logshipper { $title:
+  lumberjack::logshipper { "app-logs-for-${title}":
     log_files => [ "/opt/${title}/current/log/*.log.json" ],
-    fields    => { 'tag' => $title },
+  }
+
+  lumberjack::logshipper { "var-logs-for-${title}":
+    log_files => [ "/var/log/${title}/*.log.json"],
   }
 }

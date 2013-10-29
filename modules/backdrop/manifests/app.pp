@@ -36,6 +36,12 @@ define backdrop::app (
         group   => $group,
         content => template('backdrop/gunicorn.erb')
     }
+    file { "${config_path}/gunicorn.logging.conf":
+        ensure  => present,
+        owner   => $user,
+        group   => $group,
+        content => template('backdrop/gunicorn.logging.conf.erb')
+    }
     file { "${app_path}/run-procfile.sh":
         ensure  => present,
         owner   => $user,
