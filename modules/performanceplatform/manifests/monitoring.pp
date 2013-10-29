@@ -48,11 +48,6 @@ class performanceplatform::monitoring (
     ssl_key         => 'puppet:///modules/performanceplatform/logstash.key',
   }
 
-  logstash::filter::grep { 'tag-lumberjack':
-    type    => 'lumberjack',
-    add_tag => [ "%{tag}" ],
-  }
-
   logstash::filter::mutate { 'nginx-token-fix':
     type => 'lumberjack',
     tags => [ 'nginx' ],
