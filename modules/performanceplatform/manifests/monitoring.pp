@@ -67,4 +67,9 @@ class performanceplatform::monitoring (
     namespace => 'nginx',
   }
 
+  # Uncomment for testing
+  # logstash::output::file { 'test':
+  #   path => '/var/log/temp.test.delete.me.json.log'
+  # }
+
 }
