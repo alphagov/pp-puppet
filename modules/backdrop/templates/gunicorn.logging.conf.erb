@@ -36,7 +36,7 @@ args=('/var/log/<%= title %>/gunicorn.error.log',)
 [handler_error_json_file]
 class=logging.FileHandler
 formatter=logstash
-args=('/var/log/<%= title %>/gunicorn.error.json.log',)
+args=('/var/log/<%= title %>/gunicorn.error.log.json',)
 
 [handler_access_file]
 class=logging.FileHandler
@@ -46,7 +46,7 @@ args=('/var/log/<%= title %>/gunicorn.access.log',)
 [handler_access_json_file]
 class=logging.FileHandler
 formatter=logstash
-args=('/var/log/<%= title %>/gunicorn.access.json.log',)
+args=('/var/log/<%= title %>/gunicorn.access.log.json',)
 
 [formatter_generic]
 format=%(asctime)s [%(process)d] [%(levelname)s] %(message)s

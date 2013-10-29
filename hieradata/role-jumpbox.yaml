@@ -55,7 +55,7 @@ vhost_proxies:
         upstream_server: 'localhost'
         upstream_port:   8080
         access_logs:
-            '{name}.access.json.log': 'json_event'
+            '{name}.access.log.json': 'json_event'
     graphite-vhost:
         servername:      "%{::graphite_vhost}"
         ssl:             true
@@ -64,7 +64,7 @@ vhost_proxies:
         upstream_port:   80
         forward_host_header: false
         access_logs:
-            '{name}.access.json.log': 'json_event'
+            '{name}.access.log.json': 'json_event'
     alerts-vhost:
         servername:      "%{::alerts_vhost}"
         ssl:             true
@@ -72,7 +72,7 @@ vhost_proxies:
         upstream_server: 'alerts'
         upstream_port:   80
         access_logs:
-            '{name}.access.json.log': 'json_event'
+            '{name}.access.log.json': 'json_event'
     elasticsearch-vhost:
         servername:      "%{::elasticsearch_vhost}"
         port:            9200
@@ -80,7 +80,7 @@ vhost_proxies:
         upstream_port:   9200
         proxy_magic:     'limit_except GET HEAD OPTIONS { deny all; }'
         access_logs:
-            '{name}.access.json.log': 'json_event'
+            '{name}.access.log.json': 'json_event'
 
 nginx_conf:
     logging:
@@ -88,4 +88,4 @@ nginx_conf:
 
 lumberjack_instances:
     nginx:
-        log_files: [ '/var/log/nginx/*.access.json.log' ]
+        log_files: [ '/var/log/nginx/*.access.log.json' ]

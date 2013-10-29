@@ -54,7 +54,7 @@ vhost_proxies:
         upstream_server: 'localhost'
         upstream_port:   9080
         access_logs:
-            '{name}.access.json.log': 'json_event'
+            '{name}.access.log.json': 'json_event'
         magic: |
             auth_basic "Enter username/password";
             auth_basic_user_file /etc/nginx/htpasswd;
@@ -64,7 +64,7 @@ vhost_proxies:
         upstream_server: 'localhost'
         upstream_port:   8090
         access_logs:
-            '{name}.access.json.log': 'json_event'
+            '{name}.access.log.json': 'json_event'
 
 nginx_conf:
     logging:
@@ -72,4 +72,4 @@ nginx_conf:
 
 lumberjack_instances:
     nginx:
-        log_files: [ '/var/log/nginx/*.access.json.log' ]
+        log_files: [ '/var/log/nginx/*.access.log.json' ]
