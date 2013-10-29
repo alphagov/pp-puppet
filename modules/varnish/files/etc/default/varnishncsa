@@ -6,3 +6,8 @@
 #
 # NCSA log format, to be used by HTTP log analyzers
 VARNISHNCSA_ENABLED=1
+#
+# Varnish log format
+VARNISH_LOG_FORMAT='{"@tags":["varnish"],"@fields":{"timestamp":"%t","remote_addr":"%h","remote_user":"%u","x_forwarded_for":"%{X-Forwarded-For}i","hit_miss":"%{Varnish:hitmiss}x","body_bytes_sent":"%b","request_time":"%{Varnish:time_firstbyte}x","status":"%s","request":"%r","host":"%{host}i","request_method":"%m","time_first_byte":"%{Varnish:time_firstbyte}x","handling":"%{Varnish:handling}x","http_referrer":"%{Referrer}i","http_user_agent":"%{User-agent}i"}}'
+
+DAEMON_OPTS="${DAEMON_OPTS} -F ${VARNISH_LOG_FORMAT}"

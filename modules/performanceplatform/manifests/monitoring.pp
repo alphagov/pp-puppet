@@ -48,6 +48,12 @@ class performanceplatform::monitoring (
     ssl_key         => 'puppet:///modules/performanceplatform/logstash.key',
   }
 
+  logstash::filter::date { 'varnish-timestamp-fix':
+    type  => 'lumberjack',
+    tags  => [ 'varnish' ],
+    match => [ 'timestamp', 'dd/MMM/YYYY:HH:mm:ss' ],
+  }
+
   logstash::filter::mutate { 'nginx-token-fix':
     type => 'lumberjack',
     tags => [ 'nginx' ],
