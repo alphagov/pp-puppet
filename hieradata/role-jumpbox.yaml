@@ -76,9 +76,9 @@ vhost_proxies:
     elasticsearch-vhost:
         servername:      "%{::elasticsearch_vhost}"
         port:            9200
-        upstream_server: 'logging'
+        upstream_server: 'elasticsearch'
         upstream_port:   9200
-        proxy_magic:     'limit_except GET HEAD OPTIONS { deny all; }'
+        proxy_magic:     'limit_except GET POST HEAD OPTIONS { deny all; }'
         access_logs:
             '{name}.access.log.json': 'json_event'
 

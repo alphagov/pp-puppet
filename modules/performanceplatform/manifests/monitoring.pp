@@ -73,10 +73,8 @@ class performanceplatform::monitoring (
     namespace => 'nginx',
   }
 
-  # Uncomment for testing
-  # logstash::output::file { 'test':
-  #   tags => ['tag-to-filter'],
-  #   path => '/var/log/temp.test.delete.me.log.json'
-  # }
+  logstash::output::elasticsearch { 'elasticsearch':
+    host => 'elasticsearch',
+  }
 
 }
