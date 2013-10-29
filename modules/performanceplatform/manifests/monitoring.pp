@@ -51,7 +51,7 @@ class performanceplatform::monitoring (
   logstash::filter::date { 'varnish-timestamp-fix':
     type  => 'lumberjack',
     tags  => [ 'varnish' ],
-    match => [ 'timestamp', 'dd/MMM/YYYY:HH:mm:ss' ],
+    match => [ 'timestamp', '[dd/MMM/YYYY:HH:mm:ss Z]' ],
   }
 
   logstash::filter::mutate { 'nginx-token-fix':
