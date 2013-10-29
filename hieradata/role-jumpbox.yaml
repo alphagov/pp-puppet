@@ -26,7 +26,7 @@ performanceplatform::jenkins::plugin_hash:
     greenballs:
         version: "1.12"
 
-performanceplatform::kibana::elasticsearch_url: "https://%{::elasticsearch_vhost}:9200"
+performanceplatform::kibana::elasticsearch_url: "https://%{::elasticsearch_vhost}"
 performanceplatform::kibana::tarball_url: 'https://download.elasticsearch.org/kibana/kibana/kibana-3.0.0milestone4.tar.gz'
 
 python::version:    '2.7'
@@ -46,9 +46,6 @@ ufw_rules:
         ip:   'any'
     allowsshfromanywhere:
         port: 22
-        ip:   'any'
-    allowelasticsearchfromany:
-        port: 9200
         ip:   'any'
 
 vhost_proxies:
@@ -80,7 +77,7 @@ vhost_proxies:
     elasticsearch-vhost:
         servername:      "%{::elasticsearch_vhost}"
         ssl:             true
-        ssl_port:        9200
+        ssl_redirect:    true
         upstream_server: 'elasticsearch'
         upstream_port:   9200
         proxy_magic:     'limit_except GET POST HEAD OPTIONS { deny all; }'
