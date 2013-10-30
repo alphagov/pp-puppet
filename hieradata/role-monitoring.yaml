@@ -8,6 +8,18 @@ classes:
     - 'rabbitmq'
     - 'redis'
     - 'performanceplatform::elasticsearch'
+    - 'performanceplatform::server_checking'
+
+performanceplatform::server_checking::boxes:
+    - backend-app-1
+    - backend-app-2
+    - frontend-app-1
+    - frontend-app-2
+    - jumpbox-1
+    - mongo-1
+    - mongo-2
+    - mongo-3
+    - monitoring-1
 
 graphite::gr_apache_port:       9080
 graphite::gr_apache_port_https: 9443

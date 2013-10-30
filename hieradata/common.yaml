@@ -85,7 +85,6 @@ classes:
     - 'ufw'
     - 'performanceplatform::base'
     - 'performanceplatform::pp_fail2ban'
-    - 'performanceplatform::server_checks'
 
 rsyslog::client::server: "logging"
 
