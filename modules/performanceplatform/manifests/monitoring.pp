@@ -40,7 +40,7 @@ class performanceplatform::monitoring (
     notify               => Class['sensu'],
   }
 
-  logstash::input::lumberjack { 'lumberjack-nginx':
+  logstash::input::lumberjack { 'lumberjack':
     format          => 'json',
     type            => 'lumberjack',
     port            => 3456,
