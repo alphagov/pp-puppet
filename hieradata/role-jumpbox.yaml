@@ -1,10 +1,13 @@
 classes:
     - 'performanceplatform::jenkins'
     - 'performanceplatform::deploy'
+    - 'performanceplatform::kibana'
     - 'python'
     - 'nginx::server'
     - 'google_credentials'
     - 'phantomjs'
+
+nginx::server::server_names_hash_bucket_size: 128
 
 performanceplatform::jenkins::lts: 1
 performanceplatform::jenkins::plugin_hash:
@@ -25,6 +28,9 @@ performanceplatform::jenkins::plugin_hash:
     greenballs:
         version: "1.12"
 
+performanceplatform::kibana::elasticsearch_url: "https://%{::elasticsearch_vhost}"
+performanceplatform::kibana::tarball_url: 'https://download.elasticsearch.org/kibana/kibana/kibana-3.0.0milestone4.tar.gz'
+
 python::version:    '2.7'
 python::dev:        true
 python::virtualenv: true
@@ -42,9 +48,6 @@ ufw_rules:
         ip:   'any'
     allowsshfromanywhere:
         port: 22
-        ip:   'any'
-    allowelasticsearchfromany:
-        port: 9200
         ip:   'any'
 
 vhost_proxies:
@@ -75,7 +78,8 @@ vhost_proxies:
             '{name}.access.log.json': 'json_event'
     elasticsearch-vhost:
         servername:      "%{::elasticsearch_vhost}"
-        port:            9200
+        ssl:             true
+        ssl_redirect:    true
         upstream_server: 'elasticsearch'
         upstream_port:   9200
         proxy_magic:     'limit_except GET POST HEAD OPTIONS { deny all; }'

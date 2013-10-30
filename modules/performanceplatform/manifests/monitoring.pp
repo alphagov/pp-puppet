@@ -40,12 +40,23 @@ class performanceplatform::monitoring (
     notify               => Class['sensu'],
   }
 
-  logstash::input::lumberjack { 'lumberjack-nginx':
+  logstash::input::lumberjack { 'lumberjack':
     format          => 'json',
     type            => 'lumberjack',
     port            => 3456,
     ssl_certificate => 'puppet:///modules/performanceplatform/logstash.pub',
     ssl_key         => 'puppet:///modules/performanceplatform/logstash.key',
+  }
+
+  # Ensure the monitoring box is not a syslog server so that logstash
+  # can connect to the syslog port (514)
+  file { "/etc/rsyslog.d/server.conf":
+    ensure => absent,
+  }
+
+  logstash::input::syslog { 'logstash-syslog':
+    type => "syslog",
+    tags => ["syslog"],
   }
 
   logstash::filter::date { 'varnish-timestamp-fix':

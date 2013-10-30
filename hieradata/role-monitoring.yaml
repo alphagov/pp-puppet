@@ -7,7 +7,6 @@ classes:
     - 'performanceplatform::monitoring'
     - 'rabbitmq'
     - 'redis'
-    - 'rsyslog::server'
     - 'performanceplatform::elasticsearch'
     - 'performanceplatform::server_checking'
 
@@ -24,8 +23,6 @@ performanceplatform::server_checking::boxes:
 
 graphite::gr_apache_port:       9080
 graphite::gr_apache_port_https: 9443
-
-rsyslog::server::server_dir: '/srv/log/'
 
 sensu::dashboard_port: 8090
 sensu::dashboard_user: 'betademo'

@@ -86,6 +86,8 @@ classes:
     - 'performanceplatform::base'
     - 'performanceplatform::pp_fail2ban'
 
+rsyslog::client::server: "logging"
+
 sensu::rabbitmq_host: 'rabbitmq'
 sensu::rabbitmq_password: "%{::rabbitmq_sensu_password}"
 sensu::rabbitmq_port: 5672
