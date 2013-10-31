@@ -1,12 +1,13 @@
-class performanceplatform::dns {
+class performanceplatform::dns (
+  $aliases = [],
+  $cnames  = [],
+  $hosts   = '',
+) {
 
   include dnsmasq
 
-  $aliases = hiera('performanceplatform::dns::aliases', {})
-  validate_hash($aliases)
-  $cnames = hiera('performanceplatform::dns::cnames', {})
-  validate_hash($cnames)
-  $hosts = hiera('performanceplatform::dns::hosts', '')
+  validate_array($aliases)
+  validate_array($cnames)
 
   dnsmasq::conf { 'internal-dns':
       ensure  => present,
