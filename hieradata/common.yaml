@@ -137,6 +137,9 @@ performanceplatform::dns::hosts: |
     172.27.1.33 mongo-3 mongo
     172.27.1.41 monitoring-1 log logging graphite logstash alerts redis rabbitmq elasticsearch
 
+performanceplatform::dns::cnames:
+    - [ "%{::www_vhost}", "frontend" ]
+
 performanceplatform::mongo::mongo_hosts:
     - mongo-1
     - mongo-2
