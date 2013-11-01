@@ -139,7 +139,6 @@ performanceplatform::dns::hosts: |
 
 performanceplatform::dns::cnames:
     - [ "%{::www_vhost}", "frontend" ]
-    - [ "www.performance.service.gov.uk", "frontend" ]
 
 performanceplatform::mongo::mongo_hosts:
     - mongo-1
