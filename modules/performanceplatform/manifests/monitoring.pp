@@ -1,9 +1,9 @@
 class performanceplatform::monitoring (
 ) {
 
-  ext4mount { '/mnt/data':
+  ext4mount { '/mnt/data/elasticsearch':
     mountoptions => 'defaults',
-    disk         => '/dev/sdb1',
+    disk         => '/dev/mapper/data-elasticsearch',
   }
 
   file { '/etc/apache2/run':
