@@ -1,3 +1,6 @@
+# This file is managed by puppet, do not mess with it, terrible terrible things
+# will happen. This includes you @tombooth
+
 # Start logstash
 START=true
 
