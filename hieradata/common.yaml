@@ -79,6 +79,7 @@ classes:
     - 'ntp'
     - 'python'
     - 'rsyslog::client'
+    - 'screen'
     - 'sensu'
     - 'ssh::server'
     - 'tmux'
