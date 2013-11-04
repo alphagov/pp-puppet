@@ -162,6 +162,7 @@ system_packages:
     - git
     - at
     - htop
+    - lvm2
     - ssl-cert
     - vim
     - libcurl4-gnutls-dev
