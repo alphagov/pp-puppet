@@ -1,5 +1,10 @@
-class performanceplatform::elasticsearch {
-  include ::elasticsearch
+class performanceplatform::elasticsearch(
+  $data_directory,
+) {
+
+  class { '::elasticsearch':
+    data_directory => '/mnt/data/elasticsearch',
+  }
 
   cron {'elasticsearch-rotate-indices':
     ensure  => present,
