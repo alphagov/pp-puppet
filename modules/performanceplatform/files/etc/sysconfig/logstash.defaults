@@ -2,7 +2,7 @@
 START=true
 
 # Java options
-LS_JAVA_OPTS="${LS_JAVA_OPTS} -Xms512m -Xmx512m"
+LS_JAVA_OPTS="${LS_JAVA_OPTS} -XX:+HeapDumpOnOutOfMemoryError -Xms1024m -Xmx1024m"
 
 # Open files limit
 #OPEN_FILES=2049
