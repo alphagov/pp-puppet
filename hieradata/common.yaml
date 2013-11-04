@@ -163,6 +163,7 @@ system_packages:
     - at
     - htop
     - lvm2
+    - parted
     - ssl-cert
     - vim
     - libcurl4-gnutls-dev
