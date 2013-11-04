@@ -1,6 +1,10 @@
-
 class performanceplatform::monitoring (
 ) {
+
+  ext4mount { '/mnt/data':
+    mountoptions => 'defaults',
+    disk         => '/dev/sdb1',
+  }
 
   file { '/etc/apache2/run':
     ensure  => link,

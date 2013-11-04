@@ -69,6 +69,13 @@ GIT
     curl (0.0.1)
 
 GIT
+  remote: git://github.com/alphagov/puppet-ext4mount.git
+  ref: d97f99cc2801b83152b905d1285fa34e689cb499
+  sha: d97f99cc2801b83152b905d1285fa34e689cb499
+  specs:
+    ext4mount (0.0.1)
+
+GIT
   remote: git://github.com/alphagov/puppet-google_credentials.git
   ref: a64f9e5c051a0d38e59441457b52a7afeeebed24
   sha: a64f9e5c051a0d38e59441457b52a7afeeebed24
@@ -181,6 +188,7 @@ DEPENDENCIES
   collectd (>= 0)
   curl (>= 0)
   dwerder/graphite (= 3.0.1)
+  ext4mount (>= 0)
   gdsoperations/elasticsearch (= 0.0.1)
   google_credentials (>= 0)
   gstatsd (>= 0)
