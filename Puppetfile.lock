@@ -14,8 +14,6 @@ FORGE
       puppetlabs/apt (>= 0.0.0)
       puppetlabs/stdlib (>= 0.0.0)
       stahnma/epel (>= 0.0.0)
-    gdsoperations/elasticsearch (0.0.1)
-      puppetlabs/stdlib (>= 3.0.0)
     maestrodev/wget (1.2.2)
     netmanagers/fail2ban (1.1.0)
       example42/monitor (>= 2.0.0)
@@ -167,6 +165,14 @@ GIT
     tmux (0.0.1)
 
 GIT
+  remote: git://github.com/gds-operations/puppet-elasticsearch.git
+  ref: d15521e6cb215a809d92692e76a1d0cac111d9a0
+  sha: d15521e6cb215a809d92692e76a1d0cac111d9a0
+  specs:
+    elasticsearch (0.0.1)
+      puppetlabs/stdlib (>= 3.0.0)
+
+GIT
   remote: git://github.com/stankevich/puppet-python.git
   ref: f508b71d534f3c67db12886fa914cb4ef74bbe7a
   sha: f508b71d534f3c67db12886fa914cb4ef74bbe7a
@@ -188,8 +194,8 @@ DEPENDENCIES
   collectd (>= 0)
   curl (>= 0)
   dwerder/graphite (= 3.0.1)
+  elasticsearch (>= 0)
   ext4mount (>= 0)
-  gdsoperations/elasticsearch (= 0.0.1)
   google_credentials (>= 0)
   gstatsd (>= 0)
   harden (>= 0)

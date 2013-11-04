@@ -7,7 +7,6 @@ classes:
     - 'performanceplatform::monitoring'
     - 'rabbitmq'
     - 'redis'
-    - 'performanceplatform::elasticsearch'
     - 'performanceplatform::server_checking'
 
 performanceplatform::server_checking::boxes:
