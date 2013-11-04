@@ -1,9 +1,13 @@
 language: ruby
 rvm:
   - 1.9.3
+  - 2.0.0
 before_install:
   - gem install puppet
   - gem install librarian-puppet
   - librarian-puppet install
 notifications:
   email: false
+matrix:
+  allow_failures:
+    - rvm: 2.0.0
