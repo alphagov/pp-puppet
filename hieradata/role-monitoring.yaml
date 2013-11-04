@@ -64,8 +64,7 @@ vhost_proxies:
         ssl:             false
         upstream_server: 'localhost'
         upstream_port:   9080
-        access_logs:
-            '{name}.access.log.json': 'json_event'
+        sensu_check:     false
         magic: |
             auth_basic "Enter username/password";
             auth_basic_user_file /etc/nginx/htpasswd;
@@ -74,8 +73,7 @@ vhost_proxies:
         ssl:             false
         upstream_server: 'localhost'
         upstream_port:   8090
-        access_logs:
-            '{name}.access.log.json': 'json_event'
+        sensu_check:     false
 
 nginx_conf:
     logging:
