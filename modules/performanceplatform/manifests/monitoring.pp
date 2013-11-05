@@ -31,8 +31,15 @@ class performanceplatform::monitoring (
     subscribe => Service['nginx'],
   }
 
+  package { 'redphone':
+    ensure   => installed,
+    provider => 'gem',
+    require  => Package['ruby1.9.1-dev'],
+  }
+
   Class['redis'] -> Class['sensu']
   Class['rabbitmq'] -> Class['sensu']
+  Package['redphone'] -> Class['sensu']
 
   rabbitmq_user { 'sensu':
     ensure   => present,
@@ -102,6 +109,33 @@ class performanceplatform::monitoring (
 
   logstash::output::elasticsearch { 'elasticsearch':
     host => 'elasticsearch',
+  }
+
+  sensu::check { 'logstash_is_down':
+    command  => '/etc/sensu/community-plugins/plugins/processes/check-procs.rb -f /var/run/logstash-agent.pid',
+    interval => '60',
+    handlers => 'pagerduty',
+  }
+
+  $graphite_fqdn = regsubst($fqdn, '\.', '_', 'G')
+
+  performanceplatform::graphite_check { "check_low_disk_space_elasticsearch":
+    target   => "collectd.${graphite_fqdn}.df-mnt-data-elasticsearch.df_complex-free",
+    warning  => '4000000000:', # A little less than 4 gig
+    critical => '1000000000:',  # A little less than 1 gig
+    interval => '60',
+    handlers => 'pagerduty',
+  }
+
+  $pagerduty_api_key = hiera('pagerduty_api_key', undef)
+
+  if $pagerduty_api_key != undef {
+    sensu::handler { 'pagerduty':
+      command    => '/etc/sensu/community-plugins/handlers/notification/pagerduty.rb',
+      config     => {
+        api_key  => $pagerduty_api_key,
+      }
+    }
   }
 
 }
