@@ -24,5 +24,6 @@ define performanceplatform::server_checks(
       warning  => '0:',
       critical => '0:',
       interval => '1',
+      handlers => 'pagerduty',
     }
 }
