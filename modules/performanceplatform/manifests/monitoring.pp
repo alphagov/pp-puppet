@@ -111,6 +111,12 @@ class performanceplatform::monitoring (
     host => 'elasticsearch',
   }
 
+  sensu::check { 'logstash_is_down':
+    command  => '/etc/sensu/community-plugins/plugins/processes/check-procs.rb -f /var/run/logstash-agent.pid',
+    interval => '60',
+    handlers => 'pagerduty',
+  }
+
   $graphite_fqdn = regsubst($fqdn, '\.', '_', 'G')
 
   performanceplatform::graphite_check { "check_low_disk_space_elasticsearch":
