@@ -1,7 +1,8 @@
 class performanceplatform::dns (
-  $aliases = [],
-  $cnames  = [],
-  $hosts   = '',
+  $aliases    = [],
+  $cnames     = [],
+  $hosts      = '',
+  $env_hosts  = '',
 ) {
 
   include dnsmasq
@@ -15,7 +16,7 @@ class performanceplatform::dns (
   }
 
   file { '/etc/hosts.dns':
-      content => $hosts,
+      content => "${hosts}\n${env_hosts}",
       notify  => Class['dnsmasq::service'],
   }
 
