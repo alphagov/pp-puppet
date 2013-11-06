@@ -68,7 +68,7 @@ FACTER_machine_environment=${environment}
         ensure   => present,
         provider => git,
         source   => 'https://github.com/alphagov/sensu-community-plugins.git',
-        revision => '76233280a0782f8c2d41c8af46c8ab0d96784273',
+        revision => '99bbd0feeba1b84737e1f067448831317ae02c83',
     }
 
 }

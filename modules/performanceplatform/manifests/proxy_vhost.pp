@@ -27,22 +27,23 @@ define performanceplatform::proxy_vhost(
   $sensu_check          = true,
 ) {
 
-  $graphite_fqdn = regsubst($::fqdn, '\.', '_', 'G')
   $graphite_servername = regsubst($servername, '\.', '_', 'G')
 
   if $sensu_check {
     performanceplatform::graphite_check { "5xx_rate_${servername}":
-      target   => "sumSeries(stats.nginx.${graphite_fqdn}.${graphite_servername}.http_5*)",
-      warning  => $five_warning,
-      critical => $five_critical,
-      interval => '10',
+      target         => "sumSeries(stats.nginx.${::hostname}.${graphite_servername}.http_5*)",
+      warning        => $five_warning,
+      critical       => $five_critical,
+      interval       => '10',
+      ignore_no_data => true,
     }
 
     performanceplatform::graphite_check { "4xx_rate_${servername}":
-      target   => "sumSeries(stats.nginx.${graphite_fqdn}.${graphite_servername}.http_4*)",
+      target   => "sumSeries(stats.nginx.${::hostname}.${graphite_servername}.http_4*)",
       warning  => $four_warning,
       critical => $four_critical,
       interval => '10',
+      ignore_no_data => true,
     }
   }
 
