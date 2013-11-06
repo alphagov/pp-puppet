@@ -55,7 +55,7 @@ class BackdropWriteReadTest< Sensu::Plugin::Check::CLI
       rescue TimeError
         critical "Failed to parse time from local payload '#{payload['_timestamp']}'"
       end
-      if (utc_time - read_api_time_stamp) < API_TIME_TO_WRITE
+      if (utc_time - read_api_timestamp) < API_TIME_TO_WRITE
         ok "Succeeded in writing and reading from backdrop"
       else
         critical "Failed to read latest record from the read API"
