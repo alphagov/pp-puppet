@@ -1,4 +1,5 @@
 class performanceplatform::backdrop_smoke_tests (
+  $test_bucket_token='qwertyuiop'
 ) {
     $check_data_path ="/etc/sensu/backdrop-write-read-test.rb"
 
@@ -18,6 +19,6 @@ class performanceplatform::backdrop_smoke_tests (
 
     sensu::check { 'backdrop_smoke_tests':
       interval => 120,
-      command  => "ruby ${check_data_path}  -u 'https://${www_vhost}/test' -b'qwertyuiop'"
+      command  => "ruby ${check_data_path}  -u 'https://${www_vhost}/test' -b'${test_bucket_token}'"
     }
 }
