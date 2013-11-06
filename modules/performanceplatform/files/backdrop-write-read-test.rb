@@ -20,7 +20,9 @@ class BackdropWriteReadTest< Sensu::Plugin::Check::CLI
          :long => '--bearer BEARER',
          :required => true
   def run
-  payload = {"_timestamp" =>Time.now.utc.iso8601()}
+  start_time = Time.now.utc
+  end_time = start_time + API_TIME_TO_WRITE
+  payload = {"_timestamp" => start_time.iso8601()}
   uri = URI.parse(config[:url])
   auth = config[:auth_token]
   content_type = "application/json"
@@ -34,7 +36,7 @@ class BackdropWriteReadTest< Sensu::Plugin::Check::CLI
     if  write.body.to_s.include? "ok"
       sleep(SLEEP_CONST)
 
-      uri_sorting_and_results_limitation = config[:url] + "?sort_by=_timestamp:descending&limit=1"
+      uri_sorting_and_results_limitation = config[:url] + "?sort_by=_timestamp:descending&limit=1&start_at=#{start_time.iso8601()}&end_at=#{end_time.iso8601()}"
       read = Curl::Easy.http_get(uri_sorting_and_results_limitation) do |curlinfo|
         curlinfo.ssl_verify_peer = false
       end
@@ -55,7 +57,7 @@ class BackdropWriteReadTest< Sensu::Plugin::Check::CLI
       rescue TimeError
         critical "Failed to parse time from local payload '#{payload['_timestamp']}'"
       end
-      if (utc_time - read_api_time_stamp) < API_TIME_TO_WRITE
+      if (utc_time - read_api_timestamp) < API_TIME_TO_WRITE
         ok "Succeeded in writing and reading from backdrop"
       else
         critical "Failed to read latest record from the read API"
