@@ -34,7 +34,7 @@ define performanceplatform::proxy_vhost(
       target         => "sumSeries(stats.nginx.${::hostname}.${graphite_servername}.http_5*)",
       warning        => $five_warning,
       critical       => $five_critical,
-      interval       => '10',
+      interval       => 60,
       ignore_no_data => true,
     }
 
@@ -42,7 +42,7 @@ define performanceplatform::proxy_vhost(
       target   => "sumSeries(stats.nginx.${::hostname}.${graphite_servername}.http_4*)",
       warning  => $four_warning,
       critical => $four_critical,
-      interval => '10',
+      interval => 60,
       ignore_no_data => true,
     }
   }
