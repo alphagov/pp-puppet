@@ -17,7 +17,7 @@ class spotlight::app (
     servername   => $::spotlight_vhost,
     proxy_ssl    => true,
     extra_env    => {
-      'NODE_ENV' => 'production',
+      'NODE_ENV' => $::environment,
     },
     upstart_desc => 'Spotlight job',
     upstart_exec => 'node app/server.js',
