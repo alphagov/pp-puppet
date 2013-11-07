@@ -113,7 +113,7 @@ class performanceplatform::monitoring (
 
   sensu::check { 'logstash_is_down':
     command  => '/etc/sensu/community-plugins/plugins/processes/check-procs.rb -p logstash -W 1 -C 1',
-    interval => '60',
+    interval => 60,
     handlers => 'pagerduty',
   }
 
@@ -123,7 +123,7 @@ class performanceplatform::monitoring (
     target   => "collectd.${graphite_fqdn}.df-mnt-data-elasticsearch.df_complex-free",
     warning  => '4000000000:', # A little less than 4 gig
     critical => '1000000000:',  # A little less than 1 gig
-    interval => '60',
+    interval => 60,
     handlers => 'pagerduty',
   }
 

@@ -2,7 +2,7 @@ define performanceplatform::graphite_check(
   $target,
   $warning,
   $critical,
-  $interval = '60',
+  $interval = 60,
   $handlers = undef,
   $ignore_no_data = false,
 ) {
@@ -16,8 +16,10 @@ define performanceplatform::graphite_check(
     $flags = ''
   }
 
+  $max_age = $interval * 2
+
   sensu::check { $name:
-    command  => "${check_data_path} ${server_config} ${flags} --age ${interval} -t \"${target}\" -w \"${warning}\" -c \"${critical}\" -n \"${name}\"",
+    command  => "${check_data_path} ${server_config} ${flags} --age ${max_age} -t \"${target}\" -w \"${warning}\" -c \"${critical}\" -n \"${name}\"",
     interval => $interval,
     handlers => $handlers,
     custom   => {

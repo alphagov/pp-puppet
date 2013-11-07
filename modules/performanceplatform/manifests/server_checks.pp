@@ -8,14 +8,14 @@ define performanceplatform::server_checks(
       target   => "collectd.${graphite_fqdn}.cpu-0.cpu-idle",
       warning  => '20:',
       critical => '5:',
-      interval => '10',
+      interval => 60,
     }
 
     performanceplatform::graphite_check { "check_low_disk_space_${name}":
       target   => "collectd.${graphite_fqdn}.df-root.df_complex-free",
       warning  => '4000000000:', # A little less than 4 gig
       critical => '1000000000:',  # A little less than 1 gig
-      interval => '10',
+      interval => 60,
       handlers => 'pagerduty',
     }
 
@@ -23,7 +23,7 @@ define performanceplatform::server_checks(
       target   => "transformNull(collectd.${graphite_fqdn}.uptime.uptime)",
       warning  => '0:',
       critical => '0:',
-      interval => '1',
+      interval => 60,
       handlers => 'pagerduty',
     }
 }
