@@ -1,0 +1,17 @@
+# This file is managed by puppet, do not mess with it, terrible terrible things
+# will happen. This includes you @tombooth
+
+# Start logstash
+START=true
+
+# Java options
+LS_JAVA_OPTS="${LS_JAVA_OPTS} -XX:+HeapDumpOnOutOfMemoryError -Xms256m -Xmx256m"
+
+# Open files limit
+#OPEN_FILES=2049
+
+# Nice setting
+#NICE=19
+
+# Number of filter threads ( default 1 )
+#FILTER_THREADS=1

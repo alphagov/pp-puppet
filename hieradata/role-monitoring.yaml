@@ -32,7 +32,7 @@ logstash::java_install: true
 logstash::provider: 'custom'
 logstash::jarfile: 'puppet:///modules/performanceplatform/logstash-1.1.13-monolithic.jar'
 logstash::defaultsfiles:
-    agent: 'puppet:///modules/performanceplatform/etc/sysconfig/logstash.defaults'
+    agent: 'puppet:///modules/performanceplatform/etc/sysconfig/logstash.dev.defaults'
 
 ufw_rules:
     allowcarbonfromanywhere:
