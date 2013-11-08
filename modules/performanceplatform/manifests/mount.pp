@@ -3,7 +3,7 @@ define performanceplatform::mount(
   $disk,
 ) {
 
-  if hiera('environment') == 'development' {
+  if $::pp_environment == 'dev' {
 
     ensure_resource('file', $title, { 'ensure' => 'directory' })
 
