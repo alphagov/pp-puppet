@@ -21,52 +21,51 @@ $spotlight_vhost     = join(['spotlight',$public_domain_name],'.')
 
 $rabbitmq_sensu_password = hiera('rabbitmq_sensu_password')
 
+$pp_environment = hiera('pp_environment')
+
 # Classes
 hiera_include('classes')
 
 node default {
 
-    # Environment specific variables
-    $environment      = hiera('environment')
+  # Create user accounts
+  create_resources( 'account', hiera_hash('accounts') )
 
-    # Create user accounts
-    create_resources( 'account', hiera_hash('accounts') )
+  # Install packages
+  $system_packages = hiera_array( 'system_packages', [] )
+  if !empty($system_packages) {
+    package { $system_packages: ensure => installed }
+  }
 
-    # Install packages
-    $system_packages = hiera_array( 'system_packages', [] )
-    if !empty($system_packages) {
-        package { $system_packages: ensure => installed }
-    }
+  # Firewall rules
+  create_resources( 'ufw::allow', hiera_hash('ufw_rules') )
 
-    # Firewall rules
-    create_resources( 'ufw::allow', hiera_hash('ufw_rules') )
+  # Create nginx proxies
+  $vhost_proxies = hiera_hash( 'vhost_proxies', {} )
+  if !empty($vhost_proxies) {
+    create_resources( 'performanceplatform::proxy_vhost', $vhost_proxies )
+  }
 
-    # Create nginx proxies
-    $vhost_proxies = hiera_hash( 'vhost_proxies', {} )
-    if !empty($vhost_proxies) {
-        create_resources( 'performanceplatform::proxy_vhost', $vhost_proxies )
-    }
+  # Create extra nginx conf
+  $nginx_conf = hiera_hash( 'nginx_conf', {} )
+  if !empty($nginx_conf) {
+    create_resources( 'nginx::conf', $nginx_conf )
+  }
 
-    # Create extra nginx conf
-    $nginx_conf = hiera_hash( 'nginx_conf', {} )
-    if !empty($nginx_conf) {
-        create_resources( 'nginx::conf', $nginx_conf )
-    }
+  # Install the Backdrop apps
+  $backdrop_apps = hiera_hash( 'backdrop_apps', {} )
+  if !empty($backdrop_apps) {
+    create_resources( 'backdrop::app', $backdrop_apps )
+  }
 
-    # Install the Backdrop apps
-    $backdrop_apps = hiera_hash( 'backdrop_apps', {} )
-    if !empty($backdrop_apps) {
-        create_resources( 'backdrop::app', $backdrop_apps )
-    }
+  # Collect some metrics
+  $collectd_plugins = hiera_array( 'collectd_plugins', [] )
+  if !empty($collectd_plugins) {
+    collectd::plugin { $collectd_plugins: }
+  }
 
-    # Collect some metrics
-    $collectd_plugins = hiera_array( 'collectd_plugins', [] )
-    if !empty($collectd_plugins) {
-        collectd::plugin { $collectd_plugins: }
-    }
-
-    $lumberjack_instances = hiera_hash( 'lumberjack_instances', {} )
-    if !empty($lumberjack_instances) {
-        create_resources( 'lumberjack::logshipper', $lumberjack_instances )
-    }
+  $lumberjack_instances = hiera_hash( 'lumberjack_instances', {} )
+  if !empty($lumberjack_instances) {
+    create_resources( 'lumberjack::logshipper', $lumberjack_instances )
+  }
 }

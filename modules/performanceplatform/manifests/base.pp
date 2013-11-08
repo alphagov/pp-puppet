@@ -21,12 +21,11 @@ class performanceplatform::base {
         require => [Apt::Ppa['ppa:gds/govuk'], Apt::Ppa['ppa:gds/performance-platform']],
     }
     $machine_role = regsubst($::hostname, '^(.*)-\d$', '\1')
-    $environment = hiera('environment')
+
     file { '/etc/environment':
         ensure  => present,
         content => "PATH=\"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\"
 FACTER_machine_role=${machine_role}
-FACTER_machine_environment=${environment}
 "
     }
     file {'/etc/gds':
