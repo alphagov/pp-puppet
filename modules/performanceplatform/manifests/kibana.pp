@@ -26,7 +26,7 @@ class performanceplatform::kibana(
   }
 
   nginx::vhost { 'kibana-vhost':
-    servername  => "${::kibana_vhost}",
+    servername  => $::kibana_vhost,
     ssl         => true,
     vhostroot   => $app_root,
     access_logs => {

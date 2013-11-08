@@ -117,7 +117,7 @@ class performanceplatform::monitoring (
     handlers => 'pagerduty',
   }
 
-  $graphite_fqdn = regsubst($fqdn, '\.', '_', 'G')
+  $graphite_fqdn = regsubst($::fqdn, '\.', '_', 'G')
 
   performanceplatform::graphite_check { "check_low_disk_space_elasticsearch":
     target   => "collectd.${graphite_fqdn}.df-mnt-data-elasticsearch.df_complex-free",

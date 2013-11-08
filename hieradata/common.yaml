@@ -117,7 +117,7 @@ collectd::purge_config: true
 collectd::recurse: true
 
 domain_name: undefined.domain
-environment: undefined
+pp_environment: undefined
 
 gstatsd::graphite_server: graphite
 gstatsd::flush_interval:  1
