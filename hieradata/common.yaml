@@ -69,6 +69,14 @@ accounts:
         gkoth:
             home_dir: /home/gkoth
             ensure: absent
+        urmy:
+            home_dir: /home/urmy
+            comment: Urmy Urmston
+            ssh_keys:
+                urmy: 
+                    key: AAAAB3NzaC1yc2EAAAADAQABAAABAQC09wo2vsf/NZVXNdy/DMbA23aAoOvYQTVNfRbdxPNtquCLihcgkdnyV5Dlu6KUn1ALlYrvc01KzHMD0z0LY04mz13l0NHb3gxp3TUCRHwGt3gjvQnvDcbYmMggB5ELyRoq6XoAknkYLdS0aeENdh7cXzr9K/fQo35dWVeSdPGU0SsdKRKOBbhrkv+ctBXFKmHlUUan7E3zUWkX67kBjqIGCpLIp+/PPBzB//UjfquTwYgv3mj0z7aTqRtF4W9Gmv0TCjLDM/2ZVaBbx3dnBy5hD+Vb53kmgc7eabI2/DHzi5M/GHKPYKLIOxzzaQjItLRjPO3frM0sko2rX2WVnKGp
+            groups:
+                - gds
 classes:
     - 'apt'
     - 'collectd'
