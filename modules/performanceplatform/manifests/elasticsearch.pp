@@ -1,10 +1,23 @@
 class performanceplatform::elasticsearch(
-  $data_directory,
+  $data_dir,
+  $disk_mount,
 ) {
 
   class { '::elasticsearch':
-    data_directory => '/mnt/data/elasticsearch',
+    data_directory => $data_dir,
+    require        => Performanceplatform::Mount[$data_dir],
   }
+
+  file { '/mnt/data':
+    ensure => directory,
+  }
+
+  performanceplatform::mount { $data_dir:
+    mountoptions => 'defaults',
+    disk         => $disk_mount,
+    require      => File['/mnt/data'],
+  }
+
 
   cron {'elasticsearch-rotate-indices':
     ensure  => present,
