@@ -34,7 +34,7 @@ end
       c.vm.box = box_name
       c.vm.box_url = box_url
 
-      c.vm.host_name = host[:name] + '.localdomain'
+      c.vm.host_name = host[:name]
       c.vm.network :hostonly, host[:ip], :netmask => "255.255.255.0"
 
       modifyvm_args = ['modifyvm', :id]
@@ -65,7 +65,7 @@ end
       c.vm.box = box_name
       c.vm.box_url = box_url
 
-      c.vm.hostname = host[:name] + '.localdomain'
+      c.vm.hostname = host[:name]
       c.vm.network :private_network, ip: host[:ip], netmask: '255.255.255.0'
 
       c.vm.provider :virtualbox do |vb, override|
