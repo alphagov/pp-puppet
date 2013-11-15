@@ -25,6 +25,11 @@ vhost_proxies:
     upstream_port: 7999
     access_logs:
       '{name}.access.log.json': 'json_event'
+    four_warning: 1
+    four_critical: 3
+    five_warning: 0
+    five_critical: 1
+
   www-vhost:
     servername:    "%{::www_vhost}"
     ssl:           true
@@ -32,6 +37,10 @@ vhost_proxies:
     upstream_port: 7999
     access_logs:
       '{name}.access.log.json': 'json_event'
+    four_warning: 1
+    four_critical: 3
+    five_warning: 0
+    five_critical: 1
 
 nginx::server::server_names_hash_bucket_size: 128
 
