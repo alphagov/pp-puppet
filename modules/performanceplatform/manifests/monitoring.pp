@@ -100,7 +100,13 @@ class performanceplatform::monitoring (
     handlers => 'pagerduty',
   }
 
-  $graphite_fqdn = regsubst($fqdn, '\.', '_', 'G')
+  sensu::check { 'elasticsearch_is_out_of_memory':
+    command  => '/etc/sensu/community-plugins/plugins/files/check-tail.rb -f /var/log/elasticsearch/elasticsearch.log -l 50 -P OutOfMemory',
+    interval => 60,
+    handlers => 'pagerduty',
+  }
+
+  $graphite_fqdn = regsubst($::fqdn, '\.', '_', 'G')
 
   performanceplatform::graphite_check { "check_low_disk_space_elasticsearch":
     target   => "collectd.${graphite_fqdn}.df-mnt-data-elasticsearch.df_complex-free",

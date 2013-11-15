@@ -1,13 +1,14 @@
 ---
 domain_name: perfplat.dev
-environment: development
+pp_environment: dev
+
 ssl::params::ssl_path: '/etc/ssl'
 ssl::params::ssl_cert_file: 'certs/ssl-cert-snakeoil.pem'
 ssl::params::ssl_key_file: 'private/ssl-cert-snakeoil.key'
 ufw_rules:
-    allowsshfromanywhere:
-        port: 22
-        ip:   'any'
+  allowsshfromanywhere:
+    port: 22
+    ip:   'any'
 
 # modify in pp-deployment to add more
 fail2ban::whitelist_ips: 127.0.0.1
