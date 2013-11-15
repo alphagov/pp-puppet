@@ -8,6 +8,9 @@ performanceplatform::elasticsearch::data_dir: '/mnt/data/elasticsearch'
 performanceplatform::elasticsearch::disk_mount: '/dev/mapper/data-elasticsearch'
 
 ufw_rules:
-   allowelasticsearchfromany:
+    allowelasticsearchfromany:
         port: 9200
+        ip:   'any'
+    allowelasticsearchcontrolfromany:
+        port: 9300
         ip:   'any'

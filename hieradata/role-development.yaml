@@ -14,7 +14,7 @@ performanceplatform::dns::hosts: |
   127.0.0.1 mongo-1 mongo
   127.0.0.1 mongo-2 mongo
   127.0.0.1 mongo-3 mongo
-  127.0.0.1 elastic-log-1 elastic
+  127.0.0.1 elastic-log-1 elasticsearch
 
 performanceplatform::mongo::mongo_hosts:
   - 127.0.0.1
