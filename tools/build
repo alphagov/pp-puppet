@@ -38,7 +38,7 @@ main () {
   tar zcf build/puppet.tgz -X .buildignore .
 
   status "Writing build tag"
-  git tag -a build_$BUILD_TAG -m "$BUILD_URL"
+  git tag -a build_$BUILD_NUMBER -m "$BUILD_URL"
   git push --follow-tags
 
 }
