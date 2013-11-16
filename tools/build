@@ -39,7 +39,7 @@ main () {
 
   status "Writing build tag"
   git tag -a build_$BUILD_NUMBER -m "$BUILD_URL"
-  git push --follow-tags
+  git push --tags
 
 }
 
