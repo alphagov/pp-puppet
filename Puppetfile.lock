@@ -106,7 +106,7 @@ GIT
 GIT
   remote: git://github.com/alphagov/puppet-logstash.git
   ref: gen-files-should-notify
-  sha: f2b639f6f1bd84be7889df5a1fd4e341767a827e
+  sha: c7d0080f49a9ed80fa09126cf30359b3deb94343
   specs:
     logstash (0.3.3)
       puppetlabs/stdlib (>= 3.0.0)
