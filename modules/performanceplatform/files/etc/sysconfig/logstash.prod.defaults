@@ -11,7 +11,7 @@ LS_JAVA_OPTS="${LS_JAVA_OPTS} -XX:+HeapDumpOnOutOfMemoryError -Xms1024m -Xmx1024
 #OPEN_FILES=2049
 
 # Nice setting
-#NICE=19
+NICE=-15
 
 # Number of filter threads ( default 1 )
 #FILTER_THREADS=1
