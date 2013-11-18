@@ -3,16 +3,17 @@
 
 # Node definitions
 hosts = [
-  { name: 'backend-app-1',  ip: '172.27.1.21' },
-  { name: 'backend-app-2',  ip: '172.27.1.22' },
-  { name: 'frontend-app-1', ip: '172.27.1.11' },
-  { name: 'frontend-app-2', ip: '172.27.1.12' },
-  { name: 'jumpbox-1',      ip: '172.27.1.2' },
-  { name: 'mongo-1',        ip: '172.27.1.31' },
-  { name: 'mongo-2',        ip: '172.27.1.32' },
-  { name: 'mongo-3',        ip: '172.27.1.33' },
-  { name: 'monitoring-1',   ip: '172.27.1.41' },
-  { name: 'elastic-log-1',  ip: '172.27.1.51' },
+  { name: 'backend-app-1',         ip: '172.27.1.21' },
+  { name: 'backend-app-2',         ip: '172.27.1.22' },
+  { name: 'frontend-app-1',        ip: '172.27.1.11' },
+  { name: 'frontend-app-2',        ip: '172.27.1.12' },
+  { name: 'jumpbox-1',             ip: '172.27.1.2' },
+  { name: 'mongo-1',               ip: '172.27.1.31' },
+  { name: 'mongo-2',               ip: '172.27.1.32' },
+  { name: 'mongo-3',               ip: '172.27.1.33' },
+  { name: 'monitoring-1',          ip: '172.27.1.41' },
+  { name: 'logs-elasticsearch-1',  ip: '172.27.1.51' },
+  { name: 'logs-elasticsearch-2',  ip: '172.27.1.52' },
 ]
 
 def get_box(provider)
@@ -47,10 +48,6 @@ end
       modifyvm_args << "--natdnsproxy1" << "on"
       modifyvm_args << "--natdnshostresolver1" << "on"
       modifyvm_args << "--name" << host[:name]
-
-      if host[:name] == 'monitoring-1'
-        modifyvm_args << "--memory" << "1024"
-      end
 
       c.vm.customize(modifyvm_args)
       c.ssh.forward_agent = true
