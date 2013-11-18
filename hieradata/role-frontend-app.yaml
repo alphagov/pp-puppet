@@ -1,6 +1,7 @@
 ---
 classes:
   - 'nginx::server'
+  - 'phantomjs'
   - 'spotlight::app'
   - 'varnish'
 
