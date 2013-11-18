@@ -16,7 +16,7 @@ class screenshot_as_a_service::app (
     servername   => $::screenshot_as_a_service_vhost,
     proxy_ssl    => true,
     extra_env    => {
-      'NODE_ENV' => $::pp_environment,
+      'NODE_ENV' => 'production',
     },
     upstart_desc => 'Screenshot as a service job',
     upstart_exec => 'node app.js',
