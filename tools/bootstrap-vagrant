@@ -17,9 +17,12 @@ quieten_sudo() {
 
 # Sometimes Virtualbox gets confused, often after moving between networks
 set_dns_server() {
-  echo "--> Set nameserver to 8.8.8.8" | pp
+  echo "--> Set nameserver to 8.8.8.8 and domain to internal" | pp
   if ! fgrep -q 'managed by puppet' /etc/resolv.conf; then
-    echo 'nameserver 8.8.8.8' > /etc/resolv.conf
+    # Allows us to set the hostname without the domain in it
+    # facter will use this in creating the fqdn
+    echo 'domain localdomain' > /etc/resolv.conf
+    echo 'nameserver 8.8.8.8' >> /etc/resolv.conf
   fi
 }
 
