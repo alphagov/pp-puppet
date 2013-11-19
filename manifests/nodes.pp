@@ -27,14 +27,6 @@ $pp_environment = hiera('pp_environment')
 hiera_include('classes')
 
 node default {
-  # Make sure /etc/hostname has the correct hostname in
-  file { "/etc/hostname":
-    ensure  => present,
-    content => "${::hostname}\n",
-    owner   => "root",
-    group   => "root",
-    mode    => "0644",
-  }
   # Create user accounts
   create_resources( 'account', hiera_hash('accounts') )
 
