@@ -90,7 +90,7 @@ class performanceplatform::monitoring (
     namespace => 'nginx',
   }
 
-  logstash::output::elasticsearch { 'elasticsearch':
+  logstash::output::elasticsearch_http { 'elasticsearch':
     host => 'elasticsearch',
   }
 

@@ -19,7 +19,8 @@ performanceplatform::server_checking::boxes:
     - mongo-2
     - mongo-3
     - monitoring-1
-    - elastic-log-1
+    - logs-elasticsearch-1
+    - logs-elasticsearch-2
 
 graphite::gr_apache_port:       9080
 graphite::gr_apache_port_https: 9443

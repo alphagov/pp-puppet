@@ -1,12 +1,20 @@
 class performanceplatform::elasticsearch(
   $data_dir,
   $disk_mount,
+  $cluster_hosts,
+  $minimum_master_nodes,
+  $heap_size,
 ) {
 
   class { '::elasticsearch':
-    data_directory => $data_dir,
-    require        => Performanceplatform::Mount[$data_dir],
+    cluster_hosts         => $cluster_hosts,
+    data_directory        => $data_dir,
+    host                  => "$::hostname",
+    heap_size             => $heap_size,
+    minimum_master_nodes  => $minimum_master_nodes,
+    require               => Performanceplatform::Mount[$data_dir],
   }
+
 
   file { '/mnt/data':
     ensure => directory,

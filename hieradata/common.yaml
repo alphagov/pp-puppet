@@ -73,7 +73,7 @@ accounts:
             home_dir: /home/urmy
             comment: Urmy Urmston
             ssh_keys:
-                urmy: 
+                urmy:
                     key: AAAAB3NzaC1yc2EAAAADAQABAAABAQC09wo2vsf/NZVXNdy/DMbA23aAoOvYQTVNfRbdxPNtquCLihcgkdnyV5Dlu6KUn1ALlYrvc01KzHMD0z0LY04mz13l0NHb3gxp3TUCRHwGt3gjvQnvDcbYmMggB5ELyRoq6XoAknkYLdS0aeENdh7cXzr9K/fQo35dWVeSdPGU0SsdKRKOBbhrkv+ctBXFKmHlUUan7E3zUWkX67kBjqIGCpLIp+/PPBzB//UjfquTwYgv3mj0z7aTqRtF4W9Gmv0TCjLDM/2ZVaBbx3dnBy5hD+Vb53kmgc7eabI2/DHzi5M/GHKPYKLIOxzzaQjItLRjPO3frM0sko2rX2WVnKGp
             groups:
                 - gds
@@ -144,7 +144,8 @@ performanceplatform::dns::hosts: |
     172.27.1.32 mongo-2 mongo
     172.27.1.33 mongo-3 mongo
     172.27.1.41 monitoring-1 log logging graphite logstash alerts redis rabbitmq
-    172.27.1.51 elastic-log-1 elasticsearch
+    172.27.1.51 logs-elasticsearch-1 elasticsearch
+    172.27.1.52 logs-elasticsearch-2 elasticsearch
 
 performanceplatform::dns::cnames:
     - [ "%{::www_vhost}", "frontend" ]
