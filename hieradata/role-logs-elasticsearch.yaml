@@ -1,0 +1,21 @@
+classes:
+    - 'java7'
+    - 'python'
+    - 'performanceplatform::elasticsearch'
+
+
+performanceplatform::elasticsearch::data_dir: '/mnt/data/elasticsearch'
+performanceplatform::elasticsearch::disk_mount: '/dev/mapper/data-elasticsearch'
+performanceplatform::elasticsearch::cluster_hosts:
+    - 'logs-elasticsearch-1:9300'
+    - 'logs-elasticsearch-2:9300'
+performanceplatform::elasticsearch::minimum_master_nodes: '2'
+
+
+ufw_rules:
+    allowelasticsearchfromany:
+        port: 9200
+        ip:   'any'
+    allowelasticsearchcontrolfromany:
+        port: 9300
+        ip:   'any'
