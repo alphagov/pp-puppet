@@ -31,19 +31,21 @@ define performanceplatform::proxy_vhost(
 
   if $sensu_check {
     performanceplatform::graphite_check { "5xx_rate_${servername}":
-      target         => "movingAverage(sumSeries(stats.nginx.${::hostname}.${graphite_servername}.http_5*), 60)",
-      warning        => $five_warning,
-      critical       => $five_critical,
-      interval       => 60,
-      ignore_no_data => true,
+      target            => "movingAverage(sumSeries(stats.nginx.${::hostname}.${graphite_servername}.http_5*),60)",
+      warning           => $five_warning,
+      critical          => $five_critical,
+      interval          => 60,
+      ignore_no_data    => true,
+      ignore_http_error => true,
     }
 
     performanceplatform::graphite_check { "4xx_rate_${servername}":
-      target         => "movingAverage(sumSeries(stats.nginx.${::hostname}.${graphite_servername}.http_4*), 60)",
-      warning        => $four_warning,
-      critical       => $four_critical,
-      interval       => 60,
-      ignore_no_data => true,
+      target            => "movingAverage(sumSeries(stats.nginx.${::hostname}.${graphite_servername}.http_4*),60)",
+      warning           => $four_warning,
+      critical          => $four_critical,
+      interval          => 60,
+      ignore_no_data    => true,
+      ignore_http_error => true,
     }
   }
 

@@ -67,7 +67,7 @@ FACTER_machine_role=${machine_role}
         ensure   => present,
         provider => git,
         source   => 'https://github.com/alphagov/sensu-community-plugins.git',
-        revision => '99bbd0feeba1b84737e1f067448831317ae02c83',
+        revision => '86baac527cee804e6c0e795edf1d77bd85e5b355',
     }
 
 }
