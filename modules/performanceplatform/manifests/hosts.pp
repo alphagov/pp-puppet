@@ -5,14 +5,16 @@
 # - IPv4 loopback.
 # - IPv6 lookback and multicast.
 #
-class performanceplatform::hosts {
+class performanceplatform::hosts (
+  $ip = $::ipaddress,
+) {
   resources { 'host':
     purge => true,
   }
 
   host { $::fqdn:
     ensure        => present,
-    ip            => $::ipaddress,
+    ip            => $ip,
     host_aliases  => $::hostname,
   }
 

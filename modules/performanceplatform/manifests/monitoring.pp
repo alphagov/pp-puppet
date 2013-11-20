@@ -1,23 +1,6 @@
 class performanceplatform::monitoring (
 ) {
 
-  $elasticsearch_data_dir = '/mnt/data/elasticsearch'
-
-  file { '/mnt/data':
-    ensure => directory,
-  }
-
-  performanceplatform::mount { $elasticsearch_data_dir:
-    mountoptions => 'defaults',
-    disk         => '/dev/mapper/data-elasticsearch',
-    require      => File['/mnt/data'],
-  }
-
-  class { 'performanceplatform::elasticsearch':
-    data_directory => $elasticsearch_data_dir,
-    require        => Performanceplatform::Mount[$elasticsearch_data_dir],
-  }
-
   file { '/etc/apache2/run':
     ensure  => link,
     target  => '/var/run/apache2',
@@ -107,7 +90,7 @@ class performanceplatform::monitoring (
     namespace => 'nginx',
   }
 
-  logstash::output::elasticsearch { 'elasticsearch':
+  logstash::output::elasticsearch_http { 'elasticsearch':
     host => 'elasticsearch',
   }
 

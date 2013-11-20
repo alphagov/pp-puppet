@@ -1,10 +1,31 @@
 class performanceplatform::elasticsearch(
-  $data_directory,
+  $data_dir,
+  $disk_mount,
+  $cluster_hosts,
+  $minimum_master_nodes,
+  $heap_size,
 ) {
 
   class { '::elasticsearch':
-    data_directory => '/mnt/data/elasticsearch',
+    cluster_hosts         => $cluster_hosts,
+    data_directory        => $data_dir,
+    host                  => "$::hostname",
+    heap_size             => $heap_size,
+    minimum_master_nodes  => $minimum_master_nodes,
+    require               => Performanceplatform::Mount[$data_dir],
   }
+
+
+  file { '/mnt/data':
+    ensure => directory,
+  }
+
+  performanceplatform::mount { $data_dir:
+    mountoptions => 'defaults',
+    disk         => $disk_mount,
+    require      => File['/mnt/data'],
+  }
+
 
   cron {'elasticsearch-rotate-indices':
     ensure  => present,
