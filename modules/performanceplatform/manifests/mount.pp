@@ -11,7 +11,7 @@ define performanceplatform::mount(
 
     ext4mount { $title:
       mountoptions => 'defaults',
-      disk         => heira('performanceplatform::elasticsearch:disk_mount'),
+      disk         => $disk,
     }
 
   }
