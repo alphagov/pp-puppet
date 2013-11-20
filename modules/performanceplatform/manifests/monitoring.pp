@@ -77,6 +77,12 @@ class performanceplatform::monitoring (
     ensure => absent,
   }
 
+  # Ensure monitoring is no longer responsible for running elasticsearch
+  class { '::elasticsearch::install':
+    version => absent,
+  }
+
+
   logstash::input::syslog { 'logstash-syslog':
     type => "syslog",
     tags => ["syslog"],
