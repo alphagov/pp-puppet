@@ -60,7 +60,7 @@ bundle_gems() {
 do_puppet_run() {
   echo "--> Run Puppet" | pp
   cd /vagrant
-  ./bin/puppet apply --debug --modulepath=modules:vendor/modules \
+  ./bin/puppet apply --modulepath=modules:vendor/modules \
                      --hiera_config=/vagrant/hiera.yaml \
                      manifests/site.pp 2>&1 | pp
 }
