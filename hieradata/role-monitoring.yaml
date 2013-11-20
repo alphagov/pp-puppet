@@ -33,8 +33,12 @@ sensu::server: true
 logstash::java_install: true
 logstash::provider: 'custom'
 logstash::jarfile: 'puppet:///modules/performanceplatform/logstash-1.1.13-monolithic.jar'
+logstash::instances:
+    - 'agent'
+    - 'agent-1'
 logstash::defaultsfiles:
-  agent: 'puppet:///modules/performanceplatform/etc/sysconfig/logstash.dev.defaults'
+    agent: 'puppet:///modules/performanceplatform/etc/sysconfig/logstash.dev.defaults'
+    'agent-1': 'puppet:///modules/performanceplatform/etc/sysconfig/logstash.dev.defaults'
 
 ufw_rules:
   allowcarbonfromanywhere:

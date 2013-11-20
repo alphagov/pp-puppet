@@ -46,12 +46,22 @@ class performanceplatform::monitoring (
     notify               => Class['sensu'],
   }
 
-  logstash::input::lumberjack { 'lumberjack':
+  logstash::input::lumberjack { 'lumberjack-agent':
     format          => 'json',
     type            => 'lumberjack',
     port            => 3456,
     ssl_certificate => 'puppet:///modules/performanceplatform/logstash.pub',
     ssl_key         => 'puppet:///modules/performanceplatform/logstash.key',
+    instances       => [ 'agent' ],
+  }
+
+  logstash::input::lumberjack { 'lumberjack-agent-1':
+    format          => 'json',
+    type            => 'lumberjack',
+    port            => 3457,
+    ssl_certificate => 'puppet:///modules/performanceplatform/logstash.pub',
+    ssl_key         => 'puppet:///modules/performanceplatform/logstash.key',
+    instances       => [ 'agent-1' ],
   }
 
   # Ensure the monitoring box is not a syslog server so that logstash
@@ -64,12 +74,14 @@ class performanceplatform::monitoring (
   logstash::input::syslog { 'logstash-syslog':
     type => "syslog",
     tags => ["syslog"],
+    instances => [ 'agent', 'agent-1' ],
   }
 
   logstash::filter::date { 'varnish-timestamp-fix':
     type  => 'lumberjack',
     tags  => [ 'varnish' ],
     match => [ 'timestamp', '[dd/MMM/YYYY:HH:mm:ss Z]' ],
+    instances => [ 'agent', 'agent-1' ],
   }
 
   logstash::filter::mutate { 'nginx-token-fix':
@@ -79,6 +91,7 @@ class performanceplatform::monitoring (
       '@source_host', '\.', '_',
       'server_name',  '\.', '_',
     ],
+    instances => [ 'agent', 'agent-1' ],
   }
 
   logstash::filter::grep { 'ignore_backdrop_status_request':
@@ -104,10 +117,12 @@ class performanceplatform::monitoring (
       '%{server_name}.request_time' => '%{request_time}'
     },
     namespace => 'nginx',
+    instances => [ 'agent', 'agent-1' ],
   }
 
   logstash::output::elasticsearch_http { 'elasticsearch':
     host => 'elasticsearch',
+    instances => [ 'agent', 'agent-1' ],
   }
 
   sensu::check { 'logstash_is_down':
