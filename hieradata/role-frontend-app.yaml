@@ -1,8 +1,17 @@
 ---
 classes:
   - 'nginx::server'
+  - 'phantomjs'
+  - 'screenshot_as_a_service::app'
   - 'spotlight::app'
   - 'varnish'
+
+# screenshot_as_a_service runs on 3059 and 3060, but 3059
+# is only used from within this app.
+screenshot_as_a_service::app::port:       3060
+screenshot_as_a_service::app::app_module: 'screenshot_as_a_service:app'
+screenshot_as_a_service::app::user:       'deploy'
+screenshot_as_a_service::app::group:      'deploy'
 
 spotlight::app::port:       3057
 spotlight::app::app_module: 'spotlight:app'
