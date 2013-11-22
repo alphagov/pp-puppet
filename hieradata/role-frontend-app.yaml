@@ -1,6 +1,7 @@
 ---
 classes:
   - 'nginx::server'
+  - 'performanceplatform::assets'
   - 'phantomjs'
   - 'screenshot_as_a_service::app'
   - 'spotlight::app'
