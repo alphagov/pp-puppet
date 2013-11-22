@@ -80,6 +80,21 @@ class performanceplatform::monitoring (
     ],
   }
 
+  logstash::filter::grep { 'ignore_backdrop_status_request':
+    match  => {
+      '@message' => "\"(request|response): GET .*/_status( - 200 OK)?\"",
+    },
+    negate => true,
+    order  => 20,
+  }
+  logstash::filter::grep { 'ignore_gunicorn_status_request':
+    match  => {
+      '@message' => "\\\"GET /_status HTTP/1.0\\\"",
+    },
+    negate => true,
+    order  => 20,
+  }
+
   logstash::output::statsd { 'statsd':
     type      => 'lumberjack',
     tags      => [ 'nginx' ],
