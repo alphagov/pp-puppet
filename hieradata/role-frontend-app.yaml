@@ -62,3 +62,9 @@ lumberjack_instances:
     log_files: [ '/var/log/nginx/*.access.log.json' ]
   varnish:
     log_files: [ '/var/log/varnish/varnishncsa.log' ]
+
+system_packages:
+  - libcairo2-dev
+  - libjpeg8-dev
+  - libpango1.0-dev
+  - libgif-dev
