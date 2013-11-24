@@ -1,26 +1,26 @@
 classes:
-    - 'java7'
-    - 'python'
-    - 'graphite'
-    - 'logstash'
-    - 'nginx::server'
-    - 'performanceplatform::monitoring'
-    - 'rabbitmq'
-    - 'redis'
-    - 'performanceplatform::server_checking'
+  - 'java7'
+  - 'python'
+  - 'graphite'
+  - 'logstash'
+  - 'nginx::server'
+  - 'performanceplatform::monitoring'
+  - 'rabbitmq'
+  - 'redis'
+  - 'performanceplatform::server_checking'
 
 performanceplatform::server_checking::boxes:
-    - backend-app-1
-    - backend-app-2
-    - frontend-app-1
-    - frontend-app-2
-    - jumpbox-1
-    - mongo-1
-    - mongo-2
-    - mongo-3
-    - monitoring-1
-    - logs-elasticsearch-1
-    - logs-elasticsearch-2
+  - backend-app-1
+  - backend-app-2
+  - frontend-app-1
+  - frontend-app-2
+  - jumpbox-1
+  - mongo-1
+  - mongo-2
+  - mongo-3
+  - monitoring-1
+  - logs-elasticsearch-1
+  - logs-elasticsearch-2
 
 graphite::gr_apache_port:       9080
 graphite::gr_apache_port_https: 9443
@@ -32,49 +32,49 @@ logstash::java_install: true
 logstash::provider: 'custom'
 logstash::jarfile: 'puppet:///modules/performanceplatform/logstash-1.1.13-monolithic.jar'
 logstash::defaultsfiles:
-    agent: 'puppet:///modules/performanceplatform/etc/sysconfig/logstash.dev.defaults'
+  agent: 'puppet:///modules/performanceplatform/etc/sysconfig/logstash.dev.defaults'
 
 ufw_rules:
-    allowcarbonfromanywhere:
-        port: 2003
-        ip:   'any'
-    allowlumberjackfromanywhere:
-        port: 3456
-        ip:   'any'
-    allowhttpfromall:
-        port: 80
-        ip:   'any'
-    allowhttpsfromall:
-        port: 443
-        ip:   'any'
-    allowrabbitmqfromall:
-        port: 5672
-        ip:   'any'
-    allowsyslogfromanywhere:
-        port: 514
-        ip:   'any'
+  allowcarbonfromanywhere:
+    port: 2003
+    ip:   'any'
+  allowlumberjackfromanywhere:
+    port: 3456
+    ip:   'any'
+  allowhttpfromall:
+    port: 80
+    ip:   'any'
+  allowhttpsfromall:
+    port: 443
+    ip:   'any'
+  allowrabbitmqfromall:
+    port: 5672
+    ip:   'any'
+  allowsyslogfromanywhere:
+    port: 514
+    ip:   'any'
 
 vhost_proxies:
-    graphite-vhost:
-        servername:      "graphite"
-        ssl:             false
-        upstream_server: 'localhost'
-        upstream_port:   9080
-        sensu_check:     false
-        magic: |
-            auth_basic "Enter username/password";
-            auth_basic_user_file /etc/nginx/htpasswd;
-    alerts-vhost:
-        servername:      "%{::alerts_vhost}"
-        ssl:             false
-        upstream_server: 'localhost'
-        upstream_port:   8090
-        sensu_check:     false
+  graphite-vhost:
+    servername:      "graphite"
+    ssl:             false
+    upstream_server: 'localhost'
+    upstream_port:   9080
+    sensu_check:     false
+    magic: |
+      auth_basic "Enter username/password";
+      auth_basic_user_file /etc/nginx/htpasswd;
+  alerts-vhost:
+    servername:      "%{::alerts_vhost}"
+    ssl:             false
+    upstream_server: 'localhost'
+    upstream_port:   8090
+    sensu_check:     false
 
 nginx_conf:
-    logging:
-        template: performanceplatform/nginx.logging.conf.erb
+  logging:
+    template: performanceplatform/nginx.logging.conf.erb
 
 lumberjack_instances:
-    nginx:
-        log_files: [ '/var/log/nginx/*.access.log.json' ]
+  nginx:
+    log_files: [ '/var/log/nginx/*.access.log.json' ]

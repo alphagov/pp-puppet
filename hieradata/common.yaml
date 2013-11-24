@@ -1,108 +1,109 @@
 ---
 accounts:
-        jacob:
-            home_dir: /home/jacob
-            comment: Jacob Ashdown
-            ssh_keys:
-                jacob:
-                    key: AAAAB3NzaC1yc2EAAAADAQABAAABAQC6JyuVYcNdZtPtX8oy8Q99E04e5u+Orv4YsWleWieLX2ETAVPry99yHmM6sDH+TMUxDEqWybFjkImb268Qh3CQKTl0lwWKkMHCUnfQnrnERmeAocNFC9XBfM0ZW/KUETp9bit2hs3jLAtL+eqcEThr7peq7PUkz1j4FekQSLyMv5HpvTxMWZCvKoL/sh8qx6J22ntfYCg1SRUU6sHx5Lykp1X4L74EoTSVohynirch+fTvV219zwdpjnbe+XrkE9u5TdVVEOtcSJat8upzBE30MQcvbTeXhlhZbCghm8GEFw3gYsvHBXl+DYjTiQYwHiCI/x2Z+quRBwMYzDsAVqA7
-            groups:
-                - gds
-        alexmuller:
-            home_dir: /home/alexmuller
-            comment: Alex Muller
-            ssh_keys:
-                alexmuller:
-                    key: AAAAB3NzaC1yc2EAAAADAQABAAABAQDxuVkxqVy8kRncaG0cm/B8p7YTk7UjwE6xgUkfzIV97xAaRfNyZUI9Ur/w2x945r5IiuKGp61UHMzsGBEgmsDDNvukguY/a02yXZRySxf3ThlsqG/w7DX9uNwVEeLAA95es4P+6iApbRnBTQX7Nx/XsIa3hy8Uwr3T+pcrXCRIczhfuaiugQ/jh9IlkIC1I6UHbYoli8o5upTh9SbnimU/VXiUIO4v5z1CyLgQHfeE6VBxYO6HCQqRJg7uB4vNS5wAWyTYx4XinkS3ScjKmQr+wExyRy0vgnj5f+oVFNLgARh9lh2ViJ6ntGw8ww10b3xY/Bc/qoeFZKJjb89aMhLb
-            groups:
-                - gds
-        bt:
-            home_dir: /home/bt
-            comment: Brett Thomas - ITHC
-            ensure: absent
-        bthomas:
-            home_dir: /home/bthomas
-            ensure: absent
-        deploy:
-            groups:
-                - gds
-        jabley:
-            home_dir: /home/jabley
-            comment: James Abley
-            ssh_keys:
-                jabley:
-                    key: AAAAB3NzaC1yc2EAAAADAQABAAABAQC2568vUQp+Fb7bmSML5OHn0N8gmOjQp9LSE/HPh+xybMiX6ql8JhxDhPGl2NZl2zVmhICLlhY9HcX4E1w2mHY2MgSsoE148QPomYmcjkIkcQxh6nFN4Ga++foTu6WPkUQJudah3ML/XNs/D+yMgxk8nkel6EvIqgbbswlTQp22FmqGfk9XzJqX0mfTrlggJlacYlw+Z4JT4NhoFX4EefSSX0c6qm7fipX2U7M3hJUXxsakj0jM5GOk9xrEVCRUgx5M8l3rS2DwF0W54RewAdq5J9KdnIQi5DOsbVJKnR1flpoaIVuRq1x/feZ4yqi53ctYX5MT8tb6CLc8zmuU7XyR
-            groups:
-                - gds
-        pauloschneider:
-            home_dir: /home/pauloschneider
-            comment: Paulo Schneider
-            ssh_keys:
-                pauloschneider:
-                    key: AAAAB3NzaC1yc2EAAAADAQABAAABAQCvvZH/S3hteksF52XP6RWyQJUYb/QdI6QyBHbx6lNnHTT0yvmHiS8DcnmI2IDbJqVxXJcaTReOwR2oqhjJ1IJSJZifutXcJsTb5Mc+7XaUWJY7gYCLkZe5PHooxif3AC5RZxhoQEIr+fMBubHhepDQQzie3g6zchr4ENxrKEwUt3VlOA/NZVE0zqmvZ4O6x7+mLJ9BeQuU558JVlJ6XkPqKOiLkLkUr58UOqgaYqU7t29T8IlFRILWoVqJ7WG6wbE6vVsTxktC0PhGUvN4IlilfFIIWh18duGo5dwQJ6E7m9uRAvIYjH+4Y5WnrGBiYt6ljQI/f+kI+iDgG45ewz9P
-            groups:
-                - gds
-        robyoung:
-            home_dir: /home/robyoung
-            comment: Rob Young
-            ssh_keys:
-                robyoung:
-                    key: AAAAB3NzaC1yc2EAAAADAQABAAABAQC7Ow1NSyFzV31HAuIf7FFrGIki01sM4+PUdnHrBtTqNFrraGTqcrRKOs8oHtDMhiGC9MPQWvgTMo/sDdAYp3W5SelBJX3L2J0ixKU9D7FNn963SGxWgfuZGTYvu50uDbPwGXH/FXaa99lo3FDv4o2hodC3TRPISAIS3fGXD/K1RuczvIeWfrYAUg2yC01Jv6XzJvHeVVfgQkp0YkV2J0Y5+hXJlcyxmFMdOZeXF5o68ypac/KEu5ksmFX+9h8YPjJ9vidVqzDQosSTA/2W8zTiqTztHeAFOgp/uw8XgLxzel8FLTE6xyu0WSAQHVTZfm5r6U/blft/Q3gcDldrLzRD
-            groups:
-                - gds
-        roc:
-            home_dir: /home/roc
-            comment: Ralph Cowling
-            ssh_keys:
-                roc:
-                    key: AAAAB3NzaC1yc2EAAAADAQABAAABAQDZEAxcu70/IbytBYrTh6jDsouuH8mjBlRPoq8e3eEWryQWe6+wevh/c29hiG1J1iRVYfUzxnVV2lIlxh3YOPG4TIwMFHS1rMpmR8j0VTbNw89Jf2O90X+wZa5ERlBRpXWhV98EMLWPMXmSTo7bXAdIZvNolAkw0GaIV9ozbZHV69hcXLxXFgO7KSp6J5ByYcqPwHASmZhfSLEYNSmD8JnwU0Z9lJl+YrlT9x0OrY79lCfSMIfCJ+l8+nMsNi7YrPEP6RrtCR3mStKmBVtiLukclxKTkx4nDxxuYThlZwVz90VBiRQHerK62EKmxky9Wrmx3KPT5dQDOCQ8gTmfTPOl
-            groups:
-                - gds
-        ssharpe:
-            home_dir: /home/ssharpe
-            comment: Sam J Sharpe
-            ssh_keys:
-                ssharpe:
-                    key: AAAAB3NzaC1yc2EAAAABIwAAAQEAyNoMftFLf3w0NOW7J0KUwOx9897CU352n3zKD3p/GCcdH4eMv1QI0BhjItZplWG8TzFSBfWOOSruRh1Gksa1l1jiQcisEio6Wr7kZ7bpvMMA45ZoaDc26HTB+r0BZkNn7Lwwxxvy+1pbqStnnKzb9OTYIyVkb495LS0x1EL/P9S/NWtpm8ZULa1JDplYMA5SqMZnhmlGAXdh8UnjdcdOgOm2ngA+geJBSzVbABECiIAklHU1PRzOtrq8SuO8JmXW6NkuL0aabdTgE6noIm+Nn7T5ufZpOpIGYimVI8+mu+efcBzAp5Q0vTRgSBLfggdczZbFfPXpIt1Ib+LEf+Cuqw==
-            groups:
-                - gds
-        tombooth:
-            home_dir: /home/tombooth
-            comment: Tom Booth
-            ssh_keys:
-                tombooth:
-                    key: AAAAB3NzaC1yc2EAAAADAQABAAABAQClJ8bE0B8OKPdCYNUxy28JQIzBVSBED0va9eERQ8I//YPChd/uo7x+736t5o41VNFJQXWOug3AKE8aV1qTPQn+33JUL/6OHtZDdec+lRzRXW4A+/8WMUoPDItygTB8dbMqRlg8rFDrwFKO6qZ3riHcwoj9BHAc4TlTbcq0vXgRRyHzc7uFwJzSd5wIY0nG5O7qbe4CubAij9hVfdHDS8GTMPuuqd7/YzOyjgKg72BDQWTF3u5YFECDtQgps8OZja59IlMM5L0QrZCVsJFlDtKYPRs6LcX6lEvt2ZBTfn6IPNzeNFJ1b8ltpjsEn/Yi70qA0XWq+kfLMccX4hau25kB
-                tombooth2:
-                    key: AAAAB3NzaC1yc2EAAAADAQABAAABAQDNY4EOtJ+6Soa5161UXp3gb83FFEAGf6HIHAwjPCNQ1ivV6ErADW/nc8MGwNswlLsAszdRYkJTb9KQf+TTgqDq5suv5QdAd/H+gTk8sfxMJ6w2Phu9ru7WGIg7BnSGm/WKFtj3uoFRbaRrfAjsXMQUIZ24uuOq4OsjJi3iXerLbOaQm1BjqxFR+CYksdzzI73Kh+quHj8fELey1jvxPtos6zVK7tEJegxJBJPefs6qxG0RgHnQ4uzG9Ual/LITy5mRpNC6TpBMN0GC0SN207Zb84pLTS5aCquy6x3dAvWpINoeeIwgf+PhHXRZU1jCmpWk4lVqMI9NELfQI5u5ZoIR
-            groups:
-                - gds
-        gkoth:
-            home_dir: /home/gkoth
-            ensure: absent
-        urmy:
-            home_dir: /home/urmy
-            comment: Urmy Urmston
-            ssh_keys:
-                urmy:
-                    key: AAAAB3NzaC1yc2EAAAADAQABAAABAQC09wo2vsf/NZVXNdy/DMbA23aAoOvYQTVNfRbdxPNtquCLihcgkdnyV5Dlu6KUn1ALlYrvc01KzHMD0z0LY04mz13l0NHb3gxp3TUCRHwGt3gjvQnvDcbYmMggB5ELyRoq6XoAknkYLdS0aeENdh7cXzr9K/fQo35dWVeSdPGU0SsdKRKOBbhrkv+ctBXFKmHlUUan7E3zUWkX67kBjqIGCpLIp+/PPBzB//UjfquTwYgv3mj0z7aTqRtF4W9Gmv0TCjLDM/2ZVaBbx3dnBy5hD+Vb53kmgc7eabI2/DHzi5M/GHKPYKLIOxzzaQjItLRjPO3frM0sko2rX2WVnKGp
-            groups:
-                - gds
+  alexmuller:
+    home_dir: /home/alexmuller
+    comment: Alex Muller
+    ssh_keys:
+      alexmuller:
+        key: AAAAB3NzaC1yc2EAAAADAQABAAABAQDxuVkxqVy8kRncaG0cm/B8p7YTk7UjwE6xgUkfzIV97xAaRfNyZUI9Ur/w2x945r5IiuKGp61UHMzsGBEgmsDDNvukguY/a02yXZRySxf3ThlsqG/w7DX9uNwVEeLAA95es4P+6iApbRnBTQX7Nx/XsIa3hy8Uwr3T+pcrXCRIczhfuaiugQ/jh9IlkIC1I6UHbYoli8o5upTh9SbnimU/VXiUIO4v5z1CyLgQHfeE6VBxYO6HCQqRJg7uB4vNS5wAWyTYx4XinkS3ScjKmQr+wExyRy0vgnj5f+oVFNLgARh9lh2ViJ6ntGw8ww10b3xY/Bc/qoeFZKJjb89aMhLb
+    groups:
+      - gds
+  bt:
+    home_dir: /home/bt
+    comment: Brett Thomas - ITHC
+    ensure: absent
+  bthomas:
+    home_dir: /home/bthomas
+    ensure: absent
+  deploy:
+    groups:
+      - gds
+  jabley:
+    home_dir: /home/jabley
+    comment: James Abley
+    ssh_keys:
+      jabley:
+        key: AAAAB3NzaC1yc2EAAAADAQABAAABAQC2568vUQp+Fb7bmSML5OHn0N8gmOjQp9LSE/HPh+xybMiX6ql8JhxDhPGl2NZl2zVmhICLlhY9HcX4E1w2mHY2MgSsoE148QPomYmcjkIkcQxh6nFN4Ga++foTu6WPkUQJudah3ML/XNs/D+yMgxk8nkel6EvIqgbbswlTQp22FmqGfk9XzJqX0mfTrlggJlacYlw+Z4JT4NhoFX4EefSSX0c6qm7fipX2U7M3hJUXxsakj0jM5GOk9xrEVCRUgx5M8l3rS2DwF0W54RewAdq5J9KdnIQi5DOsbVJKnR1flpoaIVuRq1x/feZ4yqi53ctYX5MT8tb6CLc8zmuU7XyR
+    groups:
+      - gds
+  jacob:
+    home_dir: /home/jacob
+    comment: Jacob Ashdown
+    ssh_keys:
+      jacob:
+        key: AAAAB3NzaC1yc2EAAAADAQABAAABAQC6JyuVYcNdZtPtX8oy8Q99E04e5u+Orv4YsWleWieLX2ETAVPry99yHmM6sDH+TMUxDEqWybFjkImb268Qh3CQKTl0lwWKkMHCUnfQnrnERmeAocNFC9XBfM0ZW/KUETp9bit2hs3jLAtL+eqcEThr7peq7PUkz1j4FekQSLyMv5HpvTxMWZCvKoL/sh8qx6J22ntfYCg1SRUU6sHx5Lykp1X4L74EoTSVohynirch+fTvV219zwdpjnbe+XrkE9u5TdVVEOtcSJat8upzBE30MQcvbTeXhlhZbCghm8GEFw3gYsvHBXl+DYjTiQYwHiCI/x2Z+quRBwMYzDsAVqA7
+    groups:
+      - gds
+  pauloschneider:
+    home_dir: /home/pauloschneider
+    comment: Paulo Schneider
+    ssh_keys:
+      pauloschneider:
+        key: AAAAB3NzaC1yc2EAAAADAQABAAABAQCvvZH/S3hteksF52XP6RWyQJUYb/QdI6QyBHbx6lNnHTT0yvmHiS8DcnmI2IDbJqVxXJcaTReOwR2oqhjJ1IJSJZifutXcJsTb5Mc+7XaUWJY7gYCLkZe5PHooxif3AC5RZxhoQEIr+fMBubHhepDQQzie3g6zchr4ENxrKEwUt3VlOA/NZVE0zqmvZ4O6x7+mLJ9BeQuU558JVlJ6XkPqKOiLkLkUr58UOqgaYqU7t29T8IlFRILWoVqJ7WG6wbE6vVsTxktC0PhGUvN4IlilfFIIWh18duGo5dwQJ6E7m9uRAvIYjH+4Y5WnrGBiYt6ljQI/f+kI+iDgG45ewz9P
+    groups:
+      - gds
+  robyoung:
+    home_dir: /home/robyoung
+    comment: Rob Young
+    ssh_keys:
+      robyoung:
+        key: AAAAB3NzaC1yc2EAAAADAQABAAABAQC7Ow1NSyFzV31HAuIf7FFrGIki01sM4+PUdnHrBtTqNFrraGTqcrRKOs8oHtDMhiGC9MPQWvgTMo/sDdAYp3W5SelBJX3L2J0ixKU9D7FNn963SGxWgfuZGTYvu50uDbPwGXH/FXaa99lo3FDv4o2hodC3TRPISAIS3fGXD/K1RuczvIeWfrYAUg2yC01Jv6XzJvHeVVfgQkp0YkV2J0Y5+hXJlcyxmFMdOZeXF5o68ypac/KEu5ksmFX+9h8YPjJ9vidVqzDQosSTA/2W8zTiqTztHeAFOgp/uw8XgLxzel8FLTE6xyu0WSAQHVTZfm5r6U/blft/Q3gcDldrLzRD
+    groups:
+      - gds
+  roc:
+    home_dir: /home/roc
+    comment: Ralph Cowling
+    ssh_keys:
+      roc:
+        key: AAAAB3NzaC1yc2EAAAADAQABAAABAQDZEAxcu70/IbytBYrTh6jDsouuH8mjBlRPoq8e3eEWryQWe6+wevh/c29hiG1J1iRVYfUzxnVV2lIlxh3YOPG4TIwMFHS1rMpmR8j0VTbNw89Jf2O90X+wZa5ERlBRpXWhV98EMLWPMXmSTo7bXAdIZvNolAkw0GaIV9ozbZHV69hcXLxXFgO7KSp6J5ByYcqPwHASmZhfSLEYNSmD8JnwU0Z9lJl+YrlT9x0OrY79lCfSMIfCJ+l8+nMsNi7YrPEP6RrtCR3mStKmBVtiLukclxKTkx4nDxxuYThlZwVz90VBiRQHerK62EKmxky9Wrmx3KPT5dQDOCQ8gTmfTPOl
+    groups:
+      - gds
+  ssharpe:
+    home_dir: /home/ssharpe
+    comment: Sam J Sharpe
+    ssh_keys:
+      ssharpe:
+        key: AAAAB3NzaC1yc2EAAAABIwAAAQEAyNoMftFLf3w0NOW7J0KUwOx9897CU352n3zKD3p/GCcdH4eMv1QI0BhjItZplWG8TzFSBfWOOSruRh1Gksa1l1jiQcisEio6Wr7kZ7bpvMMA45ZoaDc26HTB+r0BZkNn7Lwwxxvy+1pbqStnnKzb9OTYIyVkb495LS0x1EL/P9S/NWtpm8ZULa1JDplYMA5SqMZnhmlGAXdh8UnjdcdOgOm2ngA+geJBSzVbABECiIAklHU1PRzOtrq8SuO8JmXW6NkuL0aabdTgE6noIm+Nn7T5ufZpOpIGYimVI8+mu+efcBzAp5Q0vTRgSBLfggdczZbFfPXpIt1Ib+LEf+Cuqw==
+    groups:
+      - gds
+  tombooth:
+    home_dir: /home/tombooth
+    comment: Tom Booth
+    ssh_keys:
+      tombooth:
+        key: AAAAB3NzaC1yc2EAAAADAQABAAABAQClJ8bE0B8OKPdCYNUxy28JQIzBVSBED0va9eERQ8I//YPChd/uo7x+736t5o41VNFJQXWOug3AKE8aV1qTPQn+33JUL/6OHtZDdec+lRzRXW4A+/8WMUoPDItygTB8dbMqRlg8rFDrwFKO6qZ3riHcwoj9BHAc4TlTbcq0vXgRRyHzc7uFwJzSd5wIY0nG5O7qbe4CubAij9hVfdHDS8GTMPuuqd7/YzOyjgKg72BDQWTF3u5YFECDtQgps8OZja59IlMM5L0QrZCVsJFlDtKYPRs6LcX6lEvt2ZBTfn6IPNzeNFJ1b8ltpjsEn/Yi70qA0XWq+kfLMccX4hau25kB
+      tombooth2:
+        key: AAAAB3NzaC1yc2EAAAADAQABAAABAQDNY4EOtJ+6Soa5161UXp3gb83FFEAGf6HIHAwjPCNQ1ivV6ErADW/nc8MGwNswlLsAszdRYkJTb9KQf+TTgqDq5suv5QdAd/H+gTk8sfxMJ6w2Phu9ru7WGIg7BnSGm/WKFtj3uoFRbaRrfAjsXMQUIZ24uuOq4OsjJi3iXerLbOaQm1BjqxFR+CYksdzzI73Kh+quHj8fELey1jvxPtos6zVK7tEJegxJBJPefs6qxG0RgHnQ4uzG9Ual/LITy5mRpNC6TpBMN0GC0SN207Zb84pLTS5aCquy6x3dAvWpINoeeIwgf+PhHXRZU1jCmpWk4lVqMI9NELfQI5u5ZoIR
+    groups:
+      - gds
+  gkoth:
+    home_dir: /home/gkoth
+    ensure: absent
+  urmy:
+    home_dir: /home/urmy
+    comment: Urmy Urmston
+    ssh_keys:
+      urmy:
+        key: AAAAB3NzaC1yc2EAAAADAQABAAABAQC09wo2vsf/NZVXNdy/DMbA23aAoOvYQTVNfRbdxPNtquCLihcgkdnyV5Dlu6KUn1ALlYrvc01KzHMD0z0LY04mz13l0NHb3gxp3TUCRHwGt3gjvQnvDcbYmMggB5ELyRoq6XoAknkYLdS0aeENdh7cXzr9K/fQo35dWVeSdPGU0SsdKRKOBbhrkv+ctBXFKmHlUUan7E3zUWkX67kBjqIGCpLIp+/PPBzB//UjfquTwYgv3mj0z7aTqRtF4W9Gmv0TCjLDM/2ZVaBbx3dnBy5hD+Vb53kmgc7eabI2/DHzi5M/GHKPYKLIOxzzaQjItLRjPO3frM0sko2rX2WVnKGp
+    groups:
+      - gds
+
 classes:
-    - 'apt'
-    - 'collectd'
-    - 'collectd::plugin::write_graphite'
-    - 'gcc'
-    - 'harden'
-    - 'lumberjack'
-    - 'ntp'
-    - 'python'
-    - 'rsyslog::client'
-    - 'sensu'
-    - 'ssh::server'
-    - 'tmux'
-    - 'ufw'
-    - 'performanceplatform::base'
-    - 'performanceplatform::pp_fail2ban'
+  - 'apt'
+  - 'collectd'
+  - 'collectd::plugin::write_graphite'
+  - 'gcc'
+  - 'harden'
+  - 'lumberjack'
+  - 'ntp'
+  - 'python'
+  - 'rsyslog::client'
+  - 'sensu'
+  - 'ssh::server'
+  - 'tmux'
+  - 'ufw'
+  - 'performanceplatform::base'
+  - 'performanceplatform::pp_fail2ban'
 
 rsyslog::client::server: "logging"
 
@@ -120,15 +121,15 @@ lumberjack::deb_source:  'puppet:///modules/performanceplatform/lumberjack_0.2.0
 lumberjack::cert_source: 'puppet:///modules/performanceplatform/logstash.pub'
 
 collectd_plugins:
-    - 'cpu'
-    - 'df'
-    - 'disk'
-    - 'interface'
-    - 'memory'
-    - 'processes'
-    - 'swap'
-    - 'uptime'
-    - 'users'
+  - 'cpu'
+  - 'df'
+  - 'disk'
+  - 'interface'
+  - 'memory'
+  - 'processes'
+  - 'swap'
+  - 'uptime'
+  - 'users'
 collectd::interval: 1
 collectd::plugin::write_graphite::graphitehost: graphite
 collectd::plugin::write_graphite::storerates: true
@@ -147,29 +148,29 @@ gstatsd::graphite_server: graphite
 gstatsd::flush_interval:  1
 
 nameservers:
-    - 8.8.8.8
-    - 8.8.4.4
+  - 8.8.8.8
+  - 8.8.4.4
 
 performanceplatform::dns::hosts: |
-    172.27.1.2  jumpbox-1
-    172.27.1.11 frontend-app-1 frontend
-    172.27.1.12 frontend-app-2 frontend
-    172.27.1.21 backend-app-1 backend
-    172.27.1.22 backend-app-2 backend
-    172.27.1.31 mongo-1 mongo
-    172.27.1.32 mongo-2 mongo
-    172.27.1.33 mongo-3 mongo
-    172.27.1.41 monitoring-1 log logging graphite logstash alerts redis rabbitmq
-    172.27.1.51 logs-elasticsearch-1 elasticsearch
-    172.27.1.52 logs-elasticsearch-2 elasticsearch
+  172.27.1.2  jumpbox-1
+  172.27.1.11 frontend-app-1 frontend
+  172.27.1.12 frontend-app-2 frontend
+  172.27.1.21 backend-app-1 backend
+  172.27.1.22 backend-app-2 backend
+  172.27.1.31 mongo-1 mongo
+  172.27.1.32 mongo-2 mongo
+  172.27.1.33 mongo-3 mongo
+  172.27.1.41 monitoring-1 log logging graphite logstash alerts redis rabbitmq
+  172.27.1.51 logs-elasticsearch-1 elasticsearch
+  172.27.1.52 logs-elasticsearch-2 elasticsearch
 
 performanceplatform::dns::cnames:
-    - [ "%{::www_vhost}", "frontend" ]
+  - [ "%{::www_vhost}", "frontend" ]
 
 performanceplatform::mongo::mongo_hosts:
-    - mongo-1
-    - mongo-2
-    - mongo-3
+  - mongo-1
+  - mongo-2
+  - mongo-3
 
 python::version:    '2.7'
 python::dev:        true
@@ -179,17 +180,17 @@ python::pip:        true
 google_credentials::client_id: "google client id"
 google_credentials::client_secret: "google client secret"
 google_credentials::refresh_tokens:
-    analytics:
-        refresh_token: "analytics refresh token"
-    drive:
-        refresh_token: "drive refresh token"
+  analytics:
+    refresh_token: "analytics refresh token"
+  drive:
+    refresh_token: "drive refresh token"
 
 system_packages:
-    - git
-    - at
-    - htop
-    - lvm2
-    - parted
-    - ssl-cert
-    - vim
-    - libcurl4-gnutls-dev
+  - git
+  - at
+  - htop
+  - lvm2
+  - parted
+  - ssl-cert
+  - vim
+  - libcurl4-gnutls-dev

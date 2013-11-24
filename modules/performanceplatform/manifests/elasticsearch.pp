@@ -9,7 +9,7 @@ class performanceplatform::elasticsearch(
   class { '::elasticsearch':
     cluster_hosts         => $cluster_hosts,
     data_directory        => $data_dir,
-    host                  => "$::hostname",
+    host                  => $::hostname,
     heap_size             => $heap_size,
     minimum_master_nodes  => $minimum_master_nodes,
     require               => Performanceplatform::Mount[$data_dir],
