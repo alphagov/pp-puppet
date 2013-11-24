@@ -106,6 +106,8 @@ classes:
 
 rsyslog::client::server: "logging"
 
+sensu::dashboard_user:     sensuuser
+sensu::dashboard_password: sensupassword
 sensu::rabbitmq_host: 'rabbitmq'
 sensu::rabbitmq_password: "%{::rabbitmq_sensu_password}"
 sensu::rabbitmq_port: 5672
@@ -133,6 +135,10 @@ collectd::plugin::write_graphite::storerates: true
 collectd::purge: true
 collectd::purge_config: true
 collectd::recurse: true
+
+basic_auth_username: username
+basic_auth_password: password
+basic_auth_password_hashed: $apr1$n0HA6dtU$LXnt0BY3kBQFvq3Qjonf4.
 
 domain_name: undefined.domain
 pp_environment: undefined

@@ -25,6 +25,10 @@ $screenshot_as_a_service_vhost = join(['screenshot', $public_domain_name], '.')
 
 $rabbitmq_sensu_password = hiera('rabbitmq_sensu_password')
 
+$basic_auth_username = hiera('basic_auth_username')
+$basic_auth_password = hiera('basic_auth_password')
+$basic_auth_password_hashed = hiera('basic_auth_password_hashed')
+
 $pp_environment = hiera('pp_environment')
 
 # Classes

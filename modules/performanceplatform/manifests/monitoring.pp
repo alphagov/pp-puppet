@@ -10,7 +10,7 @@ class performanceplatform::monitoring (
 
   file { '/etc/nginx/htpasswd':
     ensure    => present,
-    content   => 'betademo:cBxAp7qb7cNXc', # nottobes
+    content   => "${::basic_auth_username}:${::basic_auth_password_hashed}",
     subscribe => Service['nginx'],
   }
 
