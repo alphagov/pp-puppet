@@ -5,10 +5,14 @@ if empty($machine_role) {
     $machine_role   = regsubst($::hostname, '^(.*)-\d$', '\1')
 }
 
-# Nginx Vhosts for later use
+# Nginx vhosts for later use
 $domain_name         = hiera('domain_name')
 $public_domain_name  = hiera('public_domain_name', $domain_name)
+# Public vhosts
+$www_vhost           = join(['www',$public_domain_name],'.')
 $admin_vhost         = join(['admin',$public_domain_name],'.')
+$assets_vhost        = join(['assets',$public_domain_name],'.')
+# Private vhosts
 $deploy_vhost        = join(['deploy',$domain_name],'.')
 $elasticsearch_vhost = join(['elasticsearch', $domain_name], '.')
 $kibana_vhost        = join(['kibana', $domain_name], '.')
@@ -16,7 +20,6 @@ $graphite_vhost      = join(['graphite',$domain_name],'.')
 $logstash_vhost      = join(['logstash',$domain_name],'.')
 $logging_vhost       = join(['logging',$domain_name],'.')
 $alerts_vhost        = join(['alerts',$domain_name],'.')
-$www_vhost           = join(['www',$public_domain_name],'.')
 $spotlight_vhost     = join(['spotlight',$public_domain_name],'.')
 $screenshot_as_a_service_vhost = join(['screenshot', $public_domain_name], '.')
 
