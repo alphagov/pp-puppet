@@ -79,4 +79,10 @@ class performanceplatform::elasticsearch(
     }'
   }
 
+  sensu::check { 'elasticsearch_is_out_of_memory':
+    command  => '/etc/sensu/community-plugins/plugins/files/check-tail.rb -f /var/log/elasticsearch/elasticsearch.log -l 50 -P OutOfMemory',
+    interval => 60,
+    handlers => 'pagerduty',
+  }
+
 }
