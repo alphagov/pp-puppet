@@ -108,6 +108,7 @@ class performanceplatform::monitoring (
 
   sensu::check { 'elasticsearch_is_out_of_memory':
     ensure => absent,
+    command => '',
   }
 
   $graphite_fqdn = regsubst($::fqdn, '\.', '_', 'G')
