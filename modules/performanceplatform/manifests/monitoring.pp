@@ -156,16 +156,6 @@ class performanceplatform::monitoring (
     handlers => 'pagerduty',
   }
 
-  sensu::check { 'elasticsearch_is_out_of_memory':
-    ensure => absent,
-    command => '',
-  }
-
-  sensu::check{ "check_low_disk_space_elasticsearch":
-    ensure => absent,
-    command => '',
-  }
-
   $pagerduty_api_key = hiera('pagerduty_api_key', undef)
 
   if $pagerduty_api_key != undef {
