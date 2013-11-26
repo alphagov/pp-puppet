@@ -65,6 +65,23 @@ class performanceplatform::monitoring (
     version => absent,
   }
 
+  physical_volume { '/dev/sdb1':
+    ensure => absent,
+  }
+
+  volume_group { 'data':
+    ensure => absent,
+    physical_volumes => '/dev/sdb1',
+  }
+
+  logical_volume { 'elasticsearch':
+    ensure => absent,
+    volume_group => 'data',
+  }
+
+  filesystem { '/dev/data/elasticsearch':
+    ensure => absent,
+  }
 
   logstash::input::syslog { 'logstash-syslog':
     type => "syslog",
