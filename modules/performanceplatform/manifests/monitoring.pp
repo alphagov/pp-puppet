@@ -60,27 +60,37 @@ class performanceplatform::monitoring (
     ensure => absent,
   }
 
+
+
   # Ensure monitoring is no longer responsible for running elasticsearch
   class { '::elasticsearch::install':
     version => absent,
   }
 
+  mount { 'elasticsearch':
+    ensure => absent,
+  }
+
   physical_volume { '/dev/sdb1':
     ensure => absent,
+    require => Mount['elasticsearch'],
   }
 
   volume_group { 'data':
     ensure => absent,
     physical_volumes => '/dev/sdb1',
+    require => Mount['elasticsearch'],
   }
 
   logical_volume { 'elasticsearch':
     ensure => absent,
     volume_group => 'data',
+    require => Mount['elasticsearch'],
   }
 
   filesystem { '/dev/data/elasticsearch':
     ensure => absent,
+    require => Mount['elasticsearch'],
   }
 
   logstash::input::syslog { 'logstash-syslog':
