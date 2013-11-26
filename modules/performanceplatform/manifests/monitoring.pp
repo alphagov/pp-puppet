@@ -153,14 +153,9 @@ class performanceplatform::monitoring (
     command => '',
   }
 
-  $graphite_fqdn = regsubst($::fqdn, '\.', '_', 'G')
-
-  performanceplatform::graphite_check { "check_low_disk_space_elasticsearch":
-    target   => "collectd.${graphite_fqdn}.df-mnt-data-elasticsearch.df_complex-free",
-    warning  => '4000000000:', # A little less than 4 gig
-    critical => '1000000000:',  # A little less than 1 gig
-    interval => 60,
-    handlers => 'pagerduty',
+  sensu::check{ "check_low_disk_space_elasticsearch":
+    ensure => absent,
+    command => '',
   }
 
   $pagerduty_api_key = hiera('pagerduty_api_key', undef)
