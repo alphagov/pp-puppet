@@ -80,6 +80,7 @@ class performanceplatform::monitoring (
   }
 
   mount { 'elasticsearch':
+    name => '/mnt/data/elasticsearch',
     ensure => absent,
   }
 
@@ -97,11 +98,6 @@ class performanceplatform::monitoring (
   logical_volume { 'elasticsearch':
     ensure => absent,
     volume_group => 'data',
-    require => Mount['elasticsearch'],
-  }
-
-  filesystem { '/dev/data/elasticsearch':
-    ensure => absent,
     require => Mount['elasticsearch'],
   }
 
