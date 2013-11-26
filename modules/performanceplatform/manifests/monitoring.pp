@@ -60,7 +60,19 @@ class performanceplatform::monitoring (
     ensure => absent,
   }
 
+  service { 'elasticsearch-elasticsearch':
+    ensure => stopped,
+  }
 
+  file { '/etc/init/elasticsearch-elasticsearch.conf':
+    ensure => absent,
+  }
+
+  file { '/var/lib/elasticsearch-elasticsearch':
+    ensure => absent,
+    recurse => true,
+    force => true,
+  }
 
   # Ensure monitoring is no longer responsible for running elasticsearch
   class { '::elasticsearch::install':
