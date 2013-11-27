@@ -164,6 +164,8 @@ performanceplatform::dns::hosts: |
   172.27.1.52 logs-elasticsearch-2 elasticsearch
 
 performanceplatform::dns::cnames:
+  - [ "%{::assets_vhost}", "frontend" ]
+  - [ "%{::spotlight_vhost}", "frontend" ]
   - [ "%{::www_vhost}", "frontend" ]
 
 performanceplatform::mongo::mongo_hosts:
