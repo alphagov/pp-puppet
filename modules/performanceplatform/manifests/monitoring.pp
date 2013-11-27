@@ -60,46 +60,6 @@ class performanceplatform::monitoring (
     ensure => absent,
   }
 
-  service { 'elasticsearch-elasticsearch':
-    ensure => stopped,
-  }
-
-  file { '/etc/init/elasticsearch-elasticsearch.conf':
-    ensure => absent,
-  }
-
-  file { '/var/lib/elasticsearch-elasticsearch':
-    ensure => absent,
-    recurse => true,
-    force => true,
-  }
-
-  # Ensure monitoring is no longer responsible for running elasticsearch
-  class { '::elasticsearch::install':
-    version => absent,
-  }
-
-  mount { 'elasticsearch':
-    name => '/mnt/data/elasticsearch',
-    ensure => absent,
-  }
-
-  physical_volume { '/dev/sdb1':
-    ensure => absent,
-    require => Mount['elasticsearch'],
-  }
-
-  volume_group { 'data':
-    ensure => absent,
-    physical_volumes => '/dev/sdb1',
-    require => Mount['elasticsearch'],
-  }
-
-  logical_volume { 'elasticsearch':
-    ensure => absent,
-    volume_group => 'data',
-    require => Mount['elasticsearch'],
-  }
 
   logstash::input::syslog { 'logstash-syslog':
     type => "syslog",
@@ -154,16 +114,6 @@ class performanceplatform::monitoring (
     command  => '/etc/sensu/community-plugins/plugins/processes/check-procs.rb -p logstash -W 1 -C 1',
     interval => 60,
     handlers => 'pagerduty',
-  }
-
-  sensu::check { 'elasticsearch_is_out_of_memory':
-    ensure => absent,
-    command => '',
-  }
-
-  sensu::check{ "check_low_disk_space_elasticsearch":
-    ensure => absent,
-    command => '',
   }
 
   $pagerduty_api_key = hiera('pagerduty_api_key', undef)
