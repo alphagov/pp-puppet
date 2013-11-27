@@ -1,5 +1,14 @@
 class performanceplatform::monitoring (
 ) {
+  # Clean out the config directory
+  # This should be removed after the multiple logstash change has been deployed
+  exec { 'clean_out_logstash_config_dir':
+    cwd     => '/',
+    path    => ['/usr/bin', '/bin'],
+    command => 'rm -r /etc/logstash',
+    before  => Class['logstash'];
+  }
+
 
   file { '/etc/apache2/run':
     ensure  => link,
@@ -46,35 +55,35 @@ class performanceplatform::monitoring (
     notify               => Class['sensu'],
   }
 
-  logstash::input::lumberjack { 'lumberjack-agent':
+  logstash::input::lumberjack { 'lumberjack-agent-1':
     format          => 'json',
     type            => 'lumberjack',
     port            => 3456,
     ssl_certificate => 'puppet:///modules/performanceplatform/logstash.pub',
     ssl_key         => 'puppet:///modules/performanceplatform/logstash.key',
-    instances       => [ 'agent' ],
+    instances       => [ 'agent-1' ],
   }
 
-  logstash::input::lumberjack { 'lumberjack-agent-1':
+  logstash::input::lumberjack { 'lumberjack-agent-2':
     format          => 'json',
     type            => 'lumberjack',
     port            => 3457,
     ssl_certificate => 'puppet:///modules/performanceplatform/logstash.pub',
     ssl_key         => 'puppet:///modules/performanceplatform/logstash.key',
-    instances       => [ 'agent-1' ],
+    instances       => [ 'agent-2' ],
   }
 
   logstash::input::syslog { 'logstash-syslog':
     type => "syslog",
     tags => ["syslog"],
-    instances => [ 'agent', 'agent-1' ],
+    instances => [ 'agent-1', 'agent-2' ],
   }
 
   logstash::filter::date { 'varnish-timestamp-fix':
     type  => 'lumberjack',
     tags  => [ 'varnish' ],
     match => [ 'timestamp', '[dd/MMM/YYYY:HH:mm:ss Z]' ],
-    instances => [ 'agent', 'agent-1' ],
+    instances => [ 'agent-1', 'agent-2' ],
   }
 
   logstash::filter::mutate { 'nginx-token-fix':
@@ -84,7 +93,7 @@ class performanceplatform::monitoring (
       '@source_host', '\.', '_',
       'server_name',  '\.', '_',
     ],
-    instances => [ 'agent', 'agent-1' ],
+    instances => [ 'agent-1', 'agent-2' ],
   }
 
   logstash::filter::grep { 'ignore_backdrop_status_request':
@@ -110,12 +119,12 @@ class performanceplatform::monitoring (
       '%{server_name}.request_time' => '%{request_time}'
     },
     namespace => 'nginx',
-    instances => [ 'agent', 'agent-1' ],
+    instances => [ 'agent-1', 'agent-2' ],
   }
 
   logstash::output::elasticsearch_http { 'elasticsearch':
     host => 'elasticsearch',
-    instances => [ 'agent', 'agent-1' ],
+    instances => [ 'agent-1', 'agent-2' ],
   }
 
   sensu::check { 'logstash_is_down':
