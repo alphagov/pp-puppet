@@ -56,7 +56,7 @@ rs.initiate(replicaSetConfig());
 
     $escaped_fqdn = regsubst($::fqdn, '\.', '_', 'G')
 
-    sensu::check { "mongod_is_down_$escaped_fqdn":
+    sensu::check { "mongod_is_down_${escaped_fqdn}":
       command  => '/etc/sensu/community-plugins/plugins/processes/check-procs.rb -p mongod -W 1 -C 1',
       interval => 60,
       handlers => 'pagerduty',
