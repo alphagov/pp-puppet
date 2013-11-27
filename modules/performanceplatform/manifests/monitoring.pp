@@ -60,46 +60,6 @@ class performanceplatform::monitoring (
     ensure => absent,
   }
 
-  service { 'elasticsearch-elasticsearch':
-    ensure => stopped,
-  }
-
-  file { '/etc/init/elasticsearch-elasticsearch.conf':
-    ensure => absent,
-  }
-
-  file { '/var/lib/elasticsearch-elasticsearch':
-    ensure => absent,
-    recurse => true,
-    force => true,
-  }
-
-  # Ensure monitoring is no longer responsible for running elasticsearch
-  class { '::elasticsearch::install':
-    version => absent,
-  }
-
-  mount { 'elasticsearch':
-    name => '/mnt/data/elasticsearch',
-    ensure => absent,
-  }
-
-  physical_volume { '/dev/sdb1':
-    ensure => absent,
-    require => Mount['elasticsearch'],
-  }
-
-  volume_group { 'data':
-    ensure => absent,
-    physical_volumes => '/dev/sdb1',
-    require => Mount['elasticsearch'],
-  }
-
-  logical_volume { 'elasticsearch':
-    ensure => absent,
-    volume_group => 'data',
-    require => Mount['elasticsearch'],
-  }
 
   logstash::input::syslog { 'logstash-syslog':
     type => "syslog",
