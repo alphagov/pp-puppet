@@ -16,6 +16,7 @@ class spotlight::app (
     group        => $group,
     servername   => $::spotlight_vhost,
     proxy_ssl    => true,
+    magic        => template('spotlight/assets-redirect.erb'),
     extra_env    => {
       'NODE_ENV' => $::pp_environment,
     },
