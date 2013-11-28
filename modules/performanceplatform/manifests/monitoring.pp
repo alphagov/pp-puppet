@@ -55,13 +55,6 @@ class performanceplatform::monitoring (
     notify               => Class['sensu'],
   }
 
-  service { 'logstash-agent':
-    ensure => stopped,
-  } ->
-  file { '/etc/init.d/logstash-agent':
-    ensure => absent,
-  }
-
   logstash::input::lumberjack { 'lumberjack-agent-1':
     format          => 'json',
     type            => 'lumberjack',
