@@ -1,8 +1,13 @@
 ---
 classes:
+  - 'clamav'
+  - 'google_credentials'
   - 'nginx::server'
   - 'performanceplatform::nodejs'
+  - 'performanceplatform::mongo'
   - 'phantomjs'
+  - 'python'
+  - 'varnish'
 
 performanceplatform::dns::hosts: |
   127.0.0.1 jumpbox-1 monitoring log graphite
@@ -20,6 +25,11 @@ performanceplatform::dns::hosts: |
 performanceplatform::mongo::mongo_hosts:
   - 127.0.0.1
 
+python::version:    '2.7'
+python::dev:        true
+python::virtualenv: true
+python::pip:        true
+
 ufw_rules:
   allow-http-from-anywhere:
     port: 80
@@ -32,6 +42,27 @@ ufw_rules:
     ip:   'any'
 
 vhost_proxies:
+  # For spotlight
   spotlight:
     servername:    "%{::spotlight_vhost}"
     upstream_port: 3057
+  # For backdrop
+  backdrop_read:
+    servername:    "read.backdrop"
+    upstream_port: 3038
+  backdrop_write:
+    servername:    "write.backdrop"
+    upstream_port: 3039
+  backdrop_admin:
+    servername:    "admin.backdrop"
+    upstream_port: 3203
+  # For varnish
+  www:
+    servername:    "%{::www_vhost}"
+    upstream_port: 7999
+  admin:
+    servername:    "%{::admin_vhost}"
+    upstream_port: 7999
+  assets:
+    servername:    "%{::assets_vhost}"
+    upstream_port: 7999
