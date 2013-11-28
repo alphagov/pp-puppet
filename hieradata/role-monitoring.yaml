@@ -44,8 +44,11 @@ ufw_rules:
   allowcarbonfromanywhere:
     port: 2003
     ip:   'any'
-  allowlumberjackfromanywhere:
+  allowlumberjack1fromanywhere:
     port: 3456
+    ip:   'any'
+  allowlumberjack2fromanywhere:
+    port: 3457
     ip:   'any'
   allowhttpfromall:
     port: 80
