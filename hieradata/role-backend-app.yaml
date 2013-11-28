@@ -1,12 +1,12 @@
 ---
 classes:
-    - 'python'
     - 'backdrop'
     - 'backdrop_collector'
     - 'clamav'
-    - 'performanceplatform::backdrop_checks'
     - 'google_credentials'
+    - 'performanceplatform::backdrop_checks'
     - 'performanceplatform::backdrop_smoke_tests'
+    - 'python'
 
 backdrop_apps:
     admin.backdrop:
