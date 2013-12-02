@@ -1,5 +1,5 @@
 ---
-domain_name: perfplat.dev
+domain_name: development.performance.service.gov.uk
 pp_environment: dev
 
 ssl::params::ssl_path: '/etc/ssl'

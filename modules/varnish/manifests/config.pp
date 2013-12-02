@@ -12,8 +12,13 @@ class varnish::config {
     source  => 'puppet:///modules/varnish/etc/default/varnishncsa',
   }
 
+  case $::machine_role {
+    'development': { $default_vcl_template = "varnish/default.vcl.development.erb" }
+    default: { $default_vcl_template = "varnish/default.vcl.erb" }
+  }
+
   file { '/etc/varnish/default.vcl':
     ensure  => file,
-    content => template("varnish/default.vcl.erb"),
+    content => template($default_vcl_template),
   }
 }

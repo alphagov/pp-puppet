@@ -1,8 +1,8 @@
 ---
 classes:
-    - 'performanceplatform::mongo'
+  - 'performanceplatform::mongo'
 
 ufw_rules:
-    allowmongo:
-        port: 27017
-        ip:   'any'
+  allowmongo:
+    port: 27017
+    ip:   'any'
