@@ -74,22 +74,22 @@ class performanceplatform::monitoring (
   }
 
   logstash::input::syslog { 'logstash-syslog':
-    type => "syslog",
-    tags => ["syslog"],
+    type      => "syslog",
+    tags      => ["syslog"],
     instances => [ 'agent-1', 'agent-2' ],
   }
 
   logstash::filter::date { 'varnish-timestamp-fix':
-    type  => 'lumberjack',
-    tags  => [ 'varnish' ],
-    match => [ 'timestamp', '[dd/MMM/YYYY:HH:mm:ss Z]' ],
+    type      => 'lumberjack',
+    tags      => [ 'varnish' ],
+    match     => [ 'timestamp', '[dd/MMM/YYYY:HH:mm:ss Z]' ],
     instances => [ 'agent-1', 'agent-2' ],
   }
 
   logstash::filter::mutate { 'nginx-token-fix':
-    type => 'lumberjack',
-    tags => [ 'nginx' ],
-    gsub => [
+    type      => 'lumberjack',
+    tags      => [ 'nginx' ],
+    gsub      => [
       '@source_host', '\.', '_',
       'server_name',  '\.', '_',
     ],
@@ -97,20 +97,20 @@ class performanceplatform::monitoring (
   }
 
   logstash::filter::grep { 'ignore_backdrop_status_request':
-    match  => {
+    match     => {
       '@message' => "\\\"(request|response): GET .*/_status( - 200 OK)?\\\"",
     },
-    negate => true,
-    order  => 20,
+    negate    => true,
+    order     => 20,
     instances => [ 'agent-1', 'agent-2' ],
   }
 
   logstash::filter::grep { 'ignore_gunicorn_status_request':
-    match  => {
+    match     => {
       '@message' => "\\\\\\\"GET /_status HTTP/1.0\\\\\\\"",
     },
-    negate => true,
-    order  => 20,
+    negate    => true,
+    order     => 20,
     instances => [ 'agent-1', 'agent-2' ],
   }
 
@@ -126,7 +126,7 @@ class performanceplatform::monitoring (
   }
 
   logstash::output::elasticsearch_http { 'elasticsearch':
-    host => 'elasticsearch',
+    host      => 'elasticsearch',
     instances => [ 'agent-1', 'agent-2' ],
   }
 
