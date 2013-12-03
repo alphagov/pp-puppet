@@ -22,6 +22,10 @@ performanceplatform::server_checking::boxes:
   - logs-elasticsearch-1
   - logs-elasticsearch-2
 
+collectd::plugin::processes::process_matches:
+  - name: 'logstash'
+    regex: 'logstash.jar'
+
 graphite::gr_apache_port:       9080
 graphite::gr_apache_port_https: 9443
 

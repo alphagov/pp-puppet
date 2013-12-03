@@ -91,6 +91,7 @@ accounts:
 classes:
   - 'apt'
   - 'collectd'
+  - 'collectd::plugin::processes'
   - 'collectd::plugin::write_graphite'
   - 'gcc'
   - 'harden'
@@ -125,7 +126,6 @@ collectd_plugins:
   - 'disk'
   - 'interface'
   - 'memory'
-  - 'processes'
   - 'swap'
   - 'uptime'
   - 'users'

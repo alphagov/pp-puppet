@@ -3,7 +3,6 @@ forge "http://forge.puppetlabs.com"
 mod 'attachmentgenie/ssh',        '1.1.0'
 mod 'attachmentgenie/ufw',        '1.2.0'
 mod 'dwerder/graphite',           '3.0.1'
-mod 'pdxcat/collectd',            '0.0.4'
 mod 'puppetlabs/gcc',             '0.0.3'
 mod 'puppetlabs/nodejs',          '0.4.0'
 mod 'puppetlabs/rabbitmq',        '3.0.0'
@@ -19,8 +18,8 @@ mod 'account',       :git => 'https://github.com/alphagov/puppet-account.git',
                      :ref => 'feature/multiple-ssh-keys'
 mod 'clamav',        :git => 'git://github.com/alphagov/puppet-clamav.git',
                      :ref => '31af4f0c2753dd25bca3dd0c7cc69d273c4d640d'
-mod 'collectd',      :git => 'git://github.com/alphagov/puppet-collectd.git',
-                     :ref => 'e17cb3f06f5e26299de145da8fe18a218a10f3c4'
+mod 'collectd',      :git => 'git://github.com/tombooth/puppet-module-collectd.git',
+                     :ref => 'add-processes-plugin'
 mod 'curl',          :git => 'git://github.com/alphagov/puppet-curl.git',
                      :ref => 'f4c6d175bdc6cbd71f71fbaa2544ef8f70c4ce48'
 mod 'elasticsearch', :git => 'git://github.com/gds-operations/puppet-elasticsearch.git',
