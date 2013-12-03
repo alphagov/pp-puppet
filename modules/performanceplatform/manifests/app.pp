@@ -57,4 +57,18 @@ define performanceplatform::app (
   lumberjack::logshipper { "var-logs-for-${title}":
     log_files => [ "/var/log/${title}/*.log.json"],
   }
+
+  # FIXME: Purge old lumberjack logshipper config
+  # Remove once deployed to production
+  # Doing this by hand as lumberjack::logshipper doesn't
+  # provide a way to purge
+  service { "${title}-logshipper":
+    ensure => stopped,
+  } ->
+  file { "/etc/init/${title}-logshipper.conf":
+    ensure => absent,
+  } ->
+  file { "/etc/lumberjack/${title}-logshipper.json":
+    ensure => absent,
+  }
 }
