@@ -1,0 +1,8 @@
+---
+classes:
+  - 'performanceplatform::postgresql_primary'
+
+ufw_rules:
+  allowpostgresql:
+    port: 5432
+    ip:   'any'

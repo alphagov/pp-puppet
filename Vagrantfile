@@ -14,6 +14,7 @@ hosts = [
   { name: 'monitoring-1',          ip: '172.27.1.41' },
   { name: 'logs-elasticsearch-1',  ip: '172.27.1.51' },
   { name: 'logs-elasticsearch-2',  ip: '172.27.1.52' },
+  { name: 'postgresql-primary-1',  ip: '172.27.1.61' },
 ]
 
 def get_box(provider)

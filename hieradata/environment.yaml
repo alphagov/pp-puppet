@@ -18,3 +18,6 @@ rabbitmq_sensu_password: 'iP2O51333kzask7'
 # Keep elasticsearch heapsize low in dev
 performanceplatform::elasticsearch::heap_size: '256m'
 performanceplatform::hosts::ip: "%{::ipaddress_eth1}"
+
+postgresql::server::postgres_password: 'super secret password'
+postgresql::server::listen_address: '0.0.0.0'
