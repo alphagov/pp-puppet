@@ -14,4 +14,8 @@ class performanceplatform::backdrop_checks (
       interval => 120,
       command  => "${check_data_path} -u http://localhost:3203/_status",
     }
+    sensu::check { "backdrop_buckets_health_check":
+      interval => 3600,
+      command  => "${check_data_path}  -u http://localhost:3038/_status/buckets",
+    }
 }
