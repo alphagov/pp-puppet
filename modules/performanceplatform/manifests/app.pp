@@ -7,6 +7,7 @@ define performanceplatform::app (
   $app_path     = "/opt/${title}",
   $config_path  = "/etc/gds/${title}",
   $servername   = $title,
+  $serveraliases = undef,
   $proxy_ssl    = false,
   $magic        = '',
   $extra_env    = {},
@@ -29,6 +30,7 @@ define performanceplatform::app (
     port          => 80,
     upstream_port => $port,
     servername    => $servername,
+    serveraliases => $serveraliases,
     ssl           => $proxy_ssl,
     magic         => $magic,
   }
