@@ -10,6 +10,8 @@ class performanceplatform::dns (
   validate_array($aliases)
   validate_array($cnames)
 
+  $unique_cnames = unique($cnames)
+
   dnsmasq::conf { 'internal-dns':
       ensure  => present,
       content => template('performanceplatform/internal-dns.erb'),

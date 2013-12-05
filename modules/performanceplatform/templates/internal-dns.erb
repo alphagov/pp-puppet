@@ -18,6 +18,6 @@ alias=<%= pair[0] %>,<%= pair[1] %>
 <%- end -%>
 
 # cname apps and other vhosts to node roles
-<%- @cnames.each do |pair| -%>
+<%- @unique_cnames.each do |pair| -%>
 cname=<%= pair[0] %>,<%= pair[1] %>
 <%- end -%>
