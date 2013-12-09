@@ -34,6 +34,14 @@ accounts:
         key: AAAAB3NzaC1yc2EAAAADAQABAAABAQC6JyuVYcNdZtPtX8oy8Q99E04e5u+Orv4YsWleWieLX2ETAVPry99yHmM6sDH+TMUxDEqWybFjkImb268Qh3CQKTl0lwWKkMHCUnfQnrnERmeAocNFC9XBfM0ZW/KUETp9bit2hs3jLAtL+eqcEThr7peq7PUkz1j4FekQSLyMv5HpvTxMWZCvKoL/sh8qx6J22ntfYCg1SRUU6sHx5Lykp1X4L74EoTSVohynirch+fTvV219zwdpjnbe+XrkE9u5TdVVEOtcSJat8upzBE30MQcvbTeXhlhZbCghm8GEFw3gYsvHBXl+DYjTiQYwHiCI/x2Z+quRBwMYzDsAVqA7
     groups:
       - gds
+  nickg:
+    home_dir: /home/nickg
+    comment: Nick Gravgaard
+    ssh_keys:
+      nickg:
+        key: AAAAB3NzaC1yc2EAAAADAQABAAABAQDTWAIUbAAblr/pTdFq9MSFqcoZ31UJL6EbbOPwQKiXJ7nyMeOkXVOXCySRAEhUcIon3xVUWBtyVUndJZGMol9lBZLOqqSFkH3dzfT3k3qgQ8AKI+XBLliI+e5Ak/Hh26ijNB1BcW6SgreCb10Ps0rgUBJTOYnGnIgX7lYgbw9ADsRuqWDydw0ZMsqvWCABhZ0ekjd9fs97HNzlyqe7Bf914g72zsuLQGGXt382xbIiZZSbi7Mf7PKCBKRKF1k8yoU8PPP3S9tIbWkOtjDFtaw4HsSkahrQXIU6R2MgJqoG0x7zCILe1cU2I+nvzdbJ27Bvqw5CyAgpLCzjz/PRsFwZ
+    groups:
+      - gds
   paulfurley:
     home_dir: /home/paulfurley
     comment: Paul Furley
