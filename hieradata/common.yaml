@@ -8,6 +8,14 @@ accounts:
         key: AAAAB3NzaC1yc2EAAAADAQABAAABAQDxuVkxqVy8kRncaG0cm/B8p7YTk7UjwE6xgUkfzIV97xAaRfNyZUI9Ur/w2x945r5IiuKGp61UHMzsGBEgmsDDNvukguY/a02yXZRySxf3ThlsqG/w7DX9uNwVEeLAA95es4P+6iApbRnBTQX7Nx/XsIa3hy8Uwr3T+pcrXCRIczhfuaiugQ/jh9IlkIC1I6UHbYoli8o5upTh9SbnimU/VXiUIO4v5z1CyLgQHfeE6VBxYO6HCQqRJg7uB4vNS5wAWyTYx4XinkS3ScjKmQr+wExyRy0vgnj5f+oVFNLgARh9lh2ViJ6ntGw8ww10b3xY/Bc/qoeFZKJjb89aMhLb
     groups:
       - gds
+  anna:
+    home_dir: /home/anna
+    comment: Anna Powell-Smith
+    ssh_keys:
+      anna:
+        key: AAAAB3NzaC1yc2EAAAADAQABAAABAQDWgk1IG6hTFITtnDgC2+OVUtsg0vitwCeDsqXtIhnJ9iSJ0dAfVYQwsyZn5inGm1KfrTrsNrYwaUSbDTPZX5gtvAgyJiVzwoOm893SbaC9n48hfFlcCN30Ni2FgTWNAiZTt3TBNnD4IinLMgOPlOPbUSDTn1WWJ+e+AElnbQWXA6zC5LaIVyv/gUqCyZqrOv/Lhs3Z/qddIM0tf2DezqbZGpghvB8d8a/y/55p3/IOj+h2KhQ0f0f8JV9IYWfRLx73aIpCc5KjOZFLFoSO5CoBnxrmrUUy/aLw6B+/oVK/npQY8kBNkc0RxY6q0rqAXzd4ZJeBAI1laDGnUwTNDULB
+    groups:
+      - gds
   bt:
     home_dir: /home/bt
     comment: Brett Thomas - ITHC
