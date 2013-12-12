@@ -59,6 +59,8 @@ vhost_proxies:
         upstream_port:   8080
         access_logs:
             '{name}.access.log.json': 'json_event'
+        four_warning:  ':3'
+        four_critical: ':5'
     graphite-vhost:
         servername:      "%{::graphite_vhost}"
         ssl:             true
@@ -68,6 +70,8 @@ vhost_proxies:
         forward_host_header: false
         access_logs:
             '{name}.access.log.json': 'json_event'
+        four_warning:  ':3'
+        four_critical: ':5'
     alerts-vhost:
         servername:      "%{::alerts_vhost}"
         ssl:             true
@@ -76,6 +80,8 @@ vhost_proxies:
         upstream_port:   80
         access_logs:
             '{name}.access.log.json': 'json_event'
+        four_warning:  ':3'
+        four_critical: ':5'
     elasticsearch-vhost:
         servername:      "%{::elasticsearch_vhost}"
         ssl:             true
@@ -85,6 +91,8 @@ vhost_proxies:
         proxy_magic:     'limit_except GET POST HEAD OPTIONS { deny all; }'
         access_logs:
             '{name}.access.log.json': 'json_event'
+        four_warning:  ':3'
+        four_critical: ':5'
 
 nginx_conf:
     logging:
