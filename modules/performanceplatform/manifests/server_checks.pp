@@ -5,10 +5,16 @@ define performanceplatform::server_checks(
     $graphite_fqdn = regsubst($fqdn, '\.', '_', 'G')
 
     performanceplatform::graphite_check { "check_high_cpu_${name}":
-      target   => "collectd.${graphite_fqdn}.cpu-0.cpu-idle",
+      target   => "movingAverage(collectd.${graphite_fqdn}.cpu-0.cpu-idle, 60)",
       warning  => '20:',
       critical => '5:',
       interval => 60,
+    }
+    performanceplatform::graphite_check { "check_high_cpu_spike_${name}":
+      target   => "movingAverage(collectd.${graphite_fqdn}.cpu-0.cpu-idle, 10)",
+      warning  => '10:',
+      critical => '1:',
+      interval => 10,
     }
 
     performanceplatform::graphite_check { "check_low_disk_space_${name}":
