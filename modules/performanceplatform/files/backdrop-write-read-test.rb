@@ -72,8 +72,8 @@ class BackdropWriteReadTest< Sensu::Plugin::Check::CLI
       else
         critical "Failed to write to the write API";
       end
-    rescue
-      critical "Something went really wrong"
+    rescue StandardError => e
+      critical "Something went really wrong: #{e.message}"
     end
   end
 end
