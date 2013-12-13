@@ -31,7 +31,8 @@ define performanceplatform::proxy_vhost(
 
   if $sensu_check {
     performanceplatform::graphite_check { "5xx_rate_${servername}":
-      target            => "keepLastValue(movingAverage(sumSeries(stats.nginx.${::hostname}.${graphite_servername}.http_5*),60))",
+      # Total number of 5xx requests over the last minute
+      target            => "hitcount(transformNull(stats.nginx.${::hostname}.${graphite_servername}.http_5*,0),'1min')",
       warning           => $five_warning,
       critical          => $five_critical,
       interval          => 60,
@@ -40,12 +41,20 @@ define performanceplatform::proxy_vhost(
     }
 
     performanceplatform::graphite_check { "4xx_rate_${servername}":
-      target            => "keepLastValue(movingAverage(sumSeries(stats.nginx.${::hostname}.${graphite_servername}.http_4*),60))",
+      # Total number of 4xx requests over the last minute
+      target            => "hitcount(transformNull(stats.nginx.${::hostname}.${graphite_servername}.http_4*,0),'1min')",
       warning           => $four_warning,
       critical          => $four_critical,
       interval          => 60,
       ignore_no_data    => true,
       ignore_http_error => true,
+    }
+  } else {
+    sensu::check { "5xx_rate_${servername}":
+      command => "",
+    }
+    sensu::check { "4xx_rate_${servername}":
+      command => "",
     }
   }
 
