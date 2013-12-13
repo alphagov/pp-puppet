@@ -28,9 +28,7 @@ class BackdropWriteReadTest< Sensu::Plugin::Check::CLI
     auth = config[:auth_token]
 
     begin
-      if !writing_to_backdrop(uri, auth, payload)
-        critical "Failed to write to the write API"
-      end
+      critical "Failed to write to the write API" if !writing_to_backdrop(uri, auth, payload)
 
       sleep(SLEEP_CONST)
 
@@ -58,11 +56,9 @@ class BackdropWriteReadTest< Sensu::Plugin::Check::CLI
         critical "Failed to parse time from local payload '#{payload['_timestamp']}'"
       end
 
-      if (utc_time - read_api_timestamp) < API_TIME_TO_WRITE
-        ok "Succeeded in writing and reading from backdrop"
-      else
-        critical "Failed to read latest record from the read API"
-      end
+      critical "Failed to read latest record from the read API" if (utc_time - read_api_timestamp) >= API_TIME_TO_WRITE
+
+      ok "Succeeded in writing and reading from backdrop"
     rescue StandardError => e
       critical "Something went really wrong: #{e.message}"
     end
