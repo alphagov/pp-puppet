@@ -28,7 +28,7 @@ class BackdropWriteReadTest< Sensu::Plugin::Check::CLI
     auth = config[:auth_token]
 
     begin
-      critical "Failed to write to the write API" if !writing_to_backdrop(uri, auth, payload)
+      critical "Failed to write to the write API" if writing_to_backdrop_fails(uri, auth, payload)
 
       sleep(SLEEP_CONST)
 
@@ -66,7 +66,7 @@ class BackdropWriteReadTest< Sensu::Plugin::Check::CLI
 
  private
 
-  def writing_to_backdrop(uri, bearer_token, payload)
+  def writing_to_backdrop_fails(uri, bearer_token, payload)
     write = Curl::Easy.http_post(uri.to_s, payload.to_json) do |curl|
       curl.headers['Content-Type'] = 'application/json'
       curl.headers['Authorization'] = "Bearer #{bearer_token}"
@@ -74,7 +74,7 @@ class BackdropWriteReadTest< Sensu::Plugin::Check::CLI
       curl.ssl_verify_peer = false
     end
 
-    return write.body.to_s.include? "ok"
+    return !write.body.to_s.include?("ok")
   end
 end
 
