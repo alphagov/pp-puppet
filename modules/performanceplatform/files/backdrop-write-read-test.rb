@@ -23,15 +23,15 @@ class BackdropWriteReadTest< Sensu::Plugin::Check::CLI
   def run
     start_time = Time.now.utc
     payload = {"_timestamp" => start_time.iso8601()}
-    url = config[:url]
+    backdrop_url = config[:url]
     auth = config[:auth_token]
 
     begin
-      critical "Failed to write to the write API" if writing_to_backdrop_fails(url, auth, payload)
+      critical "Failed to write to the write API" if writing_to_backdrop_fails(backdrop_url, auth, payload)
 
       sleep(SLEEP_CONST)
 
-      read = read_from_backdrop(url, start_time) 
+      read = read_from_backdrop(backdrop_url, start_time) 
 
       begin
         read_api_response = JSON.parse(read.body)
@@ -62,8 +62,8 @@ class BackdropWriteReadTest< Sensu::Plugin::Check::CLI
 
  private
 
-  def writing_to_backdrop_fails(url, bearer_token, payload)
-    write = Curl::Easy.http_post(URI.parse(url).to_s, payload.to_json) do |curl|
+  def writing_to_backdrop_fails(backdrop_url, bearer_token, payload)
+    write = Curl::Easy.http_post(URI.parse(backdrop_url).to_s, payload.to_json) do |curl|
       curl.headers['Content-Type'] = 'application/json'
       curl.headers['Authorization'] = "Bearer #{bearer_token}"
       curl.headers['Content-Type'] = "application/json"
@@ -73,9 +73,9 @@ class BackdropWriteReadTest< Sensu::Plugin::Check::CLI
     return !write.body.to_s.include?("ok")
   end
 
-  def read_from_backdrop(url, start_time)
+  def read_from_backdrop(backdrop_url, start_time)
     end_time = start_time + API_TIME_TO_WRITE
-    uri_sorting_and_results_limitation = url + "?sort_by=_timestamp:descending&limit=1&start_at=#{start_time.iso8601()}&end_at=#{end_time.iso8601()}"
+    uri_sorting_and_results_limitation = backdrop_url + "?sort_by=_timestamp:descending&limit=1&start_at=#{start_time.iso8601()}&end_at=#{end_time.iso8601()}"
 
     return Curl::Easy.http_get(uri_sorting_and_results_limitation) do |curlinfo|
       curlinfo.ssl_verify_peer = false
