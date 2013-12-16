@@ -1,14 +1,5 @@
 class performanceplatform::monitoring (
 ) {
-  # Clean out the config directory
-  # This should be removed after the multiple logstash change has been deployed
-  exec { 'clean_out_logstash_config_dir':
-    cwd     => '/',
-    path    => ['/usr/bin', '/bin'],
-    command => 'rm -r /etc/logstash',
-    before  => Class['logstash'];
-  }
-
 
   file { '/etc/apache2/run':
     ensure  => link,
