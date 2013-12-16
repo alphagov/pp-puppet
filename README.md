@@ -27,7 +27,8 @@ can also set this up for you. Alternatively you can read about how to do it
 yourself [here](https://github.com/sstephenson/rbenv/#homebrew-on-mac-os-x)
 and [here](http://dan.carley.co/blog/2012/02/07/rbenv-and-bundler/).
 
-You will need to install all the gems:
+Before bringing any machines up, you will need to install all the gems. Run
+these commands from the host machine from inside this repo's directory:
 
     bundle install --without NONEXISTENT
     bundle exec librarian-puppet install
