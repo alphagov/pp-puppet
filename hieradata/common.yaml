@@ -58,6 +58,9 @@ accounts:
         key: AAAAB3NzaC1yc2EAAAADAQABAAABAQDK3oUXiQV2Y4scYqAtY7Sd0uqSi0MAE0c2JmjOElflsZZDSupf2cqjfj44eEk/nlD1QxNv86GT0k+/xq0OHqD0019aGOoKZG51MQADOs3sYQp0oneghxAJKykYRznzuR3KUJxn54VrAolbVBM81BojZzzEJdduc2DOvTD41MIusgO0eKpqMtGWLJPf4+skyE3fhPVlFmP/fxv66KqR1ZhLOar+/iSVMne0ne3WoULxK5p77Ds1Bv4TEBtKmY9KWr2X8nCZcF16GheS/sUGjOabsiJuRudPOXq92L9gFr3bnv/paDIo8X61pR7xYrlxrFzbPwUwFt/LMh8ugrtYPEZR
     groups:
       - gds
+  pauloschneider:
+    ensure: absent
+    home_dir: /home/pauloschneider
   robyoung:
     home_dir: /home/robyoung
     comment: Rob Young
