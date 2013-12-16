@@ -33,6 +33,15 @@ these commands from the host machine from inside this repo's directory:
     bundle install --without NONEXISTENT
     bundle exec librarian-puppet install
 
+Also see the ``tools/reinstall_dependencies`` script.
+
+Note that you may need a newer version of ruby than your system one: 1.9.3-p448
+is a good bet. You'll probably want to use
+[rbenv](https://github.com/sstephenson/rbenv) and
+[ruby-build](https://github.com/sstephenson/ruby-build) to manage multiple
+ruby versions, then install the ``bundler`` gem with 
+``$ gem install bundler && rbenv rehash``
+
 ## Tests!
 
 The intention is that this repo refers to external well-tested modules via the Puppetfile.
