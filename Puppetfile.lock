@@ -19,6 +19,8 @@ FORGE
       example42/monitor (>= 2.0.0)
       example42/puppi (>= 2.0.0)
       ripienaar/concat (>= 0.2.0)
+    pdxcat/collectd (1.0.1)
+      puppetlabs/stdlib (>= 3.0.0)
     puppetlabs/apt (1.1.0)
       puppetlabs/stdlib (>= 2.2.1)
     puppetlabs/concat (1.0.0)
@@ -184,14 +186,6 @@ GIT
     python (1.0.0)
 
 GIT
-  remote: git://github.com/tombooth/puppet-module-collectd.git
-  ref: add-processes-plugin
-  sha: 0a70b7f25e2f1de7e643a12f7efead908b226b58
-  specs:
-    collectd (1.0.0)
-      puppetlabs/stdlib (>= 3.0.0)
-
-GIT
   remote: https://github.com/alphagov/puppet-account.git
   ref: feature/multiple-ssh-keys
   sha: bcd1a5f3600478a4f914137e935185a498f59a79
@@ -203,7 +197,6 @@ DEPENDENCIES
   attachmentgenie/ssh (= 1.1.0)
   attachmentgenie/ufw (= 1.2.0)
   clamav (>= 0)
-  collectd (>= 0)
   curl (>= 0)
   dwerder/graphite (= 3.0.1)
   elasticsearch (>= 0)
@@ -218,6 +211,7 @@ DEPENDENCIES
   mongodb (>= 0)
   netmanagers/fail2ban (= 1.1.0)
   nginx (>= 0)
+  pdxcat/collectd (= 1.0.1)
   puppetlabs/gcc (= 0.0.3)
   puppetlabs/nodejs (= 0.4.0)
   puppetlabs/postgresql (= 3.2.0)
