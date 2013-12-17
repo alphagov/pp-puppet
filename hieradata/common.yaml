@@ -131,7 +131,7 @@ sensu::rabbitmq_host: 'rabbitmq'
 sensu::rabbitmq_password: "%{::rabbitmq_sensu_password}"
 sensu::rabbitmq_port: 5672
 sensu::safe_mode: true
-sensu::version: '0.11.0-1'
+sensu::version: '0.12.1-1'
 
 lumberjack::hosts:
   - 'logstash:3456'

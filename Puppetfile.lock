@@ -44,6 +44,9 @@ FORGE
     saz/dnsmasq (1.0.1)
     saz/ntp (2.0.3)
     saz/rsyslog (2.0.0)
+    sensu/sensu (0.7.7)
+      puppetlabs/apt (>= 0.0.1)
+      puppetlabs/stdlib (>= 0.0.1)
     smarchive/archive (0.1.1)
     stahnma/epel (0.0.5)
     thomasvandoren/redis (0.0.9)
@@ -140,15 +143,6 @@ GIT
       puppetlabs/apt (>= 0.0.2)
 
 GIT
-  remote: git://github.com/alphagov/sensu-puppet.git
-  ref: fix-check-deps
-  sha: 66d80a3c84c08074a26ce6ae967f109eeb97b77f
-  specs:
-    sensu (0.7.5)
-      puppetlabs/apt (>= 0.0.1)
-      puppetlabs/stdlib (>= 0.0.1)
-
-GIT
   remote: git://github.com/bison/puppet-upstart.git
   ref: 05a10a3a58de3543eb51bb782a249cebf71f5cd8
   sha: 05a10a3a58de3543eb51bb782a249cebf71f5cd8
@@ -222,7 +216,7 @@ DEPENDENCIES
   saz/dnsmasq (= 1.0.1)
   saz/ntp (= 2.0.3)
   saz/rsyslog (= 2.0.0)
-  sensu (>= 0)
+  sensu/sensu (= 0.7.7)
   smarchive/archive (= 0.1.1)
   ssl (>= 0)
   thomasvandoren/redis (= 0.0.9)
