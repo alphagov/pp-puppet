@@ -66,3 +66,9 @@ vhost_proxies:
   assets:
     servername:    "%{::assets_vhost}"
     upstream_port: 7999
+
+system_packages:
+  - libcairo2-dev
+  - libjpeg8-dev
+  - libpango1.0-dev
+  - libgif-dev
