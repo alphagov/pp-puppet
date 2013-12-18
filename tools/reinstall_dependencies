@@ -1,37 +1,53 @@
-#!/bin/bash -ex
+#!/bin/bash -e
 
-THIS_SCRIPT=$(readlink -f $0)
+THIS_SCRIPT=$0
 THIS_DIR=$(dirname ${THIS_SCRIPT})
 
-REPO_DIR=$(dirname ${THIS_DIR})
+REPO_DIR=${THIS_DIR}/..
 
 function delete_ruby_bundles {
-    rm -rf ${REPO_DIR}/vendor/bundle
+    DIR=${REPO_DIR}/vendor/bundle
+    _soft_delete_directory ${DIR}
 }
 
 function delete_puppet_modules {
-    rm -rf ${REPO_DIR}/vendor/modules
+    DIR=${REPO_DIR}/vendor/modules
+    _soft_delete_directory ${DIR}
 }
 
 function delete_librarian_cache {
-    rm -rf ${REPO_DIR}/.tmp/librarian
+    DIR=${REPO_DIR}/.tmp/librarian
+    _soft_delete_directory ${DIR}
 }
 
 function install_ruby_bundles {
+    echo "Fresh installing ruby bundles."
     pushd ${REPO_DIR}
     bundle install --without NONEXISTENT
     popd
 }
 
 function install_puppet_modules {
+    echo "Fresh installing puppet modules."
     pushd ${REPO_DIR}
     bundle exec librarian-puppet install
     popd
 }
 
+function _soft_delete_directory {
+    DIR=$1
+    if [ -d "$DIR" ]; then
+        rm -rf ${DIR}.BAK
+        mv -f ${DIR} ${DIR}.BAK
+        echo "Moved ${DIR} to ${DIR}.BAK"
+    fi
+}
+
+
 delete_ruby_bundles
 delete_puppet_modules
 delete_librarian_cache
 
+sleep 4s
 install_ruby_bundles
 install_puppet_modules
