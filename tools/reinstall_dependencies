@@ -1,9 +1,9 @@
-#!/bin/sh -ex
+#!/bin/bash -ex
 
 THIS_SCRIPT=$(readlink -f $0)
 THIS_DIR=$(dirname ${THIS_SCRIPT})
 
-REPO_DIR=$(dirname ${THIS_DIR}/..)
+REPO_DIR=$(dirname ${THIS_DIR})
 
 function delete_ruby_bundles {
     rm -rf ${REPO_DIR}/vendor/bundle
