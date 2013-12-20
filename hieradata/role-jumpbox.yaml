@@ -2,6 +2,7 @@ classes:
     - 'performanceplatform::jenkins'
     - 'performanceplatform::deploy'
     - 'performanceplatform::kibana'
+    - 'performanceplatform::nodejs'
     - 'python'
     - 'nginx::server'
     - 'google_credentials'
