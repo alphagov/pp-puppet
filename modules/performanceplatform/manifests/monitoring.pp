@@ -74,6 +74,7 @@ class performanceplatform::monitoring (
     type      => 'sensu',
     tags      => ['sensu'],
     data_type => 'list',
+    key       => 'sensu-checks',
     host      => 'redis',
     instances => [ 'agent-1', 'agent-2' ],
   }
