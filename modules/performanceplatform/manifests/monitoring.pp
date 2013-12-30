@@ -136,6 +136,11 @@ class performanceplatform::monitoring (
     handlers => 'pagerduty',
   }
 
+  sensu::handler { 'default':
+    type     => 'set',
+    handlers => ['logstash'],
+  }
+
   $pagerduty_api_key = hiera('pagerduty_api_key', undef)
 
   if $pagerduty_api_key != undef {
