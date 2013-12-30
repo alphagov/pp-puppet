@@ -38,6 +38,7 @@ define performanceplatform::proxy_vhost(
       interval          => 60,
       ignore_no_data    => true,
       ignore_http_error => true,
+      handlers          => ['default'],
     }
 
     performanceplatform::graphite_check { "4xx_rate_${servername}":
@@ -48,6 +49,7 @@ define performanceplatform::proxy_vhost(
       interval          => 60,
       ignore_no_data    => true,
       ignore_http_error => true,
+      handlers          => ['default'],
     }
   } else {
     sensu::check { "5xx_rate_${servername}":

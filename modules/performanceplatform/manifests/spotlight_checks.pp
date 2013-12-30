@@ -5,5 +5,6 @@ class performanceplatform::spotlight_checks () {
     require  => Class['Spotlight::App'],
     command  => "${check_http_path} -u http://localhost:${spotlight::app::port}/_status",
     interval => 120,
+    handlers => ['default'],
   }
 }
