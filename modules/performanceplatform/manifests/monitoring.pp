@@ -14,7 +14,7 @@ class performanceplatform::monitoring (
     subscribe => Service['nginx'],
   }
 
-  package { 'redphone':
+  package { ['redphone', 'redis']:
     ensure   => installed,
     provider => 'gem',
     require  => Package['ruby1.9.1-dev'],
