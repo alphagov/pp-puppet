@@ -65,8 +65,16 @@ class performanceplatform::monitoring (
   }
 
   logstash::input::syslog { 'logstash-syslog':
-    type      => "syslog",
-    tags      => ["syslog"],
+    type      => 'syslog',
+    tags      => ['syslog'],
+    instances => [ 'agent-1', 'agent-2' ],
+  }
+
+  logstash::input::redis { 'logstash-sensu-redis':
+    type      => 'sensu',
+    tags      => ['sensu'],
+    data_type => 'list',
+    host      => 'redis',
     instances => [ 'agent-1', 'agent-2' ],
   }
 
@@ -135,6 +143,16 @@ class performanceplatform::monitoring (
       config     => {
         api_key  => $pagerduty_api_key,
       }
+    }
+  }
+
+  sensu::handler { 'logstash':
+    command   => '/etc/sensu/community-plugins/handlers/notification/logstash.rb',
+    config    => {
+      type   => 'sensu',
+      server => 'redis',
+      port   => 6379,
+      list   => 'sensu-checks',
     }
   }
 
