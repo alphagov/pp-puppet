@@ -50,12 +50,15 @@ vhost_proxies:
   backdrop_read:
     servername:    "read.backdrop"
     upstream_port: 3038
+    proxy_append_forwarded_host: true
   backdrop_write:
     servername:    "write.backdrop"
     upstream_port: 3039
+    proxy_append_forwarded_host: true
   backdrop_admin:
     servername:    "admin.backdrop"
     upstream_port: 3203
+    proxy_append_forwarded_host: true
   # For varnish
   www:
     servername:    "%{::www_vhost}"

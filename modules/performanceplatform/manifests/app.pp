@@ -13,6 +13,7 @@ define performanceplatform::app (
   $extra_env    = {},
   $upstart_desc = "Upstart job for ${title}",
   $upstart_exec = "${app_path}/run-procfile.sh",
+  $proxy_append_forwarded_host = false,
 ) {
   include nginx::server
   include upstart
@@ -33,6 +34,7 @@ define performanceplatform::app (
     serveraliases => $serveraliases,
     ssl           => $proxy_ssl,
     magic         => $magic,
+    proxy_append_forwarded_host => $proxy_append_forwarded_hsot,
   }
 
   $base_environment = {

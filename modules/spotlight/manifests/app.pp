@@ -27,5 +27,6 @@ class spotlight::app (
     },
     upstart_desc  => 'Spotlight job',
     upstart_exec  => 'node app/server.js',
+    proxy_append_forwarded_host => false,
   }
 }
