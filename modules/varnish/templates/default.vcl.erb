@@ -85,14 +85,8 @@ sub vcl_recv {
   # Routing
   # Allow all HTTP Methods for admin
   if (req.http.Host ~ "^admin\..*") {
-    if (req.url ~ "^\/?$") {
-      # redirect / to /_user for the admin application
-      set req.http.x-Redir-Url = regsub(req.url, "^(.+)$", "/_user");
-      error 667 req.http.x-Redir-Url;
-    } else {
-      set req.http.Host = "admin.backdrop";
-      set req.backend   = admin_director;
-    }
+    set req.http.Host = "admin.backdrop";
+    set req.backend   = admin_director;
   # Send POST requests to the write api
   } else if (req.request == "POST") {
     if (req.http.Authorization ~ "^Bearer .*") {

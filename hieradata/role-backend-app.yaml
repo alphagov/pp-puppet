@@ -12,7 +12,7 @@ backdrop_apps:
   admin.backdrop:
     port:       3203
     # This is a placeholder until we extract a separate app
-    app_module: 'backdrop.write.api:app'
+    app_module: 'backdrop.admin.app:app'
     user:       'deploy'
     group:      'deploy'
   read.backdrop:
