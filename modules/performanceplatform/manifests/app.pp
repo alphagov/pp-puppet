@@ -34,7 +34,7 @@ define performanceplatform::app (
     serveraliases => $serveraliases,
     ssl           => $proxy_ssl,
     magic         => $magic,
-    proxy_append_forwarded_host => $proxy_append_forwarded_hsot,
+    proxy_append_forwarded_host => $proxy_append_forwarded_host,
   }
 
   $base_environment = {
