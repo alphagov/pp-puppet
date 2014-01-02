@@ -19,6 +19,7 @@ define backdrop::app (
         config_path  => $config_path,
         upstart_desc => "Backdrop API for ${title}",
         upstart_exec => "${app_path}/run-procfile.sh",
+        proxy_append_forwarded_host => true,
     }
 
     # Backdrop specific stuff
