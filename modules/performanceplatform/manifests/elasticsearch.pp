@@ -93,7 +93,7 @@ class performanceplatform::elasticsearch(
   }
 
   sensu::check { 'elasticsearch_cluster_status':
-    command  => "/etc/sensu/community-plugins/plugins/elasticsearch/check-es-cluster-status.rb -s ${::hostname}",
+    command  => "/etc/sensu/community-plugins/plugins/elasticsearch/check-es-cluster-status.rb",
     interval => 60,
     handlers => ['default'],
     require  => Package['rest-client'],
