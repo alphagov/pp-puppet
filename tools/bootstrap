@@ -20,7 +20,7 @@ set_uk_apt_sources() {
   sed -i 's|http://us|http://gb|' /etc/apt/sources.list
   apt-get update -qq
   apt-get install -qq python-software-properties curl 2>&1 | pp
-  add-apt-repository -y ppa:gds/govuk 2>&1 | pp
+  add-apt-repository -y ppa:gds/performance-platform 2>&1 | pp
   apt-get update -qq
 }
 

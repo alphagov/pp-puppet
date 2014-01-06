@@ -11,14 +11,11 @@ class performanceplatform::base {
 
     class {'gstatsd': require => Class['python::install'] }
 
-    # TODO: Copy required packages into our own PPA and remove the GOV.UK PPA
-    # from this repo
-    apt::ppa { 'ppa:gds/govuk': }
     apt::ppa { 'ppa:gds/performance-platform': }
 
     exec { 'apt-get-update':
         command => '/usr/bin/apt-get update || true',
-        require => [Apt::Ppa['ppa:gds/govuk'], Apt::Ppa['ppa:gds/performance-platform']],
+        require => Apt::Ppa['ppa:gds/performance-platform'],
     }
     $machine_role = regsubst($::hostname, '^(.*)-\d$', '\1')
 
