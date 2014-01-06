@@ -85,6 +85,12 @@ class performanceplatform::elasticsearch(
     handlers => ['default', 'pagerduty'],
   }
 
+  sensu::check { 'elasticsearch_cluster_status':
+    command  => "/etc/sensu/community-plugins/plugins/elasticsearch/check-es-cluster-status.rb -s ${::hostname}",
+    interval => 60,
+    handlers => ['default'],
+  }
+
   $graphite_fqdn = regsubst($::fqdn, '\.', '_', 'G')
 
   performanceplatform::graphite_check { "check_low_disk_space_elasticsearch":
