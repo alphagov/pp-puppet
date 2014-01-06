@@ -79,6 +79,13 @@ class performanceplatform::elasticsearch(
     }'
   }
 
+
+  package { 'rest-client':
+    ensure   => installed,
+    provider => 'gem',
+    require  => Package['ruby1.9.1-dev'],
+  }
+
   sensu::check { 'elasticsearch_is_out_of_memory':
     command  => '/etc/sensu/community-plugins/plugins/files/check-tail.rb -f /var/log/elasticsearch/elasticsearch.log -l 50 -P OutOfMemory',
     interval => 60,
@@ -89,6 +96,7 @@ class performanceplatform::elasticsearch(
     command  => "/etc/sensu/community-plugins/plugins/elasticsearch/check-es-cluster-status.rb -s ${::hostname}",
     interval => 60,
     handlers => ['default'],
+    require  => Package['rest-client'],
   }
 
   $graphite_fqdn = regsubst($::fqdn, '\.', '_', 'G')
