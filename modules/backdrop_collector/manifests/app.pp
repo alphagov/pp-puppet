@@ -19,4 +19,8 @@ define backdrop_collector::app ($user, $group) {
         group      => $group,
         require    => File["${app_path}/shared"],
     }
+
+    lumberjack::logshipper { "collector-logs-for-${title}":
+        log_files => [ "${app_path}/current/log/collector.log.json" ],
+    }
 }
