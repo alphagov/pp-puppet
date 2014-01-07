@@ -4,4 +4,5 @@ location /spotlight/ {
   expires 5m;
   rewrite ^/spotlight(.*)$ $1 break;
   root /opt/spotlight/current/public;
+  gzip on;
 }
