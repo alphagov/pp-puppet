@@ -1,6 +1,13 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+min_required_vagrant_version = '1.3.0'
+
+if Vagrant::VERSION < min_required_vagrant_version
+  $stderr.puts "ERROR: Puppet now requires Vagrant version >=#{min_required_vagrant_version}. Please upgrade.\n"
+  exit 1
+end
+
 # Node definitions
 hosts = [
   { name: 'backend-app-1',         ip: '172.27.1.21' },
