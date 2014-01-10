@@ -44,7 +44,7 @@ define backdrop::app (
         content => template('backdrop/gunicorn.logging.conf.erb')
     }
     logrotate::rule { "${title}-gunicorn":
-      path         => "/var/log/${title}/*.log*",
+      path         => "/var/log/${title}/*.log /var/log/${title}/*.log.json",
       rotate       => 30,
       rotate_every => 'day',
       missingok    => true,
@@ -56,7 +56,7 @@ define backdrop::app (
       postrotate   => "kill -USR1 $(initctl status ${title} | awk '{ print \$4 }'",
     }
     logrotate::rule { "${title}-application":
-      path         => "/opt/${title}/shared/log/*log*",
+      path         => "/opt/${title}/shared/log/*.log /opt/${title}/shared/log/*.log.json",
       rotate       => 30,
       rotate_every => 'day',
       missingok    => true,
