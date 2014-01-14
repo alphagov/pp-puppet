@@ -66,7 +66,7 @@ accounts:
     comment: Rob Young
     ssh_keys:
       robyoung:
-        key: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+        key: AAAAB3NzaC1yc2EAAAADAQABAAABAQDpQaYaE0FBMDVqBrekM2p6wa4rfl7rNB9KCo0gOaHkRahbVgn1vUHsqjalvZIWzMpn78DbO0FYxx/e7t+qFLh1IVQRGZKvu3eYL1XgKrlUBumBibBwQyJdKGhy/nFAbJUdGvB0DOPm9PMZx/Uo8mpsCDVpb4Fde4ApkdIolmRjAZkyysXtBLTAcRp1MX+FVKRYiUbB1NFgH51tMbGTBE2WdK99aooeIUXzFCbDtuBPXy823TFEsKvfL4xi7EYbNasc4cX8l0JEanbcU++XPgWeprqRhiImqjYnQgAv8fMnJ8EnL0rbPUeytePh1abWuRhpk9Jj9tS8pT7OpG1v9Ekp
     groups:
       - gds
   roc:
