@@ -50,6 +50,7 @@ node default {
     package { $python_packages:
       ensure   => installed,
       provider => 'pip',
+      require  => Package['python-pip'],
     }
   }
 
@@ -62,7 +63,7 @@ node default {
     package { $ruby_packages:
       ensure   => installed,
       provider => 'gem',
-      require  => 'ruby1.9.1-dev',
+      require  => Package['ruby1.9.1-dev'],
     }
   }
 
