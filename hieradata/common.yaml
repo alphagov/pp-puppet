@@ -215,3 +215,6 @@ system_packages:
   - ssl-cert
   - vim
   - libcurl4-gnutls-dev
+
+ruby_packages:
+  - sensu-plugin

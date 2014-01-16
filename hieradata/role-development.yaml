@@ -3,7 +3,6 @@ classes:
   - 'clamav'
   - 'google_credentials'
   - 'nginx::server'
-  - 'performanceplatform::dev'
   - 'performanceplatform::nodejs'
   - 'performanceplatform::mongo'
   - 'phantomjs'
@@ -76,3 +75,6 @@ system_packages:
   - libjpeg8-dev
   - libpango1.0-dev
   - libgif-dev
+
+ruby_packages:
+  - bowler

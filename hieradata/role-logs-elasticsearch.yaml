@@ -19,3 +19,6 @@ ufw_rules:
   allowelasticsearchcontrolfromany:
     port: 9300
     ip:   'any'
+
+ruby_packages:
+  - rest-client

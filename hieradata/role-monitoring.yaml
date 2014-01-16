@@ -91,3 +91,7 @@ nginx_conf:
 lumberjack_instances:
   nginx:
     log_files: [ '/var/log/nginx/*.access.log.json' ]
+
+ruby_packages:
+  - redphone
+  - redis
