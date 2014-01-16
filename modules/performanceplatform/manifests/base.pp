@@ -49,16 +49,7 @@ FACTER_machine_role=${machine_role}
         group  => 'gds',
     }
 
-    package { 'ruby1.9.1-dev':
-        ensure => present,
-    }
-
-    package {'sensu-plugin':
-      ensure   => installed,
-      before   => Class['sensu'],
-      provider => gem,
-      require  => Package['ruby1.9.1-dev'],
-    }
+    Package['sensu-plugin'] -> Class['sensu']
 
     vcsrepo { '/etc/sensu/community-plugins':
         ensure   => present,

@@ -3,12 +3,6 @@ class performanceplatform::backdrop_smoke_tests (
 ) {
     $check_data_path ="/etc/sensu/backdrop-write-read-test.rb"
 
-    package {['curb','json']:
-      ensure   => installed,
-      provider => gem,
-      require  => Package['ruby1.9.1-dev'],
-    }
-
     file { "/etc/sensu/backdrop-write-read-test.rb":
       require => Class['sensu'],
       owner   => 'root',

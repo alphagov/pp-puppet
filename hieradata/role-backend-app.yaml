@@ -51,3 +51,6 @@ ufw_rules:
     port: 80
     ip:   'any'
 
+ruby_packages:
+  - curb
+  - json

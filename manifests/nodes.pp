@@ -45,6 +45,27 @@ node default {
     package { $system_packages: ensure => installed }
   }
 
+  $python_packages = hiera_array( 'python_packages', [] )
+  if !empty($python_packages) {
+    package { $python_packages:
+      ensure   => installed,
+      provider => 'pip',
+    }
+  }
+
+  $ruby_packages = hiera_array( 'ruby_packages', [] )
+  if !empty($ruby_packages) {
+    package { 'ruby1.9.1-dev':
+      ensure => installed,
+    }
+
+    package { $ruby_packages:
+      ensure   => installed,
+      provider => 'gem',
+      require  => 'ruby1.9.1-dev',
+    }
+  }
+
   # Firewall rules
   create_resources( 'ufw::allow', hiera_hash('ufw_rules') )
 
