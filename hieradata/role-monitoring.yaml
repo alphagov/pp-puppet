@@ -7,9 +7,9 @@ classes:
   - 'performanceplatform::monitoring'
   - 'rabbitmq'
   - 'redis'
-  - 'performanceplatform::server_checking'
+  - 'performanceplatform::checks::servers'
 
-performanceplatform::server_checking::boxes:
+performanceplatform::checks::servers::boxes:
   - backend-app-1
   - backend-app-2
   - frontend-app-1

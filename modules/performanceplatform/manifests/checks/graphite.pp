@@ -1,4 +1,4 @@
-define performanceplatform::graphite_check(
+define performanceplatform::checks::graphite (
   $target,
   $warning,
   $critical,
