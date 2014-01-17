@@ -31,7 +31,7 @@ define performanceplatform::proxy_vhost(
   $graphite_servername = regsubst($servername, '\.', '_', 'G')
 
   if $sensu_check {
-    performanceplatform::graphite_check { "5xx_rate_${servername}":
+    performanceplatform::checks::graphite { "5xx_rate_${servername}":
       # Total number of 5xx requests over the last minute
       target            => "hitcount(transformNull(stats.nginx.${::hostname}.${graphite_servername}.http_5*,0),'1min')",
       warning           => $five_warning,
@@ -42,7 +42,7 @@ define performanceplatform::proxy_vhost(
       handlers          => ['default'],
     }
 
-    performanceplatform::graphite_check { "4xx_rate_${servername}":
+    performanceplatform::checks::graphite { "4xx_rate_${servername}":
       # Total number of 4xx requests over the last minute
       target            => "hitcount(transformNull(stats.nginx.${::hostname}.${graphite_servername}.http_4*,0),'1min')",
       warning           => $four_warning,

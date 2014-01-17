@@ -4,7 +4,7 @@ classes:
   - 'backdrop_collector'
   - 'clamav'
   - 'google_credentials'
-  - 'performanceplatform::backdrop_checks'
+  - 'performanceplatform::checks::backdrop'
   - 'performanceplatform::backdrop_smoke_tests'
   - 'python'
 

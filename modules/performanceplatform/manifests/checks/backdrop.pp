@@ -1,4 +1,4 @@
-class performanceplatform::backdrop_checks (
+class performanceplatform::checks::backdrop (
 ) {
     $check_data_path = '/etc/sensu/community-plugins/plugins/http/check-http.rb'
 

@@ -109,6 +109,7 @@ accounts:
 
 classes:
   - 'apt'
+  - 'apt::unattended_upgrades'
   - 'collectd'
   - 'collectd::plugin::processes'
   - 'collectd::plugin::write_graphite'
@@ -123,6 +124,7 @@ classes:
   - 'tmux'
   - 'ufw'
   - 'performanceplatform::base'
+  - 'performanceplatform::checks::apt'
   - 'performanceplatform::pp_fail2ban'
 
 rsyslog::client::server: "logging"
@@ -218,3 +220,6 @@ system_packages:
 
 ruby_packages:
   - sensu-plugin
+
+python_packages:
+  - gds-nagios-plugins
