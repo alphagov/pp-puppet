@@ -53,7 +53,7 @@ define backdrop::app (
       create_mode  => '0640',
       create_owner => $user,
       create_group => $group,
-      postrotate   => "kill -USR1 $(initctl status ${title} | awk '{ print \$4 }'",
+      postrotate   => "kill -USR1 $(initctl status ${title} | awk '{ print \$4 }')",
     }
     logrotate::rule { "${title}-application":
       path         => "/opt/${title}/shared/log/*.log /opt/${title}/shared/log/*.log.json",
