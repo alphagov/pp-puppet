@@ -217,6 +217,7 @@ system_packages:
   - ssl-cert
   - vim
   - libcurl4-gnutls-dev
+  - update-notifier
 
 ruby_packages:
   - sensu-plugin
