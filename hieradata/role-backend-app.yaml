@@ -4,7 +4,7 @@ classes:
   - 'backdrop_collector'
   - 'clamav'
   - 'google_credentials'
-  - 'performanceplatform::backdrop_checks'
+  - 'performanceplatform::checks::backdrop'
   - 'performanceplatform::backdrop_smoke_tests'
   - 'python'
 
@@ -51,3 +51,6 @@ ufw_rules:
     port: 80
     ip:   'any'
 
+ruby_packages:
+  - curb
+  - json

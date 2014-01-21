@@ -75,3 +75,6 @@ system_packages:
   - libjpeg8-dev
   - libpango1.0-dev
   - libgif-dev
+
+ruby_packages:
+  - bowler

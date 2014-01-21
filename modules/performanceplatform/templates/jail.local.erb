@@ -20,7 +20,7 @@
 # "ignoreip" can be an IP address, a CIDR mask or a DNS host
 ## ! uses space separated list
 ## whitelistips comes from environment.yaml
-ignoreip =  <%= @whitelist_ips %>
+ignoreip =  <%= @whitelist_ips.join(' ') %>
 bantime  = 300
 maxretry = 3
 

@@ -79,11 +79,20 @@ class performanceplatform::elasticsearch(
     }'
   }
 
+  collectd::plugin::curl_json { 'lumberjack_count':
+    url => 'http://localhost:9200/logstash-current/lumberjack/_count',
+    instance => 'elasticsearch',
+    keys => {
+      count => { type => 'gauge' },
+    },
+  }
 
-  package { 'rest-client':
-    ensure   => installed,
-    provider => 'gem',
-    require  => Package['ruby1.9.1-dev'],
+  collectd::plugin::curl_json { 'syslog_count':
+    url => 'http://localhost:9200/logstash-current/syslog/_count',
+    instance => 'elasticsearch',
+    keys => {
+      count => { type => 'gauge' },
+    },
   }
 
   sensu::check { 'elasticsearch_is_out_of_memory':
@@ -101,7 +110,7 @@ class performanceplatform::elasticsearch(
 
   $graphite_fqdn = regsubst($::fqdn, '\.', '_', 'G')
 
-  performanceplatform::graphite_check { "check_low_disk_space_elasticsearch":
+  performanceplatform::checks::graphite { "check_low_disk_space_elasticsearch":
     target   => "collectd.${graphite_fqdn}.df-mnt-data-elasticsearch.df_complex-free",
     warning  => '4000000000:', # A little less than 4 gig
     critical => '1000000000:',  # A little less than 1 gig

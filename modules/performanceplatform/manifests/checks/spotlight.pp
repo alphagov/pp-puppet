@@ -1,4 +1,4 @@
-class performanceplatform::spotlight_checks () {
+class performanceplatform::checks::spotlight () {
   $check_http_path = '/etc/sensu/community-plugins/plugins/http/check-http.rb'
 
   sensu::check { 'spotlight_status_check':

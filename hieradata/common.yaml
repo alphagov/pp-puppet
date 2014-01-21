@@ -66,7 +66,7 @@ accounts:
     comment: Rob Young
     ssh_keys:
       robyoung:
-        key: AAAAB3NzaC1yc2EAAAADAQABAAABAQC7Ow1NSyFzV31HAuIf7FFrGIki01sM4+PUdnHrBtTqNFrraGTqcrRKOs8oHtDMhiGC9MPQWvgTMo/sDdAYp3W5SelBJX3L2J0ixKU9D7FNn963SGxWgfuZGTYvu50uDbPwGXH/FXaa99lo3FDv4o2hodC3TRPISAIS3fGXD/K1RuczvIeWfrYAUg2yC01Jv6XzJvHeVVfgQkp0YkV2J0Y5+hXJlcyxmFMdOZeXF5o68ypac/KEu5ksmFX+9h8YPjJ9vidVqzDQosSTA/2W8zTiqTztHeAFOgp/uw8XgLxzel8FLTE6xyu0WSAQHVTZfm5r6U/blft/Q3gcDldrLzRD
+        key: AAAAB3NzaC1yc2EAAAADAQABAAABAQDpQaYaE0FBMDVqBrekM2p6wa4rfl7rNB9KCo0gOaHkRahbVgn1vUHsqjalvZIWzMpn78DbO0FYxx/e7t+qFLh1IVQRGZKvu3eYL1XgKrlUBumBibBwQyJdKGhy/nFAbJUdGvB0DOPm9PMZx/Uo8mpsCDVpb4Fde4ApkdIolmRjAZkyysXtBLTAcRp1MX+FVKRYiUbB1NFgH51tMbGTBE2WdK99aooeIUXzFCbDtuBPXy823TFEsKvfL4xi7EYbNasc4cX8l0JEanbcU++XPgWeprqRhiImqjYnQgAv8fMnJ8EnL0rbPUeytePh1abWuRhpk9Jj9tS8pT7OpG1v9Ekp
     groups:
       - gds
   roc:
@@ -109,6 +109,7 @@ accounts:
 
 classes:
   - 'apt'
+  - 'apt::unattended_upgrades'
   - 'collectd'
   - 'collectd::plugin::processes'
   - 'collectd::plugin::write_graphite'
@@ -123,6 +124,7 @@ classes:
   - 'tmux'
   - 'ufw'
   - 'performanceplatform::base'
+  - 'performanceplatform::checks::apt'
   - 'performanceplatform::pp_fail2ban'
 
 rsyslog::client::server: "logging"
@@ -216,3 +218,10 @@ system_packages:
   - ssl-cert
   - vim
   - libcurl4-gnutls-dev
+  - update-notifier
+
+ruby_packages:
+  - sensu-plugin
+
+python_packages:
+  - gds-nagios-plugins

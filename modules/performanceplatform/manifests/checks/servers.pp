@@ -1,10 +1,10 @@
-class performanceplatform::server_checking(
+class performanceplatform::checks::servers (
   $boxes,
 ) {
 
   $domain = regsubst($::fqdn, '[^\.]+\.(.*)', '\1', 'G')
 
-  performanceplatform::server_checks{ $boxes:
+  performanceplatform::checks::server { $boxes:
     domain => $domain,
   }
 

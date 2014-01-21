@@ -51,6 +51,11 @@ vhost_proxies:
     four_critical: 3
     five_warning: 0
     five_critical: 1
+    magic: |
+      gzip on;
+      gzip_types application/x-javascript application/javascript application/json text/css;
+      gzip_proxied no_etag;
+      gzip_vary on;
 
 nginx::server::server_names_hash_bucket_size: 128
 

@@ -6,7 +6,7 @@ class spotlight::app (
   $group      = undef,
 ) {
   include performanceplatform::nodejs
-  include performanceplatform::spotlight_checks
+  include performanceplatform::checks::spotlight
 
   # spotlight_vhost and spotlight_vhost_internal are the same
   # in every environment except production. Once GOV.UK is
