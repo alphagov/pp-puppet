@@ -79,22 +79,6 @@ class performanceplatform::elasticsearch(
     }'
   }
 
-  collectd::plugin::curl_json { 'lumberjack_count':
-    url => 'http://localhost:9200/logstash-current/lumberjack/_count',
-    instance => 'elasticsearch',
-    keys => {
-      count => { type => 'gauge' },
-    },
-  }
-
-  collectd::plugin::curl_json { 'syslog_count':
-    url => 'http://localhost:9200/logstash-current/syslog/_count',
-    instance => 'elasticsearch',
-    keys => {
-      count => { type => 'gauge' },
-    },
-  }
-
   sensu::check { 'elasticsearch_is_out_of_memory':
     command  => '/etc/sensu/community-plugins/plugins/files/check-tail.rb -f /var/log/elasticsearch/elasticsearch.log -l 50 -P OutOfMemory',
     interval => 60,

@@ -2,6 +2,7 @@ classes:
   - 'java7'
   - 'python'
   - 'performanceplatform::elasticsearch'
+  - 'performanceplatform::checks::elasticsearch::logging'
 
 
 performanceplatform::elasticsearch::data_dir: '/mnt/data/elasticsearch'
