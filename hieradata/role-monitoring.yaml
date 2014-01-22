@@ -15,7 +15,6 @@ performanceplatform::checks::servers::boxes:
   - frontend-app-1
   - frontend-app-2
   - jumpbox-1
-  - jumpbox-2
   - mongo-1
   - mongo-2
   - mongo-3

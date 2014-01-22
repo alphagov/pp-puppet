@@ -8,7 +8,6 @@ hosts = [
   { name: 'frontend-app-1',        ip: '172.27.1.11' },
   { name: 'frontend-app-2',        ip: '172.27.1.12' },
   { name: 'jumpbox-1',             ip: '172.27.1.2' },
-  { name: 'jumpbox-2',             ip: '172.27.1.3' },
   { name: 'mongo-1',               ip: '172.27.1.31' },
   { name: 'mongo-2',               ip: '172.27.1.32' },
   { name: 'mongo-3',               ip: '172.27.1.33' },
