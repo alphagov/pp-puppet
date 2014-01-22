@@ -17,7 +17,7 @@ define performanceplatform::checks::elasticsearch::index(
   }
 
   performanceplatform::checks::graphite { $name:
-    target   => "removeBelowValue(derivative(${graphite},0)",
+    target   => "removeBelowValue(derivative(${graphite}),0)",
     warning  => '0:',
     critical => '0:',
     interval => 60,
