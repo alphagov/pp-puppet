@@ -224,3 +224,5 @@ ruby_packages:
 
 python_packages:
   - gds-nagios-plugins
+
+nginx::server::version: '1.4.4-4~precise0'

@@ -11,7 +11,7 @@ class performanceplatform::base {
 
     class {'gstatsd': require => Class['python::install'] }
 
-    apt::ppa { 'ppa:gds/performance-platform': }
+    apt::ppa { ['ppa:gds/performance-platform']: }
 
     exec { 'apt-get-update':
         command => '/usr/bin/apt-get update || true',
