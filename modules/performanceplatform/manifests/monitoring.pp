@@ -124,6 +124,17 @@ class performanceplatform::monitoring (
     instances => [ 'agent-1', 'agent-2' ],
   }
 
+  logrotate::rule { "${title}-application":
+    path         => "/var/log/logstash/*.log",
+    rotate       => 30,
+    rotate_every => 'day',
+    missingok    => true,
+    compress     => true,
+    create       => true,
+    create_mode  => '0640',
+    postrotate   => "initctl restart ${title}",
+  }
+
   sensu::check { 'logstash_is_down':
     command  => '/etc/sensu/community-plugins/plugins/processes/check-procs.rb -p logstash -C 1 -c -1 -w -1 -W 2',
     interval => 60,
