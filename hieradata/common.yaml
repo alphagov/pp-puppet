@@ -107,6 +107,9 @@ accounts:
     groups:
       - gds
 
+ppas:
+  - 'ppa:gds/performance-platform'
+
 classes:
   - 'apt'
   - 'apt::unattended_upgrades'
