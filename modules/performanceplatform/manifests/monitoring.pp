@@ -124,7 +124,7 @@ class performanceplatform::monitoring (
     instances => [ 'agent-1', 'agent-2' ],
   }
 
-  logrotate::rule { "${title}-application":
+  logrotate::rule { "logstash-rotate":
     path         => "/var/log/logstash/*.log",
     rotate       => 30,
     rotate_every => 'day',
@@ -132,7 +132,7 @@ class performanceplatform::monitoring (
     compress     => true,
     create       => true,
     create_mode  => '0640',
-    postrotate   => "initctl restart ${title}",
+    postrotate   => "initctl restart logstash-agent-1 logstash-agent-2",
   }
 
   sensu::check { 'logstash_is_down':
