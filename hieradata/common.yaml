@@ -35,7 +35,7 @@ accounts:
     groups:
       - gds
   jacobashdown:
-    home_dir: /home/jacob
+    home_dir: /home/jacobashdown
     comment: Jacob Ashdown
     ssh_keys:
       jacobashdown:
