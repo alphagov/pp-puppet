@@ -16,6 +16,9 @@ define performanceplatform::checks::elasticsearch::index(
     },
   }
 
+  # Elasticsearch indices should generally be growing, apart from when
+  # the current index is rolled overnight. We use removeBelowValue to stop
+  # the massive negative derivate (when rolling) causing the check to fire.
   performanceplatform::checks::graphite { $name:
     target   => "removeBelowValue(derivative(${graphite}),0)",
     warning  => '0:',
