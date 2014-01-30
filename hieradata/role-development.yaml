@@ -3,8 +3,9 @@ classes:
   - 'clamav'
   - 'google_credentials'
   - 'nginx::server'
-  - 'performanceplatform::nodejs'
   - 'performanceplatform::mongo'
+  - 'performanceplatform::nodejs'
+  - 'performanceplatform::postgresql_primary'
   - 'phantomjs'
   - 'python'
   - 'varnish'
@@ -21,6 +22,7 @@ performanceplatform::dns::hosts: |
   127.0.0.1 mongo-3 mongo
   127.0.0.1 logs-elasticsearch-1 elasticsearch
   127.0.0.1 logs-elasticsearch-2 elasticsearch
+  127.0.0.1 postgresql-primary-1 postgresql-primary
 
 performanceplatform::mongo::mongo_hosts:
   - 127.0.0.1
