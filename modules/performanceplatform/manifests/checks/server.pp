@@ -11,13 +11,6 @@ define performanceplatform::checks::server (
       interval => 60,
       handlers => ['default'],
     }
-    performanceplatform::checks::graphite { "check_high_cpu_spike_${name}":
-      target   => "movingAverage(collectd.${graphite_fqdn}.cpu-0.cpu-idle,10)",
-      warning  => '10:',
-      critical => '1:',
-      interval => 10,
-      handlers => ['default'],
-    }
 
     performanceplatform::checks::graphite { "check_low_disk_space_${name}":
       target   => "collectd.${graphite_fqdn}.df-root.df_complex-free",
