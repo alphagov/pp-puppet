@@ -78,3 +78,9 @@ system_packages:
 
 ruby_packages:
   - bowler
+
+# Latest nginx for dev
+ppas:
+  - 'ppa:teward/nginx-devel-testing'
+
+nginx::server::version: 'latest'
