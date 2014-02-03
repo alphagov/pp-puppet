@@ -13,6 +13,7 @@ $www_vhost           = join(['www',$public_domain_name],'.')
 $admin_vhost         = join(['admin',$public_domain_name],'.')
 $assets_vhost        = join(['assets',$public_domain_name],'.')
 $spotlight_vhost     = join(['spotlight',$public_domain_name],'.')
+$stagecraft_vhost    = join(['stagecraft',$public_domain_name],'.')
 # Private vhosts
 $deploy_vhost        = join(['deploy',$domain_name],'.')
 $elasticsearch_vhost = join(['elasticsearch', $domain_name], '.')
