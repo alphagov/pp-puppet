@@ -13,7 +13,7 @@ define performanceplatform::checks::server (
     }
 
     # TODO: Remove once check is removed from all machines
-    file { "/etc/sensu/conf.d/checks/check_high_cpu_spike_${name}":
+    file { "/etc/sensu/conf.d/checks/check_high_cpu_spike_${name}.json":
       ensure   => absent,
     }
 
