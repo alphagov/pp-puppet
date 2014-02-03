@@ -12,6 +12,11 @@ define performanceplatform::checks::server (
       handlers => ['default'],
     }
 
+    # TODO: Remove once check is removed from all machines
+    file { "/etc/sensu/conf.d/checks/check_high_cpu_spike_${name}":
+      ensure   => absent,
+    }
+
     performanceplatform::checks::graphite { "check_low_disk_space_${name}":
       target   => "collectd.${graphite_fqdn}.df-root.df_complex-free",
       warning  => '4000000000:', # A little less than 4 gig
