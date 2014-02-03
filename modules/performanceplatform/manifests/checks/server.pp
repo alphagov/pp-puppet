@@ -11,12 +11,10 @@ define performanceplatform::checks::server (
       interval => 60,
       handlers => ['default'],
     }
-    performanceplatform::checks::graphite { "check_high_cpu_spike_${name}":
-      target   => "movingAverage(collectd.${graphite_fqdn}.cpu-0.cpu-idle,10)",
-      warning  => '10:',
-      critical => '1:',
-      interval => 10,
-      handlers => ['default'],
+
+    # TODO: Remove once check is removed from all machines
+    file { "/etc/sensu/conf.d/checks/check_high_cpu_spike_${name}":
+      ensure   => absent,
     }
 
     performanceplatform::checks::graphite { "check_low_disk_space_${name}":
