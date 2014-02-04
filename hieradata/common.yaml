@@ -190,6 +190,7 @@ performanceplatform::dns::hosts: |
   172.27.1.41 monitoring-1 log logging graphite logstash alerts redis rabbitmq
   172.27.1.51 logs-elasticsearch-1 elasticsearch
   172.27.1.52 logs-elasticsearch-2 elasticsearch
+  172.27.1.61 postgresql-primary-1 postgresql-primary
 
 performanceplatform::dns::cnames:
   - [ "%{::assets_vhost}", "frontend" ]
