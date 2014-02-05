@@ -7,4 +7,10 @@ class performanceplatform::postgresql_primary {
   }->
   class { 'postgresql::server':
   }
+
+  # Create stagecraft db
+  postgresql::server::db { 'stagecraft':
+    user     => 'stagecraft_user',
+    password => postgresql_password('stagecraft_user', 'stagecraft_password'),
+  }
 }
