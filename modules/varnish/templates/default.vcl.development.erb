@@ -19,6 +19,10 @@ backend write_backend {
 backend read_backend {
     .host = "backend-app-1";
 }
+backend stagecraft {
+    .host = "backend-app-1";
+}
+
 
 sub vcl_recv {
   # Routing
@@ -26,6 +30,10 @@ sub vcl_recv {
   if (req.http.Host ~ "^admin\..*") {
     set req.http.Host = "admin.backdrop";
     set req.backend   = admin_backend;
+  # Allow all HTTP Methods for stagecraft
+  } else if (req.http.Host ~ "^stagecraft\..*") {
+    set req.http.Host = "stagecraft";
+    set req.backend   = stagecraft;
   # Send POST requests to the write api
   } else if (req.request == "POST") {
     if (req.http.Authorization ~ "^Bearer .*") {
