@@ -23,3 +23,5 @@ performanceplatform::hosts::ip:
 
 postgresql::server::postgres_password: 'password'
 postgresql::server::listen_addresses: '*'
+
+performanceplatform::postgresql_primary::stagecraft_password: "securem8"
