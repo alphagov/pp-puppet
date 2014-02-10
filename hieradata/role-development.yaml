@@ -84,6 +84,8 @@ system_packages:
   - libjpeg8-dev
   - libpango1.0-dev
   - libgif-dev
+  - nfs-common
+  - portmap
 
 ruby_packages:
   - bowler
