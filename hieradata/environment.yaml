@@ -22,6 +22,5 @@ performanceplatform::hosts::ip:
   - "%{::ipaddress_eth1}"
 
 postgresql::server::postgres_password: 'password'
-postgresql::server::listen_addresses: '*'
 
 performanceplatform::postgresql_primary::stagecraft_password: "securem8"
