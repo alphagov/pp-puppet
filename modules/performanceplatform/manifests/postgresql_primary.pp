@@ -15,4 +15,13 @@ class performanceplatform::postgresql_primary (
     user     => 'stagecraft',
     password => postgresql_password('stagecraft', $stagecraft_password),
   }
+
+  # Allow access to stagecraft from performance platform cluster
+  postgresql::server::pg_hba_rule { 'stagecraft':
+    type        => 'host',
+    database    => 'stagecraft',
+    user        => 'stagecraft',
+    auth_method => 'md5',
+    address     => '172.27.1.1/24',
+  }
 }
