@@ -7,6 +7,7 @@ classes:
   - 'performanceplatform::checks::backdrop'
   - 'performanceplatform::backdrop_smoke_tests'
   - 'python'
+  - 'postgresql::lib::devel'
 
 backdrop_apps:
   admin.backdrop:
