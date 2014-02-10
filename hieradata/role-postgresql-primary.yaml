@@ -2,6 +2,8 @@
 classes:
   - 'performanceplatform::postgresql_primary'
 
+postgresql::server::listen_addresses: '*'
+
 ufw_rules:
   allowpostgresql:
     port: 5432
