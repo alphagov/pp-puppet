@@ -8,10 +8,6 @@ class spotlight::app (
   include performanceplatform::nodejs
   include performanceplatform::checks::spotlight
 
-  # spotlight_vhost and spotlight_vhost_internal are the same
-  # in every environment except production. Once GOV.UK is
-  # routing to the internal vhost rather than the "public" one,
-  # we should remove the public vhost from this config.
   performanceplatform::app { 'spotlight':
     port          => $port,
     workers       => $workers,
@@ -19,7 +15,6 @@ class spotlight::app (
     user          => $user,
     group         => $group,
     servername    => $::spotlight_vhost,
-    serveraliases => $::spotlight_vhost_internal,
     proxy_ssl     => true,
     magic         => template('spotlight/assets-redirect.erb'),
     extra_env     => {
