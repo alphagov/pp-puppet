@@ -1,6 +1,7 @@
 ---
 classes:
   - 'performanceplatform::postgresql_primary'
+  - 'performanceplatform::postgresql_backup'
 
 postgresql::server::listen_addresses: '*'
 

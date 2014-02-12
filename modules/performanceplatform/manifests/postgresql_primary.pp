@@ -24,4 +24,5 @@ class performanceplatform::postgresql_primary (
     auth_method => 'md5',
     address     => '172.27.1.1/24',
   }
+
 }
