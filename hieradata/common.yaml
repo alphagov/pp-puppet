@@ -195,7 +195,6 @@ performanceplatform::dns::hosts: |
 performanceplatform::dns::cnames:
   - [ "%{::assets_vhost}", "frontend" ]
   - [ "%{::spotlight_vhost}", "frontend" ]
-  - [ "%{::spotlight_vhost_internal}", "frontend" ]
   - [ "%{::www_vhost}", "frontend" ]
 
 performanceplatform::mongo::mongo_hosts:
