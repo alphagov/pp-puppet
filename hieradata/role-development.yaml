@@ -90,6 +90,9 @@ system_packages:
 ruby_packages:
   - bowler
 
+python_packages:
+  - virtualenvwrapper
+
 # Latest nginx for dev
 ppas:
   - 'ppa:teward/nginx-devel-testing'
