@@ -62,9 +62,8 @@ vhost_proxies:
     upstream_port: 3203
     proxy_append_forwarded_host: true
   stagecraft:
-    servername:    "stagecraft"
+    servername:    "%{::stagecraft_vhost}"
     upstream_port: 3204
-    proxy_append_forwarded_host: true
   # For varnish
   www:
     servername:    "%{::www_vhost}"
@@ -74,9 +73,6 @@ vhost_proxies:
     upstream_port: 7999
   assets:
     servername:    "%{::assets_vhost}"
-    upstream_port: 7999
-  stagecraft_varnish:
-    servername:    "%{::stagecraft_vhost}"
     upstream_port: 7999
 
 system_packages:
