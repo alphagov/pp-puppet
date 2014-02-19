@@ -1,4 +1,4 @@
-class backdrop($user, $group, $pip_cache_path) {
+class performanceplatform::pip($user, $group, $pip_cache_path) {
     file { $pip_cache_path:
         ensure   => directory,
         path     => $pip_cache_path,
