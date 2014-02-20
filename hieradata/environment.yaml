@@ -24,3 +24,6 @@ performanceplatform::hosts::ip:
 postgresql::server::postgres_password: 'password'
 
 performanceplatform::postgresql_primary::stagecraft_password: "securem8"
+
+# Nginx configuration to restrict a vhost to the performance platform
+pp_only_vhost: ""

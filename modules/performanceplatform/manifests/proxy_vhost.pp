@@ -26,6 +26,7 @@ define performanceplatform::proxy_vhost(
   $four_critical        = '~:0',
   $four_warning         = '~:0',
   $sensu_check          = true,
+  $pp_only_vhost    = false,
 ) {
 
   $graphite_servername = regsubst($servername, '\.', '_', 'G')
@@ -59,6 +60,10 @@ define performanceplatform::proxy_vhost(
     sensu::check { "4xx_rate_${servername}":
       command => "",
     }
+  }
+
+  if $pp_only_vhost {
+    $magic = "${magic}${::pp_only_vhost}"
   }
 
   nginx::vhost::proxy { $name:
