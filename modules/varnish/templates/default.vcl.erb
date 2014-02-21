@@ -26,6 +26,12 @@ probe read_healthcheck {
                "User-Agent: Varnish-Healthcheck"
                "Connection: close";
 }
+probe stagecraft_healthcheck {
+    .request = "GET /_status HTTP/1.1"
+               "Host: stagecraft"
+               "User-Agent: Varnish-Healthcheck"
+               "Connection: close";
+}
 
 
 # Defining the backends per-director so we can have separate healthchecks later
@@ -52,6 +58,14 @@ backend read_backend_1 {
 backend read_backend_2 {
     .host = "backend-app-2";
     .probe = read_healthcheck;
+}
+backend stagecraft_backend_1 {
+    .host = "backend-app-1";
+    .probe = stagecraft_healthcheck;
+}
+backend stagecraft_backend_2 {
+    .host = "backend-app-2";
+    .probe = stagecraft_healthcheck;
 }
 
 # Per-host directors, so we can have per-host healthchecks later
@@ -81,12 +95,24 @@ director read_director round-robin {
     }
 }
 
+director stagecraft_director round-robin {
+    {
+        .backend = stagecraft_backend_1;
+    }
+    {
+        .backend = stagecraft_backend_2;
+    }
+}
+
 sub vcl_recv {
   # Routing
   # Allow all HTTP Methods for admin
   if (req.http.Host ~ "^admin\..*") {
     set req.http.Host = "admin.backdrop";
     set req.backend   = admin_director;
+  } else if (req.http.Host ~ "^stagecraft\..*") {
+    set req.http.Host = "stagecraft";
+    set req.backend = stagecraft_director;
   # Send POST requests to the write api
   } else if (req.request == "POST") {
     if (req.http.Authorization ~ "^Bearer .*") {

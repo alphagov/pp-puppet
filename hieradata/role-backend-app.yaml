@@ -1,15 +1,15 @@
 ---
 classes:
-  - 'backdrop'
   - 'backdrop_collector'
   - 'clamav'
   - 'google_credentials'
   - 'performanceplatform::checks::backdrop'
   - 'performanceplatform::backdrop_smoke_tests'
+  - 'performanceplatform::pip'
   - 'python'
   - 'postgresql::lib::devel'
 
-backdrop_apps:
+gunicorn_apps:
   admin.backdrop:
     port:       3203
     # This is a placeholder until we extract a separate app
@@ -26,6 +26,11 @@ backdrop_apps:
     app_module: 'backdrop.write.api:app'
     user:       'deploy'
     group:      'deploy'
+  stagecraft:
+    port:            3204
+    app_module:      'stagecraft.wsgi:application'
+    user:            'deploy'
+    group:           'deploy'
 
 backdrop_collectors:
   backdrop-ga-collector:
@@ -43,9 +48,9 @@ python::dev:        true
 python::virtualenv: true
 python::pip:        true
 
-backdrop::user: 'deploy'
-backdrop::group: 'deploy'
-backdrop::pip_cache_path: '/var/cache/pip-download-cache'
+performanceplatform::pip::user: 'deploy'
+performanceplatform::pip::group: 'deploy'
+performanceplatform::pip::pip_cache_path: '/var/cache/pip-download-cache'
 
 ufw_rules:
   allowhttp:

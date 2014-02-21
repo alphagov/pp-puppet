@@ -1,5 +1,4 @@
 # Gunicorn config for <%= title %>
 bind="localhost:<%= port %>"
 workers=<%= workers %>
-pythonpath="/var/virtualenvs/<%= title %>"
 logconfig="/etc/gds/<%= title %>/gunicorn.logging.conf"

@@ -82,10 +82,10 @@ node default {
     create_resources( 'nginx::conf', $nginx_conf )
   }
 
-  # Install the Backdrop apps
-  $backdrop_apps = hiera_hash( 'backdrop_apps', {} )
-  if !empty($backdrop_apps) {
-    create_resources( 'backdrop::app', $backdrop_apps )
+  # Install the Gunicorn apps
+  $gunicorn_apps = hiera_hash( 'gunicorn_apps', {} )
+  if !empty($gunicorn_apps) {
+    create_resources( 'performanceplatform::gunicorn_app', $gunicorn_apps )
   }
 
   # Collect some metrics

@@ -57,6 +57,19 @@ vhost_proxies:
       gzip_proxied no_etag;
       gzip_vary on;
 
+  stagecraft-vhost:
+    servername:    "%{::stagecraft_vhost}"
+    ssl:           true
+    ssl_redirect:  true
+    upstream_port: 7999
+    access_logs:
+      '{name}.access.log.json': 'json_event'
+    four_warning: 1
+    four_critical: 3
+    five_warning: 0
+    five_critical: 1
+    pp_only_vhost: true
+
 nginx::server::server_names_hash_bucket_size: 128
 
 nginx_conf:
