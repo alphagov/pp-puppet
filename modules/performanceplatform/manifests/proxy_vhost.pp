@@ -26,7 +26,7 @@ define performanceplatform::proxy_vhost(
   $four_critical        = '~:0',
   $four_warning         = '~:0',
   $sensu_check          = true,
-  $pp_only_vhost    = false,
+  $pp_only_vhost        = false,
 ) {
 
   $graphite_servername = regsubst($servername, '\.', '_', 'G')
