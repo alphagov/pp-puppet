@@ -39,6 +39,9 @@ backdrop_collectors:
   backdrop-ga-realtime-collector:
     user: 'deploy'
     group: 'deploy'
+  backdrop-ga-trending-collector:
+    user: 'deploy'
+    group: 'deploy'
   backdrop-pingdom-collector:
     user: 'deploy'
     group: 'deploy'
