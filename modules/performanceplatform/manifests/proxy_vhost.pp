@@ -63,7 +63,9 @@ define performanceplatform::proxy_vhost(
   }
 
   if $pp_only_vhost {
-    $magic = "${magic}${::pp_only_vhost}"
+    $magic_with_pp_only = "${magic}${::pp_only_vhost}"
+  } else {
+    $magic_with_pp_only = $magic
   }
 
   nginx::vhost::proxy { $name:
@@ -80,7 +82,7 @@ define performanceplatform::proxy_vhost(
     ssl_cert             => $ssl_cert,
     ssl_key              => $ssl_key,
     ssl_redirect         => $ssl_redirect,
-    magic                => $magic,
+    magic                => $magic_with_pp_only,
     isdefaultvhost       => $isdefaultvhost,
     proxy                => $proxy,
     proxy_magic          => $proxy_magic,
