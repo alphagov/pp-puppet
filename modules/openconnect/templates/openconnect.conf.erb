@@ -18,4 +18,4 @@ exec cat /etc/openconnect/network.passwd | openconnect \
   --CAfile /etc/openconnect/network.cacerts \
 <% end -%>
   --user <%= @user -%> \
-  --passwd-on-stdin
+  --passwd-on-stdin | awk '{ print strftime("%Y-%m-%d %H:%M:%S"), $0; fflush(); }'
