@@ -36,11 +36,11 @@ python::version:    '2.7'
 python::dev:        true
 python::virtualenv: true
 
-# These packages are only required for building Transactions Explorer
 system_packages:
     - libxml2-dev
     - libxslt1-dev
     - libffi-dev
+    - gawk
 
 ufw_rules:
     allowhttpfromall:
