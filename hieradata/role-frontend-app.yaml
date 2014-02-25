@@ -51,6 +51,7 @@ vhost_proxies:
     four_critical: 3
     five_warning: 0
     five_critical: 1
+    client_max_body_size: '30m'
     magic: |
       gzip on;
       gzip_types application/x-javascript application/javascript application/json text/css;
