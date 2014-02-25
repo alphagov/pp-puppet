@@ -5,6 +5,7 @@ define performanceplatform::gunicorn_app (
   $app_module  = undef,
   $user        = undef,
   $group       = undef,
+  $client_max_body_size = '10m',
 ) {
   # app_path is defined here so that the virtualenv can be
   # created in the correct place
@@ -22,6 +23,7 @@ define performanceplatform::gunicorn_app (
     config_path  => $config_path,
     upstart_desc => $description,
     upstart_exec => "${virtualenv_path}/bin/gunicorn -c ${config_path}/gunicorn ${app_module}",
+    client_max_body_size => $client_max_body_size,
   }
 
   python::virtualenv { $virtualenv_path:
