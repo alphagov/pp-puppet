@@ -23,6 +23,7 @@ define performanceplatform::gunicorn_app (
     config_path  => $config_path,
     upstart_desc => $description,
     upstart_exec => "${virtualenv_path}/bin/gunicorn -c ${config_path}/gunicorn ${app_module}",
+    proxy_append_forwarded_host => true,
     client_max_body_size => $client_max_body_size,
   }
 
