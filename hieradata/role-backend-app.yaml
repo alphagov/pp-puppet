@@ -27,6 +27,7 @@ gunicorn_apps:
     user:                 'deploy'
     group:                'deploy'
     client_max_body_size: '30m'
+    timeout:              60
   stagecraft:
     port:            3204
     app_module:      'stagecraft.wsgi:application'
