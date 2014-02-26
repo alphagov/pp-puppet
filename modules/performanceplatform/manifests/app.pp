@@ -29,14 +29,14 @@ define performanceplatform::app (
   }
 
   performanceplatform::proxy_vhost { "${title}-vhost":
-    port          => 80,
-    upstream_port => $port,
-    servername    => $servername,
-    serveraliases => $serveraliases,
-    ssl           => $proxy_ssl,
-    magic         => $magic,
+    port                        => 80,
+    upstream_port               => $port,
+    servername                  => $servername,
+    serveraliases               => $serveraliases,
+    ssl                         => $proxy_ssl,
+    magic                       => $magic,
     proxy_append_forwarded_host => $proxy_append_forwarded_host,
-    client_max_body_size => $client_max_body_size,
+    client_max_body_size        => $client_max_body_size,
   }
 
   $base_environment = {

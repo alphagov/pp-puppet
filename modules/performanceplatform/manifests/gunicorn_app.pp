@@ -15,17 +15,17 @@ define performanceplatform::gunicorn_app (
   $virtualenv_path = "${app_path}/shared/venv"
 
   performanceplatform::app { $title:
-    port         => $port,
-    workers      => $workers,
-    app_module   => $app_module,
-    user         => $user,
-    group        => $group,
-    app_path     => $app_path,
-    config_path  => $config_path,
-    upstart_desc => $description,
-    upstart_exec => "${virtualenv_path}/bin/gunicorn -c ${config_path}/gunicorn ${app_module}",
+    port                        => $port,
+    workers                     => $workers,
+    app_module                  => $app_module,
+    user                        => $user,
+    group                       => $group,
+    app_path                    => $app_path,
+    config_path                 => $config_path,
+    upstart_desc                => $description,
+    upstart_exec                => "${virtualenv_path}/bin/gunicorn -c ${config_path}/gunicorn ${app_module}",
     proxy_append_forwarded_host => true,
-    client_max_body_size => $client_max_body_size,
+    client_max_body_size        => $client_max_body_size,
   }
 
   python::virtualenv { $virtualenv_path:
