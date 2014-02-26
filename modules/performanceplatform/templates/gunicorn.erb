@@ -1,5 +1,5 @@
-# Gunicorn config for <%= title %>
-bind="localhost:<%= port %>"
-workers=<%= workers %>
-timeout=<%= timeout %>
-logconfig="/etc/gds/<%= title %>/gunicorn.logging.conf"
+# Gunicorn config for <%= @title %>
+bind="localhost:<%= @port %>"
+workers=<%= @workers %>
+timeout=<%= @timeout %>
+logconfig="/etc/gds/<%= @title %>/gunicorn.logging.conf"
