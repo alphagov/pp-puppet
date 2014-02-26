@@ -2,6 +2,7 @@ define performanceplatform::gunicorn_app (
   $description = $title,
   $port        = undef,
   $workers     = 4,
+  $timeout     = 30,
   $app_module  = undef,
   $user        = undef,
   $group       = undef,
