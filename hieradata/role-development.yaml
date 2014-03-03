@@ -73,6 +73,7 @@ vhost_proxies:
   admin:
     servername:    "%{::admin_vhost}"
     upstream_port: 7999
+  # For assets
   assets:
     servername:    "%{::assets_vhost}"
     upstream_port: 7999

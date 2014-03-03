@@ -28,6 +28,18 @@ ufw_rules:
     ip:   'any'
 
 vhost_proxies:
+  assets-varnish-vhost:
+    servername:    "%{::assets_vhost}"
+    ssl:           true
+    ssl_redirect:  true
+    upstream_port: 7999
+    access_logs:
+      '{name}.access.log.json': 'json_event'
+    four_warning: 1
+    four_critical: 3
+    five_warning: 0
+    five_critical: 1
+
   admin-vhost:
     servername:    "%{::admin_vhost}"
     ssl:           true

@@ -7,7 +7,7 @@ class performanceplatform::assets (
 ) {
 
   nginx::vhost { 'assets-vhost':
-    servername => $::assets_vhost,
+    servername => $::assets_internal_vhost,
     ssl        => true,
     magic      => template('performanceplatform/assets-vhost.erb'),
   }

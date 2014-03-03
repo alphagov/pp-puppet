@@ -68,6 +68,9 @@ backend stagecraft_backend_2 {
     .probe = stagecraft_healthcheck;
 }
 
+backend frontend_app_1 { .host = "frontend-app-1"; }
+backend frontend_app_2 { .host = "frontend-app-2"; }
+
 # Per-host directors, so we can have per-host healthchecks later
 director admin_director round-robin {
     {
@@ -85,7 +88,6 @@ director write_director round-robin {
         .backend = write_backend_2;
     }
 }
-
 director read_director round-robin {
     {
         .backend = read_backend_1;
@@ -94,7 +96,6 @@ director read_director round-robin {
         .backend = read_backend_2;
     }
 }
-
 director stagecraft_director round-robin {
     {
         .backend = stagecraft_backend_1;
@@ -104,10 +105,21 @@ director stagecraft_director round-robin {
     }
 }
 
+# Add a director for the frontend app servers
+# Note that Varnish currently runs on the frontend app servers,
+# so this might pretty much just pass things through.
+director frontend_app round-robin {
+  { .backend = frontend_app_1; }
+  { .backend = frontend_app_2; }
+}
+
 sub vcl_recv {
   # Routing
+  if (req.http.Host ~ "^assets\..*") {
+    set req.http.Host = "<%= scope.lookupvar('::assets_internal_vhost') %>";
+    set req.backend   = frontend_app;
   # Allow all HTTP Methods for admin
-  if (req.http.Host ~ "^admin\..*") {
+  } else if (req.http.Host ~ "^admin\..*") {
     set req.http.Host = "admin.backdrop";
     set req.backend   = admin_director;
   } else if (req.http.Host ~ "^stagecraft\..*") {
