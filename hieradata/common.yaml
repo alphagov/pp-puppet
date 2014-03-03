@@ -194,6 +194,7 @@ performanceplatform::dns::hosts: |
 
 performanceplatform::dns::cnames:
   - [ "%{::assets_vhost}", "frontend" ]
+  - [ "%{::assets_internal_vhost}", "frontend" ]
   - [ "%{::spotlight_vhost}", "frontend" ]
   - [ "%{::www_vhost}", "frontend" ]
 

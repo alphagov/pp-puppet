@@ -14,6 +14,7 @@ $admin_vhost         = join(['admin',$public_domain_name],'.')
 $assets_vhost        = join(['assets',$public_domain_name],'.')
 $stagecraft_vhost    = join(['stagecraft',$public_domain_name],'.')
 # Private vhosts
+$assets_internal_vhost = 'assets.frontend'
 $deploy_vhost        = join(['deploy',$domain_name],'.')
 $elasticsearch_vhost = join(['elasticsearch', $domain_name], '.')
 $kibana_vhost        = join(['kibana', $domain_name], '.')
