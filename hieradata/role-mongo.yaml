@@ -1,6 +1,7 @@
 ---
 classes:
   - 'performanceplatform::mongo'
+  - 'performanceplatform::mongo_backup'
 
 ufw_rules:
   allowmongo:
