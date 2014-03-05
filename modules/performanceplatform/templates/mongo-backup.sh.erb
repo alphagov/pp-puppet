@@ -1,0 +1,25 @@
+#!/bin/sh
+
+BACKUP_DIR="<%= @backup_dir %>"
+BACKUP_LOG="<%= @backup_log %>"
+
+TODAY=$(date +%F)
+DAY=$(date +%A |tr 'A-Z' 'a-z')
+MONTH=$(date +%B |tr 'A-Z' 'a-z')
+TMP_DIR=$(mktemp -d -p $BACKUP_DIR) || exit 1
+
+mongodump -o "-" |bzip2  > $TMP_DIR/$TODAY.dump.bz
+
+# remove any preëxisting backups with this name, read out from tmp file and then remove TMP_DIR
+test -f $BACKUP_DIR/$TODAY-mongodb-$DAY.tar.gz && rm $BACKUP_DIR/$TODAY-mongodb-$DAY.tar.gz
+tar -C $TMP_DIR -c -f $BACKUP_DIR/$TODAY-mongodb-$DAY.tar `ls $TMP_DIR`
+rm -fr $TMP_DIR
+
+# Write a log entry to show success or failure
+NOW=$(date +"%s")
+if [ -e $BACKUP_DIR/$TODAY-mongodb-$DAY.tar ];
+then
+    echo "SUCCESS: $NOW $BACKUP_DIR/$TODAY-mongodb-$DAY.tar write was successful" >> $BACKUP_LOG
+else
+    echo "FAILURE: $NOW $BACKUP_DIR/$TODAY-mongodb-$DAY.tar write failed" >> $BACKUP_LOG
+fi
