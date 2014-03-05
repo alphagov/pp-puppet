@@ -6,6 +6,7 @@ classes:
   - 'screenshot_as_a_service::app'
   - 'spotlight::app'
   - 'varnish'
+  - 'stagecraft::assets'
 
 # screenshot_as_a_service runs on 3059 and 3060, but 3059
 # is only used from within this app.
