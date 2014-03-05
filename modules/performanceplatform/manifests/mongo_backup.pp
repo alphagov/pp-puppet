@@ -18,7 +18,7 @@ class performanceplatform::mongo_backup (
   $backup_log_dir  = '/var/log/backups/',
   $backup_log  = '/var/log/backups/mongodb.log',
   $user        = 'root',
-) inherits performanceplatform::mongo {
+) {
 
   file {$backup_dir:
     ensure  => directory,
