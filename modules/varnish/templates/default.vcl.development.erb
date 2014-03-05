@@ -54,11 +54,11 @@ sub vcl_recv {
       set req.http.Host = "read.backdrop";
       set req.backend   = read_director;
     } else {
-      error 405 "Method not allowed"
+      error 405 "Method not allowed";
     }
     call redirect_slash;
   } else {
-    error 404 "Not found"
+    error 404 "Not found";
   }
 
   # normalize Accept-Encoding header
