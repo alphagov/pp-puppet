@@ -10,7 +10,7 @@ TMP_DIR=$(mktemp -d -p $BACKUP_DIR) || exit 1
 
 mongodump -o "-" |bzip2  > $TMP_DIR/$TODAY.dump.bz
 
-# remove any preëxisting backups with this name, read out from tmp file and then remove TMP_DIR
+# remove any pre-existing backups with this name, read out from tmp file and then remove TMP_DIR
 test -f $BACKUP_DIR/$TODAY-mongodb-$DAY.tar.gz && rm $BACKUP_DIR/$TODAY-mongodb-$DAY.tar.gz
 tar -C $TMP_DIR -c -f $BACKUP_DIR/$TODAY-mongodb-$DAY.tar `ls $TMP_DIR`
 rm -fr $TMP_DIR
