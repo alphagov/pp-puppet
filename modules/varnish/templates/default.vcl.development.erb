@@ -20,36 +20,45 @@ backend read_backend {
     .host = "backend-app-1";
 }
 
-
-sub vcl_recv {
-  # Routing
-  # Allow all HTTP Methods for admin
-  if (req.http.Host ~ "^admin\..*") {
-    set req.http.Host = "admin.backdrop";
-    set req.backend   = admin_backend;
-  # Send POST requests to the write api
-  } else if (req.request == "POST") {
-    if (req.http.Authorization ~ "^Bearer .*") {
-      set req.http.Host = "write.backdrop";
-      set req.backend   = write_backend;
-    } else {
-      error 401 "Bearer token not set";
-    }
-  # Send read requests to the read api
-  } else if (req.request ~ "^(GET|HEAD|OPTIONS)$") {
-    set req.http.Host = "read.backdrop";
-    set req.backend   = read_backend;
-  } else {
-    # Ban all other requests
-    error 405 "Method not allowed";
-  }
-
+sub redirect_slash {
   # http://example.org/foo/ -> http://example.org/foo
   # vcl_error completes the redirect
   # Don't redirect "/" to "".
-  if (req.url ~ "(.+)/$") {
+  if (req.request ~ "^(GET|HEAD|OPTIONS)$" && req.url ~ "(.+)/$") {
     set req.http.x-Redir-Url = regsub(req.url, "^(.+)/$", "\1");
     error 667 req.http.x-Redir-Url;
+  }
+}
+
+sub vcl_recv {
+  # Routing
+  if (req.http.Host ~ "^admin\..*") {
+    # Send admin requests to admin.backdrop
+    set req.http.Host = "admin.backdrop";
+    set req.backend   = admin_director;
+    call redirect_slash;
+  } else if (req.http.Host ~ "^stagecraft\..*") {
+    # Send stagecraft requests to stagecraft
+    set req.http.Host = "stagecraft";
+    set req.backend = stagecraft_director;
+  } else if (req.http.Host ~ "^www\..*") {
+    # Send www requests to backdrop
+    if (req.request == "POST") {
+      if (req.http.Authorization ~ "^Bearer .*") {
+        set req.http.Host = "write.backdrop";
+        set req.backend   = write_director;
+      } else {
+        error 401 "Bearer token not set";
+      }
+    } else if (req.request ~ "^(GET|HEAD|OPTIONS)$") {
+      set req.http.Host = "read.backdrop";
+      set req.backend   = read_director;
+    } else {
+      error 405 "Method not allowed"
+    }
+    call redirect_slash;
+  } else {
+    error 404 "Not found"
   }
 
   # normalize Accept-Encoding header
