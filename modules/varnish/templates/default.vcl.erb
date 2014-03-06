@@ -144,7 +144,7 @@ sub vcl_recv {
         set req.http.Host = "write.backdrop";
         set req.backend   = write_director;
       } else {
-        error 401 "Bearer token not set";
+        error 403 "Bearer token not set";
       }
     } else if (req.request ~ "^(GET|HEAD|OPTIONS)$") {
       set req.http.Host = "read.backdrop";
