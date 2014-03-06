@@ -8,4 +8,14 @@ location /spotlight/ {
   gzip_types application/x-javascript application/javascript application/json text/css;
   gzip_proxied no_etag;
   gzip_vary on;
+  }
+
+location /stagecraft/ {
+  expires 1h;
+  rewrite ^/stagecraft(.*)$ $1 break;
+  root /opt/stagecraft/current/assets;
+  gzip on;
+  gzip_types application/x-javascript application/javascript application/json text/css;
+  gzip_proxied no_etag;
+  gzip_vary on;
 }
