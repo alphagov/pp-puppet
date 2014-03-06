@@ -4,6 +4,6 @@ class stagecraft::assets() {
           "/opt/stagecraft/shared",
           "/opt/stagecraft/shared/log"]:
     ensure => directory,
-    user   => 'deploy'
+    owner  => 'deploy'
   }
 }
