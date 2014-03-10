@@ -14,10 +14,11 @@
 #   include mongodb::backup
 #
 class performanceplatform::mongo_backup (
-  $backup_dir  = '/var/backups/mongodb',
-  $backup_log_dir  = '/var/log/backups/',
-  $backup_log  = '/var/log/backups/mongodb.log',
-  $user        = 'root',
+  $database       = 'backdrop',
+  $backup_dir     = '/var/backups/mongodb',
+  $backup_log_dir = '/var/log/backups/',
+  $backup_log     = '/var/log/backups/mongodb.log',
+  $user           = 'root',
 ) {
 
   file {$backup_dir:
@@ -43,8 +44,8 @@ class performanceplatform::mongo_backup (
 
   file { '/usr/local/bin/mongo-backup.sh':
     ensure  => present,
-    owner   => root,
-    group   => root,
+    owner   => $user,
+    group   => $user,
     mode    => '0755',
     content => template('performanceplatform/mongo-backup.sh.erb'),
     require => File[$backup_dir],
