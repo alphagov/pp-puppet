@@ -43,8 +43,8 @@ class performanceplatform::mongo_backup (
 
   file { '/usr/local/bin/mongo-backup.sh':
     ensure  => present,
-    owner   => root,
-    group   => root,
+    owner   => $user,
+    group   => $user,
     mode    => '0755',
     content => template('performanceplatform/mongo-backup.sh.erb'),
     require => File[$backup_dir],
