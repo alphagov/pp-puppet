@@ -19,6 +19,9 @@ backend write_backend {
 backend read_backend {
     .host = "backend-app-1";
 }
+backend stagecraft_backend {
+    .host = "backend-app-1";
+}
 
 sub redirect_slash {
   # http://example.org/foo/ -> http://example.org/foo
@@ -35,24 +38,24 @@ sub vcl_recv {
   if (req.http.Host ~ "^admin\..*") {
     # Send admin requests to admin.backdrop
     set req.http.Host = "admin.backdrop";
-    set req.backend   = admin_director;
+    set req.backend   = admin_backend;
     call redirect_slash;
   } else if (req.http.Host ~ "^stagecraft\..*") {
     # Send stagecraft requests to stagecraft
     set req.http.Host = "stagecraft";
-    set req.backend = stagecraft_director;
+    set req.backend = stagecraft_backend;
   } else if (req.http.Host ~ "^www\..*") {
     # Send www requests to backdrop
     if (req.request == "POST") {
       if (req.http.Authorization ~ "^Bearer .*") {
         set req.http.Host = "write.backdrop";
-        set req.backend   = write_director;
+        set req.backend   = write_backend;
       } else {
         error 401 "Bearer token not set";
       }
     } else if (req.request ~ "^(GET|HEAD|OPTIONS)$") {
       set req.http.Host = "read.backdrop";
-      set req.backend   = read_director;
+      set req.backend   = read_backend;
     } else {
       error 405 "Method not allowed";
     }
