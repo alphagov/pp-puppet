@@ -1,6 +1,6 @@
 forge "http://forge.puppetlabs.com"
 
-mod 'attachmentgenie/ssh',        '1.1.0'
+mod 'attachmentgenie/ssh',        '1.2.2'
 mod 'attachmentgenie/ufw',        '1.2.0'
 mod 'dwerder/graphite',           '3.0.1'
 mod 'pdxcat/collectd',            '1.1.0'
@@ -13,7 +13,7 @@ mod 'puppetlabs/stdlib',          '4.1.0'
 mod 'puppetlabs/vcsrepo',         '0.1.2'
 mod 'rodjek/logrotate',           '1.1.1'
 mod 'saz/dnsmasq',                '1.0.1'
-mod 'saz/ntp',                    '2.0.3'
+mod 'saz/ntp',                    '2.2.0'
 mod 'saz/rsyslog',                '2.0.0'
 mod 'sensu/sensu',                '0.7.7'
 mod 'smarchive/archive',          '0.1.1'
@@ -30,7 +30,7 @@ mod 'elasticsearch', :git => 'git://github.com/gds-operations/puppet-elasticsear
 mod 'ext4mount',     :git => 'git://github.com/alphagov/puppet-ext4mount.git',
                      :ref => 'd97f99cc2801b83152b905d1285fa34e689cb499'
 mod 'gstatsd',       :git => 'git://github.com/alphagov/puppet-gstatsd.git',
-                     :ref => 'c7eb9b99c34194d92e9e8494bdeed1b29b43ed60'
+                     :ref => '668e8a061ca477106ce4b0ac44f26aa87badfd8b'
 mod 'harden',        :git => 'git://github.com/alphagov/puppet-harden.git',
                      :ref => '0966c98cc3f54815c9aac0ebe6e900b70f85182d'
 mod 'jenkins',       :git => 'git://github.com/alphagov/puppet-jenkins.git',
@@ -44,7 +44,7 @@ mod 'lvm',           :git => 'git://github.com/puppetlabs/puppetlabs-lvm.git',
 mod 'mongodb',       :git => 'git://github.com/alphagov/puppetlabs-mongodb.git',
                      :ref => 'dc077a209efdf8d80fac40d40fec575b6a0949d2'
 mod 'nginx',         :git => 'git://github.com/alphagov/puppet-nginx.git',
-                     :ref => '490c76104ad14c9c300b618fa298ff39b059091b'
+                     :ref => 'e9a6b6a5999512eb1feb9e3ecd2ea496e7b7c54b'
 mod 'python',        :git => 'git://github.com/stankevich/puppet-python.git',
                      :ref => 'f508b71d534f3c67db12886fa914cb4ef74bbe7a'
 mod 'ssl',           :git => 'git://github.com/alphagov/puppet-ssl.git',

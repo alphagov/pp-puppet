@@ -1,7 +1,7 @@
 FORGE
   remote: http://forge.puppetlabs.com
   specs:
-    attachmentgenie/ssh (1.1.0)
+    attachmentgenie/ssh (1.2.2)
       puppetlabs/stdlib (>= 2.2.1)
     attachmentgenie/ufw (1.2.0)
       puppetlabs/stdlib (>= 2.2.1)
@@ -43,13 +43,14 @@ FORGE
     ripienaar/concat (0.2.0)
     rodjek/logrotate (1.1.1)
     saz/dnsmasq (1.0.1)
-    saz/ntp (2.0.3)
+    saz/ntp (2.2.0)
     saz/rsyslog (2.0.0)
     sensu/sensu (0.7.7)
       puppetlabs/apt (>= 0.0.1)
       puppetlabs/stdlib (>= 0.0.1)
     smarchive/archive (0.1.1)
     stahnma/epel (0.0.5)
+    stankevich/python (1.6.6)
     thomasvandoren/redis (0.0.9)
       maestrodev/wget (>= 0.0.0)
       puppetlabs/gcc (>= 0.0.0)
@@ -85,10 +86,11 @@ GIT
 
 GIT
   remote: git://github.com/alphagov/puppet-gstatsd.git
-  ref: c7eb9b99c34194d92e9e8494bdeed1b29b43ed60
-  sha: c7eb9b99c34194d92e9e8494bdeed1b29b43ed60
+  ref: 668e8a061ca477106ce4b0ac44f26aa87badfd8b
+  sha: 668e8a061ca477106ce4b0ac44f26aa87badfd8b
   specs:
     gstatsd (0.1.0)
+      stankevich/python (>= 1.0.0)
 
 GIT
   remote: git://github.com/alphagov/puppet-harden.git
@@ -123,8 +125,8 @@ GIT
 
 GIT
   remote: git://github.com/alphagov/puppet-nginx.git
-  ref: 490c76104ad14c9c300b618fa298ff39b059091b
-  sha: 490c76104ad14c9c300b618fa298ff39b059091b
+  ref: e9a6b6a5999512eb1feb9e3ecd2ea496e7b7c54b
+  sha: e9a6b6a5999512eb1feb9e3ecd2ea496e7b7c54b
   specs:
     nginx (0.0.1)
 
@@ -189,7 +191,7 @@ GIT
 
 DEPENDENCIES
   account (>= 0)
-  attachmentgenie/ssh (= 1.1.0)
+  attachmentgenie/ssh (= 1.2.2)
   attachmentgenie/ufw (= 1.2.0)
   clamav (>= 0)
   curl (>= 0)
@@ -217,7 +219,7 @@ DEPENDENCIES
   python (>= 0)
   rodjek/logrotate (= 1.1.1)
   saz/dnsmasq (= 1.0.1)
-  saz/ntp (= 2.0.3)
+  saz/ntp (= 2.2.0)
   saz/rsyslog (= 2.0.0)
   sensu/sensu (= 0.7.7)
   smarchive/archive (= 0.1.1)
