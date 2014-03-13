@@ -7,7 +7,6 @@ TMP_FILE=$(mktemp --tmpdir=${BACKUP_DIR} --suffix=_${DATE_TODAY}.sql.gz)
 BACKUP_FILE="${BACKUP_DIR}/postgres_whole_database_${DATE_TODAY}.sql.gz"
 
 export PGUSER=postgres
-export PGHOST=postgresql-primary
 
 # Dump the entire database as one thing. See pp-manual for restore instructions.
 
