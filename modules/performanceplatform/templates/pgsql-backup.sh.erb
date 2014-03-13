@@ -1,25 +1,20 @@
-#!/bin/sh
+#!/bin/sh -ex
 
-BKPDIR="<%= @backup_dir %>"
-BKPFMT="<%= @backup_format %>"
-TODAY=$(date +%F)
-DAY=$(date +%A |tr 'A-Z' 'a-z')
-MONTH=$(date +%B |tr 'A-Z' 'a-z')
-TMPDIR=$(mktemp -d -p $BKPDIR) || exit 1
-export PGOPTIONS='-c statement_timeout=0'
+BACKUP_DIR="<%= @backup_dir %>"
 
-pg_dumpall -U postgres --globals-only |bzip2 > $TMPDIR/ACCOUNT-OBJECTS.$TODAY.dump.bz
+DATE_TODAY=$(date +%F)
+TMP_FILE=$(mktemp --tmpdir=${BACKUP_DIR} --suffix=_${DATE_TODAY}.sql.gz)
+BACKUP_FILE="${BACKUP_DIR}/postgres_whole_database_${DATE_TODAY}.sql.gz"
 
-for i in `psql -U postgres -c "select datname from pg_database where datname <> 'template0'" -t template1`
-    do
-        pg_dump -U postgres --format=$BKPFMT --create $i |bzip2  > $TMPDIR/$i.$TODAY.dump.bz
-    done
+export PGUSER=postgres
+export PGHOST=postgresql-primary
 
-test -f $BKPDIR/pgsql_$DAY.tar.gz && rm $BKPDIR/pgsql_$DAY.tar.gz
-tar -C $TMPDIR -c -f $BKPDIR/pgsql_$DAY.tar `ls $TMPDIR`
-rm -fr $TMPDIR
+# Dump the entire database as one thing. See pp-manual for restore instructions.
 
-if [ $(date +%d) = "01" ]; then
-    test -f $BKPDIR/pgsql_$MONTH.tar.gz && rm $BKPDIR/pgsql_$MONTH.tar.gz
-    cp $BKPDIR/pgsql_$DAY.tar $BKPDIR/pgsql_$MONTH.tar
-fi
+pg_dumpall --clean --oids |gzip > ${TMP_FILE}
+
+mv ${TMP_FILE} ${BACKUP_FILE}
+
+# clean backups older than 30 days
+
+find ${BACKUP_DIR} -mtime +30 -exec rm {} +
