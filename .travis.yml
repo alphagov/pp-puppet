@@ -2,6 +2,7 @@ language: ruby
 rvm:
   - 1.9.3
   - 2.0.0
+  - 2.1.1
 before_install:
   - gem install puppet
   - gem install librarian-puppet
@@ -11,3 +12,4 @@ notifications:
 matrix:
   allow_failures:
     - rvm: 2.0.0
+    - rvm: 2.1.1
