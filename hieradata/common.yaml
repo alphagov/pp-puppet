@@ -217,15 +217,15 @@ google_credentials::refresh_tokens:
     refresh_token: "drive refresh token"
 
 system_packages:
-  - git
   - at
+  - git
   - htop
+  - libcurl4-gnutls-dev
   - lvm2
   - parted
   - ssl-cert
-  - vim
-  - libcurl4-gnutls-dev
   - update-notifier
+  - vim
 
 ruby_packages:
   - sensu-plugin
