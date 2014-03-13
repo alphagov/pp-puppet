@@ -47,35 +47,43 @@ vhost_proxies:
   # For spotlight
   spotlight:
     servername:    "%{::spotlight_vhost}"
+    ssl:           true
     upstream_port: 3057
   # For backdrop
   backdrop_read:
     servername:    "read.backdrop"
+    ssl:           true
     upstream_port: 3038
     proxy_append_forwarded_host: true
   backdrop_write:
     servername:    "write.backdrop"
+    ssl:           true
     upstream_port: 3039
     proxy_append_forwarded_host: true
     client_max_body_size: '30m'
   backdrop_admin:
     servername:    "admin.backdrop"
+    ssl:           true
     upstream_port: 3203
     proxy_append_forwarded_host: true
   stagecraft:
     servername:    "%{::stagecraft_vhost}"
+    ssl:           true
     upstream_port: 3204
   # For varnish
   www:
     servername:    "%{::www_vhost}"
+    ssl:           true
     upstream_port: 7999
     client_max_body_size: '30m'
   admin:
     servername:    "%{::admin_vhost}"
+    ssl:           true
     upstream_port: 7999
   # For assets
   assets:
     servername:    "%{::assets_vhost}"
+    ssl:           true
     upstream_port: 7999
 
 system_packages:
