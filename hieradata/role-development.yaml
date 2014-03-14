@@ -6,6 +6,7 @@ classes:
   - 'performanceplatform::mongo'
   - 'performanceplatform::nodejs'
   - 'performanceplatform::postgresql_primary'
+  - 'postgresql::lib::devel'
   - 'phantomjs'
   - 'python'
   - 'varnish'
