@@ -33,6 +33,7 @@ gunicorn_apps:
     app_module:      'stagecraft.wsgi:application'
     user:            'deploy'
     group:           'deploy'
+    is_django:       true
 
 backdrop_collectors:
   backdrop-ga-collector:
