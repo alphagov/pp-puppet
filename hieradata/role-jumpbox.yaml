@@ -35,6 +35,7 @@ performanceplatform::kibana::tarball_url: 'https://download.elasticsearch.org/ki
 performanceplatform::dns::cnames:
   - [ "%{::admin_vhost}", "frontend" ]
   - [ "%{::stagecraft_vhost}", "frontend" ]
+  - [ "%{::www_vhost}", "frontend" ]
 
 
 python::version:    '2.7'
