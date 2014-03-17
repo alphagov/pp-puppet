@@ -3,6 +3,7 @@ forge "http://forge.puppetlabs.com"
 mod 'attachmentgenie/ssh',        '1.2.2'
 mod 'attachmentgenie/ufw',        '1.2.0'
 mod 'dwerder/graphite',           '5.1.0'
+mod 'krakatoa/upstart',           '0.0.1'
 mod 'pdxcat/collectd',            '1.1.0'
 mod 'puppetlabs/apt',             '1.4.0'
 mod 'puppetlabs/gcc',             '0.0.3'
@@ -49,8 +50,6 @@ mod 'python',        :git => 'git://github.com/stankevich/puppet-python.git',
                      :ref => 'f508b71d534f3c67db12886fa914cb4ef74bbe7a'
 mod 'ssl',           :git => 'git://github.com/alphagov/puppet-ssl.git',
                      :ref => '23bbb5ab57f26269acce3d4b43e643781747a551'
-mod 'upstart',       :git => 'git://github.com/bison/puppet-upstart.git',
-                     :ref => '05a10a3a58de3543eb51bb782a249cebf71f5cd8'
 mod 'tmux',          :git => 'git://github.com/endore-me/puppet-tmux.git',
                      :ref => '32db4ac6ad65a934c5eddd9afcf0c4f61f7c0924'
 mod 'google_credentials', :git => 'git://github.com/alphagov/puppet-google_credentials.git',
