@@ -17,6 +17,7 @@ define performanceplatform::proxy_vhost(
   $proxy               = true,
   $proxy_magic         = '',
   $proxy_append_forwarded_host = false,
+  $proxy_set_forwarded_host = false,
   $forward_host_header = true,
   $client_max_body_size = '10m',
   $access_logs          = { '{name}.access.log' => '' },
