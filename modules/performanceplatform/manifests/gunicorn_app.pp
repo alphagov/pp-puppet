@@ -7,12 +7,21 @@ define performanceplatform::gunicorn_app (
   $user        = undef,
   $group       = undef,
   $client_max_body_size = '10m',
+  $is_django   = false,
 ) {
   # app_path is defined here so that the virtualenv can be
   # created in the correct place
   $app_path        = "/opt/${title}"
   $config_path     = "/etc/gds/${title}"
   $virtualenv_path = "${app_path}/shared/venv"
+
+  if $is_django {
+    $proxy_append_forwarded_host = false
+    $proxy_set_forwarded_host = true
+  } else {
+    $proxy_append_forwarded_host = true
+    $proxy_set_forwarded_host = false
+  }
 
   performanceplatform::app { $title:
     port                        => $port,
@@ -24,7 +33,8 @@ define performanceplatform::gunicorn_app (
     config_path                 => $config_path,
     upstart_desc                => $description,
     upstart_exec                => "${virtualenv_path}/bin/gunicorn -c ${config_path}/gunicorn ${app_module}",
-    proxy_append_forwarded_host => true,
+    proxy_append_forwarded_host => $proxy_append_forwarded_host,
+    proxy_set_forwarded_host    => $proxy_set_forwarded_host,
     client_max_body_size        => $client_max_body_size,
   }
 

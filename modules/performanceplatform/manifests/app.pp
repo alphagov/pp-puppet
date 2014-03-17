@@ -14,6 +14,7 @@ define performanceplatform::app (
   $upstart_desc = "Upstart job for ${title}",
   $upstart_exec = "${app_path}/run-procfile.sh",
   $proxy_append_forwarded_host = false,
+  $proxy_set_forwarded_host = false,
   $client_max_body_size = '10m',
 ) {
   include nginx::server
@@ -36,6 +37,7 @@ define performanceplatform::app (
     ssl                         => $proxy_ssl,
     magic                       => $magic,
     proxy_append_forwarded_host => $proxy_append_forwarded_host,
+    proxy_set_forwarded_host    => $proxy_set_forwarded_host,
     client_max_body_size        => $client_max_body_size,
   }
 
