@@ -144,7 +144,7 @@ sub vcl_recv {
         set req.http.Host = "write.backdrop";
         set req.backend   = write_director;
       } else {
-        error 1401 "Bearer token not set";
+        error 671 "Bearer token not set";
       }
     } else if (req.request ~ "^(GET|HEAD|OPTIONS)$") {
       set req.http.Host = "read.backdrop";
@@ -254,8 +254,9 @@ sub vcl_error {
     set obj.http.Location = obj.response;
     set obj.status = 301;
     return(deliver);
-  } elsif (obj.status == 1401) { #1401 is our internal, needs a Bearer token
+  } elsif (obj.status == 671) { #671 is our internal, needs a Bearer token
     set obj.http.WWW-Authenticate = "Bearer";
     set obj.status = 401;
+    return(deliver);
   }
 }
