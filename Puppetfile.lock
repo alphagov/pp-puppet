@@ -5,7 +5,7 @@ FORGE
       puppetlabs/stdlib (>= 2.2.1)
     attachmentgenie/ufw (1.2.0)
       puppetlabs/stdlib (>= 2.2.1)
-    dwerder/graphite (3.0.1)
+    dwerder/graphite (5.1.0)
       puppetlabs/stdlib (>= 2.2.1)
     example42/monitor (2.0.1)
       example42/puppi (>= 2.0.0)
@@ -14,6 +14,8 @@ FORGE
       puppetlabs/apt (>= 0.0.0)
       puppetlabs/stdlib (>= 0.0.0)
       stahnma/epel (>= 0.0.0)
+    krakatoa/upstart (0.0.1)
+      puppetlabs/stdlib (>= 0.1.6)
     maestrodev/wget (1.2.2)
     netmanagers/fail2ban (1.1.0)
       example42/monitor (>= 2.0.0)
@@ -146,14 +148,6 @@ GIT
       puppetlabs/apt (>= 0.0.2)
 
 GIT
-  remote: git://github.com/bison/puppet-upstart.git
-  ref: 05a10a3a58de3543eb51bb782a249cebf71f5cd8
-  sha: 05a10a3a58de3543eb51bb782a249cebf71f5cd8
-  specs:
-    upstart (0.0.1)
-      puppetlabs/stdlib (>= 0.1.6)
-
-GIT
   remote: git://github.com/endore-me/puppet-tmux.git
   ref: 32db4ac6ad65a934c5eddd9afcf0c4f61f7c0924
   sha: 32db4ac6ad65a934c5eddd9afcf0c4f61f7c0924
@@ -195,13 +189,14 @@ DEPENDENCIES
   attachmentgenie/ufw (= 1.2.0)
   clamav (>= 0)
   curl (>= 0)
-  dwerder/graphite (= 3.0.1)
+  dwerder/graphite (= 5.1.0)
   elasticsearch (>= 0)
   ext4mount (>= 0)
   google_credentials (>= 0)
   gstatsd (>= 0)
   harden (>= 0)
   jenkins (>= 0)
+  krakatoa/upstart (= 0.0.1)
   logstash (>= 0)
   lumberjack (>= 0)
   lvm (>= 0)
@@ -226,5 +221,4 @@ DEPENDENCIES
   ssl (>= 0)
   thomasvandoren/redis (= 0.0.9)
   tmux (>= 0)
-  upstart (>= 0)
 
