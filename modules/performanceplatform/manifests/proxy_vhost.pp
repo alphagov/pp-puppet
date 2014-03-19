@@ -88,6 +88,7 @@ define performanceplatform::proxy_vhost(
     proxy                       => $proxy,
     proxy_magic                 => $proxy_magic,
     proxy_append_forwarded_host => $proxy_append_forwarded_host,
+    proxy_set_forwarded_host    => $proxy_set_forwarded_host,
     forward_host_header         => $forward_host_header,
     client_max_body_size        => $client_max_body_size,
     access_logs                 => $access_logs,
