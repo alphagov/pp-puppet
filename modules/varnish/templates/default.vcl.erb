@@ -180,7 +180,11 @@ sub vcl_recv {
 
   # purge individual URLs from the cache
   if (req.request == "PURGE") {
-    if (!client.ip ~ purge_acl) {
+    # Nginx sets the X-Real-IP header. This prevents PURGE
+    # requests coming through Nginx as their client.ip is localhost
+    if (client.http.X-Real-IP) {
+      error 405 "Not allowed";
+    } else if (!client.ip ~ purge_acl) {
       error 405 "Not allowed";
     } else {
       ban("req.url == " + req.url);
