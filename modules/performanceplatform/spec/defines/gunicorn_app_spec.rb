@@ -3,6 +3,7 @@ require_relative '../../../../spec_helper'
 describe 'performanceplatform::gunicorn_app', :type => :define do
   let(:title) { 'gunicorn-app' }
   let(:hiera_data) {{
+    'lumberjack::hosts'          => [],
     'ssl::params::ssl_path'      => 'test.gov.uk',
     'ssl::params::ssl_cert_file' => 'testtest',
     'ssl::params::ssl_key_file'  => 'testest',
