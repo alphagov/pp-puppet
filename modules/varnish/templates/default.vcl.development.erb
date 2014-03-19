@@ -56,6 +56,8 @@ sub vcl_recv {
     } else if (req.request ~ "^(GET|HEAD|OPTIONS)$") {
       set req.http.Host = "read.backdrop";
       set req.backend   = read_backend;
+    } else if (req.request == "PURGE") {
+      # pass, get's picked up by PURGE section below
     } else {
       error 405 "Method not allowed";
     }
