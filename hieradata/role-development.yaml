@@ -3,6 +3,7 @@ classes:
   - 'clamav'
   - 'google_credentials'
   - 'nginx::server'
+  - 'performanceplatform::development'
   - 'performanceplatform::mongo'
   - 'performanceplatform::nodejs'
   - 'performanceplatform::postgresql_primary'
