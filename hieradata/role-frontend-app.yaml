@@ -40,6 +40,8 @@ vhost_proxies:
     four_critical: 3
     five_warning: 0
     five_critical: 1
+    denied_http_verbs:
+      - PURGE
 
   admin-vhost:
     servername:    "%{::admin_vhost}"
@@ -52,6 +54,8 @@ vhost_proxies:
     four_critical: 3
     five_warning: 0
     five_critical: 1
+    denied_http_verbs:
+      - PURGE
 
   www-vhost:
     servername:    "%{::www_vhost}"
@@ -70,6 +74,8 @@ vhost_proxies:
       gzip_types application/x-javascript application/javascript application/json text/css;
       gzip_proxied no_etag;
       gzip_vary on;
+    denied_http_verbs:
+      - PURGE
 
   stagecraft-vhost:
     servername:    "%{::stagecraft_vhost}"
@@ -83,6 +89,8 @@ vhost_proxies:
     five_warning: 0
     five_critical: 1
     pp_only_vhost: true
+    denied_http_verbs:
+      - PURGE
 
 nginx::server::server_names_hash_bucket_size: 128
 
