@@ -5,6 +5,7 @@
 
 acl purge_acl {
   "localhost";
+  "172.27.1.0"/24; # weird but correct syntax: "ip"/netmask
 }
 
 # Define the healthcheck probes
