@@ -8,6 +8,18 @@ class performanceplatform::monitoring (
     notify  => Service['apache2'],
   }
 
+  logrotate::rule { "graphite-rotate":
+    path          => "/opt/graphite/storage/*.log",
+    rotate        => 30,
+    rotate_every  => 'day',
+    missingok     => true,
+    compress      => true,
+    create        => true,
+    sharedscripts => true,
+    create_mode   => '0640',
+    postrotate    => '/etc/init.d/apache2 reload > /dev/null',
+  }
+
   file { '/etc/nginx/htpasswd':
     ensure    => present,
     content   => "${::basic_auth_username}:${::basic_auth_password_hashed}",
