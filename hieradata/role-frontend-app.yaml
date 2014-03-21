@@ -27,6 +27,9 @@ ufw_rules:
   allow-https-from-anywhere:
     port: 443
     ip:   'any'
+  allow-varnish-from-local-network:
+    port: 7999
+    ip:   '172.27.1.0/24'
 
 vhost_proxies:
   assets-varnish-vhost:
