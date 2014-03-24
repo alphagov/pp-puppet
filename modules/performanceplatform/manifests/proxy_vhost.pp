@@ -69,6 +69,18 @@ define performanceplatform::proxy_vhost(
     $magic_with_pp_only = $magic
   }
 
+  logrotate::rule { "${title}-json-logs":
+    path         => "/var/log/nginx/*.log.json",
+    rotate       => 30,
+    rotate_every => 'day',
+    missingok    => true,
+    compress     => true,
+    create       => true,
+    create_mode  => '0640',
+    create_owner => $user,
+    create_group => $group,
+  }
+
   nginx::vhost::proxy { $name:
     port                        => $port,
     priority                    => $priority,
