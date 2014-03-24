@@ -1,3 +1,6 @@
 ---
 classes:
   - 'performanceplatform::backup_box'
+
+performanceplatform::backup_box:data_dir: '/mnt/data/backup'
+performanceplatform::backup_box:disk_mount: '/dev/mapper/data-backup'
