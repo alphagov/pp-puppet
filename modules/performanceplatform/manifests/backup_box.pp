@@ -6,12 +6,19 @@ class performanceplatform::backup_box(
     $disk_mount,
 ) {
 
+    if $::pp_environment == 'dev' {
 
-    lvm::volume { 'data':
-        ensure => 'present',
-        vg     => 'backup',
-        pv     => '/dev/sdb1',
-        fstype => 'ext4',
+        ensure_resource('file', '/dev/sdb1', { 'ensure' => 'directory' })
+
+    } else {
+
+        lvm::volume { 'data':
+            ensure => 'present',
+            vg     => 'backup',
+            pv     => '/dev/sdb1',
+            fstype => 'ext4',
+        }
+
     }
 
     file { '/mnt/data':
@@ -24,7 +31,4 @@ class performanceplatform::backup_box(
         require      => File['/mnt/data'],
     }
 
-
-
 }
-    # mapping aiming to conform to pattern lv-vg

@@ -18,6 +18,8 @@ describe 'performanceplatform::backup_box', :type => :class do
         "directory"
     )}
 
-    it { should contain_performanceplatform__mount('/mnt/data/backup') }
+    it { should contain_performanceplatform__mount('/mnt/data/backup').with(
+        :disk   => '/dev/mapper/data-backup',
+    )}
 
 end
