@@ -24,6 +24,7 @@ performanceplatform::dns::hosts: |
   127.0.0.1 logs-elasticsearch-1 elasticsearch
   127.0.0.1 logs-elasticsearch-2 elasticsearch
   127.0.0.1 postgresql-primary-1 postgresql-primary
+  127.0.0.1 backup-box-1
 
 performanceplatform::mongo::mongo_hosts:
   - 127.0.0.1
