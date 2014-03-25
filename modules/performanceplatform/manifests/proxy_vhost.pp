@@ -63,8 +63,9 @@ define performanceplatform::proxy_vhost(
     }
   }
 
-  if $pp_only_vhost {
-    $magic_with_pp_only = "${magic}${::pp_only_vhost}"
+  $gds_only = hiera('pp_only_vhost')
+  if $gds_only {
+    $magic_with_pp_only = "${magic}${gds_only}"
   } else {
     $magic_with_pp_only = $magic
   }
