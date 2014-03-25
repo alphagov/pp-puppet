@@ -1,7 +1,7 @@
 # Spotlight serves assets from the public directory
 # of the currently deployed version of the app.
 location /spotlight/ {
-  expires 1m;
+  expires 30d;
   rewrite ^/spotlight(.*)$ $1 break;
   root /opt/spotlight/current/public;
   gzip on;
