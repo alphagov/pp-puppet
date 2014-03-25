@@ -82,7 +82,7 @@ define performanceplatform::proxy_vhost(
     create_mode  => '0640',
     create_owner => $::user,
     create_group => $::group,
-    postrotate   => 'service nginx rotate',
+    postrotate   => '[ ! -f /var/run/nginx.pid ] || kill -USR1 `cat /var/run/nginx.pid`',
   }
 
   nginx::vhost::proxy { $name:
