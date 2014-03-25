@@ -70,7 +70,7 @@ define performanceplatform::proxy_vhost(
   }
 
   logrotate::rule { "${title}-json-logs":
-    path         => "/var/log/nginx/*.log.json",
+    path         => "/var/log/nginx/${servername}.*.log.json",
     rotate       => 30,
     rotate_every => 'day',
     missingok    => true,
@@ -79,6 +79,7 @@ define performanceplatform::proxy_vhost(
     create_mode  => '0640',
     create_owner => $user,
     create_group => $group,
+    postrotate   => 'service nginx rotate',
   }
 
   nginx::vhost::proxy { $name:
