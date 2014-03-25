@@ -63,8 +63,10 @@ define performanceplatform::proxy_vhost(
     }
   }
 
+  # Restrict access beyond GDS ips
   if $pp_only_vhost {
-    $magic_with_pp_only = "${magic}${::pp_only_vhost}"
+    $gds_only = hiera('pp_only_vhost')
+    $magic_with_pp_only = "${magic}${gds_only}"
   } else {
     $magic_with_pp_only = $magic
   }
