@@ -194,6 +194,7 @@ performanceplatform::dns::hosts: |
   172.27.1.71 backup-box-1
 
 performanceplatform::dns::cnames:
+  - [ "%{::admin_vhost}", "frontend" ]
   - [ "%{::assets_vhost}", "frontend" ]
   - [ "%{::assets_internal_vhost}", "frontend" ]
   - [ "%{::spotlight_vhost}", "frontend" ]
