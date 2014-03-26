@@ -32,11 +32,6 @@ performanceplatform::jenkins::plugin_hash:
 performanceplatform::kibana::elasticsearch_url: "https://%{::elasticsearch_vhost}"
 performanceplatform::kibana::tarball_url: 'https://download.elasticsearch.org/kibana/kibana/kibana-3.0.0milestone4.tar.gz'
 
-performanceplatform::dns::cnames:
-  - [ "%{::admin_vhost}", "frontend" ]
-  - [ "%{::stagecraft_vhost}", "frontend" ]
-  - [ "%{::www_vhost}", "frontend" ]
-
 
 python::version:    '2.7'
 python::dev:        true
