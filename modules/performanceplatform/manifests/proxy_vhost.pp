@@ -28,6 +28,7 @@ define performanceplatform::proxy_vhost(
   $four_warning         = '~:0',
   $sensu_check          = true,
   $pp_only_vhost        = false,
+  $denied_http_verbs    = [],
 ) {
 
   $graphite_servername = regsubst($servername, '\.', '_', 'G')
@@ -108,6 +109,7 @@ define performanceplatform::proxy_vhost(
     client_max_body_size        => $client_max_body_size,
     access_logs                 => $access_logs,
     error_logs                  => $error_logs,
+    denied_http_verbs           => $denied_http_verbs,
   }
 
 }
