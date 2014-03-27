@@ -190,6 +190,15 @@ sub vcl_recv {
       error 200 "Purged";
     }
   }
+
+  # Usually, varnish would refuse to cache requests with an Authorization
+  # header. We cache these and use the Vary header to prevent serving
+  # private content to unauthorised clients.
+  if (req.request == "GET" || req.request == "HEAD") {
+    if (req.http.Authorization) {
+      return(lookup);
+    }
+  }
 }
 
 sub vcl_fetch {
@@ -232,7 +241,7 @@ sub vcl_fetch {
       return(restart);
     }
   }
-
+  return(deliver);
 }
 
 sub vcl_hash {
