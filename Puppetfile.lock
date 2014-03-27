@@ -48,7 +48,6 @@ FORGE
     sensu/sensu (0.7.7)
       puppetlabs/apt (>= 0.0.1)
       puppetlabs/stdlib (>= 0.0.1)
-    smarchive/archive (0.1.1)
     stahnma/epel (0.0.5)
     stankevich/python (1.6.6)
     thomasvandoren/redis (0.0.9)
@@ -189,8 +188,16 @@ GIT
   specs:
     account (0.0.5)
 
+GIT
+  remote: https://github.com/gini/puppet-archive.git
+  ref: 50d3370006f955ee9d5187623cc660670d01c58d
+  sha: 50d3370006f955ee9d5187623cc660670d01c58d
+  specs:
+    archive (0.1.1)
+
 DEPENDENCIES
   account (>= 0)
+  archive (>= 0)
   attachmentgenie/ssh (= 1.2.2)
   attachmentgenie/ufw (= 1.2.0)
   clamav (>= 0)
@@ -222,7 +229,6 @@ DEPENDENCIES
   saz/ntp (= 2.2.0)
   saz/rsyslog (= 2.0.0)
   sensu/sensu (= 0.7.7)
-  smarchive/archive (= 0.1.1)
   ssl (>= 0)
   thomasvandoren/redis (= 0.0.9)
   tmux (>= 0)

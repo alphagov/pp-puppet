@@ -16,11 +16,12 @@ mod 'saz/dnsmasq',                '1.0.1'
 mod 'saz/ntp',                    '2.2.0'
 mod 'saz/rsyslog',                '2.0.0'
 mod 'sensu/sensu',                '0.7.7'
-mod 'smarchive/archive',          '0.1.1'
 mod 'thomasvandoren/redis',       '0.0.9'
 mod 'netmanagers/fail2ban',       '1.1.0'
 mod 'account',       :git => 'https://github.com/alphagov/puppet-account.git',
                      :ref => 'feature/multiple-ssh-keys'
+mod 'archive',       :git => 'https://github.com/gini/puppet-archive.git',
+                     :ref => '50d3370006f955ee9d5187623cc660670d01c58d'
 mod 'clamav',        :git => 'git://github.com/alphagov/puppet-clamav.git',
                      :ref => '31af4f0c2753dd25bca3dd0c7cc69d273c4d640d'
 mod 'curl',          :git => 'git://github.com/alphagov/puppet-curl.git',
