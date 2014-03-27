@@ -42,7 +42,6 @@ sub vcl_recv {
     call redirect_slash;
   } else if (req.http.Host ~ "^stagecraft\..*") {
     # Send stagecraft requests to stagecraft
-    set req.http.Host = "stagecraft";
     set req.backend   = stagecraft_backend;
   } else if (req.http.Host ~ "^www\..*") {
     # Send www requests to backdrop
