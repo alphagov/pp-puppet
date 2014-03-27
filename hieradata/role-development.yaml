@@ -108,3 +108,6 @@ ppas:
   - 'ppa:teward/nginx-devel-testing'
 
 nginx::server::version: 'latest'
+
+# Same as performanceplatform::postgresql_primary::stagecraft_password
+performanceplatform::development::stagecraft_password: "securem8"
