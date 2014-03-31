@@ -13,6 +13,7 @@ export PGUSER=postgres
 pg_dumpall --clean --oids |gzip > ${TMP_FILE}
 
 mv ${TMP_FILE} ${BACKUP_FILE}
+chmod +r ${BACKUP_FILE}
 
 # clean backups older than 30 days
 
