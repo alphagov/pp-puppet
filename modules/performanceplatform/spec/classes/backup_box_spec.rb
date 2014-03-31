@@ -22,4 +22,14 @@ describe 'performanceplatform::backup_box', :type => :class do
         :disk   => '/dev/mapper/data-backup',
     )}
 
+    it { should contain_file('/mnt/data/backup/postgresql').with(
+        :ensure   => "directory",
+        :owner    => "deploy",
+    )}
+
+    it { should contain_file('/mnt/data/backup/mongodb').with(
+        :ensure   => "directory",
+        :owner    => "deploy",
+    )}
+
 end
