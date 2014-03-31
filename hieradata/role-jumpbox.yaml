@@ -38,6 +38,7 @@ python::dev:        true
 python::virtualenv: true
 
 system_packages:
+    - cmake
     - libxml2-dev
     - libxslt1-dev
     - libffi-dev
