@@ -32,14 +32,14 @@ class performanceplatform::backup_box(
     }
 
     file { "${backup_dir}/postgresql":
-        ensure => directory,
-        owner  => 'deploy',
+        ensure  => directory,
+        owner   => 'deploy',
         require => [Performanceplatform::Mount[$backup_dir]],
     }
 
     file { "${backup_dir}/mongodb":
-        ensure => directory,
-        owner  => 'deploy',
+        ensure  => directory,
+        owner   => 'deploy',
         require => [Performanceplatform::Mount[$backup_dir]],
     }
 }

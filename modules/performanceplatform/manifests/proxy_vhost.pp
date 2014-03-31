@@ -80,8 +80,8 @@ define performanceplatform::proxy_vhost(
     compress     => true,
     create       => true,
     create_mode  => '0640',
-    create_owner => $user,
-    create_group => $group,
+    create_owner => $::user,
+    create_group => $::group,
     postrotate   => 'service nginx rotate',
   }
 
