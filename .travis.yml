@@ -13,3 +13,6 @@ matrix:
   allow_failures:
     - rvm: 2.0.0
     - rvm: 2.1.1
+branches:
+  except:
+    - /^build_\d+$/
