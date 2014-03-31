@@ -2,7 +2,7 @@
 #
 #
 class performanceplatform::backup_box(
-    $data_dir,
+    $backup_dir,  # directory inside /mnt/data
     $disk_mount,
 ) {
 
@@ -25,7 +25,7 @@ class performanceplatform::backup_box(
         ensure => directory,
     }
 
-    performanceplatform::mount { $data_dir:
+    performanceplatform::mount { $backup_dir:
         mountoptions => 'defaults',
         disk         => $disk_mount,
         require      => File['/mnt/data'],

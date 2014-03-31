@@ -3,7 +3,7 @@ require_relative '../../../../spec_helper'
 describe 'performanceplatform::backup_box', :type => :class do
 
     let (:params) {{
-        'data_dir'      => '/mnt/data/backup',
+        'backup_dir'    => '/mnt/data/backup',
         'disk_mount'    => '/dev/mapper/data-backup',
     }}
 
