@@ -7,6 +7,8 @@ before_install:
   - gem install puppet
   - gem install librarian-puppet
   - librarian-puppet install
+script:
+  - ./run_tests.sh
 notifications:
   email: false
 matrix:
