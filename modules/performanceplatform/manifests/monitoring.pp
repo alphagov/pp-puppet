@@ -150,7 +150,7 @@ class performanceplatform::monitoring (
   sensu::check { 'logstash_is_down':
     command  => '/etc/sensu/community-plugins/plugins/processes/check-procs.rb -p logstash -C 1 -c -1 -w -1 -W 2',
     interval => 60,
-    handlers => ['default', 'pagerduty'],
+    handlers => ['default'],
   }
 
   sensu::handler { 'default':

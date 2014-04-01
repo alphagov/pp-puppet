@@ -22,7 +22,7 @@ define performanceplatform::checks::server (
       warning  => '4000000000:', # A little less than 4 gig
       critical => '1000000000:',  # A little less than 1 gig
       interval => 60,
-      handlers => ['default', 'pagerduty'],
+      handlers => ['default'],
     }
 
     performanceplatform::checks::graphite { "check_machine_is_down_${name}":
@@ -30,6 +30,6 @@ define performanceplatform::checks::server (
       warning  => '0:',
       critical => '0:',
       interval => 60,
-      handlers => ['default', 'pagerduty'],
+      handlers => ['default'],
     }
 }
