@@ -3,6 +3,7 @@ class performanceplatform::checks::backups (
     $freshness_script ="/etc/sensu/check-directory-freshness.sh"
 
     file { $freshness_script:
+      ensure  => present,
       require => Class['sensu'],
       owner   => 'root',
       group   => 'root',
@@ -14,11 +15,13 @@ class performanceplatform::checks::backups (
       interval => 3600,
       command  => "${freshness_script} /mnt/data/backups/postgresql",
       handlers => ['default'],
+      require  => File[$freshness_script],
     }
 
     sensu::check { 'mongo_backups_copy_check':
       interval => 3600,
       command  => "${freshness_script} /mnt/data/backups/mongodb",
       handlers => ['default'],
+      require  => File[$freshness_script],
     }
 }
