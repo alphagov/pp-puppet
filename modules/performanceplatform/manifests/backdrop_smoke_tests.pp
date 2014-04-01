@@ -13,7 +13,7 @@ class performanceplatform::backdrop_smoke_tests (
 
     sensu::check { 'backdrop_smoke_tests':
       interval => 120,
-      command  => "ruby ${check_data_path}  -u 'https://${::www_vhost}/test' -b'${test_bucket_token}'",
+      command  => "ruby ${check_data_path}  -u 'https://${::www_vhost}/data/test/test' -b'${test_bucket_token}'",
       handlers => ['default', 'pagerduty'],
     }
 }
