@@ -4,7 +4,6 @@ class performanceplatform::checks::backups (
 
     file { $freshness_script:
       ensure  => present,
-      require => Class['sensu'],
       owner   => 'root',
       group   => 'root',
       mode    => '0777',
