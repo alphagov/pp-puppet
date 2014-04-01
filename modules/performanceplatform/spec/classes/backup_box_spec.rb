@@ -4,7 +4,7 @@ describe 'performanceplatform::backup_box', :type => :class do
 
     let (:params) {{
         'backup_dir'    => '/mnt/data/backup',
-        'disk_mount'    => '/dev/mapper/data-backup',
+        'disk_mount'    => '/dev/mapper/backup-data',
     }}
 
     it { should contain_lvm__volume('data').with(
@@ -19,7 +19,7 @@ describe 'performanceplatform::backup_box', :type => :class do
     )}
 
     it { should contain_performanceplatform__mount('/mnt/data/backup').with(
-        :disk   => '/dev/mapper/data-backup',
+        :disk   => '/dev/mapper/backup-data'
     )}
 
     it { should contain_file('/mnt/data/backup/postgresql').with(

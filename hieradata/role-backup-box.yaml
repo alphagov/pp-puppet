@@ -5,4 +5,4 @@ classes:
 
 
 performanceplatform::backup_box::backup_dir: '/mnt/data/backup'
-performanceplatform::backup_box::disk_mount: '/dev/mapper/data-backup'
+performanceplatform::backup_box::disk_mount: '/dev/mapper/backup-data'
