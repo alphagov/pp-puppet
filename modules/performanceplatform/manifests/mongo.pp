@@ -59,7 +59,7 @@ rs.initiate(replicaSetConfig());
     sensu::check { "mongod_is_down_${escaped_fqdn}":
       command  => '/etc/sensu/community-plugins/plugins/processes/check-procs.rb -p mongod -W 1 -C 1 -w -1 -c -1',
       interval => 60,
-      handlers => ['default', 'pagerduty'],
+      handlers => ['default'],
     }
 
 }
