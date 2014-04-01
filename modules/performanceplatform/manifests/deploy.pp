@@ -64,5 +64,12 @@ class performanceplatform::deploy (
           mode    => '0700',
           require => Class['jenkins']
         }
+        file { '/var/lib/jenkins/.bash_profile':
+          source  => 'puppet:///modules/performanceplatform/jenkins-bash_profile',
+          owner   => 'jenkins',
+          group   => 'jenkins',
+          mode    => '0700',
+          require => Class['jenkins']
+        }
     }
 }
