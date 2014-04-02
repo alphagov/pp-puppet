@@ -7,7 +7,7 @@ if [ ! -d "${CHECK_DIRECTORY}" ]; then
     exit 1
 fi
 
-files_found=$(find "${CHECK_DIRECTORY}" -ctime -1 -type f ! -empty)
+files_found=$(find "${CHECK_DIRECTORY}" -mtime -1.125 -type f ! -empty)
 
 if [ "${files_found}" = "" ]; then
     echo "No new files found in ${CHECK_DIRECTORY}"
