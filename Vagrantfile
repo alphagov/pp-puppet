@@ -25,8 +25,8 @@ def get_box(provider)
     name  = "puppetlabs-ubuntu-server-12042-x64-vf503-nocm"
     url   = "http://puppet-vagrant-boxes.puppetlabs.com/ubuntu-svr-12042-x64-vf503-nocm.box"
   else
-    name  = "puppetlabs-ubuntu-server-12042-x64-vbox4210-nocm"
-    url   = "http://puppet-vagrant-boxes.puppetlabs.com/ubuntu-server-12042-x64-vbox4210-nocm.box"
+    name  = "pp-ubuntu-12.04-virtualbox-4.3.6r91406"
+    url   = "https://s3-eu-west-1.amazonaws.com/gds-boxes/pp-ubuntu-12.04-virtualbox-4.3.6r91406.box"
   end
   return name, url
 end
