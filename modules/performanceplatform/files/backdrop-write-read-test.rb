@@ -64,7 +64,6 @@ class BackdropWriteReadTest< Sensu::Plugin::Check::CLI
     Curl::Easy.http_post(URI.parse(backdrop_url).to_s, payload.to_json) do |curl|
       curl.headers['Content-Type'] = 'application/json'
       curl.headers['Authorization'] = "Bearer #{bearer_token}"
-      curl.headers['Content-Type'] = "application/json"
       curl.ssl_verify_peer = false
     end
   end
