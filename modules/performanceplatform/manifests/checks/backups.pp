@@ -7,7 +7,7 @@ class performanceplatform::checks::backups (
       owner   => 'root',
       group   => 'root',
       mode    => '0777',
-      source  => "puppet:///modules/performanceplatform/files/check-directory-freshness.sh"
+      source  => "puppet:///modules/performanceplatform/check-directory-freshness.sh"
     }
 
     sensu::check { 'postgresql_backups_copy_check':
