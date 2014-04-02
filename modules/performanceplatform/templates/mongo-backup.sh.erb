@@ -21,3 +21,5 @@ then
 else
     echo "FAILURE: $NOW $BACKUP_DIR/$FILENAME write failed" >> $BACKUP_LOG
 fi
+
+find ${BACKUP_DIR} -mtime +30 -exec rm {} +
