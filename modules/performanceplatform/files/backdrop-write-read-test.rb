@@ -36,8 +36,8 @@ class BackdropWriteReadTest< Sensu::Plugin::Check::CLI
       begin
         read_api_response = JSON.parse(read.body)
         read_api_timestamp = read_api_response['data'][0]['_timestamp']
-      rescue JSONError, IndexError
-        critical "Failed to parse JSON from read API"
+      rescue JSON::JSONError, IndexError => e
+        critical "Failed to parse JSON from read API: #{e.message} - #{read.body}"
       end
 
       begin
