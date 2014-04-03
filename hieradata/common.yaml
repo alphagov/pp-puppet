@@ -195,11 +195,13 @@ performanceplatform::dns::hosts: |
 
 performanceplatform::dns::cnames:
   - [ "%{::admin_vhost}", "frontend" ]
+  - [ "%{::admin_env_vhost}", "frontend" ]
   - [ "%{::assets_vhost}", "frontend" ]
   - [ "%{::assets_internal_vhost}", "frontend" ]
   - [ "%{::spotlight_vhost}", "frontend" ]
   - [ "%{::stagecraft_vhost}", "frontend" ]
   - [ "%{::www_vhost}", "frontend" ]
+  - [ "%{::www_env_vhost}", "frontend" ]
 
 performanceplatform::mongo::mongo_hosts:
   - mongo-1
