@@ -26,6 +26,9 @@ GEM
       facter (~> 1.6)
       hiera (~> 1.0)
     puppet-lint (0.3.2)
+    puppet-syntax (1.1.1)
+      puppet (>= 2.7.0)
+      rake
     puppetlabs_spec_helper (0.4.1)
       mocha (>= 0.10.5)
       rake
@@ -53,6 +56,7 @@ DEPENDENCIES
   librarian-puppet (= 0.9.14)
   puppet (= 3.4.3)
   puppet-lint (= 0.3.2)
+  puppet-syntax
   puppetlabs_spec_helper (~> 0.4)
   rake (= 10.1.1)
   rspec-puppet (~> 0.1)

@@ -9,9 +9,6 @@ end
 desc "Run all specs"
 task :spec
 
-desc "Check for all Puppet syntax errors"
-task :syntax => [:syntax_erb, :syntax_pp]
-
 desc "Run puppet-lint against all modules"
 task :lint
 
