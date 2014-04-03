@@ -10,7 +10,9 @@ $domain_name         = hiera('domain_name')
 $public_domain_name  = hiera('public_domain_name', $domain_name)
 # Public vhosts
 $www_vhost           = join(['www',$public_domain_name],'.')
+$www_env_vhost       = join(['www',$domain_name],'.')
 $admin_vhost         = join(['admin',$public_domain_name],'.')
+$admin_env_vhost     = join(['admin',$domain_name],'.')
 $assets_vhost        = join(['assets',$public_domain_name],'.')
 $stagecraft_vhost    = join(['stagecraft',$domain_name],'.')
 # Private vhosts
