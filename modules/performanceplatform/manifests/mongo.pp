@@ -18,7 +18,7 @@ class performanceplatform::mongo (
       sharedscripts => true,
       create_mode   => '0640',
       create_group  => 'mongodb',
-      create_user   => 'mongodb',
+      create_owner  => 'mongodb',
       # This is ugly, mongodb does it's own logrotation so we need to remove them
       # http://viktorpetersson.com/2011/12/22/mongodb-and-logrotate/
       postrotate    => 'killall -SIGUSR1 mongod && find /var/log/mongodb/ -type f -regex ".*\.\(log.[0-9].*-[0-9].*\)" -exec rm {} \;'
