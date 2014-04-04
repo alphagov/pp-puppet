@@ -90,6 +90,7 @@ vhost_proxies:
     upstream_port: 7999
 
 system_packages:
+  - cmake
   - libcairo2-dev
   - libjpeg8-dev
   - libpango1.0-dev
