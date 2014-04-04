@@ -226,6 +226,7 @@ system_packages:
   - git
   - htop
   - libcurl4-gnutls-dev
+  - lsof
   - lvm2
   - parted
   - ssl-cert
