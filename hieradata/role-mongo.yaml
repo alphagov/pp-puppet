@@ -7,3 +7,9 @@ ufw_rules:
   allowmongo:
     port: 27017
     ip:   'any'
+
+lumberjack_instances:
+  mongo:
+    log_files: [ '/var/log/mongodb/mongodb.log' ]
+    fields:
+      tags: [ 'mongo' ]
