@@ -7,6 +7,7 @@ group :build do
     gem 'hiera-puppet-helper'
     gem 'librarian-puppet', '0.9.14'
     gem 'puppet-lint', '0.3.2'
+    gem 'puppet-syntax'
     gem 'puppetlabs_spec_helper', '~>0.4'
     gem 'rake', '10.1.1'
     gem 'rspec-puppet', '~> 0.1'
