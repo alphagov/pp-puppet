@@ -14,7 +14,7 @@ FORGE
       puppetlabs/apt (>= 0.0.0)
       puppetlabs/stdlib (>= 0.0.0)
       stahnma/epel (>= 0.0.0)
-    maestrodev/wget (1.2.2)
+    maestrodev/wget (1.4.1)
     netmanagers/fail2ban (1.1.0)
       example42/monitor (>= 2.0.0)
       example42/puppi (>= 2.0.0)
@@ -50,9 +50,6 @@ FORGE
       puppetlabs/stdlib (>= 0.0.1)
     stahnma/epel (0.0.5)
     stankevich/python (1.6.6)
-    thomasvandoren/redis (0.0.9)
-      maestrodev/wget (>= 0.0.0)
-      puppetlabs/gcc (>= 0.0.0)
 
 GIT
   remote: git://github.com/alphagov/puppet-clamav.git
@@ -128,6 +125,15 @@ GIT
   sha: 6eb5c1cad2f31297606b15cac14b0560b5b3851c
   specs:
     nginx (0.0.1)
+
+GIT
+  remote: git://github.com/alphagov/puppet-redis.git
+  ref: a2c4821e94bed725f69e40532fec41c6efa585fe
+  sha: a2c4821e94bed725f69e40532fec41c6efa585fe
+  specs:
+    redis (0.0.9)
+      maestrodev/wget (>= 0)
+      puppetlabs/gcc (>= 0)
 
 GIT
   remote: git://github.com/alphagov/puppet-ssl.git
@@ -224,13 +230,13 @@ DEPENDENCIES
   puppetlabs/stdlib (= 4.1.0)
   puppetlabs/vcsrepo (= 0.1.2)
   python (>= 0)
+  redis (>= 0)
   rodjek/logrotate (= 1.1.1)
   saz/dnsmasq (= 1.0.1)
   saz/ntp (= 2.2.0)
   saz/rsyslog (= 2.0.0)
   sensu/sensu (= 0.7.7)
   ssl (>= 0)
-  thomasvandoren/redis (= 0.0.9)
   tmux (>= 0)
   upstart (>= 0)
 

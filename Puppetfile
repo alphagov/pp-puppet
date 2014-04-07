@@ -16,7 +16,6 @@ mod 'saz/dnsmasq',                '1.0.1'
 mod 'saz/ntp',                    '2.2.0'
 mod 'saz/rsyslog',                '2.0.0'
 mod 'sensu/sensu',                '0.7.7'
-mod 'thomasvandoren/redis',       '0.0.9'
 mod 'netmanagers/fail2ban',       '1.1.0'
 mod 'account',       :git => 'https://github.com/alphagov/puppet-account.git',
                      :ref => 'feature/multiple-ssh-keys'
@@ -48,6 +47,8 @@ mod 'nginx',         :git => 'git://github.com/alphagov/puppet-nginx.git',
                      :ref => '6eb5c1cad2f31297606b15cac14b0560b5b3851c'
 mod 'python',        :git => 'git://github.com/stankevich/puppet-python.git',
                      :ref => 'f508b71d534f3c67db12886fa914cb4ef74bbe7a'
+mod 'redis',         :git => 'git://github.com/alphagov/puppet-redis.git',
+                     :ref => 'a2c4821e94bed725f69e40532fec41c6efa585fe'
 mod 'ssl',           :git => 'git://github.com/alphagov/puppet-ssl.git',
                      :ref => '23bbb5ab57f26269acce3d4b43e643781747a551'
 mod 'upstart',       :git => 'git://github.com/bison/puppet-upstart.git',
