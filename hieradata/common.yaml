@@ -199,6 +199,7 @@ performanceplatform::dns::hosts: |
   172.27.1.52 logs-elasticsearch-2 elasticsearch
   172.27.1.61 postgresql-primary-1 postgresql-primary
   172.27.1.71 backup-box-1
+  172.27.1.80 test-box-1 test-box
 
 performanceplatform::dns::cnames:
   - [ "%{::admin_vhost}", "frontend" ]
