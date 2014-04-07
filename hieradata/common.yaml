@@ -127,6 +127,7 @@ classes:
   - 'collectd'
   - 'collectd::plugin::processes'
   - 'collectd::plugin::write_graphite'
+  - 'curl'
   - 'gcc'
   - 'harden'
   - 'lumberjack'
