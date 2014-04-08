@@ -35,6 +35,7 @@ gunicorn_apps:
     user:            'deploy'
     group:           'deploy'
     is_django:       true
+    timeout:         2
 
 backdrop_collectors:
   backdrop-ga-collector:
