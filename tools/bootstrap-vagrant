@@ -52,7 +52,7 @@ check_bundler() {
 bundle_gems() {
   echo "--> Bundle gems" | pp
   cd /vagrant
-  bundle --path vendor/bundle \
+  BUNDLE_APP_CONFIG=vendor/bundle bundle --path vendor/bundle \
          --deployment \
          --standalone \
          --binstubs \
