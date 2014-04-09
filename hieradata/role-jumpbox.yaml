@@ -42,7 +42,6 @@ system_packages:
     - libxml2-dev
     - libxslt1-dev
     - libffi-dev
-    - gawk
 
 ufw_rules:
     allowhttpfromall:
