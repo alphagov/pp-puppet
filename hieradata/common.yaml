@@ -171,7 +171,7 @@ collectd::plugin::write_graphite::storerates: true
 collectd::purge: true
 collectd::purge_config: true
 collectd::recurse: true
-collectd::version: '5.4'
+collectd::version: latest
 
 basic_auth_username: username
 basic_auth_password: password
