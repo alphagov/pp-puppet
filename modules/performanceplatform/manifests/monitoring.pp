@@ -111,6 +111,16 @@ class performanceplatform::monitoring (
     instances => [ 'agent-1', 'agent-2' ],
   }
 
+  logstash::filter::grep { 'ignore_stagecraft_status_request':
+    match     => {
+      '@tags'             => "stagecraft",
+      '@fields.http_path' => "/_status",
+    },
+    negate    => true,
+    order     => 20,
+    instances => [ 'agent-1', 'agent-2' ],
+  }
+
   logstash::filter::grep { 'ignore_gunicorn_status_request':
     match     => {
       '@message' => "\\\\\\\"GET /_status HTTP/1.0\\\\\\\"",
