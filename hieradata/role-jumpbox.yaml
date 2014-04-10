@@ -42,6 +42,9 @@ system_packages:
     - libxml2-dev
     - libxslt1-dev
     - libffi-dev
+    - libcairo2-dev
+    - libjpeg-dev
+    - libgif-dev
 
 ufw_rules:
     allowhttpfromall:
