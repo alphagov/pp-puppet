@@ -21,8 +21,6 @@ FORGE
       example42/monitor (>= 2.0.0)
       example42/puppi (>= 2.0.0)
       ripienaar/concat (>= 0.2.0)
-    pdxcat/collectd (1.1.0)
-      puppetlabs/stdlib (>= 3.0.0)
     puppetlabs/apt (1.4.0)
       puppetlabs/stdlib (>= 2.2.1)
     puppetlabs/concat (1.0.0)
@@ -59,6 +57,14 @@ GIT
   sha: 31af4f0c2753dd25bca3dd0c7cc69d273c4d640d
   specs:
     clamav (0.0.1)
+      puppetlabs/stdlib (>= 3.0.0)
+
+GIT
+  remote: git://github.com/alphagov/puppet-collectd.git
+  ref: 6bb76aa27c8ae7bf7669921498d2b8aaf692df59
+  sha: 6bb76aa27c8ae7bf7669921498d2b8aaf692df59
+  specs:
+    collectd (1.1.0)
       puppetlabs/stdlib (>= 3.0.0)
 
 GIT
@@ -209,6 +215,7 @@ DEPENDENCIES
   attachmentgenie/ssh (= 1.2.2)
   attachmentgenie/ufw (= 1.2.0)
   clamav (>= 0)
+  collectd (>= 0)
   curl (>= 0)
   dwerder/graphite (= 3.0.1)
   elasticsearch (>= 0)
@@ -224,7 +231,6 @@ DEPENDENCIES
   mongodb (>= 0)
   netmanagers/fail2ban (= 1.1.0)
   nginx (>= 0)
-  pdxcat/collectd (= 1.1.0)
   puppetlabs/apt (= 1.4.0)
   puppetlabs/gcc (= 0.0.3)
   puppetlabs/nodejs (= 0.4.0)
