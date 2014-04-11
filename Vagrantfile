@@ -32,34 +32,12 @@ def get_box(provider)
   return name, url
 end
 
-"#{Vagrant::VERSION}" < "1.1.0" and Vagrant::Config.run do |config|
-  hosts.each do |host|
-    config.vm.define host[:name] do |c|
-      box_name, box_url = get_box("virtualbox")
-      c.vm.box = box_name
-      c.vm.box_url = box_url
-
-      c.vm.host_name = host[:name]
-      c.vm.network :hostonly, host[:ip], :netmask => "255.255.255.0"
-
-      modifyvm_args = ['modifyvm', :id]
-
-      # Mitigate boot hangs.
-      modifyvm_args << "--rtcuseutc" << "on"
-
-      # Isolate guests from host networking.
-      modifyvm_args << "--natdnsproxy1" << "on"
-      modifyvm_args << "--natdnshostresolver1" << "on"
-      modifyvm_args << "--name" << host[:name]
-
-      c.vm.customize(modifyvm_args)
-      c.ssh.forward_agent = true
-      c.vm.provision :shell, :path => "tools/bootstrap-vagrant"
-    end
-  end
+if not Vagrant.respond_to?(:configure)
+  puts $stderr.puts "ERROR: Please upgrade to Vagrant >= 1.1"
+  exit 1
 end
 
-"#{Vagrant::VERSION}" >= "1.1.0" and Vagrant.configure("2") do |config|
+Vagrant.configure("2") do |config|
   hosts.each do |host|
     config.vm.define host[:name] do |c|
       box_name, box_url = get_box("virtualbox")
