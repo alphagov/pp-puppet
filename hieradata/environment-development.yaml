@@ -1,6 +1,0 @@
----
-domain_name: perfplat.dev
-
-ssl::params::ssl_path: '/etc/ssl'
-ssl::params::ssl_cert_file: 'certs/ssl-cert-snakeoil.pem'
-ssl::params::ssl_key_file: 'private/ssl-cert-snakeoil.key'
