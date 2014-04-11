@@ -18,4 +18,5 @@
 /tmp/
 /vendor/
 /hieradata/secrets/
+/hieradata/dev/
 puppet.tgz
