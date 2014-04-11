@@ -69,6 +69,11 @@ if not Vagrant.respond_to?(:configure)
 end
 
 Vagrant.configure("2") do |config|
+  if Vagrant.has_plugin? "vagrant-dns"
+    config.dns.tld = "perfplat.dev"
+    config.dns.patterns = [/^.*perfplat.dev$/]
+  end
+
   hosts.each do |host|
     config.vm.define host[:name] do |c|
       box_name, box_url = get_box("virtualbox")
