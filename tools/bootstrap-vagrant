@@ -43,9 +43,7 @@ check_ruby() {
 check_bundler() {
   echo "--> Check for Bundler" | pp
   echo 'gem: --quiet --no-rdoc --no-ri' > /root/.gemrc
-  # FIXME: bundler search -i doesn't say if something isn't installed
-  local out=$(gem list bundler | grep bundler)
-  [[ -n $out ]] || gem install bundler 2>&1 | pp
+  gem list -i bundler >/dev/null || gem install bundler 2>&1 | pp
 }
 
 bundle_gems() {
