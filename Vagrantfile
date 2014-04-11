@@ -76,7 +76,8 @@ Vagrant.configure("2") do |config|
       end
 
       c.ssh.forward_agent = true
-      c.vm.provision :shell, :path => "tools/bootstrap-vagrant"
+      c.vm.provision :shell, :inline => "/vagrant/tools/bootstrap-vagrant"
+      c.vm.provision :shell, :inline => "/vagrant/tools/puppet-apply"
     end
   end
 end

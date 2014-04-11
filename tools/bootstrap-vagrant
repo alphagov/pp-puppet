@@ -60,14 +60,6 @@ bundle_gems() {
          --quiet 2>&1 | pp
 }
 
-do_puppet_run() {
-  echo "--> Run Puppet" | pp
-  cd /vagrant
-  ./bin/puppet apply --modulepath=modules:vendor/modules \
-                     --hiera_config=/vagrant/hiera.yaml \
-                     manifests/site.pp 2>&1 | pp
-}
-
 main() {
   quieten_sudo
   set_dns_server
@@ -75,8 +67,6 @@ main() {
   check_ruby
   check_bundler
   bundle_gems
-  do_puppet_run
 }
 
 main
-
