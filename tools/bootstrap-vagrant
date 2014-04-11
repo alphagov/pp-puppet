@@ -27,9 +27,11 @@ set_dns_server() {
 }
 
 set_uk_apt_sources() {
-  echo "--> Set sources.list to gb and update apt cache" | pp
-  sed -i 's|http://us|http://gb|' /etc/apt/sources.list
-  apt-get update -qq
+  if grep -qs 'http://us' /etc/apt/sources.list; then
+    echo "--> Set sources.list to gb and update apt cache" | pp
+    sed -i 's|http://us|http://gb|' /etc/apt/sources.list
+    apt-get update -qq
+  fi
 }
 
 check_ruby() {
