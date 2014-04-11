@@ -19,6 +19,28 @@ hosts = [
   { name: 'backup-box-1',          ip: '172.27.1.71' },
 ]
 
+# Images are built for specific versions of virtualbox guest additions for now.
+# It has proven problematic to mix versions of virtualbox and guest additions
+# in the past and therefore they are pinned by what is available in this map.
+def create_box_details(virtualboxVersion)
+  boxName = "pp-ubuntu-12.04-virtualbox-#{virtualboxVersion}"
+  {
+    name: boxName,
+    url: "https://s3-eu-west-1.amazonaws.com/gds-boxes/#{boxName}.box",
+    link: "https://download.virtualbox.org/virtualbox/#{virtualboxVersion.split('r').first}"
+  }
+end
+
+$boxVersions = [
+  "4.3.6r91406",
+  "4.3.8r92456",
+]
+
+# Create a hash of virtualbox version to box details hash
+$boxesByVersion = Hash[$boxVersions.map {|virtualboxVersion|
+  [virtualboxVersion, create_box_details(virtualboxVersion)]
+}]
+
 def get_box(provider)
   provider    ||= "virtualbox"
   case provider
@@ -26,8 +48,17 @@ def get_box(provider)
     name  = "puppetlabs-ubuntu-server-12042-x64-vf503-nocm"
     url   = "http://puppet-vagrant-boxes.puppetlabs.com/ubuntu-svr-12042-x64-vf503-nocm.box"
   else
-    name  = "pp-ubuntu-12.04-virtualbox-4.3.6r91406"
-    url   = "https://s3-eu-west-1.amazonaws.com/gds-boxes/pp-ubuntu-12.04-virtualbox-4.3.6r91406.box"
+    virtualBoxVersion = `vboxmanage --version`.strip
+    box = $boxesByVersion[virtualBoxVersion]
+    if box.nil?
+      $stderr.puts <<EOS
+Virtualbox version #{virtualBoxVersion} is not supported. See README.md.
+Supported: #{$boxesByVersion.keys} --> #{$boxesByVersion.values.map {|item| item[:link]}}
+EOS
+      exit 1
+    end
+
+    name, url = box[:name], box[:url]
   end
   return name, url
 end
