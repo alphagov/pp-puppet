@@ -63,6 +63,20 @@ EOS
   return name, url
 end
 
+def load_local_vagrant_file(name, config)
+  # Load local overrides
+  if File.exist? "#{name}-Vagrantfile.local"
+    $stderr.puts "WARNING: Vagrantfile.local is deprecated! Please use Vagrantfile.localconfig instead."
+    $stderr.puts ""
+  end
+
+  if File.exist? "#{name}-Vagrantfile.localconfig"
+    instance_eval File.read("#{name}-Vagrantfile.localconfig"), "#{name}-Vagrantfile.localconfig"
+  end
+
+  config
+end
+
 if not Vagrant.respond_to?(:configure)
   puts $stderr.puts "ERROR: Please upgrade to Vagrant >= 1.1"
   exit 1
@@ -106,6 +120,7 @@ Vagrant.configure("2") do |config|
         f.vmx["displayName"] = host[:name]
       end
 
+      c = load_local_vagrant_file(host[:name], c)
       c.vm.synced_folder "..", "/var/apps"
       if host[:name] == 'development-1' and File.directory?('../pp-deployment')
         c.vm.synced_folder "../pp-deployment/environments/dev", "/vagrant/hieradata/dev"
