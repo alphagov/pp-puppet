@@ -70,6 +70,7 @@ Vagrant.configure("2") do |config|
         f.vmx["displayName"] = host[:name]
       end
 
+      c.synced_folder "..", "/var/apps"
       c.ssh.forward_agent = true
       c.vm.provision :shell, :path => "tools/bootstrap-vagrant"
     end
