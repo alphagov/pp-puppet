@@ -29,7 +29,7 @@ class performanceplatform::kibana(
   file { "${app_root}/config.js":
     ensure  => present,
     content => template('performanceplatform/kibana.config.js.erb'),
-    require => Archive['kibana'],
+    require => Archive['kibana3.0.1'],
   }
 
   nginx::vhost { 'kibana-vhost':
@@ -39,7 +39,7 @@ class performanceplatform::kibana(
     access_logs => {
       '{name}.access.log.json' => 'json_event',
     },
-    require     => Archive['kibana'],
+    require     => Archive['kibana3.0.1'],
   }
 
 }
