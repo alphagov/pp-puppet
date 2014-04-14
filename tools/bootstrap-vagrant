@@ -28,8 +28,10 @@ set_dns_server() {
 
 check_ruby() {
   echo "--> Check for Ruby" | pp
-  [[ $(dpkg -s ruby1.9.1 >/dev/null 2>&1) ]] || \
+  if ! dpkg -s ruby1.9.1 >/dev/null 2>&1; then
+    apt-get update -qq
     apt-get install -qq ruby1.9.1 2>&1 | pp
+  fi
 }
 
 check_bundler() {
