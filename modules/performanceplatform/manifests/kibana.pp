@@ -12,7 +12,7 @@ class performanceplatform::kibana(
   $tarball_name = regsubst($tarball_url, $name_regex, '\1')
   $app_root = "${extract_location}/${tarball_name}"
 
-  archive { 'kibana':
+  archive { 'kibana3.0.1':
     ensure   => present,
     url      => $tarball_url,
     target   => $extract_location,
