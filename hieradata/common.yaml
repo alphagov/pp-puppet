@@ -1,7 +1,6 @@
 ---
 accounts:
   alexmuller:
-    home_dir: /home/alexmuller
     comment: Alex Muller
     ssh_keys:
       alexmuller:
@@ -9,7 +8,6 @@ accounts:
     groups:
       - gds
   anna:
-    home_dir: /home/anna
     comment: Anna Powell-Smith
     ssh_keys:
       anna:
@@ -17,11 +15,9 @@ accounts:
     groups:
       - gds
   bt:
-    home_dir: /home/bt
     comment: Brett Thomas - ITHC
     ensure: absent
   bthomas:
-    home_dir: /home/bthomas
     ensure: absent
   dcarley:
     comment: Dan Carley
@@ -34,7 +30,6 @@ accounts:
     groups:
       - gds
   jabley:
-    home_dir: /home/jabley
     comment: James Abley
     ssh_keys:
       jabley:
@@ -42,7 +37,6 @@ accounts:
     groups:
       - gds
   jacobashdown:
-    home_dir: /home/jacobashdown
     comment: Jacob Ashdown
     ssh_keys:
       jacobashdown:
@@ -52,7 +46,6 @@ accounts:
     groups:
       - gds
   nickg:
-    home_dir: /home/nickg
     comment: Nick Gravgaard
     ssh_keys:
       nickg:
@@ -60,7 +53,6 @@ accounts:
     groups:
       - gds
   paulfurley:
-    home_dir: /home/paulfurley
     comment: Paul Furley
     ssh_keys:
       paulfurley-xps-2013-12-18:
@@ -69,9 +61,7 @@ accounts:
       - gds
   pauloschneider:
     ensure: absent
-    home_dir: /home/pauloschneider
   robyoung:
-    home_dir: /home/robyoung
     comment: Rob Young
     ssh_keys:
       robyoung:
@@ -81,7 +71,6 @@ accounts:
     groups:
       - gds
   roc:
-    home_dir: /home/roc
     comment: Ralph Cowling
     ssh_keys:
       roc:
@@ -89,7 +78,6 @@ accounts:
     groups:
       - gds
   ssharpe:
-    home_dir: /home/ssharpe
     comment: Sam J Sharpe
     ssh_keys:
       ssharpe:
@@ -97,7 +85,6 @@ accounts:
     groups:
       - gds
   tombooth:
-    home_dir: /home/tombooth
     comment: Tom Booth
     ssh_keys:
       tombooth:
@@ -107,10 +94,8 @@ accounts:
     groups:
       - gds
   gkoth:
-    home_dir: /home/gkoth
     ensure: absent
   urmy:
-    home_dir: /home/urmy
     comment: Urmy Urmston
     ssh_keys:
       urmy:
