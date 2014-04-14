@@ -26,14 +26,6 @@ set_dns_server() {
   fi
 }
 
-set_uk_apt_sources() {
-  if grep -qs 'http://us' /etc/apt/sources.list; then
-    echo "--> Set sources.list to gb and update apt cache" | pp
-    sed -i 's|http://us|http://gb|' /etc/apt/sources.list
-    apt-get update -qq
-  fi
-}
-
 check_ruby() {
   echo "--> Check for Ruby" | pp
   [[ $(dpkg -s ruby1.9.1 >/dev/null 2>&1) ]] || \
@@ -60,7 +52,6 @@ bundle_gems() {
 main() {
   quieten_sudo
   set_dns_server
-  set_uk_apt_sources
   check_ruby
   check_bundler
   bundle_gems
