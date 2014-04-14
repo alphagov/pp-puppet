@@ -12,11 +12,18 @@ class performanceplatform::kibana(
   $tarball_name = regsubst($tarball_url, $name_regex, '\1')
   $app_root = "${extract_location}/${tarball_name}"
 
-  archive { 'kibana':
+  archive { 'kibana3.0.1':
     ensure   => present,
     url      => $tarball_url,
     target   => $extract_location,
     checksum => false,
+  }
+
+  file { "${extract_location}/kibana-3.0.0milestone4":
+    ensure  => absent,
+    purge   => true,
+    recurse => true,
+    backup  => false,
   }
 
   file { "${app_root}/config.js":
