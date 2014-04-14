@@ -19,6 +19,13 @@ class performanceplatform::kibana(
     checksum => false,
   }
 
+  file { "${extract_location}/kibana-3.0.0milestone4":
+    ensure  => absent,
+    purge   => true,
+    recurse => true,
+    backup  => false,
+  }
+
   file { "${app_root}/config.js":
     ensure  => present,
     content => template('performanceplatform/kibana.config.js.erb'),
