@@ -1,5 +1,6 @@
 ---
 classes:
+  - 'collectd::plugin::varnish'
   - 'nginx::server'
   - 'performanceplatform::assets'
   - 'phantomjs'
