@@ -30,7 +30,7 @@ performanceplatform::jenkins::plugin_hash:
         version: "1.12"
 
 performanceplatform::kibana::elasticsearch_url: "https://%{::elasticsearch_vhost}"
-performanceplatform::kibana::tarball_url: 'https://download.elasticsearch.org/kibana/kibana/kibana-3.0.1.tar.gz'
+performanceplatform::kibana::tarball_url: 'https://download.elasticsearch.org/kibana/kibana/kibana-3.0.0milestone4.tar.gz'
 
 
 python::version:    '2.7'
