@@ -14,10 +14,6 @@ class performanceplatform::base {
     $ppas = hiera_array('ppas', [])
     apt::ppa { $ppas: }
 
-    exec { 'apt-get-update':
-        command => '/usr/bin/apt-get update || true',
-        require => Apt::Ppa['ppa:gds/performance-platform'],
-    }
     $machine_role = regsubst($::hostname, '^(.*)-\d$', '\1')
 
     file { '/etc/environment':
