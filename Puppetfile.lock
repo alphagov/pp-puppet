@@ -61,8 +61,8 @@ GIT
 
 GIT
   remote: git://github.com/alphagov/puppet-collectd.git
-  ref: 6bb76aa27c8ae7bf7669921498d2b8aaf692df59
-  sha: 6bb76aa27c8ae7bf7669921498d2b8aaf692df59
+  ref: improve_collectd_varnish
+  sha: 8edc3aaee2793416ddd3dbc2f75df816391dbdfd
   specs:
     collectd (1.1.0)
       puppetlabs/stdlib (>= 3.0.0)
