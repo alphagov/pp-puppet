@@ -14,6 +14,20 @@ class performanceplatform::base {
     $ppas = hiera_array('ppas', [])
     apt::ppa { $ppas: }
 
+    # Ensure that apt::update, thus apt::ppa and apt::source, is applied
+    # before installing any packages that might depend on them.
+    Class['apt::update'] -> Package <|
+      provider != 'pip' and
+      provider != 'gem' and
+      ensure != 'absent' and
+      ensure != 'purged' and
+      # Prevent dep loops within the apt module
+      title != 'python-software-properties' and
+      title != 'software-properties-common' and
+      # Prevent dep loops with `system` stage (above)
+      title != 'dnsmasq'
+    |>
+
     $machine_role = regsubst($::hostname, '^(.*)-\d$', '\1')
 
     file { '/etc/environment':
