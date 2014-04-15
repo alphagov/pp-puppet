@@ -21,6 +21,7 @@ class performanceplatform::kibana(
 
   file { "${extract_location}/kibana-3.0.0milestone4":
     ensure  => absent,
+    force   => true,
     purge   => true,
     recurse => true,
     backup  => false,
