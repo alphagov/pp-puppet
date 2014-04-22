@@ -5,7 +5,7 @@
 hosts = [
   { name: 'backend-app-1',         ip: '172.27.1.21' },
   { name: 'backend-app-2',         ip: '172.27.1.22' },
-  { name: 'development-1',         ip: '172.27.1.5'  },
+  { name: 'development-1',         ip: '10.0.0.100'  },
   { name: 'frontend-app-1',        ip: '172.27.1.11' },
   { name: 'frontend-app-2',        ip: '172.27.1.12' },
   { name: 'jumpbox-1',             ip: '172.27.1.2' },
