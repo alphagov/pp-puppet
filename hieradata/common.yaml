@@ -127,6 +127,8 @@ classes:
   - 'performanceplatform::checks::apt'
   - 'performanceplatform::pp_fail2ban'
 
+apt::always_apt_update: true
+
 rsyslog::client::server: "logging"
 
 sensu::rabbitmq_host: 'rabbitmq'

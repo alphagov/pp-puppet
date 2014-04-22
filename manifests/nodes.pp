@@ -1,6 +1,7 @@
 # Everything in this node definition depends on Hiera
 
 # This defines the role of the node
+# FIXME: Remove condition when `FACTER_machine_role` is no longer.
 if empty($machine_role) {
     $machine_role   = regsubst($::hostname, '^(.*)-\d$', '\1')
 }

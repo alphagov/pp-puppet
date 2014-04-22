@@ -1,6 +1,8 @@
 :hierarchy:
+    - dev/environment
     - environment
     - "role-%{::machine_role}"
+    - dev/secrets
     - secrets
     - common
 :backends:
