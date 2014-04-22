@@ -123,7 +123,7 @@ Vagrant.configure("2") do |config|
       c = load_local_vagrant_file(host[:name], c)
       c.vm.synced_folder "..", "/var/apps"
       if host[:name] == 'development-1' and File.directory?('../pp-deployment')
-        c.vm.synced_folder "../pp-deployment/environments/dev", "/vagrant/hieradata/dev"
+        c.vm.synced_folder "../pp-deployment/environments/dev/hieradata", "/vagrant/hieradata/dev"
       end
 
       c.ssh.forward_agent = true
