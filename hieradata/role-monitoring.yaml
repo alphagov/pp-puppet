@@ -12,6 +12,7 @@ classes:
 performanceplatform::checks::servers::boxes:
   - backend-app-1
   - backend-app-2
+  - backup-box-1
   - frontend-app-1
   - frontend-app-2
   - jumpbox-1
@@ -21,6 +22,7 @@ performanceplatform::checks::servers::boxes:
   - monitoring-1
   - logs-elasticsearch-1
   - logs-elasticsearch-2
+  - postgresql-primary-1
 
 collectd::plugin::processes::process_matches:
   - name: 'logstash'
