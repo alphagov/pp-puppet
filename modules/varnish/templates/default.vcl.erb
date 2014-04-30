@@ -2,6 +2,7 @@
 # you're not sure what that is, see here:
 #
 #   https://www.varnish-cache.org/trac/browser/bin/varnishd/default.vcl?rev=3.0
+import std;
 
 acl purge_acl {
   "localhost";
@@ -112,7 +113,7 @@ director stagecraft_director round-robin {
 director frontend_app round-robin {
   { .backend = frontend_app_1; }
   { .backend = frontend_app_2; }
-}  
+}
 
 sub redirect_slash {
   # http://example.org/foo/ -> http://example.org/foo
@@ -188,6 +189,7 @@ sub vcl_recv {
     } else {
       # Wildcard purging
       ban("req.url ~ "+req.url);
+      std.log("purging: " +req.url);
       error 200 "Purged.";
     }
   }
