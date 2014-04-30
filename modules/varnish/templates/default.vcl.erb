@@ -2,6 +2,7 @@
 # you're not sure what that is, see here:
 #
 #   https://www.varnish-cache.org/trac/browser/bin/varnishd/default.vcl?rev=3.0
+import std;
 
 acl purge_acl {
   "localhost";
@@ -112,7 +113,7 @@ director stagecraft_director round-robin {
 director frontend_app round-robin {
   { .backend = frontend_app_1; }
   { .backend = frontend_app_2; }
-}  
+}
 
 sub redirect_slash {
   # http://example.org/foo/ -> http://example.org/foo
@@ -181,13 +182,15 @@ sub vcl_recv {
   # origin.
   set req.grace = 6h;
 
-  # purge individual URLs from the cache
+  # purge URLs from the cache
   if (req.request == "PURGE") {
     if (!client.ip ~ purge_acl) {
-      error 405 "Not allowed";
+      error 403 "Forbidden";
     } else {
-      ban("req.url == " + req.url);
-      error 200 "Purged";
+      # Wildcard purging
+      ban("req.url ~ "+req.url);
+      std.log("purging: " +req.url);
+      error 200 "Purged.";
     }
   }
 
