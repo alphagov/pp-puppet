@@ -140,7 +140,7 @@ sub vcl_recv {
     set req.backend = stagecraft_director;
   } else if (req.http.Host ~ "^www\..*") {
     # Send www requests to backdrop
-    if (req.request == "POST") {
+    if (req.request ~ "^(POST|DELETE)$") {
       if (req.http.Authorization ~ "^Bearer .*") {
         set req.http.Host = "write.backdrop";
         set req.backend   = write_director;
