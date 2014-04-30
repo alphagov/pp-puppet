@@ -181,13 +181,14 @@ sub vcl_recv {
   # origin.
   set req.grace = 6h;
 
-  # purge individual URLs from the cache
+  # purge URLs from the cache
   if (req.request == "PURGE") {
     if (!client.ip ~ purge_acl) {
       error 405 "Not allowed";
     } else {
-      ban("req.url == " + req.url);
-      error 200 "Purged";
+      # Wildcard purging
+      ban("req.url ~ "+req.url);
+      error 200 "Purged.";
     }
   }
 
