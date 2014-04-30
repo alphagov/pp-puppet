@@ -185,7 +185,7 @@ sub vcl_recv {
   # purge URLs from the cache
   if (req.request == "PURGE") {
     if (!client.ip ~ purge_acl) {
-      error 401 "Unauthorized";
+      error 403 "Forbidden";
     } else {
       # Wildcard purging
       ban("req.url ~ "+req.url);
