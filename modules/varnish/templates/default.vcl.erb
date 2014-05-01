@@ -119,9 +119,11 @@ sub redirect_slash {
   # http://example.org/foo/ -> http://example.org/foo
   # vcl_error completes the redirect
   # Don't redirect "/" to "".
-  if (req.request != "POST" && req.url ~ "(.+)/$") {
-    set req.http.x-Redir-Url = regsub(req.url, "^(.+)/$", "\1");
-    error 667 req.http.x-Redir-Url;
+  if (req.request != "POST" && req.request != "PUT") {
+    if (req.url ~ "(.+)/$") {
+      set req.http.x-Redir-Url = regsub(req.url, "^(.+)/$", "\1");
+      error 667 req.http.x-Redir-Url;
+    }
   }
 }
 
@@ -141,7 +143,7 @@ sub vcl_recv {
     set req.backend = stagecraft_director;
   } else if (req.http.Host ~ "^www\..*") {
     # Send www requests to backdrop
-    if (req.request ~ "^(POST|DELETE)$") {
+    if (req.request ~ "^(PUT|POST|DELETE)$") {
       if (req.http.Authorization ~ "^Bearer .*") {
         set req.http.Host = "write.backdrop";
         set req.backend   = write_director;
