@@ -119,7 +119,7 @@ sub redirect_slash {
   # http://example.org/foo/ -> http://example.org/foo
   # vcl_error completes the redirect
   # Don't redirect "/" to "".
-  if (req.request != "POST" && req.request != "PUT") {
+  if (req.request ~ "^(GET|HEAD|OPTIONS)$") {
     if (req.url ~ "(.+)/$") {
       set req.http.x-Redir-Url = regsub(req.url, "^(.+)/$", "\1");
       error 667 req.http.x-Redir-Url;
