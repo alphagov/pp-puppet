@@ -84,8 +84,8 @@ end
 
 Vagrant.configure("2") do |config|
   if Vagrant.has_plugin? "vagrant-dns"
-    config.dns.tld = "perfplat.dev"
-    config.dns.patterns = [/^.*perfplat.dev$/]
+    config.dns.tld = "development.performance.service.gov.uk"
+    config.dns.patterns = [/^.*development.performance.service.gov.uk$/]
   end
 
   hosts.each do |host|
