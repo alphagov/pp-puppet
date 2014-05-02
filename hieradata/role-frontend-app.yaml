@@ -96,8 +96,6 @@ vhost_proxies:
     denied_http_verbs:
       - PURGE
 
-nginx::server::server_names_hash_bucket_size: 128
-
 nginx_conf:
   logging:
     template: performanceplatform/nginx.logging.conf.erb
