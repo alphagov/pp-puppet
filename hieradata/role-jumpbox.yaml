@@ -8,8 +8,6 @@ classes:
     - 'google_credentials'
     - 'phantomjs'
 
-nginx::server::server_names_hash_bucket_size: 128
-
 performanceplatform::jenkins::lts: 1
 performanceplatform::jenkins::plugin_hash:
     git-client:
