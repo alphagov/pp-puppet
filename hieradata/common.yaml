@@ -84,6 +84,13 @@ accounts:
         key: AAAAB3NzaC1yc2EAAAABIwAAAQEAyNoMftFLf3w0NOW7J0KUwOx9897CU352n3zKD3p/GCcdH4eMv1QI0BhjItZplWG8TzFSBfWOOSruRh1Gksa1l1jiQcisEio6Wr7kZ7bpvMMA45ZoaDc26HTB+r0BZkNn7Lwwxxvy+1pbqStnnKzb9OTYIyVkb495LS0x1EL/P9S/NWtpm8ZULa1JDplYMA5SqMZnhmlGAXdh8UnjdcdOgOm2ngA+geJBSzVbABECiIAklHU1PRzOtrq8SuO8JmXW6NkuL0aabdTgE6noIm+Nn7T5ufZpOpIGYimVI8+mu+efcBzAp5Q0vTRgSBLfggdczZbFfPXpIt1Ib+LEf+Cuqw==
     groups:
       - gds
+  tmower:
+    comment: Tim Mower
+    ssh_keys:
+      tmower:
+        key: AAAAB3NzaC1yc2EAAAADAQABAAABAQC68Rs4mjD6gBEx3UbXbCy4zNhYCGkvQ7fJDgP4/DDVylj99DFh33i1rjDYylW964B1dZ1obTPVE0gPxlCxZcEEKdUyUz11CVi43O/ybC+WeetGI0CdLzv543XzyBWfpZgAt9XJvRlrrgyoSwUP2Y2KLC2z7nskqhaVJPNiATY+Sn5IR/YZ2puarH4DxOsIxypwlZmIXuNAa9rII8d77mgAxCIX43zGyODwDGnuN5S2p/8gTnujE/glSmaeAQ49YPU/anWXcnSZrx+KeT7pIvfWlZfqDjTBlzJ+Qh0ac/FiVgQgrmXdLUL8mxhkAcjNXAx726yertsWQpDqcdi47T4R
+    groups:
+      - gds
   tombooth:
     comment: Tom Booth
     ssh_keys:
