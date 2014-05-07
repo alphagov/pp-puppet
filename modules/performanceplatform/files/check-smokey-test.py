@@ -23,6 +23,7 @@ Exit codes:
 import sys
 import json
 import os
+import unittest
 import urllib2
 
 from collections import namedtuple
@@ -45,7 +46,8 @@ def main():
     if feature is None:
         raise ValueError("No such feature: {}".format(feature_name))
 
-    log_result_and_exit(feature)
+    print_result(feature)
+    sys.exit(get_exit_status(feature))
 
 
 # Utils
@@ -136,14 +138,215 @@ def step_message(step):
         status='PASS' if step.status == "passed" else 'FAIL')
 
 
-# Status message for Sensu
-def log_result_and_exit(feature):
-    exit_status = 2 if count_failing_steps(feature) > 0 else 0
-    message = feature_message(feature)
+def print_result(feature):
+    """
+    Status message for Sensu - this will show up in any alerts.
+    """
+    print(feature_message(feature))
 
-    print(message)
+
+def get_exit_status(feature):
+    exit_status = 2 if count_failing_steps(feature) > 0 else 0
     print("Exiting with code: {0}".format(exit_status))
-    sys.exit(exit_status)
+    return exit_status
+
 
 if __name__ == '__main__':
     main()
+
+
+_PASS_JSON = """
+[
+  {
+    "keyword": "Feature",
+    "name": "admin_uploader",
+    "line": 1,
+    "description": "",
+    "id": "admin-uploader",
+    "uri": "features/admin_uploader.feature",
+    "elements": [
+      {
+        "keyword": "Scenario",
+        "name": "Quickly loading the admin home page",
+        "line": 4,
+        "description": "",
+        "tags": [
+          {
+            "name": "@normal",
+            "line": 3
+          }
+        ],
+        "id": "admin-uploader;quickly-loading-the-admin-home-page",
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Given ",
+            "name": "the admin application has booted",
+            "line": 5,
+            "match": {
+              "arguments": [
+                {
+                  "offset": 5,
+                  "val": "admin"
+                }
+              ],
+              "location": "features/step_definitions/smokey_steps.rb:1"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 85938650
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I am benchmarking",
+            "line": 6,
+            "match": {
+              "location": "features/step_definitions/benchmarking_steps.rb:1"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 439216
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I visit the admin home page",
+            "line": 7,
+            "match": {
+              "location": "features/step_definitions/admin_steps.rb:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 58540642
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "the elapsed time should be less than 1 seconds",
+            "line": 8,
+            "match": {
+              "arguments": [
+                {
+                  "offset": 37,
+                  "val": "1"
+                }
+              ],
+              "location": "features/step_definitions/benchmarking_steps.rb:5"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 593808
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
+"""
+
+_FAIL_JSON = """
+[
+  {
+    "keyword": "Feature",
+    "name": "admin_uploader",
+    "line": 1,
+    "description": "",
+    "id": "admin-uploader",
+    "uri": "features/admin_uploader.feature",
+    "elements": [
+      {
+        "keyword": "Scenario",
+        "name": "Quickly loading the admin home page",
+        "line": 4,
+        "description": "",
+        "tags": [
+          {
+            "name": "@normal",
+            "line": 3
+          }
+        ],
+        "id": "admin-uploader;quickly-loading-the-admin-home-page",
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Given ",
+            "name": "the admin application has booted",
+            "line": 5,
+            "match": {
+              "arguments": [
+                {
+                  "offset": 5,
+                  "val": "admin"
+                }
+              ],
+              "location": "features/step_definitions/smokey_steps.rb:1"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 85938650
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I am benchmarking",
+            "line": 6,
+            "match": {
+              "location": "features/step_definitions/benchmarking_steps.rb:1"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 439216
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I visit the admin home page",
+            "line": 7,
+            "match": {
+              "location": "features/step_definitions/admin_steps.rb:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 58540642
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "the elapsed time should be less than 1 seconds",
+            "line": 8,
+            "match": {
+              "arguments": [
+                {
+                  "offset": 37,
+                  "val": "1"
+                }
+              ],
+              "location": "features/step_definitions/benchmarking_steps.rb:5"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 593808
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
+"""
+
+
+class JsonParsingTestCase(unittest.TestCase):
+    def test_correctly_identifies_successful_test(self):
+        feature = get_feature(
+            load_json(_PASS_JSON),
+            'admin_uploader')
+        assert 0 == get_exit_status(feature)
+
+    def test_correctly_identifies_failed_test(self):
+        feature = get_feature(
+            load_json(_FAIL_JSON),
+            'admin_uploader')
+        assert 2 == get_exit_status(feature)
