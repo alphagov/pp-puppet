@@ -8,6 +8,7 @@ classes:
   - 'rabbitmq'
   - 'redis'
   - 'performanceplatform::checks::servers'
+  - 'performanceplatform::checks::smokey_tests'
 
 performanceplatform::checks::servers::boxes:
   - backend-app-1
