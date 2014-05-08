@@ -65,6 +65,7 @@ class performanceplatform::base {
         provider => git,
         source   => 'https://github.com/alphagov/sensu-community-plugins.git',
         revision => '86baac527cee804e6c0e795edf1d77bd85e5b355',
+        require  => Package['git'],
     }
 
 }
