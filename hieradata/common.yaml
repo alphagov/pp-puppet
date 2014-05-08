@@ -244,5 +244,3 @@ ruby_packages:
 python_packages:
   - gds-nagios-plugins
 
-nginx::server::server_names_hash_bucket_size: 128
-nginx::server::version: '1.4.4-4~precise0'

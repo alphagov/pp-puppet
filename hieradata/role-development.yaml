@@ -2,7 +2,7 @@
 classes:
   - 'clamav'
   - 'google_credentials'
-  - 'nginx::server'
+  - 'nginx'
   - 'performanceplatform::development'
   - 'performanceplatform::mongo'
   - 'performanceplatform::nodejs'
@@ -104,12 +104,6 @@ ruby_packages:
 
 python_packages:
   - virtualenvwrapper
-
-# Latest nginx for dev
-ppas:
-  - 'ppa:teward/nginx-devel-testing'
-
-nginx::server::version: 'latest'
 
 # Same as performanceplatform::postgresql_primary::stagecraft_password
 performanceplatform::development::stagecraft_password: "securem8"

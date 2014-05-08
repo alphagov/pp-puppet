@@ -8,20 +8,16 @@ define performanceplatform::proxy_vhost(
   $serveraliases       = undef,
   $ssl                 = false,
   $ssl_port            = '443',
-  $ssl_path            = $nginx::server::default_ssl_path,
-  $ssl_cert            = $nginx::server::default_ssl_cert,
-  $ssl_key             = $nginx::server::default_ssl_key,
+  $ssl_path            = hiera('ssl::params::ssl_path'),
+  $ssl_cert            = hiera('ssl::params::ssl_cert_file'),
+  $ssl_key             = hiera('ssl::params::ssl_key_file'),
   $ssl_redirect        = false,
-  $magic               = '',
   $isdefaultvhost      = false,
   $proxy               = true,
-  $proxy_magic         = '',
   $proxy_append_forwarded_host = false,
   $proxy_set_forwarded_host = false,
   $forward_host_header = true,
   $client_max_body_size = '10m',
-  $access_logs          = { '{name}.access.log' => '' },
-  $error_logs           = { '{name}.error.log' => '' },
   $five_critical        = '~:0',
   $five_warning         = '~:0',
   $four_critical        = '~:0',
@@ -29,6 +25,8 @@ define performanceplatform::proxy_vhost(
   $sensu_check          = true,
   $pp_only_vhost        = false,
   $denied_http_verbs    = [],
+  $auth_basic           = undef,
+  $auth_basic_user_file = undef,
 ) {
 
   $graphite_servername = regsubst($servername, '\.', '_', 'G')
@@ -85,31 +83,68 @@ define performanceplatform::proxy_vhost(
     postrotate   => 'service nginx rotate',
   }
 
-  nginx::vhost::proxy { $name:
-    port                        => $port,
-    priority                    => $priority,
-    template                    => $template,
-    upstream_server             => $upstream_server,
-    upstream_port               => $upstream_port,
-    servername                  => $servername,
-    serveraliases               => $serveraliases,
+  $upstream_name = "${name}-upstream"
+
+  nginx::resource::upstream { $upstream_name:
+    members => [
+      "${upstream_server}:${upstream_port}",
+    ]
+  }
+
+  $listen_options = $isdefaultvhost ? {
+    true    => 'default',
+    default => undef,
+  }
+
+  if $proxy_append_forwarded_host {
+    $forwarded_host = [
+      'X-Forwarded-Server  "$http_x_forwarded_server,$host"',
+      'X-Forwarded-Host  "$http_x_forwarded_host,$host"',
+    ]
+  } elsif $proxy_set_forwarded_host {
+    $forwarded_host = [
+      'X-Forwarded-Server  "$http_x_forwarded_server"',
+      'X-Forwarded-Host  "$http_x_forwarded_host"',
+    ]
+  } else {
+    $forwarded_host = [
+      'X-Forwarded-Server $host',
+      'X-Forwarded-Host  $host',
+    ]
+  }
+
+  if $forward_host_header {
+    $forward_host = [
+      'Host $host',
+    ]
+  } else {
+    $forward_host = []
+  }
+
+  if $denied_http_verbs and !empty($denied_http_verbs) {
+    $vhost_cfg_append = {
+      '' => inline_template('if ( $request_method ~ \'^(?:<%= @denied_http_verbs.join(\'|\') -%>)$\' ) { return 403; } #'),
+    }
+  } else {
+    $vhost_cfg_append = undef
+  }
+
+  nginx::resource::vhost { $servername:
+    listen_port => $port,
+    listen_options => $listen_options,
+    proxy => "http://${upstream_name}",
     ssl                         => $ssl,
     ssl_port                    => $ssl_port,
-    ssl_path                    => $ssl_path,
-    ssl_cert                    => $ssl_cert,
-    ssl_key                     => $ssl_key,
-    ssl_redirect                => $ssl_redirect,
-    magic                       => $magic_with_pp_only,
-    isdefaultvhost              => $isdefaultvhost,
-    proxy                       => $proxy,
-    proxy_magic                 => $proxy_magic,
-    proxy_append_forwarded_host => $proxy_append_forwarded_host,
-    proxy_set_forwarded_host    => $proxy_set_forwarded_host,
-    forward_host_header         => $forward_host_header,
+    ssl_cert                    => "${ssl_path}/${ssl_cert}",
+    ssl_key                     => "${ssl_path}/${ssl_key}",
+    rewrite_to_https            => $ssl_redirect,
     client_max_body_size        => $client_max_body_size,
-    access_logs                 => $access_logs,
-    error_logs                  => $error_logs,
-    denied_http_verbs           => $denied_http_verbs,
+    proxy_set_header            => flatten([$forwarded_host, $forward_host]),
+    access_log                  => "/var/log/nginx/${servername}.access.log.json json_event",
+    error_log                   => "/var/log/nginx/${servername}.error.log",
+    auth_basic                  => $auth_basic,
+    auth_basic_user_file        => $auth_basic_user_file,
+    vhost_cfg_append => $vhost_cfg_append,
   }
 
 }

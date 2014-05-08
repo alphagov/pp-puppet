@@ -16,7 +16,6 @@ class spotlight::app (
     group                       => $group,
     servername                  => $::spotlight_vhost,
     proxy_ssl                   => true,
-    magic                       => template('spotlight/assets-redirect.erb'),
     extra_env                   => {
       'NODE_ENV' => $::pp_environment,
     },
@@ -24,4 +23,13 @@ class spotlight::app (
     upstart_exec                => 'node app/server.js',
     proxy_append_forwarded_host => false,
   }
+
+  nginx::resource::location { 'spotlight-app-assets':
+    location      => '/assets/',
+    location_custom_cfg => {
+      'rewrite' => "^/assets/(.*)$ https://${::assets_vhost}/spotlight/\$1 permanent",
+    },
+    vhost         => $::spotlight_vhost,
+  }
+
 }

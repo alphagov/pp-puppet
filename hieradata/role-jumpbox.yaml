@@ -3,10 +3,13 @@ classes:
     - 'performanceplatform::deploy'
     - 'performanceplatform::kibana'
     - 'performanceplatform::nodejs'
+    - 'performanceplatform::nginx_logging_formats'
     - 'python'
-    - 'nginx::server'
+    - 'nginx'
     - 'google_credentials'
     - 'phantomjs'
+
+nginx::names_hash_bucket_size: 128
 
 performanceplatform::jenkins::lts: 1
 performanceplatform::jenkins::plugin_hash:
@@ -62,8 +65,6 @@ vhost_proxies:
         ssl_redirect:    true
         upstream_server: 'localhost'
         upstream_port:   8080
-        access_logs:
-            '{name}.access.log.json': 'json_event'
         four_warning:  ':3'
         four_critical: ':5'
     graphite-vhost:
@@ -73,8 +74,6 @@ vhost_proxies:
         upstream_server: 'graphite'
         upstream_port:   80
         forward_host_header: false
-        access_logs:
-            '{name}.access.log.json': 'json_event'
         four_warning:  ':3'
         four_critical: ':5'
     alerts-vhost:
@@ -83,8 +82,6 @@ vhost_proxies:
         ssl_redirect:    true
         upstream_server: 'alerts'
         upstream_port:   80
-        access_logs:
-            '{name}.access.log.json': 'json_event'
         four_warning:  ':3'
         four_critical: ':5'
     elasticsearch-vhost:
@@ -93,15 +90,11 @@ vhost_proxies:
         ssl_redirect:    true
         upstream_server: 'elasticsearch'
         upstream_port:   9200
-        proxy_magic:     'limit_except GET POST HEAD OPTIONS { deny all; }'
-        access_logs:
-            '{name}.access.log.json': 'json_event'
         four_warning:  ':3'
         four_critical: ':5'
-
-nginx_conf:
-    logging:
-        template: performanceplatform/nginx.logging.conf.erb
+        denied_http_verbs:
+          - PUT
+          - DELETE
 
 lumberjack_instances:
     nginx:

@@ -1,5 +1,0 @@
-# Send all requests to Spotlight's assets directory to
-# the spotlight directory on the assets vhost.
-location /assets/ {
-  rewrite ^/assets/(.*)$ https://<%= @assets_vhost %>/spotlight/$1 permanent;
-}

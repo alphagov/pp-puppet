@@ -33,13 +33,16 @@ class performanceplatform::kibana(
     require => Archive['kibana3.0.0milestone4'],
   }
 
-  nginx::vhost { 'kibana-vhost':
-    servername  => $::kibana_vhost,
+  $ssl_path = hiera('ssl::params::ssl_path')
+  $ssl_cert = hiera('ssl::params::ssl_cert_file')
+  $ssl_key = hiera('ssl::params::ssl_key_file')
+
+  nginx::resource::vhost { $::kibana_vhost:
     ssl         => true,
-    vhostroot   => $app_root,
-    access_logs => {
-      '{name}.access.log.json' => 'json_event',
-    },
+    ssl_cert    => "${ssl_path}/${ssl_cert}",
+    ssl_key     => "${ssl_path}/${ssl_key}",
+    www_root    => $app_root,
+    access_log  => "${::kibana_vhost}.access.log.json json_event",
     require     => Archive['kibana3.0.0milestone4'],
   }
 
