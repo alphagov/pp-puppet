@@ -154,7 +154,7 @@ class performanceplatform::monitoring (
     compress     => true,
     create       => true,
     create_mode  => '0640',
-    postrotate   => "initctl restart logstash-agent-1 logstash-agent-2",
+    postrotate   => "service logstash-agent-1 restart && service logstash-agent-2 restart",
   }
 
   sensu::check { 'logstash_is_down':
