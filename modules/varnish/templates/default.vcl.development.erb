@@ -2,12 +2,12 @@
 # you're not sure what that is, see here:
 #
 #   https://www.varnish-cache.org/trac/browser/bin/varnishd/default.vcl?rev=3.0
+import std;
 
 acl purge_acl {
   "localhost";
+  "development-1";
 }
-
-
 
 # Defining the backends per-director so we can have separate healthchecks later
 backend admin_backend {
@@ -86,13 +86,16 @@ sub vcl_recv {
   # origin.
   set req.grace = 6h;
 
-  # purge individual URLs from the cache
+  # purge URLs from the cache
   if (req.request == "PURGE") {
     if (!client.ip ~ purge_acl) {
-      error 405 "Not allowed";
+      std.log("client ip not in purge_acl: " +client.ip);
+      error 403 "Forbidden";
     } else {
-      ban("req.url == " + req.url);
-      error 200 "Purged";
+      # Wildcard purging
+      ban("req.url ~ "+req.url);
+      std.log("purging: " +req.url);
+      error 200 "Purged.";
     }
   }
 
