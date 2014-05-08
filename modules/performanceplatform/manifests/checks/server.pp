@@ -6,7 +6,7 @@ define performanceplatform::checks::server (
 
     performanceplatform::checks::graphite { "check_high_cpu_${name}":
       target   => "movingAverage(collectd.${graphite_fqdn}.cpu-0.cpu-idle,120)",
-      warning  => '20:',
+      warning  => '10:',
       critical => '5:',
       interval => 60,
       handlers => ['default'],
