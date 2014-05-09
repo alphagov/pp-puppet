@@ -5,6 +5,7 @@ classes:
   - 'nginx'
   - 'performanceplatform::development'
   - 'performanceplatform::mongo'
+  - 'performanceplatform::nginx_logging_formats'
   - 'performanceplatform::nodejs'
   - 'performanceplatform::postgresql_primary'
   - 'postgresql::lib::devel'
@@ -45,6 +46,10 @@ ufw_rules:
   spotlight-node-debug:
     port: 8080
     ip:   'any'
+
+nginx::names_hash_bucket_size: 128
+nginx::confd_purge: true
+nginx::vhost_purge: true
 
 vhost_proxies:
   # For spotlight
