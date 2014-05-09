@@ -21,6 +21,7 @@ class performanceplatform::assets (
   }
 
   nginx::resource::location { 'spotlight-assets':
+    location            => '/spotlight/',
     rewrite_rules       => [
       '^/spotlight(.*)$ $1 break'
     ],
@@ -32,6 +33,7 @@ class performanceplatform::assets (
   }
 
   nginx::resource::location { 'stagecraft-assets':
+    location            => '/stagecraft/',
     rewrite_rules       => [
       '^/stagecraft(.*)$ $1 break'
     ],
