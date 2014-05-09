@@ -3,8 +3,9 @@ classes:
   - 'python'
   - 'graphite'
   - 'logstash'
-  - 'nginx::server'
+  - 'nginx'
   - 'performanceplatform::monitoring'
+  - 'performanceplatform::nginx_logging_formats'
   - 'rabbitmq'
   - 'redis'
   - 'performanceplatform::checks::servers'
@@ -77,19 +78,14 @@ vhost_proxies:
     upstream_server: 'localhost'
     upstream_port:   9080
     sensu_check:     false
-    magic: |
-      auth_basic "Enter username/password";
-      auth_basic_user_file /etc/nginx/htpasswd;
+    auth_basic: "Enter username/password"
+    auth_basic_user_file: /etc/nginx/htpasswd
   alerts-vhost:
     servername:      "%{::alerts_vhost}"
     ssl:             false
     upstream_server: 'localhost'
     upstream_port:   8090
     sensu_check:     false
-
-nginx_conf:
-  logging:
-    template: performanceplatform/nginx.logging.conf.erb
 
 lumberjack_instances:
   nginx:
