@@ -34,6 +34,8 @@ ufw_rules:
     ip:   '172.27.1.0/24'
 
 nginx::names_hash_bucket_size: 128
+nginx::confd_purge: true
+nginx::vhost_purge: true
 nginx::http_cfg_append:
   gzip_types: application/x-javascript application/javascript application/json text/css
   gzip_proxied: no_etag
