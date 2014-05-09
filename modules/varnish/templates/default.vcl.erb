@@ -144,12 +144,8 @@ sub vcl_recv {
   } else if (req.http.Host ~ "^www\..*") {
     # Send www requests to backdrop
     if (req.request ~ "^(PUT|POST|DELETE)$") {
-      if (req.http.Authorization ~ "^Bearer .*") {
-        set req.http.Host = "write.backdrop";
-        set req.backend   = write_director;
-      } else {
-        error 671 "Bearer token not set";
-      }
+      set req.http.Host = "write.backdrop";
+      set req.backend   = write_director;
     } else if (req.request ~ "^(GET|HEAD|OPTIONS)$") {
       set req.http.Host = "read.backdrop";
       set req.backend   = read_director;
@@ -270,10 +266,6 @@ sub vcl_error {
   if (obj.status == 667) {
     set obj.http.Location = obj.response;
     set obj.status = 301;
-    return(deliver);
-  } elsif (obj.status == 671) { #671 is our internal, needs a Bearer token
-    set obj.http.WWW-Authenticate = "Bearer";
-    set obj.status = 401;
     return(deliver);
   }
 }

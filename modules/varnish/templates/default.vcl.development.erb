@@ -45,13 +45,9 @@ sub vcl_recv {
     set req.backend   = stagecraft_backend;
   } else if (req.http.Host ~ "^www\..*") {
     # Send www requests to backdrop
-    if (req.request == "POST") {
-      if (req.http.Authorization ~ "^Bearer .*") {
-        set req.http.Host = "write.backdrop";
-        set req.backend   = write_backend;
-      } else {
-        error 671 "Bearer token not set";
-      }
+    if (req.request ~ "^(PUT|POST|DELETE)$") {
+      set req.http.Host = "write.backdrop";
+      set req.backend   = write_backend;
     } else if (req.request ~ "^(GET|HEAD|OPTIONS)$") {
       set req.http.Host = "read.backdrop";
       set req.backend   = read_backend;
@@ -173,10 +169,6 @@ sub vcl_error {
   if (obj.status == 667) {
     set obj.http.Location = obj.response;
     set obj.status = 301;
-    return(deliver);
-  } elsif (obj.status == 671) { #671 is our internal, needs a Bearer token
-    set obj.http.WWW-Authenticate = "Bearer";
-    set obj.status = 401;
     return(deliver);
   }
 }
