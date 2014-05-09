@@ -27,6 +27,7 @@ define performanceplatform::proxy_vhost(
   $denied_http_verbs    = [],
   $auth_basic           = undef,
   $auth_basic_user_file = undef,
+  $block_all_robots     = true,
 ) {
 
   $graphite_servername = regsubst($servername, '\.', '_', 'G')
@@ -145,6 +146,17 @@ define performanceplatform::proxy_vhost(
     auth_basic                  => $auth_basic,
     auth_basic_user_file        => $auth_basic_user_file,
     vhost_cfg_append => $vhost_cfg_append,
+  }
+
+  if $block_all_robots {
+    nginx::resource::location { "${servername}-robots":
+      vhost               => $servername,
+      location            => '/robots.txt',
+      ssl                 => $ssl,
+      location_custom_cfg => {
+        'return' => '200 "User-agent: *\nDisallow: /"',
+      },
+    }
   }
 
 }
