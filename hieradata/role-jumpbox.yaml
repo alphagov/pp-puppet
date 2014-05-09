@@ -10,6 +10,8 @@ classes:
     - 'phantomjs'
 
 nginx::names_hash_bucket_size: 128
+nginx::confd_purge: true
+nginx::vhost_purge: true
 
 performanceplatform::jenkins::lts: 1
 performanceplatform::jenkins::plugin_hash:

@@ -11,6 +11,9 @@ classes:
   - 'performanceplatform::checks::servers'
   - 'performanceplatform::checks::smokey_tests'
 
+nginx::confd_purge: true
+nginx::vhost_purge: true
+
 performanceplatform::checks::servers::boxes:
   - backend-app-1
   - backend-app-2
