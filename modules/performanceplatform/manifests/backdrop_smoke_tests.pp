@@ -7,6 +7,7 @@ class performanceplatform::backdrop_smoke_tests (
     }
 
     sensu::check { 'backdrop_smoke_tests':
+      command  => "dummy",
       ensure => absent,
     }
 }
