@@ -7,7 +7,8 @@ class performanceplatform::backdrop_smoke_tests (
     }
 
     sensu::check { 'backdrop_smoke_tests':
-      command  => "dummy",
-      ensure => absent,
+      command => "dummy",
+      ensure  => absent,
+      notify  => Service['sensu-client'],
     }
 }
