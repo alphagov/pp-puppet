@@ -15,6 +15,9 @@ ufw_rules:
     port: 80
     ip:   'any'
 
+nginx::confd_purge: true
+nginx::vhost_purge: true
+
 gunicorn_apps:
   admin.backdrop:
     port:       3203
