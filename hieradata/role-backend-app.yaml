@@ -10,6 +10,14 @@ classes:
   - 'python'
   - 'postgresql::lib::devel'
 
+ufw_rules:
+  allowhttp:
+    port: 80
+    ip:   'any'
+
+nginx::confd_purge: true
+nginx::vhost_purge: true
+
 gunicorn_apps:
   admin.backdrop:
     port:       3203
@@ -59,11 +67,6 @@ python::pip:        true
 performanceplatform::pip::user: 'deploy'
 performanceplatform::pip::group: 'deploy'
 performanceplatform::pip::pip_cache_path: '/var/cache/pip-download-cache'
-
-ufw_rules:
-  allowhttp:
-    port: 80
-    ip:   'any'
 
 ruby_packages:
   - curb
