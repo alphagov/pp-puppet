@@ -121,9 +121,14 @@ define performanceplatform::proxy_vhost(
   } else {
     $forward_host = []
   }
-  $forwarded_proto = [
-    'X-Forwarded-Proto  $scheme',
-  ]
+
+  if $ssl {
+    $forwarded_proto = [
+      'X-Forwarded-Proto  $scheme',
+    ]
+  } else {
+    $forwarded_proto = []
+  }
 
   if $denied_http_verbs and !empty($denied_http_verbs) {
     $vhost_cfg_append = {
