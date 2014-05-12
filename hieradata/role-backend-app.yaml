@@ -6,6 +6,7 @@ classes:
   - 'performanceplatform::checks::backdrop'
   - 'performanceplatform::checks::stagecraft'
   - 'performanceplatform::backdrop_smoke_tests'
+  - 'performanceplatform::nginx_logging_formats'
   - 'performanceplatform::pip'
   - 'python'
   - 'postgresql::lib::devel'
