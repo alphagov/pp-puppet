@@ -1,10 +1,6 @@
-# pp-development
+# development
 
 A Performance Platform development environment that uses [alphagov/pp-puppet](https://github.com/alphagov/pp-puppet) to provision you a virtual machine.
-
-## DEPRECATED: Moving to pp-puppet
-
-All the scripts and setup tools in this repo are being moved to [pp-puppet](https://github.com/alphagov/pp-puppet). This repository should no longer be used.
 
 ## Host machine prerequisites
 
@@ -18,7 +14,7 @@ All the scripts and setup tools in this repo are being moved to [pp-puppet](http
 
 ## Basic setup
 
-- Clone this folder onto your local machine with `git clone git@github.com:alphagov/pp-development.git`. You can do this in your `~/govuk` folder if you have one or in a separate `~/performance-platform` folder
+- Clone this folder onto your local machine with `git clone git@github.com:alphagov/pp-puppet.git`. You can do this in your `~/govuk` folder if you have one or in a separate `~/performance-platform` folder
 - Install dependencies with `GOVUK_DEPS=true ./install.sh`
   - Warnings about the ``pp-deployment`` repository can be safely ignored (it contains deployment secrets that you may not have access to)
 - Start the virtual machine with `vagrant up`
@@ -43,6 +39,13 @@ All the scripts and setup tools in this repo are being moved to [pp-puppet](http
 - SSH on to the virtual machine with `vagrant ssh`
 - Install dependencies for each required app in `/var/apps` by following the
   instructions in their README files
+- Add the following to your hosts file -
+
+```
+10.0.0.100 www.development.performance.service.gov.uk
+10.0.0.100 admin.development.performance.service.gov.uk
+10.0.0.100 stagecraft.development.performance.service.gov.uk
+```
 
 ## Running apps
 
