@@ -37,4 +37,12 @@ class performanceplatform::checks::smokey_tests (
       handlers => ['default'],
       require  => File[$smokey_checker_script],
     }
+
+    sensu::check { 'smoke_test_stagecraft':
+      interval => 60,
+      command  => "${smokey_checker_script} stagecraft",
+      handlers => ['default'],
+      require  => File[$smokey_checker_script],
+    }
+
 }
