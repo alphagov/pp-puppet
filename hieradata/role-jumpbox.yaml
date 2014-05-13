@@ -74,7 +74,7 @@ vhost_proxies:
         ssl:             true
         ssl_redirect:    true
         upstream_server: 'graphite'
-        upstream_port:   80
+        upstream_port:   9080
         forward_host_header: false
         four_warning:  ':3'
         four_critical: ':5'
