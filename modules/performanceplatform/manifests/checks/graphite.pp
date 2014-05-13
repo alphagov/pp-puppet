@@ -9,7 +9,7 @@ define performanceplatform::checks::graphite (
 ) {
 
   $check_data_path = '/etc/sensu/community-plugins/plugins/graphite/check-data.rb'
-  $server_config = "-s graphite -u ${::basic_auth_username} -p ${::basic_auth_password}"
+  $server_config = "-s ${::graphite_vhost} -u ${::basic_auth_username} -p ${::basic_auth_password}"
 
   if $ignore_no_data {
     $ignore_no_data_flag = '--ignore-no-data'
