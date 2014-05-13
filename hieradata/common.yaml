@@ -236,6 +236,7 @@ system_packages:
   - lvm2
   - parted
   - ssl-cert
+  - strace
   - sysstat
   - update-notifier
   - vim
