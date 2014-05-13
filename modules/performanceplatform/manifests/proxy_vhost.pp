@@ -3,6 +3,7 @@ define performanceplatform::proxy_vhost(
   $priority            = '10',
   $template            = 'nginx/vhost-proxy.conf.erb',
   $upstream_server     = 'localhost',
+  $upstream_hostname   = undef,
   $upstream_port       = '8080',
   $servername          = '',
   $serveraliases       = undef,
@@ -114,7 +115,11 @@ define performanceplatform::proxy_vhost(
     ]
   }
 
-  if $forward_host_header {
+  if $upstream_hostname {
+    $forward_host = [
+      "Host ${upstream_hostname}",
+    ]
+  } elsif $forward_host_header {
     $forward_host = [
       'Host $host',
     ]
