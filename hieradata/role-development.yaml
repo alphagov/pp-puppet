@@ -46,6 +46,9 @@ ufw_rules:
   spotlight-node-debug:
     port: 8080
     ip:   'any'
+  allow-stagecraft:
+    port: 3204
+    ip:   'any'
 
 nginx::names_hash_bucket_size: 128
 nginx::confd_purge: true
