@@ -13,4 +13,13 @@ class performanceplatform::development (
     createdb      => true,
     password_hash => postgresql_password('stagecraft', $stagecraft_password),
   }
+
+  # ensure that we don't run out of file handles when running all the apps
+  harden::limit { 'vagrant-nofile':
+    domain => 'vagrant',
+    type   => '-', # set both hard and soft limits
+    item   => 'nofile',
+    value  => '16384',
+  }
+
 }
