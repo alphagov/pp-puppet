@@ -1,119 +1,25 @@
-# Varnish will append its default logic to any overwritten subroutine. If
-# you're not sure what that is, see here:
-#
-#   https://www.varnish-cache.org/trac/browser/bin/varnishd/default.vcl?rev=3.0
-import std;
+<%= scope.function_template(["varnish/shared/imports.vcl.erb"]) %>
 
 acl purge_acl {
   "localhost";
+  "development-1";
   "172.27.1.0"/24; # weird but correct syntax: "ip"/netmask
 }
 
-# Define the healthcheck probes
-probe admin_healthcheck {
-    .request = "GET /_status HTTP/1.1"
-               "Host: admin.backdrop"
-               "User-Agent: Varnish-Healthcheck"
-               "Connection: close";
-}
-probe write_healthcheck {
-    .request = "GET /_status HTTP/1.1"
-               "Host: write.backdrop"
-               "User-Agent: Varnish-Healthcheck"
-               "Connection: close";
-}
-probe read_healthcheck {
-    .request = "GET /_status HTTP/1.1"
-               "Host: read.backdrop"
-               "User-Agent: Varnish-Healthcheck"
-               "Connection: close";
-}
-probe stagecraft_healthcheck {
-    .request = "GET /_status HTTP/1.1"
-               "Host: stagecraft"
-               "User-Agent: Varnish-Healthcheck"
-               "Connection: close";
-}
-
+<% if @machine_role != 'development' -%>
+  <%= scope.function_template(["varnish/probes.vcl.erb"]) %>
+<% end -%>
 
 # Defining the backends per-director so we can have separate healthchecks later
-backend admin_backend_1 {
-    .host = "backend-app-1";
-    .probe = admin_healthcheck;
-}
-backend admin_backend_2 {
-    .host = "backend-app-2";
-    .probe = admin_healthcheck;
-}
-backend write_backend_1 {
-    .host = "backend-app-1";
-    .probe = write_healthcheck;
-}
-backend write_backend_2 {
-    .host = "backend-app-2";
-    .probe = write_healthcheck;
-}
-backend read_backend_1 {
-    .host = "backend-app-1";
-    .probe = read_healthcheck;
-}
-backend read_backend_2 {
-    .host = "backend-app-2";
-    .probe = read_healthcheck;
-}
-backend stagecraft_backend_1 {
-    .host = "backend-app-1";
-    .probe = stagecraft_healthcheck;
-}
-backend stagecraft_backend_2 {
-    .host = "backend-app-2";
-    .probe = stagecraft_healthcheck;
-}
+<% if @machine_role == 'development' -%>
+  <%= scope.function_template(["varnish/backends.development.vcl.erb"]) %>
+<% else -%>
+  <%= scope.function_template(["varnish/backends.vcl.erb"]) %>
+<% end -%>
 
-backend frontend_app_1 { .host = "frontend-app-1"; }
-backend frontend_app_2 { .host = "frontend-app-2"; }
-
-# Per-host directors, so we can have per-host healthchecks later
-director admin_director round-robin {
-    {
-        .backend = admin_backend_1;
-    }
-    {
-        .backend = admin_backend_2;
-    }
-}
-director write_director round-robin {
-    {
-        .backend = write_backend_1;
-    }
-    {
-        .backend = write_backend_2;
-    }
-}
-director read_director round-robin {
-    {
-        .backend = read_backend_1;
-    }
-    {
-        .backend = read_backend_2;
-    }
-}
-director stagecraft_director round-robin {
-    {
-        .backend = stagecraft_backend_1;
-    }
-    {
-        .backend = stagecraft_backend_2;
-    }
-}
-
-# Add a director for the frontend app servers
-# Note that Varnish currently runs on the frontend app servers,
-# so this might pretty much just pass things through.
-director frontend_app round-robin {
-  { .backend = frontend_app_1; }
-  { .backend = frontend_app_2; }
-}
+<% if @machine_role != 'development' -%>
+  <%= scope.function_template(["varnish/directors.vcl.erb"]) %>
+<% end -%>
 
 sub redirect_slash {
   # http://example.org/foo/ -> http://example.org/foo
@@ -159,21 +65,7 @@ sub vcl_recv {
     error 404 "Not found";
   }
 
-  # normalize Accept-Encoding header
-  if (req.http.Accept-Encoding) {
-    if (req.url ~ "\.(jpeg|jpg|png|gif|gz|tgz|bz2|tbz|zip|flv|pdf|mp3|ogg)$") {
-      remove req.http.Accept-Encoding; # already compressed
-    }
-    elsif (req.http.Accept-Encoding ~ "gzip") {
-      set req.http.Accept-Encoding = "gzip";
-    }
-    elsif (req.http.Accept-Encoding ~ "deflate") {
-      set req.http.Accept-Encoding = "deflate";
-    }
-    else {
-      remove req.http.Accept-Encoding;
-    }
-  }
+<%= scope.function_template(["varnish/shared/accept-encoding-header.vcl.erb"]) %>
 
   # Serve stale period. This is the period for which Varnish is *allowed* to
   # serve stale content beyond the object TTL in the event of errors from
@@ -200,6 +92,16 @@ sub vcl_recv {
       return(lookup);
     }
   }
+
+  # Timings
+  # The time in seconds to wait for a backend connection.
+  set bereq.connect_timeout = 100ms;
+  # The time in seconds to wait for the first byte from the backend. Not available in pipe mode.
+  set bereq.first_byte_timeout = 2s;
+  # The time in seconds to wait between each received byte from the backend. Not available in pipe mode.
+  set bereq.between_bytes_timeout = 2s;
+
+
 }
 
 sub vcl_fetch {

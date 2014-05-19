@@ -1,8 +1,4 @@
-# Varnish will append its default logic to any overwritten subroutine. If
-# you're not sure what that is, see here:
-#
-#   https://www.varnish-cache.org/trac/browser/bin/varnishd/default.vcl?rev=3.0
-import std;
+<%= scope.function_template(['varnish/shared/imports.vcl.erb']) %>
 
 acl purge_acl {
   "localhost";
@@ -103,6 +99,15 @@ sub vcl_recv {
       return(lookup);
     }
   }
+
+  # Timings
+  # The time in seconds to wait for a backend connection.
+  set bereq.connect_timeout = 100ms;
+  # The time in seconds to wait for the first byte from the backend. Not available in pipe mode.
+  set bereq.first_byte_timeout = 2s;
+  # The time in seconds to wait between each received byte from the backend. Not available in pipe mode.
+  set bereq.between_bytes_timeout = 2s;
+
 }
 
 sub vcl_fetch {

@@ -1,0 +1,42 @@
+
+# Per-host directors, so we can have per-host healthchecks later
+director admin_director round-robin {
+    {
+        .backend = admin_backend_1;
+    }
+    {
+        .backend = admin_backend_2;
+    }
+}
+director write_director round-robin {
+    {
+        .backend = write_backend_1;
+    }
+    {
+        .backend = write_backend_2;
+    }
+}
+director read_director round-robin {
+    {
+        .backend = read_backend_1;
+    }
+    {
+        .backend = read_backend_2;
+    }
+}
+director stagecraft_director round-robin {
+    {
+        .backend = stagecraft_backend_1;
+    }
+    {
+        .backend = stagecraft_backend_2;
+    }
+}
+
+# Add a director for the frontend app servers
+# Note that Varnish currently runs on the frontend app servers,
+# so this might pretty much just pass things through.
+director frontend_app round-robin {
+  { .backend = frontend_app_1; }
+  { .backend = frontend_app_2; }
+}

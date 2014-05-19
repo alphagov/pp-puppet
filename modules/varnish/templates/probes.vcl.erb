@@ -1,0 +1,25 @@
+# Define the healthcheck probes
+probe admin_healthcheck {
+    .request = "GET /_status HTTP/1.1"
+               "Host: admin.backdrop"
+               "User-Agent: Varnish-Healthcheck"
+               "Connection: close";
+}
+probe write_healthcheck {
+    .request = "GET /_status HTTP/1.1"
+               "Host: write.backdrop"
+               "URLsser-Agent: Varnish-Healthcheck"
+               "Connection: close";
+}
+probe read_healthcheck {
+    .request = "GET /_status HTTP/1.1"
+               "Host: read.backdrop"
+               "User-Agent: Varnish-Healthcheck"
+               "Connection: close";
+}
+probe stagecraft_healthcheck {
+    .request = "GET /_status HTTP/1.1"
+               "Host: stagecraft"
+               "User-Agent: Varnish-Healthcheck"
+               "Connection: close";
+}
