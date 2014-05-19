@@ -15,6 +15,7 @@ define performanceplatform::app (
   $proxy_append_forwarded_host = false,
   $proxy_set_forwarded_host = false,
   $client_max_body_size = '10m',
+  $statsd_prefix = $title,
 ) {
   include nginx
   include upstart
@@ -40,9 +41,10 @@ define performanceplatform::app (
   }
 
   $base_environment = {
-    "GOVUK_ENV"  => "production",
-    "APP_NAME"   => $title,
-    "APP_MODULE" => $app_module,
+    "GOVUK_ENV"           => "production",
+    "APP_NAME"            => $title,
+    "APP_MODULE"          => $app_module,
+    "GOVUK_STATSD_PREFIX" => "pp.apps.${statsd_prefix}",
   }
 
   upstart::job { $title:
