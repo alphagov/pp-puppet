@@ -21,21 +21,24 @@ nginx::vhost_purge: true
 
 gunicorn_apps:
   admin.backdrop:
-    port:       3203
+    port:          3203
     # This is a placeholder until we extract a separate app
-    app_module: 'backdrop.admin.app:app'
-    user:       'deploy'
-    group:      'deploy'
+    app_module:    'backdrop.admin.app:app'
+    user:          'deploy'
+    group:         'deploy'
+    statsd_prefix: 'backdrop.admin'
   read.backdrop:
-    port:       3038
-    app_module: 'backdrop.read.api:app'
-    user:       'deploy'
-    group:      'deploy'
+    port:          3038
+    app_module:    'backdrop.read.api:app'
+    user:          'deploy'
+    group:         'deploy'
+    statsd_prefix: 'backdrop.read'
   write.backdrop:
     port:                 3039
     app_module:           'backdrop.write.api:app'
     user:                 'deploy'
     group:                'deploy'
+    statsd_prefix:        'backdrop.write'
     client_max_body_size: '30m'
     timeout:              60
   stagecraft:
