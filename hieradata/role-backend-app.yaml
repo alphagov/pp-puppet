@@ -59,6 +59,9 @@ backdrop_collectors:
   backdrop-pingdom-collector:
     user: 'deploy'
     group: 'deploy'
+  performanceplatform-collector:
+    user: 'deploy'
+    group: 'deploy'
 
 python::version:    '2.7'
 python::dev:        true
