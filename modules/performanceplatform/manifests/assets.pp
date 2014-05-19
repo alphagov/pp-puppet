@@ -21,27 +21,27 @@ class performanceplatform::assets (
   }
 
   nginx::resource::location { 'spotlight-assets':
-    location            => '/spotlight/',
-    rewrite_rules       => [
+    location             => '/spotlight/',
+    rewrite_rules        => [
       '^/spotlight(.*)$ $1 break'
     ],
-    vhost               => $::assets_internal_vhost,
-    www_root            => '/opt/spotlight/current/public',
-    location_custom_cfg => {
+    vhost                => $::assets_internal_vhost,
+    www_root             => '/opt/spotlight/current/public',
+    location_cfg_prepend => {
       'expires' => '30d',
-    }
+    },
   }
 
   nginx::resource::location { 'stagecraft-assets':
-    location            => '/stagecraft/',
-    rewrite_rules       => [
+    location             => '/stagecraft/',
+    rewrite_rules        => [
       '^/stagecraft(.*)$ $1 break'
     ],
-    vhost               => $::assets_internal_vhost,
-    www_root            => '/opt/stagecraft/current/assets',
-    location_custom_cfg => {
+    vhost                => $::assets_internal_vhost,
+    www_root             => '/opt/stagecraft/current/assets',
+    location_cfg_prepend => {
       'expires' => '1h',
-    }
+    },
   }
 
 }
