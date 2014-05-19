@@ -5,6 +5,8 @@ backdrop-ga-collector
 backdrop-ga-realtime-collector
 backdrop-pingdom-collector
 backdrop-send
+performanceplatform-collector
+performanceplatform-collector-config
 pp-puppet
 puppet-backdrop
 puppet-limelight
