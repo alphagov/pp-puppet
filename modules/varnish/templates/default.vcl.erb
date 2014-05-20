@@ -99,11 +99,11 @@ sub vcl_recv {
 
   # Timings
   # The time in seconds to wait for a backend connection.
-  set bereq.connect_timeout = 100ms;
+  set bereq.connect_timeout = 500ms;
   # The time in seconds to wait for the first byte from the backend. Not available in pipe mode.
-  set bereq.first_byte_timeout = 2s;
+  set bereq.first_byte_timeout = 10s;
   # The time in seconds to wait between each received byte from the backend. Not available in pipe mode.
-  set bereq.between_bytes_timeout = 2s;
+  set bereq.between_bytes_timeout = 10s;
 
 
 }
