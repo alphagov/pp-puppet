@@ -60,9 +60,8 @@ class performanceplatform::elasticsearch(
               "path": "full",
               "dynamic": true,
               "properties": {
-                "args": {
-                    "type": "string"
-                }
+                "args": {"type": "string"},
+                "request_time": {"type": "double"}
               },
               "type": "object"
             },
