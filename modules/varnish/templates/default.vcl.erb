@@ -97,6 +97,10 @@ sub vcl_recv {
     }
   }
 
+}
+
+sub vcl_miss {
+
   # Timings
   # The time in seconds to wait for a backend connection.
   set bereq.connect_timeout = 500ms;
@@ -105,10 +109,11 @@ sub vcl_recv {
   # The time in seconds to wait between each received byte from the backend. Not available in pipe mode.
   set bereq.between_bytes_timeout = 10s;
 
-
 }
 
+
 sub vcl_fetch {
+
   # Serve stale period. This is the period for which Varnish is allowed to
   # keep an object, beyond its specified TTL. It should always be as long or
   # longer than req.grace in vcl_recv.
