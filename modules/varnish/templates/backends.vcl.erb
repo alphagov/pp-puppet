@@ -1,0 +1,40 @@
+# Defining the backends per-director so we can have separate healthchecks later
+backend admin_backend_1 {
+    .host = "backend-app-1";
+    .probe = admin_healthcheck;
+}
+backend admin_backend_2 {
+    .host = "backend-app-2";
+    .probe = admin_healthcheck;
+}
+backend write_backend_1 {
+    .host = "backend-app-1";
+    .probe = write_healthcheck;
+}
+backend write_backend_2 {
+    .host = "backend-app-2";
+    .probe = write_healthcheck;
+}
+backend read_backend_1 {
+    .host = "backend-app-1";
+    .probe = read_healthcheck;
+}
+backend read_backend_2 {
+    .host = "backend-app-2";
+    .probe = read_healthcheck;
+}
+backend stagecraft_backend_1 {
+    .host = "backend-app-1";
+    .probe = stagecraft_healthcheck;
+}
+backend stagecraft_backend_2 {
+    .host = "backend-app-2";
+    .probe = stagecraft_healthcheck;
+}
+
+backend frontend_app_1 {
+  .host = "frontend-app-1";
+}
+backend frontend_app_2 {
+  .host = "frontend-app-2";
+}
