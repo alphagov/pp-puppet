@@ -8,6 +8,7 @@ define performanceplatform::gunicorn_app (
   $group       = undef,
   $client_max_body_size = '10m',
   $is_django   = false,
+  $statsd_prefix = $title,
 ) {
   # app_path is defined here so that the virtualenv can be
   # created in the correct place
@@ -36,6 +37,7 @@ define performanceplatform::gunicorn_app (
     proxy_append_forwarded_host => $proxy_append_forwarded_host,
     proxy_set_forwarded_host    => $proxy_set_forwarded_host,
     client_max_body_size        => $client_max_body_size,
+    statsd_prefix               => $title,
   }
 
   python::virtualenv { $virtualenv_path:
