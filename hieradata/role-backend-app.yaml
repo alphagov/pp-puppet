@@ -39,7 +39,7 @@ gunicorn_apps:
     user:                 'deploy'
     group:                'deploy'
     statsd_prefix:        'backdrop.write'
-    client_max_body_size: '30m'
+    client_max_body_size: '50m'
     timeout:              60
   stagecraft:
     port:            3204
