@@ -71,7 +71,7 @@ vhost_proxies:
     ssl:           true
     upstream_port: 3039
     proxy_append_forwarded_host: true
-    client_max_body_size: '30m'
+    client_max_body_size: '50m'
   backdrop_admin:
     servername:    "admin.backdrop"
     ssl:           true
@@ -86,7 +86,7 @@ vhost_proxies:
     servername:    "%{::www_vhost}"
     ssl:           true
     upstream_port: 7999
-    client_max_body_size: '30m'
+    client_max_body_size: '50m'
   admin:
     servername:    "%{::admin_vhost}"
     ssl:           true
