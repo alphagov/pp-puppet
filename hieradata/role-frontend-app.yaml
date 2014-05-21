@@ -76,7 +76,7 @@ vhost_proxies:
     four_critical: 3
     five_warning: 0
     five_critical: 1
-    client_max_body_size: '30m'
+    client_max_body_size: '50m'
     denied_http_verbs:
       - PURGE
 
