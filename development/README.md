@@ -1,16 +1,13 @@
-# development
+# Performance Platform development tools
 
-A Performance Platform development environment that uses [alphagov/pp-puppet](https://github.com/alphagov/pp-puppet) to provision you a virtual machine.
+The `Vagrantfile` in this repository contains a definition for a development virtual
+machine that can run all our services on one box (it's called `development-1`).
 
-## Host machine prerequisites
+## Virtual machine tweaks
 
-- [Vagrant](http://www.vagrantup.com/) (note that vagrant >=1.4 is required to use VirtualBox >=4.3)
-  - And the vagrant-dns plugin: `vagrant plugin install vagrant-dns`
-- Software to run the virtual machine
-  - An exact version of [VirtualBox](https://www.virtualbox.org/) for which there exists a [machine image in `$boxesByVersion` in the Vagrantfile](./Vagrantfile). At time of writing this means **4.3.6r91406** but more versions may be added in the future. Mixing versions of virtualbox and additions is unsupported.
-  - [VMware](http://www.vmware.com/uk/) should also work
-  - To improve performance, users of OSX can set the nfs flag to true [in the Vagrandfile](https://github.com/alphagov/pp-development/blob/master/Vagrantfile#L124). Linux (nfs seems to be more buggy) users may need to install the following packages: ``nfs-kernel-server nfs-common portmap``
-  - [local overrides to Vagrant config](https://github.com/alphagov/pp-development/commit/ad3226b6185840f3395fde0c5e175332bf4aab6f) can [go in a local file](https://github.com/alphagov/gds-boxen/blob/120075b037a1e2b4826baa6bb1e12c8709aefa4d/modules/people/files/jabley/pp-development-1-Vagrantfile.localconfig)
+To improve performance, users of OS X can set the nfs flag to true [in the Vagrantfile](https://github.com/alphagov/pp-development/blob/master/Vagrantfile#L124). On Linux NFS seems to be more buggy; you may need to install the following packages: ``nfs-kernel-server nfs-common portmap``.
+
+[Local overrides to Vagrant config](https://github.com/alphagov/pp-development/commit/ad3226b6185840f3395fde0c5e175332bf4aab6f) can [go in a local file](https://github.com/alphagov/gds-boxen/blob/120075b037a1e2b4826baa6bb1e12c8709aefa4d/modules/people/files/jabley/pp-development-1-Vagrantfile.localconfig).
 
 ## Basic setup
 
@@ -50,13 +47,13 @@ A Performance Platform development environment that uses [alphagov/pp-puppet](ht
 ## Running apps
 
 - SSH on to the machine with `vagrant ssh`
-- Change to the development directory with `cd /var/apps/pp-development`
+- Change to the development directory with `cd /var/apps/pp-puppet/development`
 - Start the apps individually with `bowl backdrop_read` or `bowl spotlight`, or all together with
   `bowl performance`
   - The `bowl` command uses groups from the `Pinfile`, which runs commands from the `Procfile`
 
 ## Routing from your local machine to your VM
 
-This only works **if your platform is OSX**.
+This only works **if your platform is OS X**.
 
 Each app runs on its own local port ie 3038, 3039, 3057. From inside the VM you can access apps directly at `localhost:3038`. If you install [vagrant-dns](https://github.com/BerlinVagrant/vagrant-dns/), you can access the VM from the host through `perfplat.dev` subdomains, i.e `www.perfplat.dev` or `spotlight.perfplat.dev`.
