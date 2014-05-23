@@ -67,9 +67,9 @@ define performanceplatform::proxy_vhost(
   # Restrict access beyond GDS ips
   if $pp_only_vhost {
     $gds_only = hiera('pp_only_vhost')
-    $magic_with_pp_only = "${magic}${gds_only}"
+    $magic_with_pp_only = "${::magic}${::gds_only}"
   } else {
-    $magic_with_pp_only = $magic
+    $magic_with_pp_only = $::magic
   }
 
   logrotate::rule { "${title}-json-logs":
@@ -144,9 +144,9 @@ define performanceplatform::proxy_vhost(
   }
 
   nginx::resource::vhost { $servername:
-    listen_port => $port,
-    listen_options => $listen_options,
-    proxy => "http://${upstream_name}",
+    listen_port                 => $port,
+    listen_options              => $listen_options,
+    proxy                       => "http://${upstream_name}",
     ssl                         => $ssl,
     ssl_port                    => $ssl_port,
     ssl_cert                    => "${ssl_path}/${ssl_cert}",
@@ -158,7 +158,7 @@ define performanceplatform::proxy_vhost(
     error_log                   => "/var/log/nginx/${servername}.error.log",
     auth_basic                  => $auth_basic,
     auth_basic_user_file        => $auth_basic_user_file,
-    vhost_cfg_append => $vhost_cfg_append,
+    vhost_cfg_append            => $vhost_cfg_append,
   }
 
   if $block_all_robots {
