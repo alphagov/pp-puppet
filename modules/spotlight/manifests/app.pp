@@ -25,11 +25,11 @@ class spotlight::app (
   }
 
   nginx::resource::location { 'spotlight-app-assets':
-    location      => '/assets/',
+    location            => '/assets/',
     location_custom_cfg => {
       'rewrite' => "^/assets/(.*)$ https://${::assets_vhost}/spotlight/\$1 permanent",
     },
-    vhost         => $::spotlight_vhost,
+    vhost               => $::spotlight_vhost,
   }
 
 }
