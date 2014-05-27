@@ -131,8 +131,14 @@ define performanceplatform::proxy_vhost(
     $forwarded_proto = [
       'X-Forwarded-Proto  $scheme',
     ]
+    # nginx module does not add client_max_body_size to the ssl vhost
+    # workaround until pull request on module is accepted.
+    $vhost_cfg_ssl_prepend = {
+      'client_max_body_size' => $client_max_body_size
+    }
   } else {
     $forwarded_proto = []
+    $vhost_cfg_ssl_prepend = undef
   }
 
   if $denied_http_verbs and !empty($denied_http_verbs) {
@@ -142,6 +148,7 @@ define performanceplatform::proxy_vhost(
   } else {
     $vhost_cfg_append = undef
   }
+
 
   nginx::resource::vhost { $servername:
     listen_port                 => $port,
@@ -159,6 +166,7 @@ define performanceplatform::proxy_vhost(
     auth_basic                  => $auth_basic,
     auth_basic_user_file        => $auth_basic_user_file,
     vhost_cfg_append            => $vhost_cfg_append,
+    vhost_cfg_ssl_prepend       => $vhost_cfg_ssl_prepend,
   }
 
   if $block_all_robots {
