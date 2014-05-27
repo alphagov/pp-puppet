@@ -8,7 +8,7 @@ class performanceplatform::python_lxml_deps() {
     ensure  => installed,
   }
 
-  package { 'libxstlt1-dev':
+  package { 'libxslt1-dev':
     ensure  => installed,
   }
 }
