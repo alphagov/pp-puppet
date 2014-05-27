@@ -8,6 +8,7 @@ classes:
   - 'performanceplatform::backdrop_smoke_tests'
   - 'performanceplatform::nginx_logging_formats'
   - 'performanceplatform::pip'
+  - 'performanceplatform::python_lxml_deps'
   - 'python'
   - 'postgresql::lib::devel'
 
