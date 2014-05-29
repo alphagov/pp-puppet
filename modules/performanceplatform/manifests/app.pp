@@ -23,7 +23,7 @@ define performanceplatform::app (
   $log_path = "/var/log/${title}"
 
   file { [$app_path, "${app_path}/releases", "${app_path}/shared",
-          "${app_path}/shared/log", $config_path, $log_path]:
+          "${app_path}/shared/log", "${app_path}/shared/assets", $config_path, $log_path]:
     ensure  => directory,
     owner   => $user,
     group   => $group,
