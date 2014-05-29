@@ -53,12 +53,7 @@ accounts:
     groups:
       - gds
   paulfurley:
-    comment: Paul Furley
-    ssh_keys:
-      paulfurley-xps-2013-12-18:
-        key: AAAAB3NzaC1yc2EAAAADAQABAAABAQDkkeXf3rKCbkXVOwjiRYp7RpGVhUK1EJzmtC/8K4Wz5e4dzUmIKsNv6SGanDeeGY0xgoVhbMg236qAn8bLdXYTZ3YL1AFpbKh2w5Nz3I5++UlEGJhoisV/WIFjad6EpVUwHKZaa4r+hupBIhAwXOyXconmFs1FJfbFcLPK9qIDhU4x2CQbbP1dRsivBBtjB996hxkfxGhF9vAFFfqdRAs++53byMZPBztIppYoOnZZNkvtqQpJdyhrITPkSsy5bM3zJh6/XDpHMigADzJTHmtjoW18filzvwa/2JORAipRxaNETb+dbG0PII8cFU9vtZX9sljD4I6z93kbUsjVCqsp
-    groups:
-      - gds
+    ensure: absent
   pauloschneider:
     ensure: absent
   robyoung:
