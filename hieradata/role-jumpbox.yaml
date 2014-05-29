@@ -4,6 +4,7 @@ classes:
     - 'performanceplatform::kibana'
     - 'performanceplatform::nodejs'
     - 'performanceplatform::nginx_logging_formats'
+    - 'performanceplatform::pypi'
     - 'python'
     - 'nginx'
     - 'google_credentials'
