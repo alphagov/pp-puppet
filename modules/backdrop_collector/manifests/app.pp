@@ -5,10 +5,10 @@ define backdrop_collector::app ($user, $group, $ensure) {
     $config_path = "/etc/gds/${title}"
 
     if $ensure == 'present' {
-      $ensure_directory = 'directory' 
+        $ensure_directory = 'directory'
     }
     else {
-      $ensure_directory = 'absent' 
+        $ensure_directory = 'absent'
     }
 
     file { [$log_path, $config_path, $app_path, "${app_path}/releases", "${app_path}/shared", "${app_path}/shared/log"]:
@@ -28,7 +28,7 @@ define backdrop_collector::app ($user, $group, $ensure) {
     }
 
     lumberjack::logshipper { "collector-logs-for-${title}":
+        ensure    => $ensure,
         log_files => [ "${app_path}/current/log/collector.log.json" ],
-        ensure => $ensure
     }
 }
