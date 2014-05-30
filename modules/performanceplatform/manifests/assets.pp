@@ -26,7 +26,7 @@ class performanceplatform::assets (
       '^/spotlight(.*)$ $1 break'
     ],
     vhost                => $::assets_internal_vhost,
-    www_root             => '/opt/spotlight/current/public',
+    www_root             => '/opt/spotlight/shared/assets',
     location_cfg_prepend => {
       'expires' => '30d',
     },
