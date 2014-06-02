@@ -223,7 +223,9 @@ google_credentials::refresh_tokens:
     refresh_token: "drive refresh token"
 
 system_packages:
+  - aptitude
   - at
+  - bash-completion
   - git
   - htop
   - libcurl4-gnutls-dev
