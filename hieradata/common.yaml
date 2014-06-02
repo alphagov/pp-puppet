@@ -225,6 +225,7 @@ google_credentials::refresh_tokens:
 system_packages:
   - aptitude
   - at
+  - bash-completion
   - git
   - htop
   - libcurl4-gnutls-dev
