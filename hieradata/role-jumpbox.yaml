@@ -106,3 +106,8 @@ vhost_proxies:
 lumberjack_instances:
     nginx:
         log_files: [ '/var/log/nginx/*.access.log.json' ]
+
+performanceplatform::pypi::test_username: pp-developers
+performanceplatform::pypi::test_password: "test password"
+performanceplatform::pypi::live_username: pp-developers
+performanceplatform::pypi::live_password: "live password"
