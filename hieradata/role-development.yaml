@@ -8,6 +8,8 @@ classes:
   - 'performanceplatform::nginx_logging_formats'
   - 'performanceplatform::nodejs'
   - 'performanceplatform::postgresql_primary'
+  - 'performanceplatform::pip'
+  - 'performanceplatform::python_lxml_deps'
   - 'postgresql::lib::devel'
   - 'phantomjs'
   - 'python'
@@ -35,6 +37,10 @@ python::version:    '2.7'
 python::dev:        true
 python::virtualenv: true
 python::pip:        true
+
+performanceplatform::pip::user: 'deploy'
+performanceplatform::pip::group: 'deploy'
+performanceplatform::pip::pip_cache_path: '/var/cache/pip-download-cache'
 
 ufw_rules:
   allow-http-from-anywhere:
