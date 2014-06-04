@@ -1,0 +1,14 @@
+[distutils] # this tells distutils what package indexes you can push to
+index-servers =
+    pypi # the live PyPI
+    pypitest # test PyPI
+
+[pypi] # authentication details for live PyPI
+repository: https://pypi.python.org/pypi
+username: <%= @live_username %>
+password: <%= @live_password %>
+
+[pypitest] # authentication details for test PyPI
+repository: https://testpypi.python.org/pypi
+username: <%= @test_username %>
+password: <%= @test_password %>
