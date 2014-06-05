@@ -78,9 +78,6 @@ status "Checking prerequisite software"
 check_installed git
 check_installed vagrant
 
-status "Fetching pp-development repository"
-fetch_repo pp-development $GITHUB_ENT
-
 status "Reading list of public repositories from GH_REPOS and fetching from GitHub"
 while read repo; do
   fetch_repo "$repo" "$GITHUB_PUBLIC"
