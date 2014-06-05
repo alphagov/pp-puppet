@@ -14,5 +14,4 @@ class performanceplatform::pypi (
       content => template('performanceplatform/pp-dev-pypirc.erb'),
       require => Class['performanceplatform::jenkins']
     }
-
 }
