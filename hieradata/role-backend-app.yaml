@@ -54,19 +54,19 @@ backdrop_collectors:
   backdrop-ga-collector:
     user: 'deploy'
     group: 'deploy'
-    ensure: 'absent'
+    ensure: 'present'
   backdrop-ga-realtime-collector:
     user: 'deploy'
     group: 'deploy'
-    ensure: 'absent'
+    ensure: 'present'
   backdrop-ga-trending-collector:
     user: 'deploy'
     group: 'deploy'
-    ensure: 'absent'
+    ensure: 'present'
   backdrop-pingdom-collector:
     user: 'deploy'
     group: 'deploy'
-    ensure: 'absent'
+    ensure: 'present'
   performanceplatform-collector:
     user: 'deploy'
     group: 'deploy'
