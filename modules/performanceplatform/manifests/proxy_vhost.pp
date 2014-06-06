@@ -131,10 +131,12 @@ define performanceplatform::proxy_vhost(
     $forwarded_proto = [
       'X-Forwarded-Proto  $scheme',
     ]
-    # nginx module does not add client_max_body_size to the ssl vhost
-    # workaround until pull request on module is accepted.
     $vhost_cfg_ssl_prepend = {
-      'client_max_body_size' => $client_max_body_size
+      # nginx module does not add client_max_body_size to the ssl vhost
+      # workaround until pull request on module is accepted.
+      'client_max_body_size' => $client_max_body_size,
+      # Set an HSTS header to enforce SSL for 1 month
+      'add_header' => 'Strict-Transport-Security "max-age=2628000"',
     }
   } else {
     $forwarded_proto = []
