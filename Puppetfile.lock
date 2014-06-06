@@ -127,8 +127,8 @@ GIT
 
 GIT
   remote: git://github.com/alphagov/puppet-lumberjack.git
-  ref: 963590c087433819e396db96eafab7f8eb2f101f
-  sha: 963590c087433819e396db96eafab7f8eb2f101f
+  ref: 705f141ebbf11be8fb2ddd3dc4f03c8d0e86d3cd
+  sha: 705f141ebbf11be8fb2ddd3dc4f03c8d0e86d3cd
   specs:
     lumberjack (0.0.1)
 

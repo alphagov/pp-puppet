@@ -1,9 +1,5 @@
 backdrop
-backdrop-collector
 backdrop-collector-plugins
-backdrop-ga-collector
-backdrop-ga-realtime-collector
-backdrop-pingdom-collector
 backdrop-send
 performanceplatform-collector
 performanceplatform-collector-config
