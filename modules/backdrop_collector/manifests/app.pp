@@ -16,6 +16,7 @@ define backdrop_collector::app ($user, $group, $ensure) {
         owner   => $user,
         group   => $group,
         recurse => true,
+        force   => true,
     }
 
     python::virtualenv { $virtualenv_path:
