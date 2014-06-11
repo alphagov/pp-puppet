@@ -10,6 +10,7 @@ classes:
   - 'redis'
   - 'performanceplatform::checks::servers'
   - 'performanceplatform::checks::smokey_tests'
+  - 'performanceplatform::checks::elasticsearch_log_errors'
 
 nginx::confd_purge: true
 nginx::vhost_purge: true
