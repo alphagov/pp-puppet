@@ -3,7 +3,7 @@
 
 import datetime
 import json
-import requests
+import urllib2
 
 
 JSON_REQUEST = {
@@ -92,14 +92,14 @@ def main():
     es_index = 'logstash-{year:04}.{month:02}.{day:02}'.format(
         year=now.year, month=now.month, day=now.day)
 
-    response = requests.post(
+    request = urllib2.Request(
         'http://{}/{}/_search'.format(es_host, es_index),
         #uncomment to run locally
         #'https://{}/{}/_search'.format(es_host, es_index),
-        headers={'Content-Type': 'application/json'},
-        data=json.dumps(JSON_REQUEST))
-    response.raise_for_status()
-    return get_exit_status(response.content)
+        data=json.dumps(JSON_REQUEST),
+        headers={'Content-Type': 'application/json'})
+    response = urllib2.urlopen(request)
+    return get_exit_status(response.read())
 
 if __name__ == '__main__':
     main()
