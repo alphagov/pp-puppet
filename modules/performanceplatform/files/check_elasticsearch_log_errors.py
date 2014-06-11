@@ -7,71 +7,6 @@ import urllib2
 import sys
 
 
-JSON_REQUEST = {
-  "query": {
-    "filtered": {
-      "query": {
-        "bool": {
-          "should": [
-            {
-              "query_string": {
-                "query": "*"
-              }
-            }
-          ]
-        }
-      },
-      "filter": {
-        "bool": {
-          "must": [
-            {
-              "range": {
-                "@timestamp": {
-                  "from": "now-1h",
-                  "to": "now"
-                }
-              }
-            },
-            {
-              "fquery": {
-                "query": {
-                  "field": {
-                    "@fields.levelname": {
-                      "query": "\"ERROR\""
-                    }
-                  },
-                },
-                "_cache": True
-              }
-            },
-            {
-              "fquery": {
-                "query": {
-                  "field": {
-                    "@tags": {
-                      "query": "\"collector\""
-                    }
-                  }
-                },
-                "_cache": True
-              }
-            },
-          ]
-        }
-      }
-    }
-  },
-  "size": 500,
-  "sort": [
-    {
-      "@timestamp": {
-        "order": "desc"
-      }
-    }
-  ]
-}
-
-
 def get_exit_status(response_json):
     response_data = json.loads(response_json)
     from pprint import pprint
@@ -86,6 +21,9 @@ def get_exit_status(response_json):
 
 
 def main():
+    assert len(sys.argv) == 2, "Usage: {} <query json>"
+    with open(sys.argv[1], 'r') as file:
+        query_json = json.loads(file.read())
     now = datetime.datetime.now().date()
     es_host = 'elasticsearch:9200'
     #uncomment to run locally
@@ -97,7 +35,7 @@ def main():
         'http://{}/{}/_search'.format(es_host, es_index),
         #uncomment to run locally
         #'https://{}/{}/_search'.format(es_host, es_index),
-        data=json.dumps(JSON_REQUEST),
+        data=json.dumps(query_json),
         headers={'Content-Type': 'application/json'})
     response = urllib2.urlopen(request)
     sys.exit(get_exit_status(response.read()))

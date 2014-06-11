@@ -1,0 +1,63 @@
+{
+  "query": {
+    "filtered": {
+      "query": {
+        "bool": {
+          "should": [
+            {
+              "query_string": {
+                "query": "*"
+              }
+            }
+          ]
+        }
+      },
+      "filter": {
+        "bool": {
+          "must": [
+            {
+              "range": {
+                "@timestamp": {
+                  "from": "now-24h",
+                  "to": "now"
+                }
+              }
+            },
+            {
+              "fquery": {
+                "query": {
+                  "field": {
+                    "@fields.levelname": {
+                      "query": "\"ERROR\""
+                    }
+                  }
+                },
+                "_cache": true
+              }
+            },
+            {
+              "fquery": {
+                "query": {
+                  "field": {
+                    "@tags": {
+                      "query": "(\"collector\" AND \"performanceplatform.collector.ga\")"
+                    }
+                  }
+                },
+                "_cache": true 
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "size": 500,
+  "sort": [
+    {
+      "@timestamp": {
+        "order": "desc"
+      }
+    }
+  ]
+}
