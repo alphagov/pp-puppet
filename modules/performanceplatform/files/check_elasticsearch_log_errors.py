@@ -24,11 +24,6 @@ JSON_REQUEST = {
         "bool": {
           "must": [
             {
-              "match_all": {
-
-              }
-            },
-            {
               "range": {
                 "@timestamp": {
                   "from": "now-1h",
@@ -43,38 +38,27 @@ JSON_REQUEST = {
                     "@fields.levelname": {
                       "query": "\"ERROR\""
                     }
-                  }
+                  },
                 },
                 "_cache": True
               }
             },
             {
-              "bool": {
-                "must": [
-                  {
-                    "match_all": {
-
+              "fquery": {
+                "query": {
+                  "field": {
+                    "@tags": {
+                      "query": "\"collector\""
                     }
                   }
-                ]
+                },
+                "_cache": True
               }
-            }
+            },
           ]
         }
       }
     }
-  },
-  "highlight": {
-    "fields": {
-
-    },
-    "fragment_size": 2147483647,
-    "pre_tags": [
-      "@start-highlight@"
-    ],
-    "post_tags": [
-      "@end-highlight@"
-    ]
   },
   "size": 500,
   "sort": [
@@ -103,11 +87,15 @@ def get_exit_status(response_json):
 def main():
     now = datetime.datetime.now().date()
     es_host = 'elasticsearch:9200'
+    #uncomment to run locally
+    #es_host = 'elasticsearch.production.performance.service.gov.uk'
     es_index = 'logstash-{year:04}.{month:02}.{day:02}'.format(
         year=now.year, month=now.month, day=now.day)
 
     response = requests.post(
         'http://{}/{}/_search'.format(es_host, es_index),
+        #uncomment to run locally
+        #'https://{}/{}/_search'.format(es_host, es_index),
         headers={'Content-Type': 'application/json'},
         data=json.dumps(JSON_REQUEST))
     response.raise_for_status()
