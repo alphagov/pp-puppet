@@ -51,22 +51,6 @@ gunicorn_apps:
     timeout:         2
 
 backdrop_collectors:
-  backdrop-ga-collector:
-    user: 'deploy'
-    group: 'deploy'
-    ensure: 'absent'
-  backdrop-ga-realtime-collector:
-    user: 'deploy'
-    group: 'deploy'
-    ensure: 'absent'
-  backdrop-ga-trending-collector:
-    user: 'deploy'
-    group: 'deploy'
-    ensure: 'absent'
-  backdrop-pingdom-collector:
-    user: 'deploy'
-    group: 'deploy'
-    ensure: 'absent'
   performanceplatform-collector:
     user: 'deploy'
     group: 'deploy'
