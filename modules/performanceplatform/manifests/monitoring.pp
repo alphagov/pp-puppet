@@ -20,6 +20,13 @@ class performanceplatform::monitoring (
     postrotate    => '/etc/init.d/apache2 reload > /dev/null',
   }
 
+  file { '/opt/graphite/conf/storage-aggregation.conf':
+    mode    => '0644',
+    source  => 'puppet:///modules/performanceplatform/graphite/storage-aggregation.conf',
+    require => Anchor['graphite::install::end'],
+    notify  => Service['carbon-cache'],
+  }
+
   file { '/etc/nginx/htpasswd':
     ensure    => present,
     content   => "${::basic_auth_username}:${::basic_auth_password_hashed}",
