@@ -4,6 +4,7 @@
 import datetime
 import json
 import urllib2
+import sys
 
 
 JSON_REQUEST = {
@@ -99,7 +100,7 @@ def main():
         data=json.dumps(JSON_REQUEST),
         headers={'Content-Type': 'application/json'})
     response = urllib2.urlopen(request)
-    return get_exit_status(response.read())
+    sys.exit(get_exit_status(response.read()))
 
 if __name__ == '__main__':
     main()
