@@ -87,6 +87,19 @@ JSON_REQUEST = {
 }
 
 
+def get_exit_status(response_json):
+    response_data = json.loads(response_json)
+    from pprint import pprint
+    hits = response_data['hits']['hits']
+    print("{} log matches".format(len(hits)))
+    for i, hit in enumerate(hits):
+        print("--- Log message #{} --- ".format(i + 1))
+        pprint(hit['_source'])
+
+    #we will have alot to begin with
+    return 1 if len(hits) > 0 else 0
+
+
 def main():
     now = datetime.datetime.now().date()
     es_host = 'elasticsearch:9200'
@@ -98,15 +111,49 @@ def main():
         headers={'Content-Type': 'application/json'},
         data=json.dumps(JSON_REQUEST))
     response.raise_for_status()
-    response_data = json.loads(response.content)
-    from pprint import pprint
-    hits = response_data['hits']['hits']
-    print("{} log matches".format(len(hits)))
-    for i, hit in enumerate(hits):
-        print("--- Log message #{} --- ".format(i + 1))
-        pprint(hits[0]['_source'])
-
-    return 2 if len(hits) > 0 else 0
+    return get_exit_status(response.content)
 
 if __name__ == '__main__':
     main()
+
+import unittest
+PASS_JSON = """
+{
+  "took":28,
+  "timed_out":false,
+  "_shards":{
+    "total":5,
+    "successful":5,
+    "failed":0
+  },
+  "hits":{
+    "total":8,
+    "max_score":null,
+    "hits":[]
+  }
+}
+"""
+FAIL_JSON = """
+{
+  "took":28,
+  "timed_out":false,
+  "_shards":{
+    "total":5,
+    "successful":5,
+    "failed":0
+  },
+  "hits":{
+    "total":8,
+    "max_score":null,
+    "hits":[{"_source": "a source"}]
+  }
+}
+"""
+
+
+class ElasticSearchLogErrorsTestCase(unittest.TestCase):
+    def test_correctly_identifies_no_error_response(self):
+        assert 0 == get_exit_status(PASS_JSON)
+
+    def test_correctly_identifies_error_resonse(self):
+        assert 1 == get_exit_status(FAIL_JSON)
