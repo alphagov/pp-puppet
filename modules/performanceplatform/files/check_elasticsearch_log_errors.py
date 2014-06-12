@@ -11,6 +11,10 @@ def get_exit_status(response_json):
     response_data = json.loads(response_json)
     from pprint import pprint
     hits = response_data['hits']['hits']
+    print "==========================================================="
+    print("See https://github.gds/pages/gds/pp-manual/the-infrastructure/"
+          "alerts.html for details")
+    print "=================================================================="
     print("{} log matches".format(len(hits)))
     for i, hit in enumerate(hits):
         print("--- Log message #{} --- ".format(i + 1))

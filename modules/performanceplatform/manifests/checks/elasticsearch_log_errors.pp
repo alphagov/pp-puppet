@@ -28,14 +28,14 @@ class performanceplatform::checks::elasticsearch_log_errors(
       source  => "puppet:///modules/performanceplatform/check_error_logs_all.json"
     }
 
-    sensu::check { 'python_log_errors_in_last_hour':
+    sensu::check { 'collector_errors_in_last_hour':
       interval => 60,
       command  => "${log_errors_checker_script} ${all_errors_json_query}",
       handlers => ['default'],
       require  => [File[$log_errors_checker_script],File[$all_errors_json_query]],
     }
 
-    sensu::check { 'python_log_errors_in_ga':
+    sensu::check { 'ga_collector_errors_in_last_24hrs':
       interval => 3600,
       command  => "${log_errors_checker_script} ${ga_errors_json_query}",
       handlers => ['default'],
