@@ -2,11 +2,8 @@ language: ruby
 rvm:
   - 1.9.3
   - 2.1.1
-before_install:
-  - gem install puppet
-  - gem install librarian-puppet
-  - librarian-puppet install
 script:
+  - ./install_puppet.sh
   - ./run_tests.sh
 notifications:
   email: false
