@@ -109,6 +109,8 @@ system_packages:
   - libjpeg8-dev
   - libpango1.0-dev
   - libgif-dev
+  - libxml2-dev
+  - libxslt-dev
   - nfs-common
   - portmap
 
