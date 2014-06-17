@@ -20,7 +20,7 @@ class spotlight::app (
       'NODE_ENV' => $::pp_environment,
     },
     upstart_desc                => 'Spotlight job',
-    upstart_exec                => 'node app/server.js',
+    upstart_exec                => 'node --trace-gc app/server.js',
     proxy_append_forwarded_host => false,
   }
 
