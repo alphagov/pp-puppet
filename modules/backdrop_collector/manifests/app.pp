@@ -29,7 +29,6 @@ define backdrop_collector::app ($user, $group, $ensure) {
     }
 
     lumberjack::logshipper { "collector-logs-for-${title}":
-        ensure    => $ensure,
         log_files => [ "${app_path}/current/log/collector.log.json" ],
     }
 }
