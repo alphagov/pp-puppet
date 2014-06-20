@@ -37,6 +37,15 @@ collectd::plugin::processes::process_matches:
 
 graphite::gr_apache_port:       9080
 graphite::gr_apache_port_https: 9443
+graphite::gr_storage_schemas:
+  -
+    name: "carbon"
+    pattern: '^carbon\.'
+    retentions: "1m:90d"
+  -
+    name: default
+    retentions: "1s:30m,1m:1d,5m:100d"
+    pattern: ".*"
 
 sensu::dashboard_user:     "%{::basic_auth_username}"
 sensu::dashboard_password: "%{::basic_auth_password}"
