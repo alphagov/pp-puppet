@@ -71,8 +71,8 @@ vhost_proxies:
         ssl_redirect:    true
         upstream_server: 'localhost'
         upstream_port:   8080
-        four_warning:  ':3'
-        four_critical: ':5'
+        four_warning:  '3'
+        four_critical: '5'
     graphite-vhost:
         servername:        "%{::graphite_vhost}"
         ssl:               true
@@ -81,24 +81,24 @@ vhost_proxies:
         upstream_hostname: 'graphite'
         upstream_port:     80
         forward_host_header: false
-        four_warning:  ':3'
-        four_critical: ':5'
+        four_warning:  '3'
+        four_critical: '5'
     alerts-vhost:
         servername:      "%{::alerts_vhost}"
         ssl:             true
         ssl_redirect:    true
         upstream_server: 'alerts'
         upstream_port:   80
-        four_warning:  ':3'
-        four_critical: ':5'
+        four_warning:  '3'
+        four_critical: '5'
     elasticsearch-vhost:
         servername:      "%{::elasticsearch_vhost}"
         ssl:             true
         ssl_redirect:    true
         upstream_server: 'elasticsearch'
         upstream_port:   9200
-        four_warning:  ':3'
-        four_critical: ':5'
+        four_warning:  '3'
+        four_critical: '5'
         denied_http_verbs:
           - PUT
           - DELETE

@@ -6,6 +6,7 @@ define performanceplatform::checks::graphite (
   $handlers = undef,
   $ignore_no_data = false,
   $ignore_http_error = false,
+  $below = false,
 ) {
 
   $check_data_path = '/etc/sensu/community-plugins/plugins/graphite/check-data.rb'
@@ -23,11 +24,16 @@ define performanceplatform::checks::graphite (
     $ignore_http_error_flag = ''
   }
 
+  if $below {
+    $below_flag = '-b'
+  } else {
+    $below_flag = ''
+  }
 
   $max_age = $interval * 2
 
   sensu::check { $name:
-    command  => "${check_data_path} ${server_config} ${ignore_no_data_flag} ${ignore_http_error_flag} --age ${max_age} -t \"${target}\" -w \"${warning}\" -c \"${critical}\" -n \"${name}\"",
+    command  => "${check_data_path} ${server_config} ${ignore_no_data_flag} ${ignore_http_error_flag} --age ${max_age} -t \"${target}\" -w \"${warning}\" -c \"${critical}\" ${below_flag} -n \"${name}\"",
     interval => $interval,
     handlers => $handlers,
     custom   => {
