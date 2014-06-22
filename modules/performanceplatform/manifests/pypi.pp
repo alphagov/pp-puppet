@@ -7,10 +7,10 @@ class performanceplatform::pypi (
     $pypirc_file = "/var/lib/jenkins/.pypirc"
 
     file { $pypirc_file:
-      ensure => present,
-      owner  => 'jenkins',
-      group  => 'jenkins',
-      mode   => '0644',
+      ensure  => present,
+      owner   => 'jenkins',
+      group   => 'jenkins',
+      mode    => '0644',
       content => template('performanceplatform/pp-dev-pypirc.erb'),
       require => Class['performanceplatform::jenkins']
     }
