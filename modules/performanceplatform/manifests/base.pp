@@ -63,8 +63,8 @@ class performanceplatform::base {
     vcsrepo { '/etc/sensu/community-plugins':
         ensure   => present,
         provider => git,
-        source   => 'https://github.com/alphagov/sensu-community-plugins.git',
-        revision => '86baac527cee804e6c0e795edf1d77bd85e5b355',
+        source   => 'https://github.com/sensu/sensu-community-plugins.git',
+        revision => '2595bf6dbab16e00bf273bd536e2ed30ab199ad9',
         require  => Package['git'],
     }
 

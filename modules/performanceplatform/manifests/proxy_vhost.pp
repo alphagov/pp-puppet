@@ -19,10 +19,10 @@ define performanceplatform::proxy_vhost(
   $proxy_set_forwarded_host = false,
   $forward_host_header = true,
   $client_max_body_size = '10m',
-  $five_critical        = '~:0',
-  $five_warning         = '~:0',
-  $four_critical        = '~:0',
-  $four_warning         = '~:0',
+  $five_critical        = '0',
+  $five_warning         = '0',
+  $four_critical        = '0',
+  $four_warning         = '0',
   $sensu_check          = true,
   $pp_only_vhost        = false,
   $denied_http_verbs    = [],
@@ -40,8 +40,6 @@ define performanceplatform::proxy_vhost(
       warning           => $five_warning,
       critical          => $five_critical,
       interval          => 60,
-      ignore_no_data    => true,
-      ignore_http_error => true,
       handlers          => ['default'],
     }
 
@@ -51,8 +49,6 @@ define performanceplatform::proxy_vhost(
       warning           => $four_warning,
       critical          => $four_critical,
       interval          => 60,
-      ignore_no_data    => true,
-      ignore_http_error => true,
       handlers          => ['default'],
     }
   } else {
