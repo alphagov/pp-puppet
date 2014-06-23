@@ -40,8 +40,6 @@ define performanceplatform::proxy_vhost(
       warning           => $five_warning,
       critical          => $five_critical,
       interval          => 60,
-      ignore_no_data    => true,
-      ignore_http_error => true,
       handlers          => ['default'],
     }
 
@@ -51,8 +49,6 @@ define performanceplatform::proxy_vhost(
       warning           => $four_warning,
       critical          => $four_critical,
       interval          => 60,
-      ignore_no_data    => true,
-      ignore_http_error => true,
       handlers          => ['default'],
     }
   } else {
