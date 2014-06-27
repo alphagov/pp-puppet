@@ -58,11 +58,6 @@ accounts:
     ensure: absent
   robyoung:
     comment: Rob Young
-    ssh_keys:
-      robyoung:
-        key: AAAAB3NzaC1yc2EAAAADAQABAAABAQDpQaYaE0FBMDVqBrekM2p6wa4rfl7rNB9KCo0gOaHkRahbVgn1vUHsqjalvZIWzMpn78DbO0FYxx/e7t+qFLh1IVQRGZKvu3eYL1XgKrlUBumBibBwQyJdKGhy/nFAbJUdGvB0DOPm9PMZx/Uo8mpsCDVpb4Fde4ApkdIolmRjAZkyysXtBLTAcRp1MX+FVKRYiUbB1NFgH51tMbGTBE2WdK99aooeIUXzFCbDtuBPXy823TFEsKvfL4xi7EYbNasc4cX8l0JEanbcU++XPgWeprqRhiImqjYnQgAv8fMnJ8EnL0rbPUeytePh1abWuRhpk9Jj9tS8pT7OpG1v9Ekp
-      robyoung-gds-laptop:
-        key: AAAAB3NzaC1yc2EAAAADAQABAAABAQC1Z+3Q2OPpBKHACn+R+JcynvF4lwI8sEP2nJFJP6yduO3fwfzansa+kE0/tV4VEwdwyLJWti0MPAR9ELOFp5QQCfEJao6EL+GwXYgOgiKBI5EicVmmxkjdulZPFep2L1P1S8/4uH3DjIRRCGoyLnyT5NlAKEMlsmj6IL3abLZJ95R/goJRDQxIkbe2YL8Z/DaGRuZGUcysV1tEzR0COhw2F+Trh6Culwd1PL2lc6/39qreSzTUNG00y/r+yB/sMAwWUSN7cfWHXLaWtpfl+bw/nPY58YdI/ocF+WFM16cDgLfhupmfDhVKI3qDho9nDPVbB2HiqA4HvtFdbDUWTLLR
     groups:
       - gds
   roc:
