@@ -58,6 +58,9 @@ accounts:
     ensure: absent
   robyoung:
     comment: Rob Young
+    ssh_keys:
+      home_laptop:
+        key: AAAAB3NzaC1yc2EAAAADAQABAAABAQCiWBF/Ht8QFNBXmztVyDdrtvjEevX7of0ykFkIs9fmhBijTI8cFKbmnANI7imdPUws+tomI6ToQk9N9NKT3eno+dpYaX6+4miaZxKe8O6kxP1iiMJt4mcMU/RJPLoti3/NCIMjNRpVUr3w60S3OVHgJVS6jw8fejtc1BLRctY9WHP94qUYRIPA7x46Oa6GT75fQtM1H9X9ZoVITxtRBtt2YQAnccLvoasy47Sbwu8xOTAM6UVfKM3vz8zm1syzLx/dhI7QAaDwU2mFGSCVRtSoocJc9RajrX4NsCTkC13kRbOR3/VuhGMjIpolL7poaqcPQy+ZCXZqyOk+7lTGhau9
     groups:
       - gds
   roc:
