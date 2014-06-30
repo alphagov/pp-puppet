@@ -5,7 +5,7 @@
 hosts = [
   { name: 'backend-app-1',         ip: '172.27.1.21' },
   { name: 'backend-app-2',         ip: '172.27.1.22' },
-  { name: 'development-1',         ip: '10.0.0.100'  },
+  { name: 'development-1',         ip: '172.27.1.81'  },
   { name: 'frontend-app-1',        ip: '172.27.1.11' },
   { name: 'frontend-app-2',        ip: '172.27.1.12' },
   { name: 'jumpbox-1',             ip: '172.27.1.2' },
@@ -96,6 +96,9 @@ Vagrant.configure("2") do |config|
 
       c.vm.hostname = host[:name]
       c.vm.network :private_network, ip: host[:ip], netmask: '255.255.255.0'
+      if host[:name] == 'development-1'
+        c.vm.network :private_network, ip: '10.0.0.100', netmask: '255.255.255.0'
+      end
 
       c.vm.provider :virtualbox do |vb, override|
         modifyvm_args = ['modifyvm', :id]
