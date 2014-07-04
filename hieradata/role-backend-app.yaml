@@ -4,6 +4,7 @@ classes:
   - 'clamav'
   - 'google_credentials'
   - 'performanceplatform::checks::backdrop'
+  - 'performanceplatform::checks::clamav'
   - 'performanceplatform::checks::stagecraft'
   - 'performanceplatform::backdrop_smoke_tests'
   - 'performanceplatform::nginx_logging_formats'
