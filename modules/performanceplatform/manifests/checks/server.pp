@@ -13,6 +13,14 @@ define performanceplatform::checks::server (
       handlers => ['default'],
     }
 
+    performanceplatform::checks::graphite { "check_disk_io_${name}":
+      target   => "movingMedian(sumSeries(collectd.${graphite_fqdn}.disk-sd?.disk_time.*),30)",
+      warning  => '100',
+      critical => '200',
+      interval => 60,
+      handlers => ['default'],
+    }
+
     performanceplatform::checks::graphite { "check_low_disk_space_${name}":
       target   => "collectd.${graphite_fqdn}.df-root.df_complex-free",
       warning  => '4000000000', # A little less than 4 gig
