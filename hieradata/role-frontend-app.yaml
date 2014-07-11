@@ -3,6 +3,7 @@ classes:
   - 'collectd::plugin::varnish'
   - 'nginx'
   - 'performanceplatform::assets'
+  - 'performanceplatform::checks::admin'
   - 'performanceplatform::nginx_logging_formats'
   - 'performanceplatform::opbeat_proxy'
   - 'performanceplatform::pip'
