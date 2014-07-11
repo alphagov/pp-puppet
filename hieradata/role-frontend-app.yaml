@@ -5,7 +5,10 @@ classes:
   - 'performanceplatform::assets'
   - 'performanceplatform::nginx_logging_formats'
   - 'performanceplatform::opbeat_proxy'
+  - 'performanceplatform::pip'
+  - 'performanceplatform::python_lxml_deps'
   - 'phantomjs'
+  - 'python'
   - 'screenshot_as_a_service::app'
   - 'spotlight::app'
   - 'varnish'
@@ -22,6 +25,23 @@ spotlight::app::port:       3057
 spotlight::app::app_module: 'spotlight:app'
 spotlight::app::user:       'deploy'
 spotlight::app::group:      'deploy'
+
+gunicorn_apps:
+  performanceplatform-admin:
+    port:          3070
+    app_module:    'admin.app:app'
+    user:          'deploy'
+    group:         'deploy'
+    statsd_prefix: 'admin.app'
+
+python::version:    '2.7'
+python::dev:        true
+python::virtualenv: true
+python::pip:        true
+
+performanceplatform::pip::user: 'deploy'
+performanceplatform::pip::group: 'deploy'
+performanceplatform::pip::pip_cache_path: '/var/cache/pip-download-cache'
 
 ufw_rules:
   allow-http-from-anywhere:
@@ -60,6 +80,18 @@ vhost_proxies:
     ssl:           true
     ssl_redirect:  true
     upstream_port: 7999
+    four_warning: 1
+    four_critical: 3
+    five_warning: 0
+    five_critical: 1
+    denied_http_verbs:
+      - PURGE
+
+  admin-beta-vhost:
+    servername:    "%{::admin_beta_vhost}"
+    ssl:           true
+    ssl_redirect:  true
+    upstream_port: 3070
     four_warning: 1
     four_critical: 3
     five_warning: 0

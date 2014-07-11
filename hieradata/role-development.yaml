@@ -97,6 +97,10 @@ vhost_proxies:
     servername:    "%{::admin_vhost}"
     ssl:           true
     upstream_port: 7999
+  admin-beta:
+    servername:    "%{::admin_beta_vhost}"
+    ssl:           true
+    upstream_port: 3070
   # For assets
   assets:
     servername:    "%{::assets_vhost}"

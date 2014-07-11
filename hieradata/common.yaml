@@ -197,6 +197,8 @@ performanceplatform::dns::hosts: |
 performanceplatform::dns::cnames:
   - [ "%{::admin_vhost}", "frontend" ]
   - [ "%{::admin_env_vhost}", "frontend" ]
+  - [ "%{::admin_beta_vhost}", "frontend" ]
+  - [ "%{::admin_beta_env_vhost}", "frontend" ]
   - [ "%{::assets_vhost}", "frontend" ]
   - [ "%{::assets_internal_vhost}", "frontend" ]
   - [ "%{::spotlight_vhost}", "frontend" ]
