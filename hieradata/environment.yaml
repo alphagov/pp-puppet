@@ -2,9 +2,11 @@
 domain_name: development.performance.service.gov.uk
 pp_environment: dev
 
-ssl::params::ssl_path: '/etc/ssl'
-ssl::params::ssl_cert_file: 'certs/ssl-cert-snakeoil.pem'
-ssl::params::ssl_key_file: 'private/ssl-cert-snakeoil.key'
+ssl_path: '/etc/ssl'
+public_ssl_cert: 'certs/ssl-cert-snakeoil.pem'
+public_ssl_key: 'private/ssl-cert-snakeoil.key'
+environment_ssl_cert: 'certs/ssl-cert-snakeoil.pem'
+environment_ssl_key: 'private/ssl-cert-snakeoil.key'
 
 ufw_rules:
   allowsshfromanywhere:
