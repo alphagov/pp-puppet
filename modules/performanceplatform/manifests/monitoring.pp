@@ -186,14 +186,29 @@ class performanceplatform::monitoring (
     }
   }
 
+  $handler_dir = '/etc/sensu/handlers/'
+  $notification_dir = "${handler_dir}notification/"
+
+  file { $notification_dir:
+    ensure => directory
+  }
+
+  $handler_file = "${notification_dir}logstash.rb"
+  file { $handler_file:
+    ensure  => 'present',
+    source  => 'puppet:///modules/performanceplatform/sensu_logstash_handler.rb',
+    require => File[$notification_dir]
+  }
+
   sensu::handler { 'logstash':
-    command   => '/etc/sensu/community-plugins/handlers/notification/logstash.rb',
-    config    => {
+    command => '/etc/sensu/handlers/notification/logstash.rb',
+    config  => {
       type   => 'sensu',
       server => 'redis',
       port   => 6379,
       list   => 'sensu-checks',
-    }
+    },
+    require => File[$handler_file]
   }
 
 }
