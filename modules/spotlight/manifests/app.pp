@@ -16,6 +16,8 @@ class spotlight::app (
     group                       => $group,
     servername                  => $::spotlight_vhost,
     proxy_ssl                   => true,
+    ssl_cert                    => hiera('environment_ssl_cert'),
+    ssl_key                     => hiera('environment_ssl_key'),
     extra_env                   => {
       'NODE_ENV' => $::pp_environment,
     },
