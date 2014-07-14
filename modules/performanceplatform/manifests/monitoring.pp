@@ -197,7 +197,7 @@ class performanceplatform::monitoring (
   file { $handler_file:
     ensure  => 'present',
     source  => 'puppet:///modules/performanceplatform/sensu_logstash_handler.rb',
-    mode    => '0744',
+    mode    => '0755',
     require => File[$notification_dir]
   }
 
