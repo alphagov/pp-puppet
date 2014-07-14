@@ -16,6 +16,8 @@ define performanceplatform::app (
   $proxy_set_forwarded_host = false,
   $client_max_body_size = '10m',
   $statsd_prefix = $title,
+  $ssl_cert      = hiera('public_ssl_cert'),
+  $ssl_key       = hiera('public_ssl_key'),
 ) {
   include nginx
   include upstart
@@ -35,6 +37,8 @@ define performanceplatform::app (
     servername                  => $servername,
     serveraliases               => $serveraliases,
     ssl                         => $proxy_ssl,
+    ssl_cert                    => $ssl_cert,
+    ssl_key                     => $ssl_key,
     proxy_append_forwarded_host => $proxy_append_forwarded_host,
     proxy_set_forwarded_host    => $proxy_set_forwarded_host,
     client_max_body_size        => $client_max_body_size,
