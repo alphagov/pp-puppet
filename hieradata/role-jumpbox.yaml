@@ -69,6 +69,8 @@ vhost_proxies:
         servername:      "%{::deploy_vhost}"
         ssl:             true
         ssl_redirect:    true
+        ssl_cert:        "%{hiera('environment_ssl_cert')}"
+        ssl_key:         "%{hiera('environment_ssl_key')}"
         upstream_server: 'localhost'
         upstream_port:   8080
         four_warning:  '3'
@@ -77,6 +79,8 @@ vhost_proxies:
         servername:        "%{::graphite_vhost}"
         ssl:               true
         ssl_redirect:      true
+        ssl_cert:          "%{hiera('environment_ssl_cert')}"
+        ssl_key:           "%{hiera('environment_ssl_key')}"
         upstream_server:   'graphite'
         upstream_hostname: 'graphite'
         upstream_port:     80
@@ -87,6 +91,8 @@ vhost_proxies:
         servername:      "%{::alerts_vhost}"
         ssl:             true
         ssl_redirect:    true
+        ssl_cert:        "%{hiera('environment_ssl_cert')}"
+        ssl_key:         "%{hiera('environment_ssl_key')}"
         upstream_server: 'alerts'
         upstream_port:   80
         four_warning:  '3'
@@ -95,6 +101,8 @@ vhost_proxies:
         servername:      "%{::elasticsearch_vhost}"
         ssl:             true
         ssl_redirect:    true
+        ssl_cert:        "%{hiera('environment_ssl_cert')}"
+        ssl_key:         "%{hiera('environment_ssl_key')}"
         upstream_server: 'elasticsearch'
         upstream_port:   9200
         four_warning:  '3'
