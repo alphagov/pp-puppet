@@ -117,6 +117,8 @@ vhost_proxies:
     servername:    "%{::stagecraft_vhost}"
     ssl:           true
     ssl_redirect:  true
+    ssl_cert:      "%{hiera('environment_ssl_cert')}"
+    ssl_key:       "%{hiera('environment_ssl_key')}"
     upstream_port: 7999
     four_warning: 1
     four_critical: 3

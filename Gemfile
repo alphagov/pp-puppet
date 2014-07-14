@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'puppet', '3.4.3'
+gem 'hiera', '1.3.4'
 gem 'librarian-puppet', '0.9.14'
 
 group :build do
