@@ -16,6 +16,8 @@ nginx::vhost_purge: true
 
 performanceplatform::jenkins::lts: 1
 performanceplatform::jenkins::plugin_hash:
+    envinject:
+        version: "1.88"
     git-client:
         version: "1.0.6"
     git:
