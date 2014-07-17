@@ -45,4 +45,11 @@ class performanceplatform::checks::smokey_tests (
       require  => File[$smokey_checker_script],
     }
 
+    sensu::check { 'smoke_test_admin_app':
+      interval => 60,
+      command  => "${smokey_checker_script} admin_app",
+      handlers => ['default'],
+      require  => File[$smokey_checker_script],
+    }
+
 }
