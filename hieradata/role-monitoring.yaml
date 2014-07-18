@@ -84,9 +84,6 @@ ufw_rules:
   allowsyslogfromanywhere:
     port: 514
     ip:   'any'
-  allowredisfromjumpbox:
-    port: 6379
-    ip:   '172.27.1.2'
 
 vhost_proxies:
   graphite-vhost:
