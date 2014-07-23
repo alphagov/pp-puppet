@@ -3,6 +3,7 @@ classes:
   - 'backdrop_collector'
   - 'clamav'
   - 'google_credentials'
+  - 'performanceplatform::aws'
   - 'performanceplatform::checks::backdrop'
   - 'performanceplatform::checks::clamav'
   - 'performanceplatform::checks::stagecraft'
@@ -65,6 +66,12 @@ python::pip:        true
 performanceplatform::pip::user: 'deploy'
 performanceplatform::pip::group: 'deploy'
 performanceplatform::pip::pip_cache_path: '/var/cache/pip-download-cache'
+
+performanceplatform::aws::amazon_config_dir: '/home/vagrant/.aws'
+performanceplatform::aws::amazon_config_file: '/home/vagrant/.aws/config'
+performanceplatform::aws::access_key_id: 'key'
+performanceplatform::aws::secret_access_key: 'secret'
+performanceplatform::aws::region: 'eu-west-1'
 
 ruby_packages:
   - curb
