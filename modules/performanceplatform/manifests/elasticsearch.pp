@@ -113,7 +113,7 @@ class performanceplatform::elasticsearch(
   }
 
   if $::hostname == 'logs-elasticsearch-3' {
-    lvm::volume { 'data-elasticsearch':
+    lvm::volume { 'elasticsearch':
       ensure => 'present',
       vg     => 'data',
       pv     => '/dev/sdb1',
