@@ -115,7 +115,7 @@ class performanceplatform::elasticsearch(
   if $::hostname == 'logs-elasticsearch-3' {
     lvm::volume { 'data-elasticsearch':
       ensure => 'present',
-      vg     => 'backup',
+      vg     => 'data',
       pv     => '/dev/sdb1',
       fstype => 'ext4',
       before => Performanceplatform::Mount[$data_dir]
