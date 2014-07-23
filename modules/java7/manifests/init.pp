@@ -10,7 +10,6 @@ class java7 ($download_url) {
   exec { 'download-oracle-java7':
     command => "/usr/bin/curl -o jdk-7u9-linux-x64.tar.gz ${download_url}",
     cwd     => '/var/cache/oracle-jdk7-installer',
-    creates => '/var/cache/oracle-jdk7-installer/jdk-7u9-linux-x64.tar.gz',
     require => [Package['curl'], File[$download_dir]],
     timeout => 3600,
     unless  => '/usr/bin/test "`shasum -a 256 jdk-7u9-linux-x64.tar.gz`" = "1b39fe2a3a45b29ce89e10e59be9fbb671fb86c13402e29593ed83e0b419c8d7  jdk-7u9-linux-x64.tar.gz"',
