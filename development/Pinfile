@@ -4,6 +4,7 @@ process :backdrop_read
 process :backdrop_write
 process :backdrop_admin
 process :stagecraft => [:backdrop_write]
+process :admin => [:stagecraft]
 
 process :data_out => [:screenshot_as_a_service, :spotlight]
 process :backdrop => [:backdrop_read, :backdrop_write, :backdrop_admin, :stagecraft]
