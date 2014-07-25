@@ -232,6 +232,7 @@ system_packages:
   - git
   - htop
   - libcurl4-gnutls-dev
+  - libffi-dev
   - lsof
   - lvm2
   - parted

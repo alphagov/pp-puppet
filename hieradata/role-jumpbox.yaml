@@ -47,7 +47,6 @@ system_packages:
     - cmake
     - libxml2-dev
     - libxslt1-dev
-    - libffi-dev
     - libcairo2-dev
     - libjpeg-dev
     - libgif-dev
