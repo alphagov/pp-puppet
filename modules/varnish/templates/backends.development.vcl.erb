@@ -7,17 +7,11 @@ backend write_backend {
 backend read_backend {
     .host = "backend-app-1";
 }
-backend stagecraft_backend {
-    .host = "backend-app-1";
-}
 director admin_director round-robin {
   { .backend = admin_backend; }
 }
 director frontend_app round-robin {
   { .backend = admin_backend; }
-}
-director stagecraft_director round-robin {
-  { .backend = stagecraft_backend; }
 }
 director read_director round-robin {
   { .backend = read_backend; }
