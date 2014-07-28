@@ -112,14 +112,12 @@ class performanceplatform::elasticsearch(
     create_mode  => '0640',
   }
 
-  if $::hostname == 'logs-elasticsearch-3' {
-    lvm::volume { 'elasticsearch':
-      ensure => 'present',
-      vg     => 'data',
-      pv     => '/dev/sdb1',
-      fstype => 'ext4',
-      before => Performanceplatform::Mount[$data_dir]
-    }
+  lvm::volume { 'elasticsearch':
+    ensure => 'present',
+    vg     => 'data',
+    pv     => '/dev/sdb1',
+    fstype => 'ext4',
+    before => Performanceplatform::Mount[$data_dir]
   }
 
 }
