@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'puppet', '3.4.3'
 gem 'hiera', '1.3.4'
-gem 'librarian-puppet', '0.9.14'
+gem 'librarian-puppet', '1.1.3'
 
 group :build do
     gem 'facter', '1.7.5'
