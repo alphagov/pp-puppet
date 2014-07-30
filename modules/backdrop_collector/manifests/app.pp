@@ -44,7 +44,7 @@ define backdrop_collector::app ($user, $group, $ensure) {
         create_owner => $user,
         create_group => $group,
     }
-    
+
     sensu::check { "lumberjack_is_down_for_collector-logs-for-${title}":
         command  => "/etc/sensu/community-plugins/plugins/processes/check-procs.rb -p 'lumberjack.*collector-logs-for-${title}' -C 1 -W 1",
         interval => 60,

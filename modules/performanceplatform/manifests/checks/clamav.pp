@@ -11,7 +11,7 @@ class performanceplatform::checks::clamav (
     }
 
     sensu::check { 'clamav_is_down':
-      command  => "${check_clamav_running_script}",
+      command  => $check_clamav_running_script,
       interval => 60,
       handlers => ['default']
     }
