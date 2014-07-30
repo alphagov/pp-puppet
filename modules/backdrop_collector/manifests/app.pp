@@ -34,14 +34,20 @@ define backdrop_collector::app ($user, $group, $ensure) {
     }
 
     logrotate::rule { "${title}-collector":
-      path         => "${app_path}/shared/log/*.log",
-      rotate       => 10,
-      rotate_every => 'day',
-      missingok    => true,
-      compress     => true,
-      create       => true,
-      create_mode  => '0640',
-      create_owner => $user,
-      create_group => $group,
+        path         => "${app_path}/shared/log/*.log",
+        rotate       => 10,
+        rotate_every => 'day',
+        missingok    => true,
+        compress     => true,
+        create       => true,
+        create_mode  => '0640',
+        create_owner => $user,
+        create_group => $group,
+    }
+
+    sensu::check { "lumberjack_is_down_for_collector-logs-for-${title}":
+        command  => "/etc/sensu/community-plugins/plugins/processes/check-procs.rb -p 'lumberjack.*collector-logs-for-${title}' -C 1 -W 1",
+        interval => 60,
+        handlers => ['default'],
     }
 }
