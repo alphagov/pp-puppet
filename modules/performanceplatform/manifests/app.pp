@@ -65,8 +65,18 @@ define performanceplatform::app (
   lumberjack::logshipper { "app-logs-for-${title}":
     log_files => [ "/opt/${title}/current/log/*.log.json" ],
   }
+  sensu::check { "lumberjack_is_down_for_app-logs-for-${title}":
+    command  => "/etc/sensu/community-plugins/plugins/processes/check-procs.rb -p 'lumberjack.*app-logs-for-${title}' -C 1 -W 1",
+    interval => 60,
+    handlers => ['default'],
+  }
 
   lumberjack::logshipper { "var-logs-for-${title}":
     log_files => [ "/var/log/${title}/*.log.json"],
+  }
+  sensu::check { "lumberjack_is_down_for_var-logs-for-${title}":
+    command  => "/etc/sensu/community-plugins/plugins/processes/check-procs.rb -p 'lumberjack.*var-logs-for-${title}' -C 1 -W 1",
+    interval => 60,
+    handlers => ['default'],
   }
 }
