@@ -32,4 +32,16 @@ define backdrop_collector::app ($user, $group, $ensure) {
         ensure    => $ensure,
         log_files => [ "${app_path}/current/log/collector.log.json" ],
     }
+
+    logrotate::rule { "${title}-collector":
+      path         => "${app_path}/shared/log/*.log",
+      rotate       => 10,
+      rotate_every => 'day',
+      missingok    => true,
+      compress     => true,
+      create       => true,
+      create_mode  => '0640',
+      create_owner => $user,
+      create_group => $group,
+    }
 }
