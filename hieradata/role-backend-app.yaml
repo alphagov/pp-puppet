@@ -3,6 +3,7 @@ classes:
   - 'backdrop_collector'
   - 'clamav'
   - 'google_credentials'
+  - 'nginx'
   - 'performanceplatform::checks::backdrop'
   - 'performanceplatform::checks::clamav'
   - 'performanceplatform::checks::stagecraft'
@@ -50,6 +51,21 @@ gunicorn_apps:
     group:           'deploy'
     is_django:       true
     timeout:         2
+
+vhost_proxies:
+  stagecraft-public-vhost:
+    servername:    "%{::stagecraft_vhost}"
+    ssl:           true
+    ssl_redirect:  true
+    ssl_cert:      "%{hiera('environment_ssl_cert')}"
+    ssl_key:       "%{hiera('environment_ssl_key')}"
+    upstream_server: localhost
+    upstream_port: 3204
+    four_warning: 1
+    four_critical: 3
+    five_warning: 0
+    five_critical: 1
+    pp_only_vhost: true
 
 backdrop_collectors:
   performanceplatform-collector:

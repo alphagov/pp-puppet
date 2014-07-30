@@ -113,21 +113,6 @@ vhost_proxies:
     denied_http_verbs:
       - PURGE
 
-  stagecraft-vhost:
-    servername:    "%{::stagecraft_vhost}"
-    ssl:           true
-    ssl_redirect:  true
-    ssl_cert:      "%{hiera('environment_ssl_cert')}"
-    ssl_key:       "%{hiera('environment_ssl_key')}"
-    upstream_port: 7999
-    four_warning: 1
-    four_critical: 3
-    five_warning: 0
-    five_critical: 1
-    pp_only_vhost: true
-    denied_http_verbs:
-      - PURGE
-
 performanceplatform::opbeat_proxy::servername: "%{::www_vhost}"
 performanceplatform::opbeat_proxy::organisation_id: 'foo'
 performanceplatform::opbeat_proxy::app_id: 'foo'

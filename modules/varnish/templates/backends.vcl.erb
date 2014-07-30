@@ -23,14 +23,6 @@ backend read_backend_2 {
     .host = "backend-app-2";
     .probe = read_healthcheck;
 }
-backend stagecraft_backend_1 {
-    .host = "backend-app-1";
-    .probe = stagecraft_healthcheck;
-}
-backend stagecraft_backend_2 {
-    .host = "backend-app-2";
-    .probe = stagecraft_healthcheck;
-}
 
 backend frontend_app_1 {
   .host = "frontend-app-1";

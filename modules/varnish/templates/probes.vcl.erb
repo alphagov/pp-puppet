@@ -17,9 +17,3 @@ probe read_healthcheck {
                "User-Agent: Varnish-Healthcheck"
                "Connection: close";
 }
-probe stagecraft_healthcheck {
-    .request = "GET /_status HTTP/1.1"
-               "Host: stagecraft"
-               "User-Agent: Varnish-Healthcheck"
-               "Connection: close";
-}
