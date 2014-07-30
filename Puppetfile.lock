@@ -1,241 +1,240 @@
 FORGE
-  remote: http://forge.puppetlabs.com
+  remote: https://forgeapi.puppetlabs.com
   specs:
-    attachmentgenie/ssh (1.2.2)
-      puppetlabs/stdlib (>= 2.2.1)
-    attachmentgenie/ufw (1.2.0)
-      puppetlabs/stdlib (>= 2.2.1)
-    dwerder/graphite (3.0.1)
-      puppetlabs/stdlib (>= 2.2.1)
-    example42/monitor (2.0.1)
-      example42/puppi (>= 2.0.0)
-    example42/puppi (2.1.9)
-    garethr/erlang (0.2.0)
-      puppetlabs/apt (>= 0.0.0)
-      puppetlabs/stdlib (>= 0.0.0)
-      stahnma/epel (>= 0.0.0)
-    gdsoperations/openconnect (1.0.0)
-      puppetlabs/stdlib (>= 3.0.0)
-    jfryman/nginx (0.0.9)
-      puppetlabs/apt (>= 1.0.0)
-      puppetlabs/concat (>= 1.0.0)
-      puppetlabs/stdlib (>= 0.1.6)
-    maestrodev/wget (1.4.1)
-    netmanagers/fail2ban (1.1.0)
-      example42/monitor (>= 2.0.0)
-      example42/puppi (>= 2.0.0)
-      ripienaar/concat (>= 0.2.0)
-    puppetlabs/apt (1.4.0)
-      puppetlabs/stdlib (>= 2.2.1)
-    puppetlabs/concat (1.1.0-rc1)
-      puppetlabs/stdlib (>= 3.0.0)
-    puppetlabs/firewall (1.0.2)
-    puppetlabs/gcc (0.0.3)
-    puppetlabs/nodejs (0.4.0)
-      puppetlabs/apt (>= 0.0.3)
-      puppetlabs/stdlib (>= 2.0.0)
-    puppetlabs/postgresql (3.3.0)
-      puppetlabs/apt (< 2.0.0, >= 1.1.0)
-      puppetlabs/concat (< 2.0.0, >= 1.0.0)
-      puppetlabs/firewall (>= 0.0.4)
-      puppetlabs/stdlib (< 5.0.0, >= 3.2.0)
-    puppetlabs/rabbitmq (3.0.0)
-      garethr/erlang (>= 0.1.0)
-      puppetlabs/apt (>= 1.0.0)
-      puppetlabs/stdlib (>= 2.0.0)
-    puppetlabs/stdlib (4.1.0)
-    puppetlabs/vcsrepo (0.1.2)
-    ripienaar/concat (0.2.0)
-    rodjek/logrotate (1.1.1)
-    saz/dnsmasq (1.0.1)
-    saz/ntp (2.2.0)
-    saz/rsyslog (2.0.0)
-    sensu/sensu (0.7.7)
-      puppetlabs/apt (>= 0.0.1)
-      puppetlabs/stdlib (>= 0.0.1)
-    stahnma/epel (0.0.6)
-    stankevich/python (1.7.2)
+    attachmentgenie-ssh (1.2.2)
+      puppetlabs-stdlib (>= 2.2.1)
+    attachmentgenie-ufw (1.2.0)
+      puppetlabs-stdlib (>= 2.2.1)
+    dwerder-graphite (3.0.1)
+      puppetlabs-stdlib (>= 2.2.1)
+    example42-monitor (2.0.1)
+      example42-puppi (>= 2.0.0)
+    example42-puppi (2.1.9)
+    garethr-erlang (0.2.0)
+      puppetlabs-apt (>= 0.0.0)
+      puppetlabs-stdlib (>= 0.0.0)
+      stahnma-epel (>= 0.0.0)
+    gdsoperations-openconnect (1.0.0)
+      puppetlabs-stdlib (>= 3.0.0)
+    jfryman-nginx (0.0.9)
+      puppetlabs-apt (>= 1.0.0)
+      puppetlabs-concat (>= 1.0.0)
+      puppetlabs-stdlib (>= 0.1.6)
+    maestrodev-wget (1.4.5)
+    netmanagers-fail2ban (1.1.0)
+      example42-monitor (>= 2.0.0)
+      example42-puppi (>= 2.0.0)
+      ripienaar-concat (>= 0.2.0)
+    puppetlabs-apt (1.4.0)
+      puppetlabs-stdlib (>= 2.2.1)
+    puppetlabs-concat (1.1.0-rc1)
+      puppetlabs-stdlib (>= 3.0.0)
+    puppetlabs-firewall (1.0.2)
+    puppetlabs-gcc (0.0.3)
+    puppetlabs-nodejs (0.4.0)
+      puppetlabs-apt (>= 0.0.3)
+      puppetlabs-stdlib (>= 2.0.0)
+    puppetlabs-postgresql (3.3.0)
+      puppetlabs-apt (< 2.0.0, >= 1.1.0)
+      puppetlabs-concat (< 2.0.0, >= 1.0.0)
+      puppetlabs-firewall (>= 0.0.4)
+      puppetlabs-stdlib (< 5.0.0, >= 3.2.0)
+    puppetlabs-rabbitmq (3.0.0)
+      garethr-erlang (>= 0.1.0)
+      puppetlabs-apt (>= 1.0.0)
+      puppetlabs-stdlib (>= 2.0.0)
+    puppetlabs-stdlib (4.1.0)
+    puppetlabs-vcsrepo (0.1.2)
+    ripienaar-concat (0.2.0)
+    rodjek-logrotate (1.1.1)
+    saz-dnsmasq (1.0.1)
+    saz-ntp (2.2.0)
+    saz-rsyslog (2.0.0)
+    sensu-sensu (0.7.7)
+      puppetlabs-apt (>= 0.0.1)
+      puppetlabs-stdlib (>= 0.0.1)
+    stahnma-epel (0.0.6)
 
 GIT
   remote: git://github.com/alphagov/puppet-clamav.git
   ref: 31af4f0c2753dd25bca3dd0c7cc69d273c4d640d
   sha: 31af4f0c2753dd25bca3dd0c7cc69d273c4d640d
   specs:
-    clamav (0.0.1)
-      puppetlabs/stdlib (>= 3.0.0)
+    alphagov-clamav (0.0.1)
+      puppetlabs-stdlib (>= 3.0.0)
 
 GIT
   remote: git://github.com/alphagov/puppet-collectd.git
   ref: improve_collectd_varnish
   sha: 8edc3aaee2793416ddd3dbc2f75df816391dbdfd
   specs:
-    collectd (1.1.0)
-      puppetlabs/stdlib (>= 3.0.0)
+    alphagov-collectd (1.1.0)
+      puppetlabs-stdlib (>= 3.0.0)
 
 GIT
   remote: git://github.com/alphagov/puppet-curl.git
   ref: f4c6d175bdc6cbd71f71fbaa2544ef8f70c4ce48
   sha: f4c6d175bdc6cbd71f71fbaa2544ef8f70c4ce48
   specs:
-    curl (0.0.1)
+    alphagov-curl (0.0.1)
 
 GIT
   remote: git://github.com/alphagov/puppet-ext4mount.git
   ref: d97f99cc2801b83152b905d1285fa34e689cb499
   sha: d97f99cc2801b83152b905d1285fa34e689cb499
   specs:
-    ext4mount (0.0.1)
+    alphagov-ext4mount (0.0.1)
 
 GIT
   remote: git://github.com/alphagov/puppet-google_credentials.git
   ref: a64f9e5c051a0d38e59441457b52a7afeeebed24
   sha: a64f9e5c051a0d38e59441457b52a7afeeebed24
   specs:
-    google_credentials (0.0.1)
+    alphagov-google_credentials (0.0.1)
 
 GIT
   remote: git://github.com/alphagov/puppet-gstatsd.git
   ref: 668e8a061ca477106ce4b0ac44f26aa87badfd8b
   sha: 668e8a061ca477106ce4b0ac44f26aa87badfd8b
   specs:
-    gstatsd (0.1.0)
-      stankevich/python (>= 1.0.0)
+    alphagov-gstatsd (0.1.0)
+      stankevich-python (>= 1.0.0)
 
 GIT
   remote: git://github.com/alphagov/puppet-harden.git
   ref: 0966c98cc3f54815c9aac0ebe6e900b70f85182d
   sha: 0966c98cc3f54815c9aac0ebe6e900b70f85182d
   specs:
-    harden (0.0.1)
+    alphagov-harden (0.0.1)
 
 GIT
   remote: git://github.com/alphagov/puppet-jenkins.git
   ref: 4c7990fa8495b6d84292c2153993ac91c3b2916d
   sha: 4c7990fa8495b6d84292c2153993ac91c3b2916d
   specs:
-    jenkins (0.2.4)
-      puppetlabs/apt (>= 0.0.3)
-      puppetlabs/stdlib (>= 2.0.0)
+    alphagov-jenkins (0.2.4)
+      puppetlabs-apt (>= 0.0.3)
+      puppetlabs-stdlib (>= 2.0.0)
 
 GIT
   remote: git://github.com/alphagov/puppet-logstash.git
   ref: gen-files-should-notify
   sha: c7d0080f49a9ed80fa09126cf30359b3deb94343
   specs:
-    logstash (0.3.3)
-      puppetlabs/stdlib (>= 3.0.0)
+    alphagov-logstash (0.3.3)
+      puppetlabs-stdlib (>= 3.0.0)
 
 GIT
   remote: git://github.com/alphagov/puppet-lumberjack.git
   ref: 57542743ffdbe940cf43909f29ac4a31561eef23
   sha: 57542743ffdbe940cf43909f29ac4a31561eef23
   specs:
-    lumberjack (0.0.1)
+    alphagov-lumberjack (0.0.1)
 
 GIT
   remote: git://github.com/alphagov/puppet-redis.git
   ref: a2c4821e94bed725f69e40532fec41c6efa585fe
   sha: a2c4821e94bed725f69e40532fec41c6efa585fe
   specs:
-    redis (0.0.9)
-      maestrodev/wget (>= 0)
-      puppetlabs/gcc (>= 0)
+    alphagov-redis (0.0.9)
+      maestrodev-wget (>= 0)
+      puppetlabs-gcc (>= 0)
 
 GIT
   remote: git://github.com/alphagov/puppetlabs-mongodb.git
   ref: dc077a209efdf8d80fac40d40fec575b6a0949d2
   sha: dc077a209efdf8d80fac40d40fec575b6a0949d2
   specs:
-    mongodb (0.1.0)
-      puppetlabs/apt (>= 0.0.2)
+    alphagov-mongodb (0.1.0)
+      puppetlabs-apt (>= 0.0.2)
 
 GIT
   remote: git://github.com/bison/puppet-upstart.git
   ref: 05a10a3a58de3543eb51bb782a249cebf71f5cd8
   sha: 05a10a3a58de3543eb51bb782a249cebf71f5cd8
   specs:
-    upstart (0.0.1)
-      puppetlabs/stdlib (>= 0.1.6)
+    bison-upstart (0.0.1)
+      puppetlabs-stdlib (>= 0.1.6)
 
 GIT
   remote: git://github.com/endore-me/puppet-tmux.git
   ref: 32db4ac6ad65a934c5eddd9afcf0c4f61f7c0924
   sha: 32db4ac6ad65a934c5eddd9afcf0c4f61f7c0924
   specs:
-    tmux (0.0.1)
+    endore-me-tmux (0.0.1)
 
 GIT
   remote: git://github.com/gds-operations/puppet-elasticsearch.git
   ref: d15521e6cb215a809d92692e76a1d0cac111d9a0
   sha: d15521e6cb215a809d92692e76a1d0cac111d9a0
   specs:
-    elasticsearch (0.0.1)
-      puppetlabs/stdlib (>= 3.0.0)
+    gds-elasticsearch (0.0.1)
+      puppetlabs-stdlib (>= 3.0.0)
 
 GIT
   remote: git://github.com/puppetlabs/puppetlabs-lvm.git
   ref: ba8efdd243cafa96b45d8d58dbef1d5ba74714ea
   sha: ba8efdd243cafa96b45d8d58dbef1d5ba74714ea
   specs:
-    lvm (0.1.2)
+    puppetlabs-lvm (0.1.2)
 
 GIT
   remote: git://github.com/stankevich/puppet-python.git
   ref: f508b71d534f3c67db12886fa914cb4ef74bbe7a
   sha: f508b71d534f3c67db12886fa914cb4ef74bbe7a
   specs:
-    python (1.1.4)
+    stankevich-python (1.1.4)
 
 GIT
   remote: https://github.com/alphagov/puppet-account.git
   ref: feature/multiple-ssh-keys
   sha: a49c746aeac935a5abe6f2dae33d3be30292912a
   specs:
-    account (0.0.5)
+    alphagov-account (0.0.5)
 
 GIT
   remote: https://github.com/gini/puppet-archive.git
   ref: 50d3370006f955ee9d5187623cc660670d01c58d
   sha: 50d3370006f955ee9d5187623cc660670d01c58d
   specs:
-    archive (0.1.1)
+    gini-archive (0.1.1)
 
 DEPENDENCIES
-  account (>= 0)
-  archive (>= 0)
-  attachmentgenie/ssh (= 1.2.2)
-  attachmentgenie/ufw (= 1.2.0)
-  clamav (>= 0)
-  collectd (>= 0)
-  curl (>= 0)
-  dwerder/graphite (= 3.0.1)
-  elasticsearch (>= 0)
-  ext4mount (>= 0)
-  gdsoperations/openconnect (>= 0)
-  google_credentials (>= 0)
-  gstatsd (>= 0)
-  harden (>= 0)
-  jenkins (>= 0)
-  jfryman/nginx (= 0.0.9)
-  logstash (>= 0)
-  lumberjack (>= 0)
-  lvm (>= 0)
-  mongodb (>= 0)
-  netmanagers/fail2ban (= 1.1.0)
-  puppetlabs/apt (= 1.4.0)
-  puppetlabs/gcc (= 0.0.3)
-  puppetlabs/nodejs (= 0.4.0)
-  puppetlabs/postgresql (= 3.3.0)
-  puppetlabs/rabbitmq (= 3.0.0)
-  puppetlabs/stdlib (= 4.1.0)
-  puppetlabs/vcsrepo (= 0.1.2)
-  python (>= 0)
-  redis (>= 0)
-  rodjek/logrotate (= 1.1.1)
-  saz/dnsmasq (= 1.0.1)
-  saz/ntp (= 2.2.0)
-  saz/rsyslog (= 2.0.0)
-  sensu/sensu (= 0.7.7)
-  tmux (>= 0)
-  upstart (>= 0)
+  alphagov-account (>= 0)
+  alphagov-clamav (>= 0)
+  alphagov-collectd (>= 0)
+  alphagov-curl (>= 0)
+  alphagov-ext4mount (>= 0)
+  alphagov-google_credentials (>= 0)
+  alphagov-gstatsd (>= 0)
+  alphagov-harden (>= 0)
+  alphagov-jenkins (>= 0)
+  alphagov-logstash (>= 0)
+  alphagov-lumberjack (>= 0)
+  alphagov-mongodb (>= 0)
+  alphagov-redis (>= 0)
+  attachmentgenie-ssh (= 1.2.2)
+  attachmentgenie-ufw (= 1.2.0)
+  bison-upstart (>= 0)
+  dwerder-graphite (= 3.0.1)
+  endore-me-tmux (>= 0)
+  gds-elasticsearch (>= 0)
+  gdsoperations-openconnect (>= 0)
+  gini-archive (>= 0)
+  jfryman-nginx (= 0.0.9)
+  netmanagers-fail2ban (= 1.1.0)
+  puppetlabs-apt (= 1.4.0)
+  puppetlabs-gcc (= 0.0.3)
+  puppetlabs-lvm (>= 0)
+  puppetlabs-nodejs (= 0.4.0)
+  puppetlabs-postgresql (= 3.3.0)
+  puppetlabs-rabbitmq (= 3.0.0)
+  puppetlabs-stdlib (= 4.1.0)
+  puppetlabs-vcsrepo (= 0.1.2)
+  rodjek-logrotate (= 1.1.1)
+  saz-dnsmasq (= 1.0.1)
+  saz-ntp (= 2.2.0)
+  saz-rsyslog (= 2.0.0)
+  sensu-sensu (= 0.7.7)
+  stankevich-python (>= 0)
 

@@ -1,4 +1,4 @@
-forge "http://forge.puppetlabs.com"
+forge "https://forgeapi.puppetlabs.com"
 
 mod 'attachmentgenie/ssh',        '1.2.2'
 mod 'attachmentgenie/ufw',        '1.2.0'
@@ -18,41 +18,41 @@ mod 'saz/ntp',                    '2.2.0'
 mod 'saz/rsyslog',                '2.0.0'
 mod 'sensu/sensu',                '0.7.7'
 mod 'netmanagers/fail2ban',       '1.1.0'
-mod 'account',       :git => 'https://github.com/alphagov/puppet-account.git',
-                     :ref => 'feature/multiple-ssh-keys'
-mod 'archive',       :git => 'https://github.com/gini/puppet-archive.git',
-                     :ref => '50d3370006f955ee9d5187623cc660670d01c58d'
-mod 'clamav',        :git => 'git://github.com/alphagov/puppet-clamav.git',
-                     :ref => '31af4f0c2753dd25bca3dd0c7cc69d273c4d640d'
-mod 'collectd',      :git => 'git://github.com/alphagov/puppet-collectd.git',
-                     :ref => 'improve_collectd_varnish'
-mod 'curl',          :git => 'git://github.com/alphagov/puppet-curl.git',
-                     :ref => 'f4c6d175bdc6cbd71f71fbaa2544ef8f70c4ce48'
-mod 'elasticsearch', :git => 'git://github.com/gds-operations/puppet-elasticsearch.git',
-                     :ref => 'd15521e6cb215a809d92692e76a1d0cac111d9a0'
-mod 'ext4mount',     :git => 'git://github.com/alphagov/puppet-ext4mount.git',
-                     :ref => 'd97f99cc2801b83152b905d1285fa34e689cb499'
-mod 'gstatsd',       :git => 'git://github.com/alphagov/puppet-gstatsd.git',
-                     :ref => '668e8a061ca477106ce4b0ac44f26aa87badfd8b'
-mod 'harden',        :git => 'git://github.com/alphagov/puppet-harden.git',
-                     :ref => '0966c98cc3f54815c9aac0ebe6e900b70f85182d'
-mod 'jenkins',       :git => 'git://github.com/alphagov/puppet-jenkins.git',
-                     :ref => '4c7990fa8495b6d84292c2153993ac91c3b2916d'
-mod 'logstash',      :git => 'git://github.com/alphagov/puppet-logstash.git',
-                     :ref => 'gen-files-should-notify'
-mod 'lumberjack',    :git => 'git://github.com/alphagov/puppet-lumberjack.git',
-                     :ref => '57542743ffdbe940cf43909f29ac4a31561eef23'
-mod 'lvm',           :git => 'git://github.com/puppetlabs/puppetlabs-lvm.git',
-                     :ref => 'ba8efdd243cafa96b45d8d58dbef1d5ba74714ea'
-mod 'mongodb',       :git => 'git://github.com/alphagov/puppetlabs-mongodb.git',
-                     :ref => 'dc077a209efdf8d80fac40d40fec575b6a0949d2'
-mod 'python',        :git => 'git://github.com/stankevich/puppet-python.git',
-                     :ref => 'f508b71d534f3c67db12886fa914cb4ef74bbe7a'
-mod 'redis',         :git => 'git://github.com/alphagov/puppet-redis.git',
-                     :ref => 'a2c4821e94bed725f69e40532fec41c6efa585fe'
-mod 'upstart',       :git => 'git://github.com/bison/puppet-upstart.git',
-                     :ref => '05a10a3a58de3543eb51bb782a249cebf71f5cd8'
-mod 'tmux',          :git => 'git://github.com/endore-me/puppet-tmux.git',
-                     :ref => '32db4ac6ad65a934c5eddd9afcf0c4f61f7c0924'
-mod 'google_credentials', :git => 'git://github.com/alphagov/puppet-google_credentials.git',
-                          :ref => 'a64f9e5c051a0d38e59441457b52a7afeeebed24'
+mod 'alphagov/account',             :git => 'https://github.com/alphagov/puppet-account.git',
+                                    :ref => 'feature/multiple-ssh-keys'
+mod 'gini/archive',                 :git => 'https://github.com/gini/puppet-archive.git',
+                                    :ref => '50d3370006f955ee9d5187623cc660670d01c58d'
+mod 'alphagov/clamav',              :git => 'git://github.com/alphagov/puppet-clamav.git',
+                                    :ref => '31af4f0c2753dd25bca3dd0c7cc69d273c4d640d'
+mod 'alphagov/collectd',            :git => 'git://github.com/alphagov/puppet-collectd.git',
+                                    :ref => 'improve_collectd_varnish'
+mod 'alphagov/curl',                :git => 'git://github.com/alphagov/puppet-curl.git',
+                                    :ref => 'f4c6d175bdc6cbd71f71fbaa2544ef8f70c4ce48'
+mod 'gds/elasticsearch',            :git => 'git://github.com/gds-operations/puppet-elasticsearch.git',
+                                    :ref => 'd15521e6cb215a809d92692e76a1d0cac111d9a0'
+mod 'alphagov/ext4mount',           :git => 'git://github.com/alphagov/puppet-ext4mount.git',
+                                    :ref => 'd97f99cc2801b83152b905d1285fa34e689cb499'
+mod 'alphagov/gstatsd',             :git => 'git://github.com/alphagov/puppet-gstatsd.git',
+                                    :ref => '668e8a061ca477106ce4b0ac44f26aa87badfd8b'
+mod 'alphagov/harden',              :git => 'git://github.com/alphagov/puppet-harden.git',
+                                    :ref => '0966c98cc3f54815c9aac0ebe6e900b70f85182d'
+mod 'alphagov/jenkins',             :git => 'git://github.com/alphagov/puppet-jenkins.git',
+                                    :ref => '4c7990fa8495b6d84292c2153993ac91c3b2916d'
+mod 'alphagov/logstash',            :git => 'git://github.com/alphagov/puppet-logstash.git',
+                                    :ref => 'gen-files-should-notify'
+mod 'alphagov/lumberjack',          :git => 'git://github.com/alphagov/puppet-lumberjack.git',
+                                    :ref => '57542743ffdbe940cf43909f29ac4a31561eef23'
+mod 'puppetlabs/lvm',               :git => 'git://github.com/puppetlabs/puppetlabs-lvm.git',
+                                    :ref => 'ba8efdd243cafa96b45d8d58dbef1d5ba74714ea'
+mod 'alphagov/mongodb',             :git => 'git://github.com/alphagov/puppetlabs-mongodb.git',
+                                    :ref => 'dc077a209efdf8d80fac40d40fec575b6a0949d2'
+mod 'stankevich/python',            :git => 'git://github.com/stankevich/puppet-python.git',
+                                    :ref => 'f508b71d534f3c67db12886fa914cb4ef74bbe7a'
+mod 'alphagov/redis',               :git => 'git://github.com/alphagov/puppet-redis.git',
+                                    :ref => 'a2c4821e94bed725f69e40532fec41c6efa585fe'
+mod 'bison/upstart',                :git => 'git://github.com/bison/puppet-upstart.git',
+                                    :ref => '05a10a3a58de3543eb51bb782a249cebf71f5cd8'
+mod 'endore-me/tmux',               :git => 'git://github.com/endore-me/puppet-tmux.git',
+                                    :ref => '32db4ac6ad65a934c5eddd9afcf0c4f61f7c0924'
+mod 'alphagov/google_credentials',  :git => 'git://github.com/alphagov/puppet-google_credentials.git',
+                                    :ref => 'a64f9e5c051a0d38e59441457b52a7afeeebed24'
