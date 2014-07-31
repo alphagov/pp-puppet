@@ -78,7 +78,7 @@ You need only bring up the subset of nodes that you're working on. For
 example, to bring up a frontend and backend:
 
 ```sh
-vagrant up jumpbox-1 frontend-1
+vagrant up jumpbox-1 frontend-app-1
 ```
 
 Vagrant will run Puppet against the node when it boots up.
