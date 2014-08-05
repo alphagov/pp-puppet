@@ -111,6 +111,7 @@ ppas:
 classes:
   - 'apt'
   - 'apt::unattended_upgrades'
+  - 'azul::repo'
   - 'collectd'
   - 'collectd::plugin::load'
   - 'collectd::plugin::processes'
