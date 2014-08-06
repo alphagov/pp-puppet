@@ -3,7 +3,7 @@ classes:
     - 'performanceplatform::deploy'
     - 'performanceplatform::kibana'
     - 'performanceplatform::nodejs'
-    - 'performanceplatform::nginx_logging_formats'
+    - 'performanceplatform::nginx'
     - 'performanceplatform::pypi'
     - 'python'
     - 'nginx'
