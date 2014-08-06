@@ -1,6 +1,4 @@
-class performanceplatform::nginx::logging_formats(
-) {
-
+class performanceplatform::pp_nginx::logging_formats {
   file { '/etc/nginx/conf.d/00-logging.conf':
     ensure  => present,
     source  => 'puppet:///modules/performanceplatform/nginx/logging.conf',

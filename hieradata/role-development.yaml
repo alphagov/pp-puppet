@@ -5,7 +5,7 @@ classes:
   - 'nginx'
   - 'performanceplatform::development'
   - 'performanceplatform::mongo'
-  - 'performanceplatform::nginx'
+  - 'performanceplatform::pp_nginx'
   - 'performanceplatform::nodejs'
   - 'performanceplatform::postgresql_primary'
   - 'performanceplatform::pip'
