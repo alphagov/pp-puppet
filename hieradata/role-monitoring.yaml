@@ -84,12 +84,12 @@ ufw_rules:
   allowsyslogfromanywhere:
     port: 514
     ip:   'any'
-  allowredisfrombackend1:
+  allowredisfromfrontend1:
     port: 6379
-    ip:   '172.27.1.21'
-  allowredisfrombackend2:
+    ip:   '172.27.1.11'
+  allowredisfromfrontend2:
     port: 6379
-    ip:   '172.27.1.22'
+    ip:   '172.27.1.12'
 
 vhost_proxies:
   graphite-vhost:
