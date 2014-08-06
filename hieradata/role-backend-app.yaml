@@ -66,6 +66,10 @@ performanceplatform::pip::user: 'deploy'
 performanceplatform::pip::group: 'deploy'
 performanceplatform::pip::pip_cache_path: '/var/cache/pip-download-cache'
 
+lumberjack_instances:
+  nginx:
+    log_files: [ '/var/log/nginx/*.access.log.json' ]
+
 ruby_packages:
   - curb
   - json
