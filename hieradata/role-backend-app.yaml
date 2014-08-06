@@ -2,12 +2,14 @@
 classes:
   - 'backdrop_collector'
   - 'clamav'
+  - 'collectd::plugin::nginx'
   - 'google_credentials'
   - 'performanceplatform::checks::backdrop'
   - 'performanceplatform::checks::clamav'
   - 'performanceplatform::checks::stagecraft'
   - 'performanceplatform::backdrop_smoke_tests'
   - 'performanceplatform::nginx_logging_formats'
+  - 'performanceplatform::nginx_status'
   - 'performanceplatform::pip'
   - 'performanceplatform::python_lxml_deps'
   - 'python'
@@ -65,6 +67,8 @@ python::pip:        true
 performanceplatform::pip::user: 'deploy'
 performanceplatform::pip::group: 'deploy'
 performanceplatform::pip::pip_cache_path: '/var/cache/pip-download-cache'
+
+collectd::plugin::nginx::url: 'http://localhost:8433'
 
 ruby_packages:
   - curb
