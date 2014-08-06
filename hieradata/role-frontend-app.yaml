@@ -1,12 +1,10 @@
 ---
 classes:
   - 'collectd::plugin::varnish'
-  - 'collectd::plugin::nginx'
   - 'nginx'
   - 'performanceplatform::assets'
   - 'performanceplatform::checks::admin'
-  - 'performanceplatform::nginx_logging_formats'
-  - 'performanceplatform::nginx_status'
+  - 'performanceplatform::nginx'
   - 'performanceplatform::opbeat_proxy'
   - 'performanceplatform::pip'
   - 'performanceplatform::python_lxml_deps'
@@ -134,8 +132,6 @@ performanceplatform::opbeat_proxy::servername: "%{::www_vhost}"
 performanceplatform::opbeat_proxy::organisation_id: 'foo'
 performanceplatform::opbeat_proxy::app_id: 'foo'
 performanceplatform::opbeat_proxy::token: 'foo'
-
-collectd::plugin::nginx::url: 'http://localhost:8433'
 
 lumberjack_instances:
   nginx:

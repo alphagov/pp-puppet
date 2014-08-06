@@ -1,4 +1,4 @@
-class performanceplatform::nginx_logging_formats(
+class performanceplatform::nginx::logging_formats(
 ) {
 
   file { '/etc/nginx/conf.d/00-logging.conf':
