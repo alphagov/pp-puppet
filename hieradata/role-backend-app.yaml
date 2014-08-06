@@ -7,7 +7,7 @@ classes:
   - 'performanceplatform::checks::clamav'
   - 'performanceplatform::checks::stagecraft'
   - 'performanceplatform::backdrop_smoke_tests'
-  - 'performanceplatform::nginx_logging_formats'
+  - 'performanceplatform::nginx'
   - 'performanceplatform::pip'
   - 'performanceplatform::python_lxml_deps'
   - 'python'

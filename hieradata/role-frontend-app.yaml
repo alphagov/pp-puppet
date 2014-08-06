@@ -4,7 +4,7 @@ classes:
   - 'nginx'
   - 'performanceplatform::assets'
   - 'performanceplatform::checks::admin'
-  - 'performanceplatform::nginx_logging_formats'
+  - 'performanceplatform::nginx'
   - 'performanceplatform::opbeat_proxy'
   - 'performanceplatform::pip'
   - 'performanceplatform::python_lxml_deps'
