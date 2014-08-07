@@ -1,4 +1,4 @@
-class performanceplatform::nginx::status {
+class performanceplatform::pp_nginx::status {
   file { '/etc/nginx/conf.d/01-stub-status.conf':
     ensure  => present,
     source  => 'puppet:///modules/performanceplatform/nginx/stub-status.conf',

@@ -5,7 +5,7 @@ classes:
   - 'logstash'
   - 'nginx'
   - 'performanceplatform::monitoring'
-  - 'performanceplatform::nginx'
+  - 'performanceplatform::pp_nginx'
   - 'rabbitmq'
   - 'redis'
   - 'performanceplatform::checks::servers'
