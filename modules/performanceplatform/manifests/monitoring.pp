@@ -140,7 +140,7 @@ class performanceplatform::monitoring (
   logstash::output::statsd { 'statsd':
     type      => 'lumberjack',
     tags      => [ 'nginx' ],
-    count     => { '%{server_name}.http_%{status}' => 1 },
+    count     => { '%{server_name}.http_%{status}.count' => 1 },
     timing    => {
       '%{server_name}.request_time' => '%{request_time}'
     },
