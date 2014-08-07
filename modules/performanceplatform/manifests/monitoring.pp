@@ -119,9 +119,9 @@ class performanceplatform::monitoring (
   }
 
   logstash::filter::grep { 'ignore_stagecraft_status_request':
+    tags      => ["stagecraft"],
     match     => {
-      '@tags'             => "stagecraft",
-      '@fields.http_path' => "/_status",
+      'http_path' => "/_status",
     },
     negate    => true,
     order     => 20,
