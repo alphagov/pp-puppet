@@ -172,7 +172,7 @@ class performanceplatform::monitoring (
 
   sensu::handler { 'default':
     type     => 'set',
-    handlers => ['logstash'],
+    handlers => ['logstash', 'slack'],
   }
 
   $pagerduty_api_key = hiera('pagerduty_api_key', undef)
@@ -199,6 +199,16 @@ class performanceplatform::monitoring (
     source  => 'puppet:///modules/performanceplatform/sensu_logstash_handler.rb',
     mode    => '0755',
     require => File[$notification_dir]
+  }
+
+  sensu::handler { 'slack':
+    command => '/etc/sensu/handlers/notification/slack.rb',
+    config  => {
+      token     => hiera('slack_token', ''),
+      team_name => 'gds',
+      channel   => '#alerts',
+      bot_name  => "Alerts - ${::pp_environment}",
+    },
   }
 
   sensu::handler { 'logstash':
