@@ -86,10 +86,12 @@ ufw_rules:
     ip:   'any'
   allowredisfromfrontend1:
     port: 6379
-    ip:   '172.27.1.11'
+    from:   '172.27.1.11'
+    ip: 'any'
   allowredisfromfrontend2:
     port: 6379
-    ip:   '172.27.1.12'
+    from:   '172.27.1.12'
+    ip: 'any'
 
 vhost_proxies:
   graphite-vhost:
