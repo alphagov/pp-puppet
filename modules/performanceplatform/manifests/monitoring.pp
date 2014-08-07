@@ -202,7 +202,7 @@ class performanceplatform::monitoring (
   }
 
   sensu::handler { 'slack':
-    command => '/etc/sensu/handlers/notification/slack.rb',
+    command => '/etc/sensu/community-plugins/handlers/notification/slack.rb',
     config  => {
       token     => hiera('slack_token', ''),
       team_name => 'gds',
