@@ -206,8 +206,8 @@ class performanceplatform::monitoring (
     config  => {
       token     => hiera('slack_token', ''),
       team_name => 'gds',
-      channel   => '#alerts',
-      bot_name  => "Alerts - ${::pp_environment}",
+      channel   => "#${::pp_environment}-alerts",
+      bot_name  => 'Alert bot 3000',
     },
   }
 
