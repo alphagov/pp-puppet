@@ -45,7 +45,10 @@ define performanceplatform::app (
   }
 
   $base_environment = {
+    # rails style development/production environment
     "GOVUK_ENV"           => "production",
+    # the actual env we are running in: preview, staging, production
+    "INFRASTRUCTURE_ENV"  => $::pp_environment,
     "APP_NAME"            => $title,
     "APP_MODULE"          => $app_module,
     "GOVUK_STATSD_PREFIX" => "pp.apps.${statsd_prefix}",
