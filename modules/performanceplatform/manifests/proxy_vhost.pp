@@ -30,6 +30,7 @@ define performanceplatform::proxy_vhost(
   $auth_basic_user_file = undef,
   $block_all_robots     = true,
   $add_header           = undef,
+  $custom_locations     = undef,
 ) {
 
   $graphite_servername = regsubst($servername, '\.', '_', 'G')
@@ -178,6 +179,17 @@ define performanceplatform::proxy_vhost(
         'return' => '200 "User-agent: *\nDisallow: /"',
       },
     }
+  }
+  if $custom_locations != undef {
+    validate_hash($custom_locations)
+    create_resources(
+      'nginx::resource::location',
+      $custom_locations,
+      {
+        vhost => $servername,
+        ssl   => $ssl,
+      }
+    )
   }
 
 }
