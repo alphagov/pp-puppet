@@ -29,6 +29,7 @@ define performanceplatform::proxy_vhost(
   $auth_basic           = undef,
   $auth_basic_user_file = undef,
   $block_all_robots     = true,
+  $add_header           = undef,
 ) {
 
   $graphite_servername = regsubst($servername, '\.', '_', 'G')
@@ -165,6 +166,7 @@ define performanceplatform::proxy_vhost(
     auth_basic_user_file        => $auth_basic_user_file,
     vhost_cfg_append            => $vhost_cfg_append,
     vhost_cfg_ssl_prepend       => $vhost_cfg_ssl_prepend,
+    add_header                  => $add_header,
   }
 
   if $block_all_robots {
