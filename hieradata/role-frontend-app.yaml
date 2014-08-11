@@ -1,9 +1,11 @@
 ---
 classes:
+  - 'clamav'
   - 'collectd::plugin::varnish'
   - 'nginx'
   - 'performanceplatform::assets'
   - 'performanceplatform::checks::admin'
+  - 'performanceplatform::checks::clamav'
   - 'performanceplatform::pp_nginx'
   - 'performanceplatform::opbeat_proxy'
   - 'performanceplatform::pip'
