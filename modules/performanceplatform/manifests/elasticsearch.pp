@@ -102,6 +102,10 @@ class performanceplatform::elasticsearch(
     handlers => ['default'],
   }
 
+  logrotate::rule { 'elasticsearch-rotate':
+    ensure => absent,
+  }
+
   lvm::volume { 'elasticsearch':
     ensure => 'present',
     vg     => 'data',
