@@ -102,16 +102,6 @@ class performanceplatform::elasticsearch(
     handlers => ['default'],
   }
 
-  logrotate::rule { 'elasticsearch-rotate':
-    path         => '/var/log/elasticsearch/elasticsearch.log.*',
-    rotate       => 30,
-    rotate_every => 'day',
-    missingok    => true,
-    compress     => true,
-    create       => true,
-    create_mode  => '0640',
-  }
-
   lvm::volume { 'elasticsearch':
     ensure => 'present',
     vg     => 'data',
