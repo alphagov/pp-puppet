@@ -54,7 +54,7 @@ class performanceplatform::notifier(
 
   create_resources(cron, $cron_defs, {
     ensure      => $ensure,
-    command     => $command,
+    command     => "cd ${app_path}/current && ${command}",
     user        => $user,
     environment => 'PATH=/bin:/usr/bin:/usr/sbin',
   })
