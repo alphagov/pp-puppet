@@ -113,6 +113,7 @@ classes:
   - 'apt::unattended_upgrades'
   - 'azul::repo'
   - 'collectd'
+  - 'collectd::plugin::df'
   - 'collectd::plugin::load'
   - 'collectd::plugin::processes'
   - 'collectd::plugin::write_graphite'
