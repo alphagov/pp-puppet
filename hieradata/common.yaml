@@ -151,7 +151,6 @@ lumberjack::cert_source: 'puppet:///modules/performanceplatform/logstash.pub'
 
 collectd_plugins:
   - 'cpu'
-  - 'df'
   - 'disk'
   - 'interface'
   - 'memory'
