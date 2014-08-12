@@ -4,9 +4,9 @@ class performanceplatform::notifier(
   $group,
   $cron_definition,
   $command = 'npm start',
-  $app_path = '/opt/notifier',
-  $log_path = '/var/log/notifier',
-  $config_path = '/etc/gds/notifier',
+  $app_path = '/opt/performanceplatform-notifier',
+  $log_path = '/var/log/performanceplatform-notifier',
+  $config_path = '/etc/gds/performanceplatform-notifier',
 ) {
 
   include performanceplatform::nodejs
