@@ -7,6 +7,7 @@ classes:
   - 'performanceplatform::checks::clamav'
   - 'performanceplatform::checks::stagecraft'
   - 'performanceplatform::backdrop_smoke_tests'
+  - 'performanceplatform::notifier'
   - 'performanceplatform::pp_nginx'
   - 'performanceplatform::pip'
   - 'performanceplatform::python_lxml_deps'
@@ -20,6 +21,11 @@ ufw_rules:
 
 nginx::confd_purge: true
 nginx::vhost_purge: true
+
+performanceplatform::notifier::user: 'deploy'
+performanceplatform::notifier::group: 'deploy'
+performanceplatform::notifier::cron_definition:
+  minute: '0'
 
 gunicorn_apps:
   admin.backdrop:
