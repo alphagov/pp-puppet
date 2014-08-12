@@ -47,8 +47,9 @@ sub vcl_recv {
     set req.http.Host = "admin.backdrop";
     set req.backend   = admin_director;
     call redirect_slash;
-  } else if (req.http.Host ~ "^stagecraft\..*") {
+  } else if (req.http.Host ~ "^(stagecraft|admin-beta)\..*") {
     # Send stagecraft requests to stagecraft
+    #  (also include requests proxied through the admin app)
     set req.http.Host = "stagecraft";
     set req.backend = stagecraft_director;
   } else if (req.http.Host ~ "^www\..*") {

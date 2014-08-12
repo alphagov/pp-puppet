@@ -103,6 +103,10 @@ vhost_proxies:
       "X-Frame-Options": "SAMEORIGIN"
     denied_http_verbs:
       - PURGE
+    custom_locations:
+      stagecraft-reauth:
+        location: /auth/gds/api/users/
+        proxy: 'http://stagecraft-vhost-upstream;'
 
   www-vhost:
     servername:    "%{::www_vhost}"
