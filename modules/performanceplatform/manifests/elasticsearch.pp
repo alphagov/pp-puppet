@@ -93,15 +93,10 @@ class performanceplatform::elasticsearch(
 
   $graphite_fqdn = regsubst($::fqdn, '\.', '_', 'G')
 
-  performanceplatform::checks::graphite { "check_low_disk_space_elasticsearch":
-    target   => "collectd.${graphite_fqdn}.df-mnt-data-elasticsearch.df_complex-free",
-    warning  => '4000000000', # A little less than 4 gig
-    critical => '1000000000',  # A little less than 1 gig
-    below    => true,
-    interval => 60,
-    handlers => ['default'],
+  performanceplatform::checks::disk { "${fqdn}_${data_dir}":
+    fqdn => $fqdn,
+    disk => $data_dir,
   }
-
   logrotate::rule { 'elasticsearch-rotate':
     ensure => absent,
   }
