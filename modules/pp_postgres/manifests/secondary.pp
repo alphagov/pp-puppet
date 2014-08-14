@@ -1,11 +1,22 @@
 class pp_postgres::secondary {
-  file { '/var/lib/postgresql/9.1/main/recovery.conf':
+  $data_dir = "/var/lib/postgresql/9.1/main"
+  $primary_host = "postgresql-primary"
+
+  file { "${data_dir}/recovery.conf":
     ensure  => present,
-    content => "standby_mode = 'on'\nprimary_conninfo = 'host=postgresql-primary-1'",
+    content => "standby_mode = 'on'\nprimary_conninfo = 'host=postgresql-primary-1 user=replicator'",
     owner   => "postgres",
     group   => "postgres",
   }
+  file { '/usr/local/bin/start_replication.sh':
+    ensure  => present,
+    content => template("pp_postgres/start_replication.sh.erb"),
+    mode    => '0555',
+  }
 
+  postgresql::server::config_entry { 'hot_standby':
+    value => 'on',
+  }
   postgresql::server::pg_hba_rule { 'stagecraft':
     type        => 'host',
     database    => 'stagecraft',
