@@ -19,11 +19,6 @@ class pp_postgres::secondary {
   postgresql::server::config_entry { 'hot_standby':
     value => 'on',
   }
-  postgresql::server::pg_hba_rule { 'stagecraft':
-    type        => 'host',
-    database    => 'stagecraft',
-    user        => 'stagecraft',
-    auth_method => 'md5',
-    address     => '172.27.1.1/24',
+  pp_postgres::hba_rule {'stagecraft':
   }
 }

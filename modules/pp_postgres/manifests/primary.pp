@@ -18,13 +18,9 @@ class pp_postgres::primary(
   postgresql::server::config_entry { 'wal_keep_segments':
     value => 8,
   }
-
-  postgresql::server::pg_hba_rule { 'replication':
-    type        => 'host',
+  pp_postgres::hba_rule { 'replicator':
     database    => 'replication',
-    user        => 'replicator',
     auth_method => 'trust',
-    address     => '172.27.1.1/24'
   }
   postgresql::server::role { 'replicator':
     login            => true,
