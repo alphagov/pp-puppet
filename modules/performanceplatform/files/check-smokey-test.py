@@ -35,6 +35,10 @@ Scenario = namedtuple('Scenario', 'name, steps')
 Feature = namedtuple('Feature', 'name, uri, scenarios')
 
 
+class CheckSmokeyError(StandardError):
+    pass
+
+
 def main():
     assert len(sys.argv) == 2, "Usage: {} <feature name>"
     feature_name = sys.argv[1]
@@ -80,6 +84,9 @@ def get_feature_uri(feature_name):
 
 
 def find_scenarios(feature_json):
+    if 'elements' not in feature_json:
+        raise CheckSmokeyError("No scenarios is feature: {}".format(
+            feature_json))
     return [element for element in feature_json['elements']
             if element['keyword'] == 'Scenario']
 
