@@ -3,21 +3,22 @@
 
 # Node definitions
 hosts = [
-  { name: 'backend-app-1',         ip: '172.27.1.21' },
-  { name: 'backend-app-2',         ip: '172.27.1.22' },
-  { name: 'development-1',         ip: '172.27.1.81'  },
-  { name: 'frontend-app-1',        ip: '172.27.1.11' },
-  { name: 'frontend-app-2',        ip: '172.27.1.12' },
-  { name: 'jumpbox-1',             ip: '172.27.1.2' },
-  { name: 'mongo-1',               ip: '172.27.1.31' },
-  { name: 'mongo-2',               ip: '172.27.1.32' },
-  { name: 'mongo-3',               ip: '172.27.1.33' },
-  { name: 'monitoring-1',          ip: '172.27.1.41' },
-  { name: 'logs-elasticsearch-1',  ip: '172.27.1.51' },
-  { name: 'logs-elasticsearch-2',  ip: '172.27.1.52' },
-  { name: 'logs-elasticsearch-3',  ip: '172.27.1.53' },
-  { name: 'postgresql-primary-1',  ip: '172.27.1.61' },
-  { name: 'backup-box-1',          ip: '172.27.1.71' },
+  { name: 'backend-app-1',          ip: '172.27.1.21' },
+  { name: 'backend-app-2',          ip: '172.27.1.22' },
+  { name: 'development-1',          ip: '172.27.1.81'  },
+  { name: 'frontend-app-1',         ip: '172.27.1.11' },
+  { name: 'frontend-app-2',         ip: '172.27.1.12' },
+  { name: 'jumpbox-1',              ip: '172.27.1.2' },
+  { name: 'mongo-1',                ip: '172.27.1.31' },
+  { name: 'mongo-2',                ip: '172.27.1.32' },
+  { name: 'mongo-3',                ip: '172.27.1.33' },
+  { name: 'monitoring-1',           ip: '172.27.1.41' },
+  { name: 'logs-elasticsearch-1',   ip: '172.27.1.51' },
+  { name: 'logs-elasticsearch-2',   ip: '172.27.1.52' },
+  { name: 'logs-elasticsearch-3',   ip: '172.27.1.53' },
+  { name: 'postgresql-primary-1',   ip: '172.27.1.61' },
+  { name: 'postgresql-secondary-1', ip: '172.27.1.65' },
+  { name: 'backup-box-1',           ip: '172.27.1.71' },
 ]
 
 # Images are built for specific versions of virtualbox guest additions for now.

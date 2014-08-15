@@ -1,8 +1,7 @@
 ---
 classes:
   - 'pp_postgres::server'
-  - 'pp_postgres::primary'
-  - 'performanceplatform::postgresql_backup'
+  - 'pp_postgres::secondary'
 
 postgresql::server::listen_addresses: '*'
 
