@@ -1,4 +1,6 @@
 class pp_postgres::secondary {
+  include("pp_postgres::server")
+
   $data_dir = "/var/lib/postgresql/9.1/main"
   $primary_host = "postgresql-primary"
 

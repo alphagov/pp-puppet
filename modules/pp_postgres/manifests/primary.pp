@@ -1,6 +1,8 @@
 class pp_postgres::primary(
   $stagecraft_password,
 ) {
+  include("pp_postgres::server")
+
   pp_postgres::db { 'stagecraft':
     password => $stagecraft_password,
   }

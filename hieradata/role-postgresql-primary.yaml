@@ -1,6 +1,5 @@
 ---
 classes:
-  - 'pp_postgres::server'
   - 'pp_postgres::primary'
   - 'performanceplatform::postgresql_backup'
 
