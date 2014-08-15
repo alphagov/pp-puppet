@@ -1,4 +1,4 @@
-# Class: postgresql::backup
+# Class: pp_postgres::backup
 #
 # This class provides a way to set up backup for a postgresql cluster.
 # It will add a shell script based on the utility pg_dump to make
@@ -24,7 +24,7 @@
 # Sample Usage:
 #   include postgresql::backup
 #
-class performanceplatform::postgresql_backup (
+class pp_postgres::backup (
   $backup_dir = '/var/backups/pgsql',
   $backup_format = 'plain',
   $user = 'postgres',
