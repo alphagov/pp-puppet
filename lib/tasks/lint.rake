@@ -2,7 +2,6 @@ require 'puppet-lint'
 
 PuppetLint.configuration.with_filename = true
 PuppetLint.configuration.send("disable_80chars")
-PuppetLint.configuration.send("disable_double_quoted_strings")
 PuppetLint.configuration.send("disable_documentation")
 PuppetLint.configuration.send("disable_class_parameter_defaults")
 
@@ -20,6 +19,7 @@ task :lint do
   manifests_to_lint.each do |puppet_file|
     linter.file = puppet_file
     linter.run
+    linter.report(linter.problems)
   end
 
   fail if linter.errors?
