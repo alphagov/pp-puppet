@@ -1,5 +1,7 @@
 # == Define: pp_postgres::hba_rule
 #
+# http://www.postgresql.org/docs/9.1/static/auth-pg-hba-conf.html
+#
 # Wrapper around postgresql::server::pg_hba_rule that adds some
 # Performance Platform specific defaults. Such as:
 #  - type is always host, to avoid confusion
