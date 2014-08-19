@@ -29,4 +29,20 @@ class pp_postgres::primary(
     replication      => true,
     connection_limit => 1,
   }
+
+  postgresql_psql { 'collectd-postgres-replication-status-function':
+    command => template('pp_postgres/collectd-query-replication-status.sql.erb'),
+    unless => 'SELECT 1 FROM pg_catalog.pg_proc p WHERE p.proname = \'streaming_slave_check\' AND pg_catalog.pg_function_is_visible(p.oid)'
+  }
+  file { 'collectd-postgres-replication-query':
+    ensure => present,
+    path =>'/etc/collectd/conf.d/20-postgresql-query-replication-status.conf',
+    owner => root,
+    group => root,
+    mode => '0640',
+    source => 'puppet:///modules/pp_postgres/collectd-query-replication-status.conf',
+    notify => Service['collectd'],
+    require => Class['collectd::plugin::postgresql'],
+  }
+
 }
