@@ -18,4 +18,9 @@ end
 RSpec.configure do |config|
   config.module_path  = "./modules:./vendor/modules"
   config.manifest     = File.join(fixture_path, 'manifests', 'site.pp')
+
+  config.default_facts = {
+    :osfamily     => 'Debian',
+  }
+
 end
