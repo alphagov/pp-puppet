@@ -126,5 +126,4 @@ ruby_packages:
 python_packages:
   - virtualenvwrapper
 
-# Same as performanceplatform::postgresql_primary::stagecraft_password
 pp_postgres::primary::stagecraft_password: "securem8"
