@@ -7,10 +7,10 @@ classes:
   - 'performanceplatform::mongo'
   - 'performanceplatform::pp_nginx'
   - 'performanceplatform::nodejs'
-  - 'performanceplatform::postgresql_primary'
   - 'performanceplatform::pip'
   - 'performanceplatform::python_lxml_deps'
   - 'postgresql::lib::devel'
+  - 'pp_postgres::primary'
   - 'phantomjs'
   - 'python'
   - 'varnish'
@@ -126,5 +126,4 @@ ruby_packages:
 python_packages:
   - virtualenvwrapper
 
-# Same as performanceplatform::postgresql_primary::stagecraft_password
-performanceplatform::development::stagecraft_password: "securem8"
+pp_postgres::primary::stagecraft_password: "securem8"

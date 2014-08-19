@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+echo Remove old base backup
+sudo rm -rf <%= @data_dir %>.backup
+
+echo Stopping PostgreSQL
+sudo service postgresql stop
+
+echo Starting base backup
+sudo -u postgres pg_basebackup -h <%= @primary_host %> -D <%= @data_dir %>.backup -U replicator -v -P
+
+echo Syncing backup into place
+sudo rsync -ca --inplace --exclude=*pg_xlog* --exclude=recovery.conf --exclude=server.* --delete --links <%= @data_dir %>.backup/ <%= @data_dir %>/
+
+echo Starting PostgreSQL
+sudo service postgresql start

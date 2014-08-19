@@ -1,6 +1,6 @@
 ---
 classes:
-  - 'pp_postgres::primary'
+  - 'pp_postgres::secondary'
 
 postgresql::server::listen_addresses: '*'
 
