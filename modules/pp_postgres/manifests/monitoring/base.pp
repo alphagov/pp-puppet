@@ -17,6 +17,6 @@ class pp_postgres::monitoring::base {
     database    => 'all',
     user        => 'monitoring',
     auth_method => 'trust',
-    address     => '127.0.0.1',
+    address     => '127.0.0.1/32',
   }
 }
