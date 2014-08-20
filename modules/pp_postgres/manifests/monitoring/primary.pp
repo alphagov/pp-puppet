@@ -11,9 +11,10 @@ class pp_postgres::monitoring::primary {
     }
   }
 
-  # Primary should have 6 processes; main, writer, wal writer, autovacuum launcher, stats collector, wal sender
+  # Primary should have 5 processes for normal running; main, writer, wal writer, autovacuum launcher, stats collector
+  #   and an additional process for replication; wal sender
   sensu::check { 'postgres_is_down':
-    command  => '/etc/sensu/community-plugins/plugins/processes/check-procs.rb -p postgres -C 6 -W 6',
+    command  => '/etc/sensu/community-plugins/plugins/processes/check-procs.rb -p postgres -C 5 -W 5',
     interval => 60,
     handlers => ['default'],
   }
