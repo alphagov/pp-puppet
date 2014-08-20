@@ -17,7 +17,7 @@ mod 'saz/dnsmasq',                '1.0.1'
 mod 'saz/ntp',                    '2.2.0'
 mod 'saz/rsyslog',                '2.0.0'
 mod 'sensu/sensu',                '0.7.7'
-mod 'netmanagers/fail2ban',       '1.1.0'
+mod 'netmanagers/fail2ban',       '1.4.0'
 mod 'alphagov/account',             :git => 'https://github.com/alphagov/puppet-account.git',
                                     :ref => 'feature/multiple-ssh-keys'
 mod 'gini/archive',                 :git => 'https://github.com/gini/puppet-archive.git',
