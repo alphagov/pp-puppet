@@ -127,3 +127,4 @@ python_packages:
   - virtualenvwrapper
 
 pp_postgres::primary::stagecraft_password: "securem8"
+performanceplatform::development::stagecraft_password: "securem8"
