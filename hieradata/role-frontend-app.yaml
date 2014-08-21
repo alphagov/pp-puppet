@@ -106,7 +106,7 @@ vhost_proxies:
     custom_locations:
       stagecraft-reauth:
         location: /auth/gds/api/users/
-        proxy: 'http://stagecraft-vhost-upstream;'
+        proxy: 'http://stagecraft-vhost-upstream'
 
   www-vhost:
     servername:    "%{::www_vhost}"
