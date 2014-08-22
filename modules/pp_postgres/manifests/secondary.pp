@@ -2,7 +2,7 @@ class pp_postgres::secondary {
   include('pp_postgres::server')
   include('pp_postgres::monitoring::secondary')
 
-  $data_dir = '/var/lib/postgresql/9.1/main'
+  $data_dir = $::postgresql::params::datadir
   $primary_host = 'postgresql-primary'
 
   file { "${data_dir}/recovery.conf":
