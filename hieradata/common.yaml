@@ -251,4 +251,4 @@ python_packages:
   - gds-nagios-plugins
 
 postgresql::globals::manage_package_repo: false
-postgresql::globals::version: '9.1'
+postgresql::globals::version: '9.3'
