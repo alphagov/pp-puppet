@@ -2,9 +2,10 @@ class pp_postgres::secondary {
   include('pp_postgres::server')
   include('pp_postgres::monitoring::secondary')
 
+  $data_dir = $::postgresql::params::data_dir
   $primary_host = 'postgresql-primary'
 
-  file { "${::postgresql::params::data_dir}/recovery.conf":
+  file { "${data_dir}/recovery.conf":
     ensure  => present,
     content => "standby_mode = 'on'\nprimary_conninfo = 'host=postgresql-primary-1 user=replicator'",
     owner   => "postgres",
