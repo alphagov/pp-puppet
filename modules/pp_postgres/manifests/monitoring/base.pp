@@ -10,13 +10,20 @@ class pp_postgres::monitoring::base {
   }
 
   postgresql::server::role { 'monitoring':
+    login            => true,
     connection_limit => 1,
+    password_hash    => postgresql_password('monitoring', 'monitoring'),
+  }
+  postgresql::server::database_grant { 'GRANT monitoring - SELECT - stagecraft':
+    privilege => 'SELECT',
+    db        => 'stagecraft',
+    role      => 'monitoring',
   }
   postgresql::server::pg_hba_rule { 'monitoring':
     type        => 'host',
     database    => 'all',
     user        => 'monitoring',
-    auth_method => 'trust',
+    auth_method => 'md5',
     address     => '127.0.0.1/32',
   }
 }
