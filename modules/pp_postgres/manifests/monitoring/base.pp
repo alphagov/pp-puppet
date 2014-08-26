@@ -14,6 +14,11 @@ class pp_postgres::monitoring::base {
     connection_limit => 1,
     password_hash    => postgresql_password('monitoring', 'monitoring'),
   }
+  postgresql::server::database_grant { 'GRANT monitoring - SELECT - stagecraft':
+    privilege => 'SELECT',
+    db        => 'stagecraft',
+    role      => 'monitoring',
+  }
   postgresql::server::pg_hba_rule { 'monitoring':
     type        => 'host',
     database    => 'all',
