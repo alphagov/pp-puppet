@@ -1,15 +1,11 @@
 class pp_postgres::monitoring::secondary {
   include('pp_postgres::monitoring::base')
 
-  class {'collectd::plugin::postgresql':
-    databases => {
-      'stagecraft' => {
-        'user'     => 'monitoring',
-        'password' => '',
-        'host'     => 'localhost',
-        'query'    => ['query_plans', 'queries', 'table_states', 'disk_io' ],
-      }
-    }
+  collectd::plugin::postgresql::database{'stagecraft':
+    user     => 'monitoring',
+    password => '',
+    host     => 'localhost',
+    query    => ['query_plans', 'queries', 'table_states', 'disk_io'],
   }
 
   # Secondary should have 5 processes; main, startup, writer, stats collector, wal receiver
