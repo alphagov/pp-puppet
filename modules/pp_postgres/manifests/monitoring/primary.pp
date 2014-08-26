@@ -17,7 +17,7 @@ class pp_postgres::monitoring::primary {
   }
   collectd::plugin::postgresql::database{'stagecraft':
     user     => 'monitoring',
-    password => '',
+    password => 'monitoring',
     host     => 'localhost',
     query    => ['query_plans', 'queries', 'table_states', 'disk_io', 'replication_lag'],
   }

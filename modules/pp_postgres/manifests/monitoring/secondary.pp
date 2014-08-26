@@ -3,7 +3,7 @@ class pp_postgres::monitoring::secondary {
 
   collectd::plugin::postgresql::database{'stagecraft':
     user     => 'monitoring',
-    password => '',
+    password => 'monitoring',
     host     => 'localhost',
     query    => ['query_plans', 'queries', 'table_states', 'disk_io'],
   }
