@@ -20,6 +20,9 @@ class pp_postgres::primary(
   postgresql::server::config_entry { 'wal_keep_segments':
     value => 8,
   }
+  postgresql::server::config_entry { 'log_hostname':
+    value => 'on',
+  }
   pp_postgres::hba_rule { 'replicator':
     database    => 'replication',
     auth_method => 'trust',
