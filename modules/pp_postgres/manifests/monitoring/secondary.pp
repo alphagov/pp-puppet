@@ -4,9 +4,10 @@ class pp_postgres::monitoring::secondary {
   class {'collectd::plugin::postgresql':
     databases => {
       'stagecraft' => {
-        'user' => 'monitoring',
+        'user'     => 'monitoring',
         'password' => '',
-        'query' => ['query_plans', 'queries', 'table_states', 'disk_io' ],
+        'host'     => 'localhost',
+        'query'    => ['query_plans', 'queries', 'table_states', 'disk_io' ],
       }
     }
   }
