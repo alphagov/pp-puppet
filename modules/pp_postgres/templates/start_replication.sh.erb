@@ -14,4 +14,4 @@ echo Syncing backup into place
 sudo rsync -ca --inplace --exclude=*pg_xlog* --exclude=recovery.conf --exclude=server.* --delete --links <%= @data_dir %>.backup/ <%= @data_dir %>/
 
 echo Starting PostgreSQL
-sudo service postgresql start
+sudo service postgresql start <%= @version %>
