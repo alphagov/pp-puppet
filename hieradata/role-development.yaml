@@ -111,6 +111,7 @@ vhost_proxies:
 
 system_packages:
   - cmake
+  - golang
   - libcairo2-dev
   - libjpeg8-dev
   - libpango1.0-dev
