@@ -5,8 +5,16 @@ rvm:
 script:
   - ./install_puppet.sh
   - ./run_tests.sh
+after_success:
+  - ./.travis_scripts/push_release_tag.sh
 notifications:
   email: false
 branches:
   except:
+    - release
+    - /^release_\d+$/
+    - /^deployed-to.*$/
     - /^build_\d+$/
+env:
+  global:
+    - secure: "d2O/F1Xtbn8T3bI/0iDf3gyXoJNQgBL9FshsrB5QmWiG+9Z2OQ9OjS/faSzGB/cKuCF5IO661+X/zTeeZeDo4ign+jU49kcSAWXFntXiBzAiGG/TekLYlg3nS8lFaTv7iEwH8VpxGIb6mJJiGPDKc4lPprU3e6MZfrgmMcVLOr8="

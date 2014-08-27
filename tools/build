@@ -23,9 +23,6 @@ main () {
   status "fetching 3rd-party modules"
   bundle exec librarian-puppet install >&2
 
-  status "running tests"
-  bundle exec rake SPEC_OPTS="--format documentation" >&2
-
   status "bundling for deployment"
   bundle --path vendor/bundle \
          --deployment \
@@ -36,10 +33,6 @@ main () {
   test -d build || mkdir build
   status "creating tarball at puppet.tgz"
   tar zcf build/puppet.tgz -X .buildignore .
-
-  status "Writing build tag"
-  git tag -a build_$BUILD_NUMBER -m "$BUILD_URL"
-  git push --tags
 
 }
 
