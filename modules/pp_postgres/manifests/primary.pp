@@ -29,4 +29,15 @@ class pp_postgres::primary(
     replication      => true,
     connection_limit => 1,
   }
+
+  file { '/etc/postgresql/find_bad_seqs.sql':
+    source  => 'puppet:///modules/pp_postgres/etc/postgresql/find_bad_seqs.sql',
+    owner   => 'postgres',
+    require => Pp_postgres::Db['stagecraft'],
+  }
+  exec { 'add_find_bad_seqs_function':
+    command => '/usr/bin/psql stagecraft -f /etc/postgresql/find_bad_seqs.sql',
+    user    => 'postgres',
+    require => File['/etc/postgresql/find_bad_seqs.sql'],
+  }
 }
