@@ -10,17 +10,17 @@ FORGE
     example42-monitor (2.0.1)
       example42-puppi (>= 2.0.0)
     example42-puppi (2.1.9)
-    garethr-erlang (0.2.0)
-      puppetlabs-apt (>= 0.0.0)
-      puppetlabs-stdlib (>= 0.0.0)
-      stahnma-epel (>= 0.0.0)
+    garethr-erlang (0.3.0)
+      puppetlabs-apt (>= 0)
+      puppetlabs-stdlib (>= 0)
+      stahnma-epel (>= 0)
     gdsoperations-openconnect (1.0.0)
       puppetlabs-stdlib (>= 3.0.0)
     jfryman-nginx (0.0.9)
       puppetlabs-apt (>= 1.0.0)
       puppetlabs-concat (>= 1.0.0)
       puppetlabs-stdlib (>= 0.1.6)
-    maestrodev-wget (1.4.5)
+    maestrodev-wget (1.5.1)
     netmanagers-fail2ban (1.4.0)
       example42-monitor (>= 2.0.0)
       example42-puppi (>= 2.0.0)
@@ -28,8 +28,8 @@ FORGE
       puppetlabs-stdlib (>= 4.1.0)
     puppetlabs-apt (1.4.2)
       puppetlabs-stdlib (>= 2.2.1)
-    puppetlabs-concat (1.1.0-rc1)
-      puppetlabs-stdlib (>= 3.0.0)
+    puppetlabs-concat (1.1.0)
+      puppetlabs-stdlib (>= 4.0.0)
     puppetlabs-firewall (1.1.3)
     puppetlabs-gcc (0.0.3)
     puppetlabs-nodejs (0.4.0)
@@ -53,137 +53,7 @@ FORGE
     sensu-sensu (0.7.7)
       puppetlabs-apt (>= 0.0.1)
       puppetlabs-stdlib (>= 0.0.1)
-    stahnma-epel (0.0.6)
-
-GIT
-  remote: git://github.com/alphagov/puppet-clamav.git
-  ref: 31af4f0c2753dd25bca3dd0c7cc69d273c4d640d
-  sha: 31af4f0c2753dd25bca3dd0c7cc69d273c4d640d
-  specs:
-    alphagov-clamav (0.0.1)
-      puppetlabs-stdlib (>= 3.0.0)
-
-GIT
-  remote: git://github.com/alphagov/puppet-collectd.git
-  ref: improve_collectd_varnish
-  sha: d8f337fcd52edd7cf4d615e7089d83d3812d5e14
-  specs:
-    alphagov-collectd (1.1.0)
-      puppetlabs-stdlib (>= 3.0.0)
-
-GIT
-  remote: git://github.com/alphagov/puppet-curl.git
-  ref: f4c6d175bdc6cbd71f71fbaa2544ef8f70c4ce48
-  sha: f4c6d175bdc6cbd71f71fbaa2544ef8f70c4ce48
-  specs:
-    alphagov-curl (0.0.1)
-
-GIT
-  remote: git://github.com/alphagov/puppet-ext4mount.git
-  ref: d97f99cc2801b83152b905d1285fa34e689cb499
-  sha: d97f99cc2801b83152b905d1285fa34e689cb499
-  specs:
-    alphagov-ext4mount (0.0.1)
-
-GIT
-  remote: git://github.com/alphagov/puppet-google_credentials.git
-  ref: a64f9e5c051a0d38e59441457b52a7afeeebed24
-  sha: a64f9e5c051a0d38e59441457b52a7afeeebed24
-  specs:
-    alphagov-google_credentials (0.0.1)
-
-GIT
-  remote: git://github.com/alphagov/puppet-gstatsd.git
-  ref: 668e8a061ca477106ce4b0ac44f26aa87badfd8b
-  sha: 668e8a061ca477106ce4b0ac44f26aa87badfd8b
-  specs:
-    alphagov-gstatsd (0.1.0)
-      stankevich-python (>= 1.0.0)
-
-GIT
-  remote: git://github.com/alphagov/puppet-harden.git
-  ref: 0966c98cc3f54815c9aac0ebe6e900b70f85182d
-  sha: 0966c98cc3f54815c9aac0ebe6e900b70f85182d
-  specs:
-    alphagov-harden (0.0.1)
-
-GIT
-  remote: git://github.com/alphagov/puppet-jenkins.git
-  ref: 4c7990fa8495b6d84292c2153993ac91c3b2916d
-  sha: 4c7990fa8495b6d84292c2153993ac91c3b2916d
-  specs:
-    alphagov-jenkins (0.2.4)
-      puppetlabs-apt (>= 0.0.3)
-      puppetlabs-stdlib (>= 2.0.0)
-
-GIT
-  remote: git://github.com/alphagov/puppet-logstash.git
-  ref: gen-files-should-notify
-  sha: c7d0080f49a9ed80fa09126cf30359b3deb94343
-  specs:
-    alphagov-logstash (0.3.3)
-      puppetlabs-stdlib (>= 3.0.0)
-
-GIT
-  remote: git://github.com/alphagov/puppet-lumberjack.git
-  ref: 57542743ffdbe940cf43909f29ac4a31561eef23
-  sha: 57542743ffdbe940cf43909f29ac4a31561eef23
-  specs:
-    alphagov-lumberjack (0.0.1)
-
-GIT
-  remote: git://github.com/alphagov/puppet-redis.git
-  ref: a2c4821e94bed725f69e40532fec41c6efa585fe
-  sha: a2c4821e94bed725f69e40532fec41c6efa585fe
-  specs:
-    alphagov-redis (0.0.9)
-      maestrodev-wget (>= 0)
-      puppetlabs-gcc (>= 0)
-
-GIT
-  remote: git://github.com/alphagov/puppetlabs-mongodb.git
-  ref: dc077a209efdf8d80fac40d40fec575b6a0949d2
-  sha: dc077a209efdf8d80fac40d40fec575b6a0949d2
-  specs:
-    alphagov-mongodb (0.1.0)
-      puppetlabs-apt (>= 0.0.2)
-
-GIT
-  remote: git://github.com/bison/puppet-upstart.git
-  ref: 05a10a3a58de3543eb51bb782a249cebf71f5cd8
-  sha: 05a10a3a58de3543eb51bb782a249cebf71f5cd8
-  specs:
-    bison-upstart (0.0.1)
-      puppetlabs-stdlib (>= 0.1.6)
-
-GIT
-  remote: git://github.com/endore-me/puppet-tmux.git
-  ref: 32db4ac6ad65a934c5eddd9afcf0c4f61f7c0924
-  sha: 32db4ac6ad65a934c5eddd9afcf0c4f61f7c0924
-  specs:
-    endore-me-tmux (0.0.1)
-
-GIT
-  remote: git://github.com/gds-operations/puppet-elasticsearch.git
-  ref: d15521e6cb215a809d92692e76a1d0cac111d9a0
-  sha: d15521e6cb215a809d92692e76a1d0cac111d9a0
-  specs:
-    gds-elasticsearch (0.0.1)
-      puppetlabs-stdlib (>= 3.0.0)
-
-GIT
-  remote: git://github.com/puppetlabs/puppetlabs-lvm.git
-  ref: ba8efdd243cafa96b45d8d58dbef1d5ba74714ea
-  sha: ba8efdd243cafa96b45d8d58dbef1d5ba74714ea
-  specs:
-    puppetlabs-lvm (0.1.2)
-
-GIT
-  remote: git://github.com/stankevich/puppet-python.git
-  ref: f508b71d534f3c67db12886fa914cb4ef74bbe7a
-  sha: f508b71d534f3c67db12886fa914cb4ef74bbe7a
-  specs:
-    stankevich-python (1.1.4)
+    stahnma-epel (0.1.1)
 
 GIT
   remote: https://github.com/alphagov/puppet-account.git
@@ -193,11 +63,141 @@ GIT
     alphagov-account (0.0.5)
 
 GIT
+  remote: https://github.com/alphagov/puppet-clamav.git
+  ref: 31af4f0c2753dd25bca3dd0c7cc69d273c4d640d
+  sha: 31af4f0c2753dd25bca3dd0c7cc69d273c4d640d
+  specs:
+    alphagov-clamav (0.0.1)
+      puppetlabs-stdlib (>= 3.0.0)
+
+GIT
+  remote: https://github.com/alphagov/puppet-collectd.git
+  ref: improve_collectd_varnish
+  sha: d8f337fcd52edd7cf4d615e7089d83d3812d5e14
+  specs:
+    alphagov-collectd (2.1.0)
+      puppetlabs-stdlib (>= 3.0.0)
+
+GIT
+  remote: https://github.com/alphagov/puppet-curl.git
+  ref: f4c6d175bdc6cbd71f71fbaa2544ef8f70c4ce48
+  sha: f4c6d175bdc6cbd71f71fbaa2544ef8f70c4ce48
+  specs:
+    alphagov-curl (0.0.1)
+
+GIT
+  remote: https://github.com/alphagov/puppet-ext4mount.git
+  ref: d97f99cc2801b83152b905d1285fa34e689cb499
+  sha: d97f99cc2801b83152b905d1285fa34e689cb499
+  specs:
+    alphagov-ext4mount (0.0.1)
+
+GIT
+  remote: https://github.com/alphagov/puppet-google_credentials.git
+  ref: a64f9e5c051a0d38e59441457b52a7afeeebed24
+  sha: a64f9e5c051a0d38e59441457b52a7afeeebed24
+  specs:
+    alphagov-google_credentials (0.0.1)
+
+GIT
+  remote: https://github.com/alphagov/puppet-gstatsd.git
+  ref: 668e8a061ca477106ce4b0ac44f26aa87badfd8b
+  sha: 668e8a061ca477106ce4b0ac44f26aa87badfd8b
+  specs:
+    alphagov-gstatsd (0.1.0)
+      stankevich-python (>= 1.0.0)
+
+GIT
+  remote: https://github.com/alphagov/puppet-harden.git
+  ref: 0966c98cc3f54815c9aac0ebe6e900b70f85182d
+  sha: 0966c98cc3f54815c9aac0ebe6e900b70f85182d
+  specs:
+    alphagov-harden (0.0.1)
+
+GIT
+  remote: https://github.com/alphagov/puppet-jenkins.git
+  ref: 4c7990fa8495b6d84292c2153993ac91c3b2916d
+  sha: 4c7990fa8495b6d84292c2153993ac91c3b2916d
+  specs:
+    alphagov-jenkins (0.2.4)
+      puppetlabs-apt (>= 0.0.3)
+      puppetlabs-stdlib (>= 2.0.0)
+
+GIT
+  remote: https://github.com/alphagov/puppet-logstash.git
+  ref: gen-files-should-notify
+  sha: c7d0080f49a9ed80fa09126cf30359b3deb94343
+  specs:
+    alphagov-logstash (0.3.3)
+      puppetlabs-stdlib (>= 3.0.0)
+
+GIT
+  remote: https://github.com/alphagov/puppet-lumberjack.git
+  ref: 57542743ffdbe940cf43909f29ac4a31561eef23
+  sha: 57542743ffdbe940cf43909f29ac4a31561eef23
+  specs:
+    alphagov-lumberjack (0.0.1)
+
+GIT
+  remote: https://github.com/alphagov/puppet-redis.git
+  ref: a2c4821e94bed725f69e40532fec41c6efa585fe
+  sha: a2c4821e94bed725f69e40532fec41c6efa585fe
+  specs:
+    alphagov-redis (0.0.9)
+      maestrodev-wget (>= 0)
+      puppetlabs-gcc (>= 0)
+
+GIT
+  remote: https://github.com/alphagov/puppetlabs-mongodb.git
+  ref: dc077a209efdf8d80fac40d40fec575b6a0949d2
+  sha: dc077a209efdf8d80fac40d40fec575b6a0949d2
+  specs:
+    alphagov-mongodb (0.1.0)
+      puppetlabs-apt (>= 0.0.2)
+
+GIT
+  remote: https://github.com/bison/puppet-upstart.git
+  ref: 05a10a3a58de3543eb51bb782a249cebf71f5cd8
+  sha: 05a10a3a58de3543eb51bb782a249cebf71f5cd8
+  specs:
+    bison-upstart (0.0.1)
+      puppetlabs-stdlib (>= 0.1.6)
+
+GIT
+  remote: https://github.com/endore-me/puppet-tmux.git
+  ref: 32db4ac6ad65a934c5eddd9afcf0c4f61f7c0924
+  sha: 32db4ac6ad65a934c5eddd9afcf0c4f61f7c0924
+  specs:
+    endore-me-tmux (0.0.1)
+
+GIT
+  remote: https://github.com/gds-operations/puppet-elasticsearch.git
+  ref: d15521e6cb215a809d92692e76a1d0cac111d9a0
+  sha: d15521e6cb215a809d92692e76a1d0cac111d9a0
+  specs:
+    gds-elasticsearch (0.0.1)
+      puppetlabs-stdlib (>= 3.0.0)
+
+GIT
   remote: https://github.com/gini/puppet-archive.git
   ref: 50d3370006f955ee9d5187623cc660670d01c58d
   sha: 50d3370006f955ee9d5187623cc660670d01c58d
   specs:
     gini-archive (0.1.1)
+
+GIT
+  remote: https://github.com/puppetlabs/puppetlabs-lvm.git
+  ref: ba8efdd243cafa96b45d8d58dbef1d5ba74714ea
+  sha: ba8efdd243cafa96b45d8d58dbef1d5ba74714ea
+  specs:
+    puppetlabs-lvm (0.1.2)
+
+GIT
+  remote: https://github.com/stankevich/puppet-python.git
+  ref: f508b71d534f3c67db12886fa914cb4ef74bbe7a
+  sha: f508b71d534f3c67db12886fa914cb4ef74bbe7a
+  specs:
+    stankevich-python (1.1.4)
 
 DEPENDENCIES
   alphagov-account (>= 0)
