@@ -3,6 +3,7 @@ classes:
   - 'clamav'
   - 'collectd::plugin::varnish'
   - 'nginx'
+  - 'performanceplatform::apt'
   - 'performanceplatform::assets'
   - 'performanceplatform::checks::admin'
   - 'performanceplatform::checks::clamav'
@@ -41,6 +42,8 @@ python::version:    '2.7'
 python::dev:        true
 python::virtualenv: true
 python::pip:        true
+
+performanceplatform::apt::root_dir: '/mnt/apt'
 
 performanceplatform::pip::user: 'deploy'
 performanceplatform::pip::group: 'deploy'

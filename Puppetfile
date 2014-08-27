@@ -3,6 +3,7 @@ forge "https://forgeapi.puppetlabs.com"
 mod 'attachmentgenie/ssh',        '1.2.2'
 mod 'attachmentgenie/ufw',        '1.2.0'
 mod 'dwerder/graphite',           '3.0.1'
+mod 'gdsoperations/aptly'
 mod 'gdsoperations/openconnect'
 mod 'jfryman/nginx',              '0.0.9'
 mod 'puppetlabs/apt',             '1.4.2'

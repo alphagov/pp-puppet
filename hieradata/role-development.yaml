@@ -3,6 +3,7 @@ classes:
   - 'clamav'
   - 'google_credentials'
   - 'nginx'
+  - 'performanceplatform::apt'
   - 'performanceplatform::development'
   - 'performanceplatform::mongo'
   - 'performanceplatform::pp_nginx'
@@ -15,6 +16,8 @@ classes:
   - 'python'
   - 'varnish'
   - 'redis'
+
+performanceplatform::apt::root_dir: '/mnt/apt'
 
 performanceplatform::dns::hosts: |
   127.0.0.1 jumpbox-1 monitoring log graphite
