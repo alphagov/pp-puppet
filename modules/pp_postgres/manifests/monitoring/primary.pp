@@ -3,7 +3,6 @@ class pp_postgres::monitoring::primary {
 
   postgresql::server::role { 'monitoring':
     login            => true,
-    connection_limit => 1,
     password_hash    => postgresql_password('monitoring', 'monitoring'),
   }
   postgresql::server::database_grant { 'GRANT monitoring - CONNECT - stagecraft':
