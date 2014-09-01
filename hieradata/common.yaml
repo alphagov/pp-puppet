@@ -131,6 +131,7 @@ classes:
   - 'ufw'
   - 'performanceplatform::base'
   - 'performanceplatform::checks::apt'
+  - 'performanceplatform::checks::ntp'
   - 'performanceplatform::pp_fail2ban'
 
 apt::always_apt_update: true
