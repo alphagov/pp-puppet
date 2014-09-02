@@ -30,6 +30,7 @@ performanceplatform::checks::servers::boxes:
   - logs-elasticsearch-1
   - logs-elasticsearch-2
   - postgresql-primary-1
+  - postgresql-secondary-1
 
 collectd::plugin::processes::process_matches:
   - name: 'logstash'
