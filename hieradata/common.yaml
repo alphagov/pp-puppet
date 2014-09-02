@@ -115,6 +115,7 @@ classes:
   - 'collectd'
   - 'collectd::plugin::df'
   - 'collectd::plugin::load'
+  - 'collectd::plugin::ntpd'
   - 'collectd::plugin::processes'
   - 'collectd::plugin::write_graphite'
   - 'curl'
