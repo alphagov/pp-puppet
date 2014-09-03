@@ -6,6 +6,7 @@ classes:
   - 'performanceplatform::development'
   - 'performanceplatform::mongo'
   - 'performanceplatform::pp_nginx'
+  - 'performanceplatform::pp_nginx::request_uuid'
   - 'performanceplatform::nodejs'
   - 'performanceplatform::pip'
   - 'performanceplatform::python_lxml_deps'
@@ -63,6 +64,7 @@ nginx::confd_purge: true
 nginx::vhost_purge: true
 nginx::manage_repo: false
 nginx::package_ensure: '1.4.4-4~precise0'
+nginx::package_name: 'nginx-extras'
 
 vhost_proxies:
   # For spotlight
