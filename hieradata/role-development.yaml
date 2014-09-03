@@ -126,6 +126,7 @@ ruby_packages:
 
 python_packages:
   - virtualenvwrapper
+  - ipython
 
 pp_postgres::primary::stagecraft_password: "securem8"
 performanceplatform::development::stagecraft_password: "securem8"
