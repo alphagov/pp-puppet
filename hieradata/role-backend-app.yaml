@@ -21,6 +21,8 @@ ufw_rules:
 
 nginx::confd_purge: true
 nginx::vhost_purge: true
+nginx::manage_repo: false
+nginx::package_ensure: '1.4.4-4~precise0'
 
 performanceplatform::notifier::user: 'deploy'
 performanceplatform::notifier::group: 'deploy'
