@@ -61,6 +61,8 @@ ufw_rules:
 nginx::names_hash_bucket_size: 128
 nginx::confd_purge: true
 nginx::vhost_purge: true
+nginx::manage_repo: false
+nginx::package_ensure: '1.4.4-4~precise0'
 
 vhost_proxies:
   # For spotlight
