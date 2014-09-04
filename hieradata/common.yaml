@@ -165,6 +165,13 @@ nameservers:
   - 8.8.8.8
   - 8.8.4.4
 
+ntp::server_list:
+  - 'ntp.ubuntu.com'
+  - 'time.euro.apple.com'
+  - '0.uk.pool.ntp.org'
+  - '1.uk.pool.ntp.org'
+  - '2.uk.pool.ntp.org'
+
 performanceplatform::dns::hosts: |
   172.27.1.2  jumpbox-1 jenkins
   172.27.1.11 frontend-app-1 frontend
