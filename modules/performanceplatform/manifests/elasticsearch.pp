@@ -93,8 +93,8 @@ class performanceplatform::elasticsearch(
 
   $graphite_fqdn = regsubst($::fqdn, '\.', '_', 'G')
 
-  performanceplatform::checks::disk { "${fqdn}_${data_dir}":
-    fqdn => $fqdn,
+  performanceplatform::checks::disk { "${::fqdn}_${data_dir}":
+    fqdn => $::fqdn,
     disk => $data_dir,
   }
   logrotate::rule { 'elasticsearch-rotate':
