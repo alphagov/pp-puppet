@@ -31,10 +31,10 @@ class pp_postgres::backup (
 ) {
 
   file {$backup_dir:
-    ensure  => directory,
-    owner   => $user,
-    group   => $user,
-    mode    => '0755',
+    ensure => directory,
+    owner  => $user,
+    group  => $user,
+    mode   => '0755',
     #require => [Package['puppetlabs/postgresql'], User[$user]],
   }
 
@@ -48,7 +48,7 @@ class pp_postgres::backup (
   }
 
   cron { 'pgsql-backup':
-    command => "/usr/local/bin/pgsql-backup.sh",
+    command => '/usr/local/bin/pgsql-backup.sh',
     user    => $user,
     hour    => 2,
     minute  => 0,

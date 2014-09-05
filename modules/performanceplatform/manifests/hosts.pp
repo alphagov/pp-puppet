@@ -13,9 +13,9 @@ class performanceplatform::hosts (
   }
 
   host { $::fqdn:
-    ensure        => present,
-    ip            => $ip,
-    host_aliases  => $::hostname,
+    ensure       => present,
+    ip           => $ip,
+    host_aliases => $::hostname,
   }
 
   host {

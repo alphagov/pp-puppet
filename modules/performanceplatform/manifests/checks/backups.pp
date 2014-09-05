@@ -1,13 +1,13 @@
 class performanceplatform::checks::backups (
 ) {
-    $freshness_script ="/etc/sensu/check-directory-freshness.sh"
+    $freshness_script ='/etc/sensu/check-directory-freshness.sh'
 
     file { $freshness_script:
-      ensure  => present,
-      owner   => 'root',
-      group   => 'root',
-      mode    => '0777',
-      source  => "puppet:///modules/performanceplatform/check-directory-freshness.sh"
+      ensure => present,
+      owner  => 'root',
+      group  => 'root',
+      mode   => '0777',
+      source => 'puppet:///modules/performanceplatform/check-directory-freshness.sh'
     }
 
     sensu::check { 'postgresql_backups_copy_check':

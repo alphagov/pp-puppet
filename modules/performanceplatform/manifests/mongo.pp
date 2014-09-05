@@ -8,8 +8,8 @@ class performanceplatform::mongo (
         logpath      => '/var/log/mongodb/mongodb.log',
         dbpath       => '/var/lib/mongodb'
     }
-    logrotate::rule { "mongodb-rotate":
-      path          => "/var/log/mongodb/mongodb.log",
+    logrotate::rule { 'mongodb-rotate':
+      path          => '/var/log/mongodb/mongodb.log',
       rotate        => 30,
       rotate_every  => 'day',
       missingok     => true,
@@ -24,10 +24,10 @@ class performanceplatform::mongo (
       postrotate    => 'killall -SIGUSR1 mongod && find /var/log/mongodb/ -type f -regex ".*\.\(log.[0-9].*-[0-9].*\)" -exec rm {} \;'
     }
     file { '/etc/mongodb':
-        ensure  => 'directory',
-        owner   => 'root',
-        group   => 'root',
-        mode    => '0644',
+        ensure => 'directory',
+        owner  => 'root',
+        group  => 'root',
+        mode   => '0644',
     }
     $mongo_members_tmp = join($mongo_hosts,'","')
     $mongo_members = "[\"${mongo_members_tmp}\"]"

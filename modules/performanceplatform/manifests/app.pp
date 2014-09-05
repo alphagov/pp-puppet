@@ -1,23 +1,23 @@
 define performanceplatform::app (
-  $port         = undef,
-  $workers      = 4,
-  $app_module   = undef,
-  $user         = undef,
-  $group        = undef,
-  $app_path     = "/opt/${title}",
-  $config_path  = "/etc/gds/${title}",
-  $servername   = $title,
-  $serveraliases = undef,
-  $proxy_ssl    = false,
-  $extra_env    = {},
-  $upstart_desc = "Upstart job for ${title}",
-  $upstart_exec = "${app_path}/run-procfile.sh",
+  $port                        = undef,
+  $workers                     = 4,
+  $app_module                  = undef,
+  $user                        = undef,
+  $group                       = undef,
+  $app_path                    = "/opt/${title}",
+  $config_path                 = "/etc/gds/${title}",
+  $servername                  = $title,
+  $serveraliases               = undef,
+  $proxy_ssl                   = false,
+  $extra_env                   = {},
+  $upstart_desc                = "Upstart job for ${title}",
+  $upstart_exec                = "${app_path}/run-procfile.sh",
   $proxy_append_forwarded_host = false,
-  $proxy_set_forwarded_host = false,
-  $client_max_body_size = '10m',
-  $statsd_prefix = $title,
-  $ssl_cert      = hiera('public_ssl_cert'),
-  $ssl_key       = hiera('public_ssl_key'),
+  $proxy_set_forwarded_host    = false,
+  $client_max_body_size        = '10m',
+  $statsd_prefix               = $title,
+  $ssl_cert                    = hiera('public_ssl_cert'),
+  $ssl_key                     = hiera('public_ssl_key'),
 ) {
   include nginx
   include upstart
@@ -26,9 +26,9 @@ define performanceplatform::app (
 
   file { [$app_path, "${app_path}/releases", "${app_path}/shared",
           "${app_path}/shared/log", "${app_path}/shared/assets", $config_path, $log_path]:
-    ensure  => directory,
-    owner   => $user,
-    group   => $group,
+    ensure => directory,
+    owner  => $user,
+    group  => $group,
   }
 
   performanceplatform::proxy_vhost { "${title}-vhost":
@@ -46,12 +46,12 @@ define performanceplatform::app (
 
   $base_environment = {
     # rails style development/production environment
-    "GOVUK_ENV"           => "production",
+    'GOVUK_ENV'           => 'production',
     # the actual env we are running in: preview, staging, production
-    "INFRASTRUCTURE_ENV"  => $::pp_environment,
-    "APP_NAME"            => $title,
-    "APP_MODULE"          => $app_module,
-    "GOVUK_STATSD_PREFIX" => "pp.apps.${statsd_prefix}",
+    'INFRASTRUCTURE_ENV'  => $::pp_environment,
+    'APP_NAME'            => $title,
+    'APP_MODULE'          => $app_module,
+    'GOVUK_STATSD_PREFIX' => "pp.apps.${statsd_prefix}",
   }
 
   upstart::job { $title:

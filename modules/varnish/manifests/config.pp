@@ -8,12 +8,12 @@ class varnish::config {
   }
 
   file { '/etc/default/varnishncsa':
-    ensure  => file,
-    source  => 'puppet:///modules/varnish/etc/default/varnishncsa',
+    ensure => file,
+    source => 'puppet:///modules/varnish/etc/default/varnishncsa',
   }
 
   file { '/etc/varnish/default.vcl':
     ensure  => file,
-    content => template("varnish/default.vcl.erb"),
+    content => template('varnish/default.vcl.erb'),
   }
 }

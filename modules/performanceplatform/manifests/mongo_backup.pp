@@ -22,24 +22,24 @@ class performanceplatform::mongo_backup (
 ) {
 
   file {$backup_dir:
-    ensure  => directory,
-    owner   => $user,
-    group   => $user,
-    mode    => '0755',
+    ensure => directory,
+    owner  => $user,
+    group  => $user,
+    mode   => '0755',
   }
 
   file {$backup_log_dir:
-    ensure  => directory,
-    owner   => $user,
-    group   => $user,
-    mode    => '0755',
+    ensure => directory,
+    owner  => $user,
+    group  => $user,
+    mode   => '0755',
   }
 
   file {$backup_log:
-    ensure  => present,
-    owner   => $user,
-    group   => $user,
-    mode    => '0777',
+    ensure => present,
+    owner  => $user,
+    group  => $user,
+    mode   => '0777',
   }
 
   file { '/usr/local/bin/mongo-backup.sh':
@@ -52,7 +52,7 @@ class performanceplatform::mongo_backup (
   }
 
   cron { 'mongo-backup':
-    command => "/usr/local/bin/mongo-backup.sh",
+    command => '/usr/local/bin/mongo-backup.sh',
     user    => $user,
     hour    => 3,
     minute  => 0,
