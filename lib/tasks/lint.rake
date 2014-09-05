@@ -4,6 +4,7 @@ PuppetLint.configuration.with_filename = true
 PuppetLint.configuration.send("disable_80chars")
 PuppetLint.configuration.send("disable_documentation")
 PuppetLint.configuration.send("disable_class_parameter_defaults")
+PuppetLint.configuration.fix = true
 
 desc "Run puppet-lint on one or more modules"
 task :lint do
@@ -18,8 +19,9 @@ task :lint do
 
   manifests_to_lint.each do |puppet_file|
     linter.file = puppet_file
-    linter.run
+    manifest = linter.run
     linter.report(linter.problems)
+    File.write(puppet_file, manifest) if PuppetLint.configuration.fix
   end
 
   fail if linter.errors?
