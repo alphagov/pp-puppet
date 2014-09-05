@@ -16,4 +16,8 @@ class performanceplatform::pp_nginx {
     notify => Exec['apt_update'],
   }
 
+  package { 'nginx-full':
+    ensure => 'absent',
+  }
+
 }
