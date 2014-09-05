@@ -7,12 +7,12 @@ class performanceplatform::elasticsearch(
 ) {
 
   class { '::elasticsearch':
-    cluster_hosts         => $cluster_hosts,
-    data_directory        => $data_dir,
-    host                  => $::hostname,
-    heap_size             => $heap_size,
-    minimum_master_nodes  => $minimum_master_nodes,
-    require               => [Performanceplatform::Mount[$data_dir], Class['java7']]
+    cluster_hosts        => $cluster_hosts,
+    data_directory       => $data_dir,
+    host                 => $::hostname,
+    heap_size            => $heap_size,
+    minimum_master_nodes => $minimum_master_nodes,
+    require              => [Performanceplatform::Mount[$data_dir], Class['java7']]
   }
 
 
@@ -85,7 +85,7 @@ class performanceplatform::elasticsearch(
   }
 
   sensu::check { 'elasticsearch_cluster_status':
-    command  => "/etc/sensu/community-plugins/plugins/elasticsearch/check-es-cluster-status.rb",
+    command  => '/etc/sensu/community-plugins/plugins/elasticsearch/check-es-cluster-status.rb',
     interval => 60,
     handlers => ['default'],
     require  => Package['rest-client'],
@@ -93,8 +93,8 @@ class performanceplatform::elasticsearch(
 
   $graphite_fqdn = regsubst($::fqdn, '\.', '_', 'G')
 
-  performanceplatform::checks::disk { "${fqdn}_${data_dir}":
-    fqdn => $fqdn,
+  performanceplatform::checks::disk { "${::fqdn}_${data_dir}":
+    fqdn => $::fqdn,
     disk => $data_dir,
   }
   logrotate::rule { 'elasticsearch-rotate':

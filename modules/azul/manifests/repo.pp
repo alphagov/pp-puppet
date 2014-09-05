@@ -12,7 +12,7 @@
 class azul::repo (
 ) {
   apt::source { 'azul-repo':
-    location     => "http://repos.azulsystems.com/ubuntu",
+    location     => 'http://repos.azulsystems.com/ubuntu',
     architecture => $::architecture,
     key          => '219BD9C9',
   }

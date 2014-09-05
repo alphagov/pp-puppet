@@ -38,27 +38,27 @@ define performanceplatform::proxy_vhost(
   if $sensu_check {
     performanceplatform::checks::graphite { "5xx_rate_${servername}":
       # Total number of 5xx requests over the last minute
-      target            => "hitcount(transformNull(stats.nginx.${::hostname}.${graphite_servername}.http_5*,0),'1min')",
-      warning           => $five_warning,
-      critical          => $five_critical,
-      interval          => 60,
-      handlers          => ['default'],
+      target   => "hitcount(transformNull(stats.nginx.${::hostname}.${graphite_servername}.http_5*,0),'1min')",
+      warning  => $five_warning,
+      critical => $five_critical,
+      interval => 60,
+      handlers => ['default'],
     }
 
     performanceplatform::checks::graphite { "4xx_rate_${servername}":
       # Total number of 4xx requests over the last minute
-      target            => "hitcount(transformNull(stats.nginx.${::hostname}.${graphite_servername}.http_4*,0),'1min')",
-      warning           => $four_warning,
-      critical          => $four_critical,
-      interval          => 60,
-      handlers          => ['default'],
+      target   => "hitcount(transformNull(stats.nginx.${::hostname}.${graphite_servername}.http_4*,0),'1min')",
+      warning  => $four_warning,
+      critical => $four_critical,
+      interval => 60,
+      handlers => ['default'],
     }
   } else {
     sensu::check { "5xx_rate_${servername}":
-      command => "",
+      command => '',
     }
     sensu::check { "4xx_rate_${servername}":
-      command => "",
+      command => '',
     }
   }
 
@@ -151,23 +151,23 @@ define performanceplatform::proxy_vhost(
 
 
   nginx::resource::vhost { $servername:
-    listen_port                 => $port,
-    listen_options              => $listen_options,
-    proxy                       => "http://${upstream_name}",
-    ssl                         => $ssl,
-    ssl_port                    => $ssl_port,
-    ssl_cert                    => "${ssl_path}/${ssl_cert}",
-    ssl_key                     => "${ssl_path}/${ssl_key}",
-    rewrite_to_https            => $ssl_redirect,
-    client_max_body_size        => $client_max_body_size,
-    proxy_set_header            => flatten([$forwarded_host, $forward_host, $forwarded_proto]),
-    access_log                  => "/var/log/nginx/${servername}.access.log.json json_event",
-    error_log                   => "/var/log/nginx/${servername}.error.log",
-    auth_basic                  => $auth_basic,
-    auth_basic_user_file        => $auth_basic_user_file,
-    vhost_cfg_append            => $vhost_cfg_append,
-    vhost_cfg_ssl_prepend       => $vhost_cfg_ssl_prepend,
-    add_header                  => $add_header,
+    listen_port           => $port,
+    listen_options        => $listen_options,
+    proxy                 => "http://${upstream_name}",
+    ssl                   => $ssl,
+    ssl_port              => $ssl_port,
+    ssl_cert              => "${ssl_path}/${ssl_cert}",
+    ssl_key               => "${ssl_path}/${ssl_key}",
+    rewrite_to_https      => $ssl_redirect,
+    client_max_body_size  => $client_max_body_size,
+    proxy_set_header      => flatten([$forwarded_host, $forward_host, $forwarded_proto]),
+    access_log            => "/var/log/nginx/${servername}.access.log.json json_event",
+    error_log             => "/var/log/nginx/${servername}.error.log",
+    auth_basic            => $auth_basic,
+    auth_basic_user_file  => $auth_basic_user_file,
+    vhost_cfg_append      => $vhost_cfg_append,
+    vhost_cfg_ssl_prepend => $vhost_cfg_ssl_prepend,
+    add_header            => $add_header,
   }
 
   if $block_all_robots {

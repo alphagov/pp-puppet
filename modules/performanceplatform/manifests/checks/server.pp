@@ -23,7 +23,7 @@ define performanceplatform::checks::server (
 
     performanceplatform::checks::disk { "${fqdn}_root":
       fqdn => $fqdn,
-      disk => "root",
+      disk => 'root',
     }
 
     performanceplatform::checks::graphite { "check_machine_is_down_${name}":

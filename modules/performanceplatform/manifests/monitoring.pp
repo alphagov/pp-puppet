@@ -8,8 +8,8 @@ class performanceplatform::monitoring (
     notify  => Service['apache2'],
   }
 
-  logrotate::rule { "graphite-rotate":
-    path          => "/opt/graphite/storage/*.log",
+  logrotate::rule { 'graphite-rotate':
+    path          => '/opt/graphite/storage/*.log',
     rotate        => 30,
     rotate_every  => 'day',
     missingok     => true,
@@ -119,9 +119,9 @@ class performanceplatform::monitoring (
   }
 
   logstash::filter::grep { 'ignore_stagecraft_status_request':
-    tags      => ["stagecraft"],
+    tags      => ['stagecraft'],
     match     => {
-      'http_path' => "/_status",
+      'http_path' => '/_status',
     },
     negate    => true,
     order     => 20,
@@ -153,15 +153,15 @@ class performanceplatform::monitoring (
     instances => [ 'agent-1', 'agent-2' ],
   }
 
-  logrotate::rule { "logstash-rotate":
-    path         => "/var/log/logstash/*.log",
+  logrotate::rule { 'logstash-rotate':
+    path         => '/var/log/logstash/*.log',
     rotate       => 30,
     rotate_every => 'day',
     missingok    => true,
     compress     => true,
     create       => true,
     create_mode  => '0640',
-    postrotate   => "service logstash-agent-1 restart && service logstash-agent-2 restart",
+    postrotate   => 'service logstash-agent-1 restart && service logstash-agent-2 restart',
   }
 
   sensu::check { 'logstash_is_down':
@@ -179,9 +179,9 @@ class performanceplatform::monitoring (
 
   if $pagerduty_api_key != undef {
     sensu::handler { 'pagerduty':
-      command    => '/etc/sensu/community-plugins/handlers/notification/pagerduty.rb',
-      config     => {
-        api_key  => $pagerduty_api_key,
+      command => '/etc/sensu/community-plugins/handlers/notification/pagerduty.rb',
+      config  => {
+        api_key => $pagerduty_api_key,
       }
     }
   }

@@ -2,8 +2,8 @@ class pp_postgres::monitoring::primary {
   include('pp_postgres::monitoring::base')
 
   postgresql::server::role { 'monitoring':
-    login            => true,
-    password_hash    => postgresql_password('monitoring', 'monitoring'),
+    login         => true,
+    password_hash => postgresql_password('monitoring', 'monitoring'),
   }
   postgresql::server::database_grant { 'GRANT monitoring - CONNECT - stagecraft':
     privilege => 'CONNECT',
@@ -13,7 +13,7 @@ class pp_postgres::monitoring::primary {
   # Create procedure to check replication status if it does not exist already
   postgresql_psql{'collectd-postgres-replication-status-function':
     command => template('pp_postgres/collectd-query-replication-status.sql.erb'),
-    unless => 'SELECT 1 FROM pg_catalog.pg_proc p WHERE p.proname = \'streaming_slave_check\' AND pg_catalog.pg_function_is_visible(p.oid)',
+    unless  => 'SELECT 1 FROM pg_catalog.pg_proc p WHERE p.proname = \'streaming_slave_check\' AND pg_catalog.pg_function_is_visible(p.oid)',
   }
   collectd::plugin::postgresql::query{'replication_lag':
     statement => 'SELECT client_hostname, byte_lag FROM streaming_slave_check();',

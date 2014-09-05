@@ -8,12 +8,12 @@ class performanceplatform::pp_nginx {
 
   file { '/etc/apt/sources.list.d/nginx.list':
     ensure => 'absent',
-    notify  => Exec['apt_update'],
+    notify => Exec['apt_update'],
   }
 
   file { '/etc/apt/sources.list.d/teward-nginx-devel-testing-precise.list':
     ensure => 'absent',
-    notify  => Exec['apt_update'],
+    notify => Exec['apt_update'],
   }
 
 }

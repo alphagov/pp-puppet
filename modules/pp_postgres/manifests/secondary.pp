@@ -8,12 +8,12 @@ class pp_postgres::secondary {
   file { "${data_dir}/recovery.conf":
     ensure  => present,
     content => "standby_mode = 'on'\nprimary_conninfo = 'host=postgresql-primary-1 user=replicator'",
-    owner   => "postgres",
-    group   => "postgres",
+    owner   => 'postgres',
+    group   => 'postgres',
   }
   file { '/usr/local/bin/start_replication.sh':
     ensure  => present,
-    content => template("pp_postgres/start_replication.sh.erb"),
+    content => template('pp_postgres/start_replication.sh.erb'),
     mode    => '0555',
   }
 

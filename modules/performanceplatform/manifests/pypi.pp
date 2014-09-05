@@ -4,7 +4,7 @@ class performanceplatform::pypi (
   $live_username,
   $live_password,
 ) {
-    $pypirc_file = "/var/lib/jenkins/.pypirc"
+    $pypirc_file = '/var/lib/jenkins/.pypirc'
 
     file { $pypirc_file:
       ensure  => present,
