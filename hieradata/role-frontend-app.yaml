@@ -7,7 +7,7 @@ classes:
   - 'performanceplatform::checks::admin'
   - 'performanceplatform::checks::clamav'
   - 'performanceplatform::pp_nginx'
-  - 'performanceplatform::pp_nginx:request_uuid'
+  - 'performanceplatform::pp_nginx::request_uuid'
   - 'performanceplatform::opbeat_proxy'
   - 'performanceplatform::pip'
   - 'performanceplatform::python_lxml_deps'
