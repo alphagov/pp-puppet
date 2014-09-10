@@ -18,7 +18,7 @@ class performanceplatform::deploy (
         file { '/etc/nginx/htpasswd.pp':
             ensure  => present,
             content => $basic_auth,
-            require => Package['nginx-extra'],
+            require => Package['nginx'],
         }
     }
     if ($jenkins_key) {
