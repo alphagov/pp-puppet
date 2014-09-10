@@ -169,7 +169,7 @@ define performanceplatform::proxy_vhost(
     ssl_key               => "${ssl_path}/${ssl_key}",
     rewrite_to_https      => $ssl_redirect,
     client_max_body_size  => $client_max_body_size,
-    proxy_set_header      => flatten([$forwarded_host, $forward_host, $forwarded_proto]),
+    proxy_set_header      => flatten([$forwarded_host, $forward_host, $forwarded_proto, $request_id]),
     access_log            => "/var/log/nginx/${servername}.access.log.json json_event",
     error_log             => "/var/log/nginx/${servername}.error.log",
     auth_basic            => $auth_basic,
