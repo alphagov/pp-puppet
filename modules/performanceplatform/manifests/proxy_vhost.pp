@@ -31,8 +31,10 @@ define performanceplatform::proxy_vhost(
   $block_all_robots     = true,
   $add_header           = undef,
   $custom_locations     = undef,
-  $request_uuid_servernames = [],
+  $request_uuid         = false,
 ) {
+
+  validate_bool($request_uuid)
 
   $graphite_servername = regsubst($servername, '\.', '_', 'G')
 
@@ -137,16 +139,16 @@ define performanceplatform::proxy_vhost(
       # Set an HSTS header to enforce SSL for 1 month
       'add_header' => 'Strict-Transport-Security "max-age=2628000"',
     }
-    if $servername in $request_uuid_servernames {
-      $request_id = [
-        'Request-Id $request_uuid',
-      ]
-    } else {
-      $request_id = []
-    }
   } else {
     $forwarded_proto = []
     $vhost_cfg_ssl_prepend = undef
+  }
+
+  if $request_uuid {
+    $request_id = [
+      'Request-Id $request_uuid',
+    ]
+  } else {
     $request_id = []
   }
 
