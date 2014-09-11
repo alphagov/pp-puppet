@@ -21,6 +21,10 @@ RSpec.configure do |config|
 
   config.default_facts = {
     :osfamily     => 'Debian',
+    :operatingsystem => 'Ubuntu',
+    :lsbdistid       => 'Debian',
+    :lsbdistcodename => 'Precise',
+    :concat_basedir  => '/tmp',
   }
 
 end
