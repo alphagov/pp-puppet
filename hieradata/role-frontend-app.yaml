@@ -86,6 +86,7 @@ vhost_proxies:
     servername:    "%{::admin_vhost}"
     ssl:           true
     ssl_redirect:  true
+    request_uuid:  true
     upstream_port: 7999
     four_warning: 1
     four_critical: 3
@@ -98,6 +99,7 @@ vhost_proxies:
     servername:    "%{::admin_beta_vhost}"
     ssl:           true
     ssl_redirect:  true
+    request_uuid:  true
     upstream_port: 3070
     four_warning: 1
     four_critical: 3
@@ -116,6 +118,7 @@ vhost_proxies:
     servername:    "%{::www_vhost}"
     ssl:           true
     ssl_redirect:  true
+    request_uuid:  true
     upstream_port: 7999
     four_warning: 1
     four_critical: 3
