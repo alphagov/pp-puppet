@@ -5,7 +5,7 @@ class performanceplatform::checks::ssl () {
 
   sensu::check { 'ssl_expiry_check':
     command  => "${check_https_path} -h www.${domain_name} -p 443 -c 30 -w 40",
-    interval => 120,
+    interval => 86400,
     handlers => ['default'],
   }
 
