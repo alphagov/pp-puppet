@@ -1,3 +1,10 @@
+# === Parameters
+#
+# [*request_uuid*]
+#   Optional boolean value. Whether to proxy_set_header the $request_uuid value or not.
+#   If set, this can be used to trace a request through all the systems that collaborate
+#   to service a single external request
+#
 define performanceplatform::proxy_vhost(
   $port                = '80',
   $priority            = '10',
