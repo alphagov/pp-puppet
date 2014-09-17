@@ -38,7 +38,7 @@ performanceplatform::jenkins::plugin_hash:
     greenballs:
         version: "1.12"
     naginator:
-        version: "1.12"
+        version: "1.8"
 
 performanceplatform::kibana::elasticsearch_url: "https://%{::elasticsearch_vhost}"
 performanceplatform::kibana::tarball_url: 'https://download.elasticsearch.org/kibana/kibana/kibana-3.0.0milestone4.tar.gz'
