@@ -8,7 +8,6 @@
 define performanceplatform::proxy_vhost(
   $port                = '80',
   $priority            = '10',
-  $template            = 'nginx/vhost-proxy.conf.erb',
   $upstream_server     = 'localhost',
   $upstream_hostname   = undef,
   $upstream_port       = '8080',
