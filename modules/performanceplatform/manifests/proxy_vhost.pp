@@ -39,8 +39,15 @@ define performanceplatform::proxy_vhost(
   $custom_locations     = undef,
   $request_uuid         = false,
 ) {
-
+  
+  validate_bool($block_all_robots)
+  validate_bool($pp_only_vhost)
+  validate_bool($proxy_append_forwarded_host)
+  validate_bool($forward_host_header)
   validate_bool($request_uuid)
+  validate_bool($sensu_check)
+  validate_bool($ssl)
+  validate_array($denied_http_verbs)
 
   $graphite_servername = regsubst($servername, '\.', '_', 'G')
 
