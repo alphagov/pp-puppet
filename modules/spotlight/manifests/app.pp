@@ -24,6 +24,7 @@ class spotlight::app (
     upstart_desc                => 'Spotlight job',
     upstart_exec                => 'node --trace-gc app/server.js',
     proxy_append_forwarded_host => false,
+    request_uuid                => true,
   }
 
   nginx::resource::location { 'spotlight-app-assets':

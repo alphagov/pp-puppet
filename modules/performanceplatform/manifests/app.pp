@@ -1,3 +1,10 @@
+# === Parameters
+#
+# [*request_uuid*]
+#   Optional boolean value. Whether to proxy_set_header the $request_uuid value or not.
+#   If set, this can be used to trace a request through all the systems that collaborate
+#   to service a single external request
+#
 define performanceplatform::app (
   $port                        = undef,
   $workers                     = 4,
@@ -18,7 +25,11 @@ define performanceplatform::app (
   $statsd_prefix               = $title,
   $ssl_cert                    = hiera('public_ssl_cert'),
   $ssl_key                     = hiera('public_ssl_key'),
+  $request_uuid                = false,
 ) {
+
+  validate_bool($request_uuid)
+
   include nginx
   include upstart
 
@@ -42,6 +53,7 @@ define performanceplatform::app (
     proxy_append_forwarded_host => $proxy_append_forwarded_host,
     proxy_set_forwarded_host    => $proxy_set_forwarded_host,
     client_max_body_size        => $client_max_body_size,
+    request_uuid                => $request_uuid,
   }
 
   $base_environment = {
