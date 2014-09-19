@@ -1,7 +1,13 @@
+# === Parameters
+#
+# [*request_uuid*]
+#   Optional boolean value. Whether to proxy_set_header the $request_uuid value or not.
+#   If set, this can be used to trace a request through all the systems that collaborate
+#   to service a single external request
+#
 define performanceplatform::proxy_vhost(
   $port                = '80',
   $priority            = '10',
-  $template            = 'nginx/vhost-proxy.conf.erb',
   $upstream_server     = 'localhost',
   $upstream_hostname   = undef,
   $upstream_port       = '8080',
@@ -33,8 +39,15 @@ define performanceplatform::proxy_vhost(
   $custom_locations     = undef,
   $request_uuid         = false,
 ) {
-
+  
+  validate_bool($block_all_robots)
+  validate_bool($pp_only_vhost)
+  validate_bool($proxy_append_forwarded_host)
+  validate_bool($forward_host_header)
   validate_bool($request_uuid)
+  validate_bool($sensu_check)
+  validate_bool($ssl)
+  validate_array($denied_http_verbs)
 
   $graphite_servername = regsubst($servername, '\.', '_', 'G')
 
