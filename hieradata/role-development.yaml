@@ -6,6 +6,7 @@ classes:
   - 'performanceplatform::development'
   - 'performanceplatform::mongo'
   - 'performanceplatform::pp_nginx'
+  - 'performanceplatform::pp_nginx::rate_limit'
   - 'performanceplatform::pp_nginx::request_uuid'
   - 'performanceplatform::nodejs'
   - 'performanceplatform::pip'
