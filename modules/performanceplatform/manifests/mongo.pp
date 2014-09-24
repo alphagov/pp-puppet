@@ -77,4 +77,24 @@ rs.initiate(replicaSetConfig());
       handlers => ['default'],
     }
 
+    vcsrepo { '/etc/collectd/plugins/mongodb':
+        ensure   => present,
+        provider => git,
+        source   => 'https://github.com/sebest/collectd-mongodb.git',
+        revision => '359a8d2aab16b2cc89d38c2c07564f594bd5ec96',
+        require  => Package['git'],
+    }
+    package { 'pymongo':
+        ensure   => present,
+        provider => pip,
+        require  => Package['python-pip'],
+    }
+    file { "${::collectd::params::plugin_conf_dir}/01-mongodb.conf":
+        ensure   => present,
+        owner    => root,
+        group    => "${::collectd::params::root_group}",
+        mode     => '0640',
+        source   => 'puppet:///modules/performanceplatform/collectd/mongodb.conf',
+        notify   => Service['collectd'],
+    }
 }
