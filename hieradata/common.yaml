@@ -88,6 +88,14 @@ accounts:
         key: AAAAB3NzaC1yc2EAAAADAQABAAABAQDInLW3HgZO91qmkIR0OcLLOPJ3yQ/cSAgdDs1ch9J78uXc2qLWEchqje5QrbNy/GRMory9CC04xf/Z3P0gQbNRx8lTJTo44iH0mgQu9IQLVY1E/lR48spGaBSsUobBX7Qx1dOFXc2yFlHTpASdYXShK3eh7sqyuK/oy6HJpfwCpQwJ+ttXloLZ3KiVaWBFBBj8sbzmogsKVN4uPZwRFGpcqGaybFGPhsVxBQQAUMjnL+d8xVfy0PKKHIEu7K3HaJhfFoI9AVjQnt05s+CdeAMTXiAjaxb3UM+j5WZNhI9X4vgnyiRxF3oSPNkfJ1luz6s4GFYXDVnqz2zXyqZM7m5b
     groups:
       - gds
+  scompton:
+    comments: Stuart Compton - Info Assure
+    ssh_keys:
+      scompton:
+        key: AAAAB3NzaC1yc2EAAAADAQABAAABAQD1ynjOBptVfI1opFKJMOMUqjG39C/7Du6VcWpWieYoBxOUZlR/81QLqxUZDhk4NhEkjDb8412HHrHeUpTEkT7hhLqpRdpx7aPJ7Rm69JGk6ykB3oETvE0mPcKDsT0w/st96o8qIoOL7xcfonc8z98vOTz9vzzH++5M0SzWUq9ij8UgjZlmA7CEyzBexS6Vo7jTmjEb4ZWDP2K4EdVm3Uv0K6BGvJoKfCn9MxO0eNz+9kmN+nisV6XjPylWMQl+OdP9XXY/gnyMJ1BR9ambJsrYgOfrHzvsrZfhvW6bVtQAEo2fOYTskz9i2lXDZaX+QgW1b7md86H5FJ3f19jqCvYd
+    groups:
+      - gds
+
 
 ppas:
   - 'ppa:gds/performance-platform'
