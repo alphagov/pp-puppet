@@ -173,7 +173,7 @@ nameservers:
   - 8.8.8.8
   - 8.8.4.4
 
-ntp::server_list:
+ntp::servers:
   - 'ntp.ubuntu.com'
   - 'time.euro.apple.com'
   - '0.uk.pool.ntp.org'
