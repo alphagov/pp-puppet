@@ -89,12 +89,13 @@ rs.initiate(replicaSetConfig());
         provider => pip,
         require  => Package['python-pip'],
     }
+    include collectd
     file { "${::collectd::params::plugin_conf_dir}/01-mongodb.conf":
-        ensure   => present,
-        owner    => root,
-        group    => "${::collectd::params::root_group}",
-        mode     => '0640',
-        source   => 'puppet:///modules/performanceplatform/collectd/mongodb.conf',
-        notify   => Service['collectd'],
+        ensure => present,
+        owner  => root,
+        group  => $::collectd::params::root_group,
+        mode   => '0640',
+        source => 'puppet:///modules/performanceplatform/collectd/mongodb.conf',
+        notify => Service['collectd'],
     }
 }
