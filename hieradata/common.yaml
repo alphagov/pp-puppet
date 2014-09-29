@@ -179,6 +179,7 @@ ntp::servers:
   - '0.uk.pool.ntp.org'
   - '1.uk.pool.ntp.org'
   - '2.uk.pool.ntp.org'
+ntp::panic: false
 
 performanceplatform::dns::hosts: |
   172.27.1.2  jumpbox-1 jenkins
