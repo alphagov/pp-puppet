@@ -65,6 +65,7 @@ nginx::vhost_purge: true
 nginx::manage_repo: false
 nginx::package_ensure: '1.4.4-4~precise0'
 nginx::package_name: 'nginx-extras'
+nginx::server_tokens: 'off'
 nginx::http_cfg_append:
   gzip_types: application/x-javascript application/javascript application/json text/css
   gzip_proxied: no_etag

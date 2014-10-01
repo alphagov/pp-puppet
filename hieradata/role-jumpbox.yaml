@@ -16,6 +16,7 @@ nginx::vhost_purge: true
 nginx::manage_repo: false
 nginx::package_ensure: '1.4.4-4~precise0'
 nginx::package_name: 'nginx-extras'
+nginx::server_tokens: 'off'
 
 performanceplatform::jenkins::lts: 1
 performanceplatform::jenkins::plugin_hash:
