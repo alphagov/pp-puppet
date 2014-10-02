@@ -69,6 +69,13 @@ rs.initiate(replicaSetConfig());
       ],
     }
 
+    # MongoDB works best with a lower tcp keepalive
+    # http://docs.mongodb.org/manual/faq/diagnostics/#does-tcp-keepalive-time-affect-sharded-clusters-and-replica-sets
+    exec { 'set-tcp_keepalive_time':
+      command => 'echo 300 > /proc/sys/net/ipv4/tcp_keepalive_time',
+      unless  => '[ "300" = "$(cat /proc/sys/net/ipv4/tcp_keepalive_time)" ]',
+    }
+
     $escaped_fqdn = regsubst($::fqdn, '\.', '_', 'G')
 
     sensu::check { "mongod_is_down_${escaped_fqdn}":
@@ -77,6 +84,7 @@ rs.initiate(replicaSetConfig());
       handlers => ['default'],
     }
 
+    # MongoDB collectd plugin
     vcsrepo { '/etc/collectd/plugins/mongodb':
         ensure   => present,
         provider => git,
