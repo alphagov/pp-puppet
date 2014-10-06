@@ -1,13 +1,40 @@
 # Install mongodb in a replicaset
 class performanceplatform::mongo (
+    $data_dir,
+    $disk_mount,
     $mongo_hosts,
 ){
     class { 'mongodb':
-        enable_10gen => true,
-        replSet      => 'production',
-        logpath      => '/var/log/mongodb/mongodb.log',
-        dbpath       => '/var/lib/mongodb'
+        enable_10gen    => true,
+        replSet         => 'production',
+        logpath         => '/var/log/mongodb/mongodb.log',
+        dbpath          => $data_dir,
+        require         => [Performanceplatform::Mount[$data_dir]]
     }
+
+    file { $data_dir:
+      ensure => directory,
+    }
+
+    performanceplatform::mount { $data_dir:
+      mountoptions => 'defaults',
+      disk         => $disk_mount,
+      require      => File[$data_dir],
+    }
+
+    performanceplatform::checks::disk { "${::fqdn}_${data_dir}":
+      fqdn => $::fqdn,
+      disk => $data_dir,
+    }
+
+    lvm::volume { 'mongo':
+      ensure => 'present',
+      vg     => 'data',
+      pv     => '/dev/sdb1',
+      fstype => 'ext4',
+      before => Performanceplatform::Mount[$data_dir]
+    }
+
     logrotate::rule { 'mongodb-rotate':
       path          => '/var/log/mongodb/mongodb.log',
       rotate        => 30,
