@@ -13,8 +13,20 @@ class performanceplatform::mongo (
         before          => [Lumberjack::Logshipper['mongo']],
     }
 
+    group{ 'mongodb':
+      ensure  => present,
+    }
+
+    user{ 'mongodb':
+      ensure  => present,
+      require => Group['mongodb']
+    }
+
     file { $data_dir:
-      ensure => directory,
+      ensure  => directory,
+      owner   => 'mongodb',
+      group   => 'mongodb',
+      require => User['mongodb']
     }
 
     performanceplatform::mount { $data_dir:
