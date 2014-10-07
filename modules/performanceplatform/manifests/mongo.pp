@@ -9,7 +9,8 @@ class performanceplatform::mongo (
         replSet         => 'production',
         logpath         => '/var/log/mongodb/mongodb.log',
         dbpath          => $data_dir,
-        require         => [Performanceplatform::Mount[$data_dir]]
+        require         => [Performanceplatform::Mount[$data_dir]],
+        before          => [Lumberjack::Logshipper['mongo']],
     }
 
     file { $data_dir:
