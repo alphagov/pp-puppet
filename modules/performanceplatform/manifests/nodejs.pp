@@ -1,6 +1,6 @@
 class performanceplatform::nodejs {
   package { 'nodejs':
-    ensure  => "0.10.29-1chl1~${::lsbdistcodename}1",
+    ensure  => "0.10.32-1chl1~${::lsbdistcodename}1",
     require => Apt::Ppa['ppa:gds/performance-platform'],
   }
   package { 'grunt-cli':
