@@ -12,7 +12,8 @@ class performanceplatform::hosts (
     purge => true,
   }
 
-  host { $::fqdn:
+  warning('Forcing domain to localdomain')
+  host { "${::hostname}.localdomain":
     ensure       => present,
     ip           => $ip,
     host_aliases => $::hostname,

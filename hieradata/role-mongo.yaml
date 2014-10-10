@@ -3,6 +3,9 @@ classes:
   - 'performanceplatform::mongo'
   - 'performanceplatform::mongo_backup'
 
+performanceplatform::mongo::data_dir: '/var/lib/mongodb'
+performanceplatform::mongo::disk_mount: '/dev/mapper/data-mongo'
+
 ufw_rules:
   allowmongo:
     port: 27017
