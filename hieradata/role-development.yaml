@@ -136,3 +136,4 @@ python_packages:
 
 pp_postgres::primary::stagecraft_password: "securem8"
 performanceplatform::development::stagecraft_password: "securem8"
+apt::always_apt_update: false
