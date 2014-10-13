@@ -6,4 +6,3 @@ File {
   group => 'root',
 }
 
-import 'nodes.pp'
