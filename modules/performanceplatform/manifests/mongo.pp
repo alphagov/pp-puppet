@@ -1,17 +1,27 @@
 # Install mongodb in a replicaset
+# require_logshipper - hacky parameter needed to set relationship correctly
+# as logshipper is defined in hiera, and the development vm does not require
+# it
 class performanceplatform::mongo (
     $data_dir,
-    $disk_mount,
+    $disk_mount = undef,
     $mongo_hosts,
+    $require_logshipper = true,
 ){
+    if $require_logshipper {
+      $before = [Lumberjack::Logshipper['mongo']]
+    } else {
+      $before = []
+    }
+
     class { 'mongodb':
         enable_10gen    => true,
         replSet         => 'production',
         logpath         => '/var/log/mongodb/mongodb.log',
         dbpath          => $data_dir,
-        require         => [Performanceplatform::Mount[$data_dir]],
-        before          => [Lumberjack::Logshipper['mongo']],
+        before          => $before,
     }
+
 
     group{ 'mongodb':
       ensure  => present,
@@ -29,23 +39,26 @@ class performanceplatform::mongo (
       require => User['mongodb']
     }
 
-    performanceplatform::mount { $data_dir:
-      mountoptions => 'defaults',
-      disk         => $disk_mount,
-      require      => File[$data_dir],
-    }
+    if ($disk_mount) {
+      performanceplatform::mount { $data_dir:
+        mountoptions => 'defaults',
+        disk         => $disk_mount,
+        require      => File[$data_dir],
+        before       => Class['mongodb']
+      }
 
-    performanceplatform::checks::disk { "${::fqdn}_${data_dir}":
-      fqdn => $::fqdn,
-      disk => $data_dir,
-    }
+      performanceplatform::checks::disk { "${::fqdn}_${data_dir}":
+        fqdn => $::fqdn,
+        disk => $data_dir,
+      }
 
-    lvm::volume { 'mongo':
-      ensure => 'present',
-      vg     => 'data',
-      pv     => '/dev/sdb1',
-      fstype => 'ext4',
-      before => Performanceplatform::Mount[$data_dir]
+      lvm::volume { 'mongo':
+        ensure => 'present',
+        vg     => 'data',
+        pv     => '/dev/sdb1',
+        fstype => 'ext4',
+        before => Performanceplatform::Mount[$data_dir]
+      }
     }
 
     logrotate::rule { 'mongodb-rotate':
