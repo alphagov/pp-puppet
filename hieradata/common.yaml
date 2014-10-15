@@ -89,12 +89,7 @@ accounts:
     groups:
       - gds
   scompton:
-    comment: Stuart Compton - Info Assure
-    ssh_keys:
-      scompton:
-        key: AAAAB3NzaC1yc2EAAAADAQABAAABAQD1ynjOBptVfI1opFKJMOMUqjG39C/7Du6VcWpWieYoBxOUZlR/81QLqxUZDhk4NhEkjDb8412HHrHeUpTEkT7hhLqpRdpx7aPJ7Rm69JGk6ykB3oETvE0mPcKDsT0w/st96o8qIoOL7xcfonc8z98vOTz9vzzH++5M0SzWUq9ij8UgjZlmA7CEyzBexS6Vo7jTmjEb4ZWDP2K4EdVm3Uv0K6BGvJoKfCn9MxO0eNz+9kmN+nisV6XjPylWMQl+OdP9XXY/gnyMJ1BR9ambJsrYgOfrHzvsrZfhvW6bVtQAEo2fOYTskz9i2lXDZaX+QgW1b7md86H5FJ3f19jqCvYd
-    groups:
-      - gds
+    ensure: absent
 
 
 ppas:
