@@ -12,6 +12,7 @@ class elasticsearch::config (
   $minimum_master_nodes,
   $data_directory,
   $host,
+  $logs_directory = '/var/log/elasticsearch',
 ) {
   $es_home = "/var/lib/elasticsearch-${cluster_name}"
 
