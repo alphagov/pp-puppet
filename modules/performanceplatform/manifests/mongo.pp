@@ -20,6 +20,7 @@ class performanceplatform::mongo (
         logpath         => '/var/log/mongodb/mongodb.log',
         dbpath          => $data_dir,
         before          => $before,
+        nohttpinterface => true,
     }
 
 
