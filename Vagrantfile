@@ -9,13 +9,13 @@ hosts = [
   { name: 'frontend-app-1',         ip: '172.27.1.11' },
   { name: 'frontend-app-2',         ip: '172.27.1.12' },
   { name: 'jumpbox-1',              ip: '172.27.1.2' },
-  { name: 'mongo-1',                ip: '172.27.1.31' },
-  { name: 'mongo-2',                ip: '172.27.1.32' },
-  { name: 'mongo-3',                ip: '172.27.1.33' },
+  { name: 'mongo-1',                ip: '172.27.1.31', extra_disk: true  },
+  { name: 'mongo-2',                ip: '172.27.1.32', extra_disk: true  },
+  { name: 'mongo-3',                ip: '172.27.1.33', extra_disk: true  },
   { name: 'monitoring-1',           ip: '172.27.1.41' },
-  { name: 'logs-elasticsearch-1',   ip: '172.27.1.51' },
-  { name: 'logs-elasticsearch-2',   ip: '172.27.1.52' },
-  { name: 'logs-elasticsearch-3',   ip: '172.27.1.53' },
+  { name: 'logs-elasticsearch-1',   ip: '172.27.1.51', extra_disk: true },
+  { name: 'logs-elasticsearch-2',   ip: '172.27.1.52', extra_disk: true },
+  { name: 'logs-elasticsearch-3',   ip: '172.27.1.53', extra_disk: true },
   { name: 'postgresql-primary-1',   ip: '172.27.1.61' },
   { name: 'postgresql-secondary-1', ip: '172.27.1.65' },
   { name: 'backup-box-1',           ip: '172.27.1.71' },
@@ -114,6 +114,13 @@ Vagrant.configure("2") do |config|
           modifyvm_args << "--memory" << "1024"
         end
         vb.customize(modifyvm_args)
+        if host[:extra_disk]
+          file_to_disk =  "./tmp/#{host[:name]}-extra-disk.vdi"
+          unless File.exists? file_to_disk
+            vb.customize ['createhd', '--filename', file_to_disk, '--size', 512]
+          end
+          vb.customize ['storageattach', :id, '--storagectl', 'IDE Controller', '--port', 1, '--device', 1, '--type', 'hdd', '--medium', file_to_disk]
+        end
       end
 
       c.vm.provider :vmware_fusion do |f, override|
@@ -123,6 +130,16 @@ Vagrant.configure("2") do |config|
         f.vmx["memsize"] = "256"
         f.vmx["numvcpus"] = "1"
         f.vmx["displayName"] = host[:name]
+        if host[:extra_disk]
+          vdiskmanager = '/Applications/VMware\ Fusion.app/Contents/Library/vmware-vdiskmanager'
+          file_to_disk =  "./tmp/#{host[:name]}-extra-disk.vmdk"
+          unless File.exists? file_to_disk
+            `#{vdiskmanager} -c -s 512MB -a lsilogic -t 1 #{file_to_disk}`
+          end
+          f.vmx['scsi0:1.filename'] = File.dirname(__FILE__) + "/" + file_to_disk
+          f.vmx['scsi0:1.present']  = 'TRUE'
+          f.vmx['scsi0:1.redo']     = ''
+        end
       end
 
       c = load_local_vagrant_file(host[:name], c)
