@@ -7,12 +7,15 @@ class performanceplatform::mongo (
     $disk_mount = undef,
     $mongo_hosts,
     $require_logshipper = true,
+    $version = undef,
 ){
     if $require_logshipper {
       $before = [Lumberjack::Logshipper['mongo']]
     } else {
       $before = []
     }
+
+    validate_string($version)
 
     class { 'mongodb':
         enable_10gen    => true,
@@ -21,6 +24,7 @@ class performanceplatform::mongo (
         dbpath          => $data_dir,
         before          => $before,
         nohttpinterface => true,
+        version         => $version,
     }
 
 
