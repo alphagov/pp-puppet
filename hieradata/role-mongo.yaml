@@ -5,6 +5,7 @@ classes:
 
 performanceplatform::mongo::data_dir: '/var/lib/mongodb'
 performanceplatform::mongo::disk_mount: '/dev/mapper/data-mongo'
+performanceplatform::mongo::version: '2.4.11'
 
 ufw_rules:
   allowmongo:
