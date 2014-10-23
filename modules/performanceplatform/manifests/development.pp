@@ -22,4 +22,14 @@ class performanceplatform::development (
     value  => '16384',
   }
 
+  performanceplatform::development::environment { 'stagecraft':
+    postactivate       => 'export DJANGO_SETTINGS_MODULE=development',
+    requirements_path => 'requirements/development.txt'
+  }
+
+
+  performanceplatform::development::environment { 'performanceplatform-admin':
+    postactivate =>  'export OAUTHLIB_INSECURE_TRANSPORT=1'
+  }
+
 }
