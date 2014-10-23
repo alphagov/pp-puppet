@@ -172,14 +172,6 @@ GIT
     endore-me-tmux (0.0.1)
 
 GIT
-  remote: https://github.com/gds-operations/puppet-elasticsearch.git
-  ref: d15521e6cb215a809d92692e76a1d0cac111d9a0
-  sha: d15521e6cb215a809d92692e76a1d0cac111d9a0
-  specs:
-    gds-elasticsearch (0.0.1)
-      puppetlabs-stdlib (>= 3.0.0)
-
-GIT
   remote: https://github.com/gini/puppet-archive.git
   ref: 50d3370006f955ee9d5187623cc660670d01c58d
   sha: 50d3370006f955ee9d5187623cc660670d01c58d
@@ -219,7 +211,6 @@ DEPENDENCIES
   bison-upstart (>= 0)
   dwerder-graphite (= 3.0.1)
   endore-me-tmux (>= 0)
-  gds-elasticsearch (>= 0)
   gdsoperations-openconnect (>= 0)
   gini-archive (>= 0)
   jfryman-nginx (= 0.0.9)
