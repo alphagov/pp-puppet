@@ -132,13 +132,15 @@ Vagrant.configure("2") do |config|
         f.vmx["displayName"] = host[:name]
         if host[:extra_disk]
           vdiskmanager = '/Applications/VMware\ Fusion.app/Contents/Library/vmware-vdiskmanager'
-          file_to_disk =  "./tmp/#{host[:name]}-extra-disk.vmdk"
-          unless File.exists? file_to_disk
-            `#{vdiskmanager} -c -s 512MB -a lsilogic -t 1 #{file_to_disk}`
+          if File.exists?(vdiskmanager) && !File.exists?(file_to_disk)
+            file_to_disk =  "./tmp/#{host[:name]}-extra-disk.vmdk"
+            unless File.exists? file_to_disk
+              `#{vdiskmanager} -c -s 512MB -a lsilogic -t 1 #{file_to_disk}`
+            end
+            f.vmx['scsi0:1.filename'] = File.dirname(__FILE__) + "/" + file_to_disk
+            f.vmx['scsi0:1.present']  = 'TRUE'
+            f.vmx['scsi0:1.redo']     = ''
           end
-          f.vmx['scsi0:1.filename'] = File.dirname(__FILE__) + "/" + file_to_disk
-          f.vmx['scsi0:1.present']  = 'TRUE'
-          f.vmx['scsi0:1.redo']     = ''
         end
       end
 
