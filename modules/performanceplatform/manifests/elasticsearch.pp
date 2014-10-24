@@ -12,7 +12,7 @@ class performanceplatform::elasticsearch(
     host                 => $::hostname,
     heap_size            => $heap_size,
     minimum_master_nodes => $minimum_master_nodes,
-    require              => [Performanceplatform::Mount[$data_dir], Class['java7']]
+    require              => [Performanceplatform::Mount[$data_dir], Class['java']]
   }
 
 
