@@ -1,5 +1,5 @@
 classes:
-  - 'java7'
+  - 'java'
   - 'python'
   - 'performanceplatform::elasticsearch'
   - 'performanceplatform::checks::elasticsearch::logging'
