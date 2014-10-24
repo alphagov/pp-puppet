@@ -23,7 +23,7 @@ class performanceplatform::development (
   }
 
   performanceplatform::development::environment { 'stagecraft':
-    postactivate       => 'export DJANGO_SETTINGS_MODULE=development',
+    postactivate      => 'export DJANGO_SETTINGS_MODULE=development',
     requirements_path => 'requirements/development.txt'
   }
 
