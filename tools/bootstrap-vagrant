@@ -62,3 +62,12 @@ main() {
 }
 
 main
+
+for i in /dev/sd? ; do
+  if ! parted -a optimal --script ${i} -- print
+    then
+    parted -a optimal --script ${i} -- mklabel msdos
+    parted -a optimal --script ${i} -- mkpart primary 1 100%
+    parted -a optimal --script ${i} -- set 1 lvm on
+  fi
+done
