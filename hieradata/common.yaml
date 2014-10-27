@@ -40,6 +40,13 @@ accounts:
         key: AAAAB3NzaC1yc2EAAAADAQABAAABAQC6JyuVYcNdZtPtX8oy8Q99E04e5u+Orv4YsWleWieLX2ETAVPry99yHmM6sDH+TMUxDEqWybFjkImb268Qh3CQKTl0lwWKkMHCUnfQnrnERmeAocNFC9XBfM0ZW/KUETp9bit2hs3jLAtL+eqcEThr7peq7PUkz1j4FekQSLyMv5HpvTxMWZCvKoL/sh8qx6J22ntfYCg1SRUU6sHx5Lykp1X4L74EoTSVohynirch+fTvV219zwdpjnbe+XrkE9u5TdVVEOtcSJat8upzBE30MQcvbTeXhlhZbCghm8GEFw3gYsvHBXl+DYjTiQYwHiCI/x2Z+quRBwMYzDsAVqA7
     groups:
       - gds
+  mattcottingham:
+    comment: Matt Cottingham
+    ssh_keys:
+      mattcottingham:
+        key: AAAAB3NzaC1yc2EAAAADAQABAAABAQDNf2T4vI0Fq1DK/hrv54fN7WR8IM32ItDsiRcOmsq807LXZkxn0Hbua8NP1KjtUt1Ks7kxQiXYp32S/LNi0G/Sr48BqFhCPFpEtOUexrX+wK+ndXNwP3XygTPKbgoPV/IXyDdjSvqOVmQKbWFGYCMn6+nGA+JaCbvt8Ink7lpRGLrf8W73rbcFcPCNuOtWvMT+WSspcqs9IifvwWaHDFX2Uj8DsE3rZcaeoxXPXNxc2mZ9/tKee6Ceg0Acmsywn/YsEwAv55ng73WMUE5y5KximZwGKBIQjjILTryPd7euztCFr5Y4UMEDbDz52ovmD+jtrI2hxRygAimTshJ5jeCb
+    groups:
+      - gds
   nickg:
     ensure: absent
   robyoung:
