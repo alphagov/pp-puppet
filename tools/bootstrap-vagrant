@@ -28,7 +28,7 @@ set_dns_server() {
 
 check_ruby() {
   echo "--> Check for Ruby" | pp
-  for package in ruby1.9.1{,-dev}; do
+  for package in ruby1.9.1{,-dev} libaugeas-ruby1.9.1; do
     if ! dpkg -s $package >/dev/null 2>&1; then
       apt-get update -qq
       apt-get install -qq $package 2>&1 | pp
