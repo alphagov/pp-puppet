@@ -6,6 +6,7 @@ classes:
 
 
 performanceplatform::elasticsearch::data_dir: '/mnt/data/elasticsearch'
+elasticsearch::config::logs_directory: '/mnt/data/elasticsearch/logs'
 performanceplatform::elasticsearch::disk_mount: '/dev/mapper/data-elasticsearch'
 performanceplatform::elasticsearch::cluster_hosts:
   - 'logs-elasticsearch-1:9300'

@@ -1,0 +1,10 @@
+name          'gdsoperations-elasticsearch'
+version       '0.0.1'
+source        'https://github.com/gds-operations/puppet-elasticsearch'
+author        'Government Digital Service'
+license       'MIT'
+summary       'Elasticsearch'
+description   'Elasticsearch'
+project_page  'https://github.com/gds-operations/puppet-elasticsearch'
+
+dependency 'puppetlabs/stdlib', '>= 3.0.0'
