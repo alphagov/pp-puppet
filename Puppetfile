@@ -3,6 +3,7 @@ forge "https://forgeapi.puppetlabs.com"
 mod 'attachmentgenie/ssh',        '1.2.2'
 mod 'attachmentgenie/ufw',        '1.2.0'
 mod 'dwerder/graphite',           '3.0.1'
+mod 'elasticsearch/elasticsearch','0.4.0'
 mod 'gdsoperations/openconnect'
 mod 'jfryman/nginx',              '0.0.9'
 mod 'puppetlabs/apt',             '1.4.2'
@@ -28,8 +29,6 @@ mod 'alphagov/collectd',            :git => 'https://github.com/alphagov/puppet-
                                     :ref => 'improve_collectd_varnish'
 mod 'alphagov/curl',                :git => 'https://github.com/alphagov/puppet-curl.git',
                                     :ref => 'f4c6d175bdc6cbd71f71fbaa2544ef8f70c4ce48'
-mod 'gds/elasticsearch',            :git => 'https://github.com/gds-operations/puppet-elasticsearch.git',
-                                    :ref => 'd15521e6cb215a809d92692e76a1d0cac111d9a0'
 mod 'alphagov/ext4mount',           :git => 'https://github.com/alphagov/puppet-ext4mount.git',
                                     :ref => 'd97f99cc2801b83152b905d1285fa34e689cb499'
 mod 'alphagov/gstatsd',             :git => 'https://github.com/alphagov/puppet-gstatsd.git',
