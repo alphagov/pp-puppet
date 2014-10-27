@@ -29,6 +29,12 @@ class performanceplatform::elasticsearch(
     before => Performanceplatform::Mount[$data_dir]
   }
 
+  package { 'estools':
+    ensure   => '1.1.2',
+    provider => 'pip',
+    require  => Package['python-pip'],
+  }
+
   cron {'elasticsearch-rotate-indices':
     ensure  => present,
     user    => 'nobody',
