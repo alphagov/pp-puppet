@@ -1,36 +1,26 @@
 class performanceplatform::kibana(
   $elasticsearch_url,
-  $tarball_url,
+  $version,
   $extract_location = '/opt',
   $kibana_index = 'kibana-int',
 ) {
 
-  $name_regex = '^http.+\/(.+)\.tar\.gz$'
+  $kib_name = "kibana-${version}"
+  $url = "https://download.elasticsearch.org/kibana/kibana/${kib_name}.tar.gz"
 
-  validate_re($tarball_url, $name_regex, 'Please use a valid kibana tarball source url')
+  $app_root = "${extract_location}/${kib_name}"
 
-  $tarball_name = regsubst($tarball_url, $name_regex, '\1')
-  $app_root = "${extract_location}/${tarball_name}"
-
-  archive { 'kibana3.0.0milestone4':
+  archive { $kib_name:
     ensure   => present,
-    url      => $tarball_url,
+    url      => $url,
     target   => $extract_location,
     checksum => false,
-  }
-
-  file { "${extract_location}/kibana-3.0.1":
-    ensure  => absent,
-    force   => true,
-    purge   => true,
-    recurse => true,
-    backup  => false,
   }
 
   file { "${app_root}/config.js":
     ensure  => present,
     content => template('performanceplatform/kibana.config.js.erb'),
-    require => Archive['kibana3.0.0milestone4'],
+    require => Archive[$kib_name],
   }
 
   $ssl_path = hiera('ssl_path')
@@ -43,7 +33,7 @@ class performanceplatform::kibana(
     ssl_key    => "${ssl_path}/${ssl_key}",
     www_root   => $app_root,
     access_log => "${::kibana_vhost}.access.log.json json_event",
-    require    => Archive['kibana3.0.0milestone4'],
+    require    => Archive[$kib_name],
   }
 
 }
