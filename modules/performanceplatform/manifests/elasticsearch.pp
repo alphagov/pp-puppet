@@ -20,9 +20,6 @@ class performanceplatform::elasticsearch(
     fqdn => $::fqdn,
     disk => $data_dir,
   }
-  logrotate::rule { 'elasticsearch-rotate':
-    ensure => absent,
-  }
 
   lvm::volume { 'elasticsearch':
     ensure => 'present',
