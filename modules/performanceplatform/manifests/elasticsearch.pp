@@ -58,7 +58,7 @@ class performanceplatform::elasticsearch(
   }
 
   apt::source { 'elasticsearch':
-    location    => "http://packages.elasticsearch.org/elasticsearch/1.3/debian",
+    location    => 'http://packages.elasticsearch.org/elasticsearch/1.3/debian',
     release     => 'stable',
     repos       => 'main',
     key         => 'D88E42B4',
@@ -67,20 +67,20 @@ class performanceplatform::elasticsearch(
   }
 
   class { '::elasticsearch':
-    version      => '1.3.4',
-    datadir      => $data_dir,
-    config       => {},
-    require      => [Performanceplatform::Mount[$data_dir], Class['java'], Apt::Source['elasticsearch']],
+    version => '1.3.4',
+    datadir => $data_dir,
+    config  => {},
+    require => [Performanceplatform::Mount[$data_dir], Class['java'], Apt::Source['elasticsearch']],
   }
 
   ::elasticsearch::instance { 'logs':
-    config => {
-      'bootstrap.mlockall' => false,
-      'cluster.name'       => 'elasticsearch',
-      'discovery'          => {
+    config        => {
+      'bootstrap.mlockall'       => false,
+      'cluster.name'             => 'elasticsearch',
+      'discovery'                => {
         'zen' => {
           'minimum_master_nodes' => $minimum_master_nodes,
-          'ping' => {
+          'ping'                 => {
             'multicast.enabled' => false,
             'unicast.hosts'     => $cluster_hosts,
           }
@@ -95,6 +95,7 @@ class performanceplatform::elasticsearch(
     init_defaults => {
       'ES_HEAP_SIZE' => $heap_size,
     },
+    logging_file  => 'puppet:///modules/performanceplatform/elasticsearch/logging.yml',
   }
 
   ::elasticsearch::plugin { 'mobz/elasticsearch-head':
