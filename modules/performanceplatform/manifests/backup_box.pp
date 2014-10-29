@@ -31,6 +31,11 @@ class performanceplatform::backup_box(
         require      => File['/mnt/data'],
     }
 
+    performanceplatform::checks::disk { "${::fqdn}_${backup_dir}":
+        fqdn => $::fqdn,
+        disk => $backup_dir,
+    }
+
     file { "${backup_dir}/postgresql":
         ensure  => directory,
         owner   => 'deploy',
