@@ -12,9 +12,11 @@ To improve performance, users of OS X can set the nfs flag to true [in the Vagra
 ## Basic setup
 
 - Clone this folder onto your local machine with `git clone git@github.com:alphagov/pp-puppet.git`. You can do this in your `~/govuk` folder if you have one or in a separate `~/performance-platform` folder
-- Install dependencies with `GOVUK_DEPS=true ./install.sh`
+- Install dependencies with `ENT_DEPS=true GOVUK_DEPS=true ./install.sh`
   - Warnings about the ``pp-deployment`` repository can be safely ignored (it contains deployment secrets that you may not have access to)
-- Start the virtual machine with `vagrant up`
+- Drop back to the root directory of this repository.
+- Run `bundle install && bundle exec librarian-puppet install`
+- Start the virtual machine with `vagrant up development-1`
   - VMWare users may [hit an error](http://superuser.com/questions/511679/getting-an-error-trying-to-set-up-shared-folders-on-an-ubuntu-instance-of-vmware)
   - VirtualBox users should not ignore warnings about a mismatch between
     the version of VirtualBox and the Guest Additions. One known symptom is the
@@ -33,7 +35,7 @@ To improve performance, users of OS X can set the nfs flag to true [in the Vagra
   If this happens, running `vagrant provision` again may fix it (issue [#36](https://github.com/alphagov/pp-development/issues/36)).
 - When provisioning has completed successfully you should see the line:
   `[bootstrap] pp-development/tools/bootstrap-vagrant exit success`
-- SSH on to the virtual machine with `vagrant ssh`
+- SSH on to the virtual machine with `vagrant ssh development-1`
 - Install dependencies for each required app in `/var/apps` by following the
   instructions in their README files
 - Add the following to your hosts file -
@@ -46,7 +48,7 @@ To improve performance, users of OS X can set the nfs flag to true [in the Vagra
 
 ## Running apps
 
-- SSH on to the machine with `vagrant ssh`
+- SSH on to the machine with `vagrant ssh development-1`
 - Change to the development directory with `cd /var/apps/pp-puppet/development`
 - Start the apps individually with `bowl backdrop_read` or `bowl spotlight`, or all together with
   `bowl performance`
