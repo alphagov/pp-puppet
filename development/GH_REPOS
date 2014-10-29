@@ -1,12 +1,11 @@
 backdrop
-backdrop-collector-plugins
 backdrop-send
 performanceplatform-collector
 performanceplatform-collector-config
 pp-puppet
 puppet-backdrop
-puppet-limelight
 screenshot-as-a-service
 spotlight
 stagecraft
 stageprompt
+performanceplatform-admin
