@@ -43,6 +43,7 @@ To improve performance, users of OS X can set the nfs flag to true [in the Vagra
 ```
 10.0.0.100 www.development.performance.service.gov.uk
 10.0.0.100 admin.development.performance.service.gov.uk
+10.0.0.100 admin-beta.development.performance.service.gov.uk
 10.0.0.100 stagecraft.development.performance.service.gov.uk
 ```
 
