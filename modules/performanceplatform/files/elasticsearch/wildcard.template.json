@@ -1,0 +1,60 @@
+{
+    "mappings": {
+        "_default_": {
+            "_all": {
+                "enabled": false
+            },
+            "properties": {
+                "@fields": {
+                    "dynamic": true,
+                    "path": "full",
+                    "properties": {
+                        "args": {
+                            "type": "string"
+                        },
+                        "request_time": {
+                            "type": "double"
+                        }
+                    },
+                    "type": "object"
+                },
+                "@message": {
+                    "index": "analyzed",
+                    "type": "string"
+                },
+                "@source": {
+                    "index": "not_analyzed",
+                    "type": "string"
+                },
+                "@source_host": {
+                    "index": "not_analyzed",
+                    "type": "string"
+                },
+                "@source_path": {
+                    "index": "not_analyzed",
+                    "type": "string"
+                },
+                "@tags": {
+                    "index": "not_analyzed",
+                    "type": "string"
+                },
+                "@timestamp": {
+                    "index": "not_analyzed",
+                    "type": "date"
+                },
+                "@type": {
+                    "index": "not_analyzed",
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "order": 0,
+    "settings": {
+        "index.cache.field.type": "soft",
+        "index.query.default_field": "@message",
+        "index.refresh_interval": "10s",
+        "index.store.compress.stored": "true"
+    },
+    "template": "*"
+}

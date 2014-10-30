@@ -10,6 +10,7 @@ performanceplatform::elasticsearch::disk_mount: '/dev/mapper/data-elasticsearch'
 performanceplatform::elasticsearch::cluster_hosts:
   - 'logs-elasticsearch-1:9300'
   - 'logs-elasticsearch-2:9300'
+  - 'logs-elasticsearch-3:9300'
 performanceplatform::elasticsearch::minimum_master_nodes: '1'
 
 
