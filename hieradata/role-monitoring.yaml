@@ -33,6 +33,7 @@ performanceplatform::checks::servers::boxes:
   - monitoring-1
   - logs-elasticsearch-1
   - logs-elasticsearch-2
+  - logs-elasticsearch-3
   - postgresql-primary-1
   - postgresql-secondary-1
 
