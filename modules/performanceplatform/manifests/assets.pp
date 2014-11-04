@@ -9,11 +9,13 @@ class performanceplatform::assets (
   $ssl_path = hiera('ssl_path')
   $ssl_cert = hiera('public_ssl_cert')
   $ssl_key = hiera('public_ssl_key')
+  $ssl_dhparam = hiera('ssl_dhparam')
 
   nginx::resource::vhost { $::assets_internal_vhost:
     ssl                 => true,
     ssl_cert            => "${ssl_path}/${ssl_cert}",
     ssl_key             => "${ssl_path}/${ssl_key}",
+    ssl_dhparam         => "${ssl_path}/${ssl_dhparam}",
     access_log          => "${::assets_internal_vhost}.access.log.json json_event",
     location_custom_cfg => {
       'return' => '204',
