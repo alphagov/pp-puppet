@@ -20,6 +20,7 @@ FORGE
       puppetlabs-concat (>= 1.0.0)
       puppetlabs-stdlib (>= 0.1.6)
     maestrodev-wget (1.5.6)
+    nanliu-staging (1.0.2)
     netmanagers-fail2ban (1.4.0)
       example42-monitor (>= 2.0.0)
       example42-puppi (>= 2.0.0)
@@ -71,6 +72,7 @@ GIT
   sha: d8f337fcd52edd7cf4d615e7089d83d3812d5e14
   specs:
     alphagov-collectd (2.1.0)
+      puppetlabs-concat (>= 1.0.4)
       puppetlabs-stdlib (>= 3.0.0)
 
 GIT
@@ -171,7 +173,10 @@ GIT
   ref: 2f09f3a6a16291645e82daff5e0a22dbba137a22
   sha: 2f09f3a6a16291645e82daff5e0a22dbba137a22
   specs:
-    puppetlabs-rabbitmq (0.0.1)
+    puppetlabs-rabbitmq (4.1.0)
+      nanliu-staging (>= 0.3.1)
+      puppetlabs-apt (>= 1.0.0)
+      puppetlabs-stdlib (>= 2.0.0)
 
 GIT
   remote: https://github.com/gini/puppet-archive.git
