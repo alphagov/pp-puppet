@@ -26,10 +26,8 @@
             {
               "fquery": {
                 "query": {
-                  "field": {
-                    "@fields.levelname": {
-                      "query": "\"ERROR\""
-                    }
+                  "query_string": {
+                    "query": "@tags:((\"collector\" AND \"performanceplatform.collector.ga\"))"
                   }
                 },
                 "_cache": true
@@ -38,13 +36,11 @@
             {
               "fquery": {
                 "query": {
-                  "field": {
-                    "@tags": {
-                      "query": "(\"collector\" AND \"performanceplatform.collector.ga\")"
-                    }
+                  "query_string": {
+                    "query": "@fields.levelname:(\"ERROR\")"
                   }
                 },
-                "_cache": true 
+                "_cache": true
               }
             }
           ]

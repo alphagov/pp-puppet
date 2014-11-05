@@ -26,10 +26,8 @@
             {
               "fquery": {
                 "query": {
-                  "field": {
-                    "@fields.levelname": {
-                      "query": "\"ERROR\""
-                    }
+                  "query_string": {
+                    "query": "@tags:((\"collector\"))"
                   }
                 },
                 "_cache": true
@@ -38,10 +36,8 @@
             {
               "fquery": {
                 "query": {
-                  "field": {
-                    "@tags": {
-                      "query": "\"collector\""
-                    }
+                  "query_string": {
+                    "query": "@fields.levelname:(\"ERROR\")"
                   }
                 },
                 "_cache": true
