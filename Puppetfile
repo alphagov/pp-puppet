@@ -11,7 +11,6 @@ mod 'puppetlabs/gcc',             '0.0.3'
 mod 'puppetlabs/nodejs',          '0.4.0'
 mod 'puppetlabs/ntp',             '3.2.0'
 mod 'puppetlabs/postgresql',      '3.4.2'
-mod 'puppetlabs/rabbitmq',        '3.0.0'
 mod 'puppetlabs/stdlib',          '4.1.0'
 mod 'puppetlabs/vcsrepo',         '0.1.2'
 mod 'rodjek/logrotate',           '1.1.1'
@@ -37,12 +36,12 @@ mod 'alphagov/harden',              :git => 'https://github.com/alphagov/puppet-
                                     :ref => '0966c98cc3f54815c9aac0ebe6e900b70f85182d'
 mod 'alphagov/jenkins',             :git => 'https://github.com/alphagov/puppet-jenkins.git',
                                     :ref => '4c7990fa8495b6d84292c2153993ac91c3b2916d'
-mod 'alphagov/logstash',            :git => 'https://github.com/alphagov/puppet-logstash.git',
-                                    :ref => 'gen-files-should-notify'
 mod 'alphagov/lumberjack',          :git => 'https://github.com/alphagov/puppet-lumberjack.git',
                                     :ref => '57542743ffdbe940cf43909f29ac4a31561eef23'
 mod 'puppetlabs/lvm',               :git => 'https://github.com/puppetlabs/puppetlabs-lvm.git',
                                     :ref => 'ba8efdd243cafa96b45d8d58dbef1d5ba74714ea'
+mod 'puppetlabs/rabbitmq',          :git => 'https://github.com/erhudy/puppetlabs-rabbitmq.git',
+                                    :ref => '2f09f3a6a16291645e82daff5e0a22dbba137a22'
 mod 'alphagov/mongodb',             :git => 'https://github.com/alphagov/puppetlabs-mongodb.git',
                                     :ref => 'dc077a209efdf8d80fac40d40fec575b6a0949d2'
 mod 'stankevich/python',            :git => 'https://github.com/stankevich/puppet-python.git',
@@ -55,3 +54,5 @@ mod 'endore-me/tmux',               :git => 'https://github.com/endore-me/puppet
                                     :ref => '32db4ac6ad65a934c5eddd9afcf0c4f61f7c0924'
 mod 'alphagov/google_credentials',  :git => 'https://github.com/alphagov/puppet-google_credentials.git',
                                     :ref => 'a64f9e5c051a0d38e59441457b52a7afeeebed24'
+mod 'elasticsearch/logstash',       :git => 'https://github.com/elasticsearch/puppet-logstash.git',
+                                    :ref => 'c71fc8e9d91e704f7cade44270bcbdaa65bd5900'

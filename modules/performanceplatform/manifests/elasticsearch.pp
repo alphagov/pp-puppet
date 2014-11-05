@@ -103,9 +103,9 @@ class performanceplatform::elasticsearch(
     instances  => 'logs',
   }
 
-  ::elasticsearch::template { 'wildcard':
-    file    => 'puppet:///modules/performanceplatform/elasticsearch/wildcard.template.json',
-    require => Elasticsearch::Instance['logs'],
+  ::elasticsearch::plugin { 'lmenezes/elasticsearch-kopf':
+    module_dir => 'kopf',
+    instances  => 'logs',
   }
 
 }

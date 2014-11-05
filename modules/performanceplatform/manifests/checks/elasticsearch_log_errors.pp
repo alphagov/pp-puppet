@@ -5,27 +5,30 @@ class performanceplatform::checks::elasticsearch_log_errors(
     $ga_errors_json_query = '/etc/sensu/check_error_logs_ga.json'
 
     file { $log_errors_checker_script:
-      ensure => present,
-      owner  => 'root',
-      group  => 'root',
-      mode   => '0777',
-      source => 'puppet:///modules/performanceplatform/check_elasticsearch_log_errors.py'
+      ensure  => present,
+      owner   => 'root',
+      group   => 'root',
+      mode    => '0777',
+      source  => 'puppet:///modules/performanceplatform/check_elasticsearch_log_errors.py',
+      require => Class['::sensu::package'],
     }
 
     file { $ga_errors_json_query:
-      ensure => present,
-      owner  => 'root',
-      group  => 'root',
-      mode   => '0777',
-      source => 'puppet:///modules/performanceplatform/check_error_logs_ga.json'
+      ensure  => present,
+      owner   => 'root',
+      group   => 'root',
+      mode    => '0777',
+      source  => 'puppet:///modules/performanceplatform/check_error_logs_ga.json',
+      require => Class['::sensu::package'],
     }
 
     file { $all_errors_json_query:
-      ensure => present,
-      owner  => 'root',
-      group  => 'root',
-      mode   => '0777',
-      source => 'puppet:///modules/performanceplatform/check_error_logs_all.json'
+      ensure  => present,
+      owner   => 'root',
+      group   => 'root',
+      mode    => '0777',
+      source  => 'puppet:///modules/performanceplatform/check_error_logs_all.json',
+      require => Class['::sensu::package'],
     }
 
     sensu::check { 'collector_errors_in_last_hour':

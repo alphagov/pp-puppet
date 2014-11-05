@@ -12,12 +12,9 @@ FORGE
     example42-monitor (2.0.1)
       example42-puppi (>= 2.0.0)
     example42-puppi (2.1.10)
-    garethr-erlang (0.3.0)
-      puppetlabs-apt (>= 0)
-      puppetlabs-stdlib (>= 0)
-      stahnma-epel (>= 0)
     gdsoperations-openconnect (1.0.0)
       puppetlabs-stdlib (>= 3.0.0)
+    ispavailability-file_concat (0.1.0)
     jfryman-nginx (0.0.9)
       puppetlabs-apt (>= 1.0.0)
       puppetlabs-concat (>= 1.0.0)
@@ -30,9 +27,9 @@ FORGE
       puppetlabs-stdlib (>= 4.1.0)
     puppetlabs-apt (1.4.2)
       puppetlabs-stdlib (>= 2.2.1)
-    puppetlabs-concat (1.1.1)
+    puppetlabs-concat (1.1.2)
       puppetlabs-stdlib (< 5.0.0, >= 3.2.0)
-    puppetlabs-firewall (1.1.3)
+    puppetlabs-firewall (1.2.0)
     puppetlabs-gcc (0.0.3)
     puppetlabs-nodejs (0.4.0)
       puppetlabs-apt (>= 0.0.3)
@@ -44,10 +41,6 @@ FORGE
       puppetlabs-concat (< 2.0.0, >= 1.0.0)
       puppetlabs-firewall (>= 0.0.4)
       puppetlabs-stdlib (< 5.0.0, >= 3.2.0)
-    puppetlabs-rabbitmq (3.0.0)
-      garethr-erlang (>= 0.1.0)
-      puppetlabs-apt (>= 1.0.0)
-      puppetlabs-stdlib (>= 2.0.0)
     puppetlabs-stdlib (4.1.0)
     puppetlabs-vcsrepo (0.1.2)
     rodjek-logrotate (1.1.1)
@@ -56,7 +49,6 @@ FORGE
     sensu-sensu (0.7.7)
       puppetlabs-apt (>= 0.0.1)
       puppetlabs-stdlib (>= 0.0.1)
-    stahnma-epel (1.0.0)
 
 GIT
   remote: https://github.com/alphagov/puppet-account.git
@@ -127,14 +119,6 @@ GIT
       puppetlabs-stdlib (>= 2.0.0)
 
 GIT
-  remote: https://github.com/alphagov/puppet-logstash.git
-  ref: gen-files-should-notify
-  sha: c7d0080f49a9ed80fa09126cf30359b3deb94343
-  specs:
-    alphagov-logstash (0.3.3)
-      puppetlabs-stdlib (>= 3.0.0)
-
-GIT
   remote: https://github.com/alphagov/puppet-lumberjack.git
   ref: 57542743ffdbe940cf43909f29ac4a31561eef23
   sha: 57542743ffdbe940cf43909f29ac4a31561eef23
@@ -167,11 +151,27 @@ GIT
       puppetlabs-stdlib (>= 0.1.6)
 
 GIT
+  remote: https://github.com/elasticsearch/puppet-logstash.git
+  ref: c71fc8e9d91e704f7cade44270bcbdaa65bd5900
+  sha: c71fc8e9d91e704f7cade44270bcbdaa65bd5900
+  specs:
+    elasticsearch-logstash (0.5.1)
+      ispavailability-file_concat (>= 0.1.0)
+      puppetlabs-stdlib (>= 3.2.0)
+
+GIT
   remote: https://github.com/endore-me/puppet-tmux.git
   ref: 32db4ac6ad65a934c5eddd9afcf0c4f61f7c0924
   sha: 32db4ac6ad65a934c5eddd9afcf0c4f61f7c0924
   specs:
     endore-me-tmux (0.0.1)
+
+GIT
+  remote: https://github.com/erhudy/puppetlabs-rabbitmq.git
+  ref: 2f09f3a6a16291645e82daff5e0a22dbba137a22
+  sha: 2f09f3a6a16291645e82daff5e0a22dbba137a22
+  specs:
+    puppetlabs-rabbitmq (0.0.1)
 
 GIT
   remote: https://github.com/gini/puppet-archive.git
@@ -204,7 +204,6 @@ DEPENDENCIES
   alphagov-gstatsd (>= 0)
   alphagov-harden (>= 0)
   alphagov-jenkins (>= 0)
-  alphagov-logstash (>= 0)
   alphagov-lumberjack (>= 0)
   alphagov-mongodb (>= 0)
   alphagov-redis (>= 0)
@@ -213,6 +212,7 @@ DEPENDENCIES
   bison-upstart (>= 0)
   dwerder-graphite (= 3.0.1)
   elasticsearch-elasticsearch (= 0.4.0)
+  elasticsearch-logstash (>= 0)
   endore-me-tmux (>= 0)
   gdsoperations-openconnect (>= 0)
   gini-archive (>= 0)
@@ -224,7 +224,7 @@ DEPENDENCIES
   puppetlabs-nodejs (= 0.4.0)
   puppetlabs-ntp (= 3.2.0)
   puppetlabs-postgresql (= 3.4.2)
-  puppetlabs-rabbitmq (= 3.0.0)
+  puppetlabs-rabbitmq (>= 0)
   puppetlabs-stdlib (= 4.1.0)
   puppetlabs-vcsrepo (= 0.1.2)
   rodjek-logrotate (= 1.1.1)

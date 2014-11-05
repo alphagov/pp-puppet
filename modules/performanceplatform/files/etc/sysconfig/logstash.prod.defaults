@@ -15,3 +15,6 @@ NICE=-15
 
 # Number of filter threads ( default 1 )
 #FILTER_THREADS=1
+
+LS_USER=root
+LS_GROUP=root
