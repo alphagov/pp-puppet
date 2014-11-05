@@ -141,7 +141,6 @@ sensu::version: '0.12.1-1'
 
 lumberjack::hosts:
   - 'logstash:3456'
-  - 'logstash:3457'
 lumberjack::deb_source:  'puppet:///modules/performanceplatform/lumberjack_0.2.0_amd64.deb'
 lumberjack::cert_source: 'puppet:///modules/performanceplatform/logstash.pub'
 

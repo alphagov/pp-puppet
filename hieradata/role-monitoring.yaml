@@ -2,9 +2,10 @@ classes:
   - 'java'
   - 'python'
   - 'graphite'
-  - 'logstash'
   - 'nginx'
-  - 'performanceplatform::monitoring'
+  - 'performanceplatform::monitoring::graphite'
+  - 'performanceplatform::monitoring::logstash'
+  - 'performanceplatform::monitoring::sensu'
   - 'performanceplatform::pp_nginx'
   - 'rabbitmq'
   - 'redis'
@@ -20,6 +21,19 @@ nginx::package_ensure: '1.4.4-4~precise0'
 nginx::package_name: 'nginx-extras'
 nginx::server_tokens: 'off'
 
+java::package_name: 'oracle-java7-installer'
+
+performanceplatform::monitoring::logstash::config:
+  input:
+    source: 'puppet:///modules/performanceplatform/etc/logstash/conf.d/input.conf'
+    order: 10
+  filters:
+    source: 'puppet:///modules/performanceplatform/etc/logstash/conf.d/filters.conf'
+    order: 20
+  output:
+    source: 'puppet:///modules/performanceplatform/etc/logstash/conf.d/output.conf'
+    order: 30
+
 performanceplatform::checks::servers::boxes:
   - backend-app-1
   - backend-app-2
@@ -33,6 +47,7 @@ performanceplatform::checks::servers::boxes:
   - monitoring-1
   - logs-elasticsearch-1
   - logs-elasticsearch-2
+  - logs-elasticsearch-3
   - postgresql-primary-1
   - postgresql-secondary-1
 
@@ -56,16 +71,6 @@ sensu::dashboard_user:     "%{::basic_auth_username}"
 sensu::dashboard_password: "%{::basic_auth_password}"
 sensu::dashboard_port: 8090
 sensu::server: true
-
-logstash::java_install: true
-logstash::provider: 'custom'
-logstash::jarfile: 'puppet:///modules/performanceplatform/logstash-1.1.13-monolithic.jar'
-logstash::instances:
-    - 'agent-1'
-    - 'agent-2'
-logstash::defaultsfiles:
-    'agent-1': 'puppet:///modules/performanceplatform/etc/sysconfig/logstash.dev.defaults'
-    'agent-2': 'puppet:///modules/performanceplatform/etc/sysconfig/logstash.dev.defaults'
 
 ufw_rules:
   allowcarbonfromanywhere:
