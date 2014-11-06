@@ -1,7 +1,7 @@
 FORGE
   remote: https://forgeapi.puppetlabs.com
   specs:
-    attachmentgenie-ssh (1.2.2)
+    attachmentgenie-ssh (1.4.1)
       puppetlabs-stdlib (>= 2.2.1)
     attachmentgenie-ufw (1.2.0)
       puppetlabs-stdlib (>= 2.2.1)
@@ -212,7 +212,7 @@ DEPENDENCIES
   alphagov-lumberjack (>= 0)
   alphagov-mongodb (>= 0)
   alphagov-redis (>= 0)
-  attachmentgenie-ssh (= 1.2.2)
+  attachmentgenie-ssh (= 1.4.1)
   attachmentgenie-ufw (= 1.2.0)
   bison-upstart (>= 0)
   dwerder-graphite (= 3.0.1)
