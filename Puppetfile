@@ -1,6 +1,6 @@
 forge "https://forgeapi.puppetlabs.com"
 
-mod 'attachmentgenie/ssh',        '1.2.2'
+mod 'attachmentgenie/ssh',        '1.4.1'
 mod 'attachmentgenie/ufw',        '1.2.0'
 mod 'dwerder/graphite',           '3.0.1'
 mod 'elasticsearch/elasticsearch','0.4.0'
