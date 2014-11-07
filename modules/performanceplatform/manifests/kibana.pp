@@ -26,11 +26,13 @@ class performanceplatform::kibana(
   $ssl_path = hiera('ssl_path')
   $ssl_cert = hiera('environment_ssl_cert')
   $ssl_key = hiera('environment_ssl_key')
+  $ssl_dhparam = hiera('ssl_dhparam')
 
   nginx::resource::vhost { $::kibana_vhost:
     ssl        => true,
     ssl_cert   => "${ssl_path}/${ssl_cert}",
     ssl_key    => "${ssl_path}/${ssl_key}",
+    ssl_dharam => "${ssl_path}/${ssl_dhparam}",
     www_root   => $app_root,
     access_log => "${::kibana_vhost}.access.log.json json_event",
     require    => Archive[$kib_name],
