@@ -249,6 +249,7 @@ system_packages:
   - ssl-cert
   - strace
   - sysstat
+  - tcpdump
   - update-notifier
   - vim
 
