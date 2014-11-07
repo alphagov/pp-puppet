@@ -139,6 +139,11 @@ sensu::rabbitmq_port: 5672
 sensu::safe_mode: true
 sensu::version: '0.12.1-1'
 
+ssh::server::ciphers:
+  - aes128-ctr
+  - aes192-ctr
+  - aes256-ctr
+
 lumberjack::hosts:
   - 'logstash:3456'
 lumberjack::deb_source:  'puppet:///modules/performanceplatform/lumberjack_0.2.0_amd64.deb'
