@@ -1,4 +1,5 @@
 define performanceplatform::checks::graphite (
+  $ensure = 'present',
   $target,
   $warning,
   $critical,
@@ -19,6 +20,7 @@ define performanceplatform::checks::graphite (
   $max_age = $interval * 2
 
   sensu::check { $name:
+    ensure   => $ensure,
     command  => "${check_data_path} ${server_config} --age ${max_age} -t \"${target}\" -w \"${warning}\" -c \"${critical}\" ${below_flag} -n \"${name}\"",
     interval => $interval,
     handlers => $handlers,
