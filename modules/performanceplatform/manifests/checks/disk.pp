@@ -24,4 +24,13 @@ define performanceplatform::checks::disk (
     handlers => ['default'],
   }
 
+  # hopefully will alert when the disk growth rate for the last hour is over
+  # 10G, warn when over 5G - may need tuning if it becomes noisy
+  performanceplatform::checks::graphite { "check_disk_growth_${graphite_fqdn}_${graphite_disk}":
+    target   => "derivative(scaleToSeconds(collectd.${graphite_fqdn}.df-${graphite_disk}.df_complex-free,3600))",
+    warning  => '5000000000', # 5 gig
+    critical => '10000000000',  # 10 gig
+    interval => 60,
+    handlers => ['default'],
+  }
 }
