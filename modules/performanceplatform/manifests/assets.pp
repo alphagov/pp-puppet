@@ -9,7 +9,7 @@ class performanceplatform::assets (
   $ssl_path = hiera('ssl_path')
   $ssl_cert = hiera('public_ssl_cert')
   $ssl_key = hiera('public_ssl_key')
-  $ssl_dhparam = hiera('ssl_dhparam')
+  $ssl_dhparam = hiera('ssl_dhparam', 'private/ssl-dhparam.pem')
 
   nginx::resource::vhost { $::assets_internal_vhost:
     ssl                 => true,
