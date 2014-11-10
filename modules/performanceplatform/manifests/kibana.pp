@@ -26,7 +26,7 @@ class performanceplatform::kibana(
   $ssl_path = hiera('ssl_path')
   $ssl_cert = hiera('environment_ssl_cert')
   $ssl_key = hiera('environment_ssl_key')
-  $ssl_dhparam = hiera('ssl_dhparam')
+  $ssl_dhparam = hiera('ssl_dhparam', 'private/ssl-dhparam.pem')
 
   nginx::resource::vhost { $::kibana_vhost:
     ssl         => true,
