@@ -179,6 +179,7 @@ define performanceplatform::proxy_vhost(
     listen_port           => $port,
     listen_options        => $listen_options,
     proxy                 => "http://${upstream_name}",
+    spdy                  => 'on',
     ssl                   => $ssl,
     ssl_port              => $ssl_port,
     ssl_protocols         => 'TLSv1 TLSv1.1 TLSv1.2',
