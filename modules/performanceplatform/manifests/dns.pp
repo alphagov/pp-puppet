@@ -25,6 +25,11 @@ class performanceplatform::dns (
   $nameservers = hiera('nameservers', ['8.8.8.8', '8.8.4.4'])
   validate_array($nameservers)
 
+  dnsmasq::conf { 'explicit-nameservers':
+      ensure  => present,
+      content => template('performanceplatform/explicit-nameservers.erb'),
+  }
+
   $domainname = 'internal'
   $searchpath = 'internal'
   $options    = ['timeout:1']
