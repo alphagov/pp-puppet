@@ -131,8 +131,6 @@ Vagrant.configure("2") do |config|
         vf_box_name, vf_box_url = get_box("vmware")
         override.vm.box = vf_box_name
         override.vm.box_url = vf_box_url
-        f.vmx["memsize"] = "256"
-        f.vmx["numvcpus"] = "1"
         f.vmx["displayName"] = host[:name]
         if host[:extra_disk]
           vdiskmanager = '/Applications/VMware\ Fusion.app/Contents/Library/vmware-vdiskmanager'
