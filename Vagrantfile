@@ -90,6 +90,10 @@ Vagrant.configure("2") do |config|
     config.dns.patterns = [/^.*development.performance.service.gov.uk$/]
   end
 
+  if Vagrant.has_plugin?("vagrant-cachier")
+    config.cache.scope = :box
+  end
+
   hosts.each do |host|
     config.vm.define host[:name] do |c|
       box_name, box_url = get_box("virtualbox")
