@@ -121,3 +121,6 @@ vhost_proxies:
 lumberjack_instances:
     nginx:
         log_files: [ '/var/log/nginx/*.access.log.json' ]
+
+nameservers:
+  - 192.168.9.1
