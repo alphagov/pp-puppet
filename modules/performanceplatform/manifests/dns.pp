@@ -22,7 +22,7 @@ class performanceplatform::dns (
       notify  => Class['dnsmasq::service'],
   }
 
-  $nameservers = hiera('nameservers', ['8.8.8.8', '8.8.4.4'])
+  $nameservers = hiera_array('nameservers', ['8.8.8.8', '8.8.4.4'])
   validate_array($nameservers)
 
   dnsmasq::conf { 'explicit-nameservers':
