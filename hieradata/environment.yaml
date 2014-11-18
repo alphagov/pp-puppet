@@ -18,6 +18,21 @@ fail2ban::whitelist_ips:
 
 rabbitmq_sensu_password: 'iP2O51333kzask7'
 
+performanceplatform::base::dhparams: |
+  -----BEGIN DH PARAMETERS-----
+  MIICCAKCAgEA/w5nfBG0H8cM2Z2qTcUPzEewjj1iavtD7u8xUCYH8tViPpctWUne
+  HJ+Fc8Mkz+lgDfVkYtm33qhnuE6GLj9C00+yM0CZaZ0GXvR/DRXIXP//9ZZhtHRy
+  Tit7dWvTICR43TSIbYESt11ndGifIKsKhQklOnaCpaMvogky2R6NR0vbWdRXUbht
+  l5kv3PMYpBYb8DRoT3bfQVJB9QjzVbiq1qbyDtO9yYteIC2gTPTWDy4nBp8JbBTZ
+  ELRXxwEWLHzcxAl77fYcPMm0ynHnEN36EjqCl+YjczyL3by3f5zeUPYVMPWVeH2k
+  Pk2ocqb1oG9kLaRscV+dr8xLVtTGyysZ0GrO89vtV5uPRKi25lFvE1x6rXf+VLp8
+  HhKRT+aByJmas2sKJqCUKMwvUQOGW745l6bAchhiPyecura1AAeD4g3D1pIKGTFZ
+  8M3hCnvLmuWGL9BOFVIuWUhevxQnjAyV4A7LZ3n79sUAk4qki+UNKoQiHZSkNpXH
+  regGPBVgnFtZ5P0JEkQeSN3MP9GIN76mfuhvKGPmFOny5gfePoG1qmTKtewrUko/
+  KDSoX3gx9bOkFK31V/O5dgM70oj969lBoE+z4J86wHrlyIaDmQJ3BTIGpVJ97XC1
+  /ejsy0aBxmwX1/EMYjCQIIGydSoB7pY/C+WXkCMwgPOqIZq90MTz0NMCAQI=
+  -----END DH PARAMETERS-----
+
 
 # Keep elasticsearch heapsize low in dev
 performanceplatform::elasticsearch::heap_size: '256m'

@@ -1,5 +1,7 @@
 # Base resources for all PP machines
-class performanceplatform::base {
+class performanceplatform::base(
+  $dhparams,
+) {
     stage { 'system':
         before => Stage['main'],
     }
@@ -7,6 +9,14 @@ class performanceplatform::base {
     class { [ 'performanceplatform::dns',
               'performanceplatform::hosts' ]:
         stage => system,
+    }
+
+    file { '/etc/ssl/private/ssl-dhparam.pem':
+      ensure  => present,
+      content => $dhparams,
+      owner   => 'root',
+      group   => 'root',
+      mode    => '0640',
     }
 
     class {'gstatsd': require => Class['python::install'] }
