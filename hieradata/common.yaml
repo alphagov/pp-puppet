@@ -105,6 +105,7 @@ ppas:
 classes:
   - 'apt'
   - 'apt::unattended_upgrades'
+  - 'auditd'
   - 'azul::repo'
   - 'collectd'
   - 'collectd::plugin::df'
