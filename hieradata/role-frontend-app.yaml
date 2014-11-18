@@ -4,6 +4,7 @@ classes:
   - 'collectd::plugin::varnish'
   - 'nginx'
   - 'performanceplatform::assets'
+  - 'performanceplatform::big_screen'
   - 'performanceplatform::checks::admin'
   - 'performanceplatform::checks::clamav'
   - 'performanceplatform::pp_nginx'
@@ -43,6 +44,10 @@ python::version:    '2.7'
 python::dev:        true
 python::virtualenv: true
 python::pip:        true
+
+performanceplatform::big_screen::app_path: '/opt/big_screen'
+performanceplatform::big_screen::user: 'deploy'
+performanceplatform::big_screen::group: 'deploy'
 
 performanceplatform::pip::user: 'deploy'
 performanceplatform::pip::group: 'deploy'
@@ -129,6 +134,15 @@ vhost_proxies:
     client_max_body_size: '50m'
     denied_http_verbs:
       - PURGE
+    custom_locations:
+      big_screen_view:
+        location: /big-screen
+        location_alias: /opt/big_screen/current
+        try_files:
+          - '$uri'
+          - '$uri/'
+          - '/index.html'
+          - '=404'
 
   stagecraft-vhost:
     servername:    "%{::stagecraft_vhost}"
