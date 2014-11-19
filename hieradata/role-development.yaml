@@ -8,6 +8,7 @@ classes:
   - 'performanceplatform::pp_nginx'
   - 'performanceplatform::pp_nginx::rate_limit'
   - 'performanceplatform::pp_nginx::request_uuid'
+  - 'performanceplatform::pp_rabbitmq'
   - 'performanceplatform::nodejs'
   - 'performanceplatform::pip'
   - 'performanceplatform::python_lxml_deps'
@@ -15,6 +16,7 @@ classes:
   - 'pp_postgres::primary'
   - 'phantomjs'
   - 'python'
+  - 'rabbitmq'
   - 'varnish'
   - 'redis'
 
