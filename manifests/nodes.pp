@@ -31,7 +31,6 @@ $spotlight_vhost = join(['spotlight',$domain_name],'.')
 $screenshot_as_a_service_vhost = join(['screenshot', $public_domain_name], '.')
 
 $rabbitmq_sensu_password = hiera('rabbitmq_sensu_password')
-$rabbitmq_transformer_password = hiera('rabbitmq_transformer_password')
 
 $basic_auth_username = hiera('basic_auth_username')
 $basic_auth_password = hiera('basic_auth_password')

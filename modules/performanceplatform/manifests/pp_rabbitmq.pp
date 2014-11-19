@@ -1,7 +1,7 @@
-class performanceplatform::pp_rabbitmq {
+class performanceplatform::pp_rabbitmq ($transformer_password) {
   rabbitmq_user { 'transformer':
     admin    => false,
-    password => $rabbitmq_transformer_password,
+    password => $transformer_password,
   }
 
   rabbitmq_vhost { '/transformations':
