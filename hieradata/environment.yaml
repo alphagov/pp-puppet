@@ -43,5 +43,7 @@ postgresql::server::postgres_password: 'password'
 
 pp_postgres::primary::stagecraft_password: "securem8"
 
+performanceplatform::pp_rabbitmq::transformer_password: 'pBwuFQkkXQqhTupMvcr3Ak6QmPdycfmi'
+
 # Nginx configuration to restrict a vhost to the performance platform
 pp_only_vhost: ""
