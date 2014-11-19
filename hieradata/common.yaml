@@ -181,6 +181,8 @@ nameservers:
   - 8.8.8.8
   - 8.8.4.4
 
+nginx::resource::vhost::ssl_ciphers: 'EECDH+AES128:RSA+AES128:EECDH+AES256:RSA+AES256:EECDH+3DES:RSA+3DES:EECDH+RC4:RSA+RC4:!MD5;'
+
 ntp::servers:
   - 'ntp.ubuntu.com'
   - 'time.euro.apple.com'
