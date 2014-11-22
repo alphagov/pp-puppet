@@ -39,12 +39,16 @@ gunicorn_apps:
     user:          'deploy'
     group:         'deploy'
     statsd_prefix: 'backdrop.admin'
+    add_header:
+      "Alternate-Protocol": "%{::pp_spdy_npn}"
   read.backdrop:
     port:          3038
     app_module:    'backdrop.read.api:app'
     user:          'deploy'
     group:         'deploy'
     statsd_prefix: 'backdrop.read'
+    add_header:
+      "Alternate-Protocol": "%{::pp_spdy_npn}"
   write.backdrop:
     port:                 3039
     app_module:           'backdrop.write.api:app'
@@ -53,6 +57,8 @@ gunicorn_apps:
     statsd_prefix:        'backdrop.write'
     client_max_body_size: '50m'
     timeout:              60
+    add_header:
+      "Alternate-Protocol": "%{::pp_spdy_npn}"
   stagecraft:
     port:            3204
     app_module:      'stagecraft.wsgi:application'
@@ -60,6 +66,8 @@ gunicorn_apps:
     group:           'deploy'
     is_django:       true
     timeout:         2
+    add_header:
+      "Alternate-Protocol": "%{::pp_spdy_npn}"
 
 backdrop_collectors:
   performanceplatform-collector:

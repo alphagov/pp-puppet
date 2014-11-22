@@ -38,6 +38,8 @@ $basic_auth_password_hashed = hiera('basic_auth_password_hashed')
 
 $pp_environment = hiera('pp_environment')
 
+$pp_spdy_npn = hiera('pp_spdy_npn', '443:npn-spdy/2')
+
 # Classes
 hiera_include('classes')
 
