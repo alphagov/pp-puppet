@@ -19,6 +19,7 @@ hosts = [
   { name: 'postgresql-primary-1',   ip: '172.27.1.61' },
   { name: 'postgresql-secondary-1', ip: '172.27.1.65' },
   { name: 'backup-box-1',           ip: '172.27.1.71' },
+  { name: 'omnios',                 ip: '172.27.1.81' },
 ]
 
 # Images are built for specific versions of virtualbox guest additions for now.
@@ -43,7 +44,10 @@ $boxesByVersion = Hash[$boxVersions.map {|virtualboxVersion|
   [virtualboxVersion, create_box_details(virtualboxVersion)]
 }]
 
-def get_box(provider)
+def get_box(provider, hostname)
+  if hostname == "omnios"
+    return "omnios-r151006_066", "http://omnios.omniti.com/media/omnios-r151006_066.box"
+  end
   provider    ||= "virtualbox"
   case provider
   when "vmware"
@@ -96,7 +100,7 @@ Vagrant.configure("2") do |config|
 
   hosts.each do |host|
     config.vm.define host[:name] do |c|
-      box_name, box_url = get_box("virtualbox")
+      box_name, box_url = get_box("virtualbox", host[:name])
       c.vm.box = box_name
       c.vm.box_url = box_url
 
@@ -128,7 +132,7 @@ Vagrant.configure("2") do |config|
       end
 
       c.vm.provider :vmware_fusion do |f, override|
-        vf_box_name, vf_box_url = get_box("vmware")
+        vf_box_name, vf_box_url = get_box("vmware", host[:name])
         override.vm.box = vf_box_name
         override.vm.box_url = vf_box_url
         f.vmx["displayName"] = host[:name]
