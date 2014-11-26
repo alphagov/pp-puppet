@@ -3,11 +3,12 @@ class performanceplatform::notifier(
   $user,
   $group,
   $cron_definition,
-  $command = 'npm start',
-  $app_path = '/opt/performanceplatform-notifier',
+  $app_path = undef,
   $log_path = '/var/log/performanceplatform-notifier',
   $config_path = '/etc/gds/performanceplatform-notifier',
 ) {
+
+  validate_string($app_path)
 
   include performanceplatform::nodejs
 
@@ -48,13 +49,9 @@ class performanceplatform::notifier(
     create_group => $group,
   }
 
-  $cron_defs = {
-    'notifier-cron-job' => $cron_definition,
-  }
-
-  create_resources(cron, $cron_defs, {
+  # Create notifier cronjobs
+  create_resources(cron, $cron_definition, {
     ensure      => $ensure,
-    command     => "cd ${app_path}/current && ${command}",
     user        => $user,
     environment => 'PATH=/bin:/usr/bin:/usr/sbin',
   })

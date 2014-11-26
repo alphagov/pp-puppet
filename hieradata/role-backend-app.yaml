@@ -26,10 +26,13 @@ nginx::package_ensure: '1.4.4-4~precise0'
 nginx::package_name: 'nginx-extras'
 nginx::server_tokens: 'off'
 
+performanceplatform::notifier::app_path: '/opt/performanceplatform-notifier'
 performanceplatform::notifier::user: 'deploy'
 performanceplatform::notifier::group: 'deploy'
 performanceplatform::notifier::cron_definition:
-  minute: '0'
+  'notifier-cron-job':
+    minute: '0'
+    command: "cd %{hiera('performanceplatform::notifier::app_path')}/current && npm start"
 
 gunicorn_apps:
   admin.backdrop:
