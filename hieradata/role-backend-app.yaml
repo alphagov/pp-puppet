@@ -33,6 +33,12 @@ performanceplatform::notifier::cron_definition:
   'notifier-cron-job':
     minute: '0'
     command: "cd %{hiera('performanceplatform::notifier::app_path')}/current && npm start"
+  'notifier-summary-cron-job':
+    # Send summary emails early on Monday mornings
+    minute: 0
+    hour: 7
+    weekday: 1
+    command: "cd %{hiera('performanceplatform::notifier::app_path')}/current && npm run-script summaries"
 
 gunicorn_apps:
   admin.backdrop:
