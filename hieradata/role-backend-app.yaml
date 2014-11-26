@@ -32,7 +32,7 @@ performanceplatform::notifier::group: 'deploy'
 performanceplatform::notifier::cron_definition:
   'notifier-cron-job':
     minute: '0'
-    command: "cd %{hiera('performanceplatform::notifier::app_path')}/current && npm start"
+    command: "cd %{hiera('performanceplatform::notifier::app_path')}/current && npm run-script out-of-date"
   'notifier-summary-cron-job':
     # Send summary emails early on Monday mornings
     minute: 0
