@@ -72,6 +72,8 @@ sensu::dashboard_user:     "%{::basic_auth_username}"
 sensu::dashboard_password: "%{::basic_auth_password}"
 sensu::dashboard_port: 8090
 sensu::server: true
+sensu::api: true
+sensu::sensu_plugin_version: 'installed'
 
 ufw_rules:
   allowcarbonfromanywhere:

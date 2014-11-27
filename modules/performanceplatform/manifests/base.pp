@@ -68,8 +68,6 @@ class performanceplatform::base(
         group  => 'gds',
     }
 
-    Package['sensu-plugin'] -> Class['sensu']
-
     vcsrepo { '/etc/sensu/community-plugins':
         ensure   => present,
         provider => git,
