@@ -86,6 +86,8 @@ vhost_proxies:
     four_critical: 3
     five_warning: 0
     five_critical: 1
+    add_header:
+      "Alternate-Protocol": "%{::pp_spdy_npn}"
     denied_http_verbs:
       - PURGE
 
@@ -99,6 +101,8 @@ vhost_proxies:
     four_critical: 3
     five_warning: 0
     five_critical: 1
+    add_header:
+      "Alternate-Protocol": "%{::pp_spdy_npn}"
     denied_http_verbs:
       - PURGE
 
@@ -113,6 +117,7 @@ vhost_proxies:
     five_warning: 0
     five_critical: 1
     add_header:
+      "Alternate-Protocol": "%{::pp_spdy_npn}"
       "X-Frame-Options": "SAMEORIGIN"
     denied_http_verbs:
       - PURGE
@@ -131,6 +136,8 @@ vhost_proxies:
     four_critical: 3
     five_warning: 0
     five_critical: 1
+    add_header:
+      "Alternate-Protocol": "%{::pp_spdy_npn}"
     client_max_body_size: '50m'
     denied_http_verbs:
       - PURGE
@@ -152,6 +159,8 @@ vhost_proxies:
     four_critical: 3
     five_warning: 0
     five_critical: 1
+    add_header:
+      "Alternate-Protocol": "%{::pp_spdy_npn}"
     pp_only_vhost: true
     denied_http_verbs:
       - PURGE

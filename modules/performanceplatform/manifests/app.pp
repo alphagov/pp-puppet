@@ -26,6 +26,7 @@ define performanceplatform::app (
   $ssl_cert                    = hiera('public_ssl_cert'),
   $ssl_key                     = hiera('public_ssl_key'),
   $request_uuid                = false,
+  $add_header                  = undef,
 ) {
 
   validate_bool($request_uuid)
@@ -54,6 +55,7 @@ define performanceplatform::app (
     proxy_set_forwarded_host    => $proxy_set_forwarded_host,
     client_max_body_size        => $client_max_body_size,
     request_uuid                => $request_uuid,
+    add_header                  => $add_header,
   }
 
   $base_environment = {
