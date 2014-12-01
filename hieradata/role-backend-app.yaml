@@ -84,7 +84,7 @@ python_procs:
     user: 'deploy'
     group: 'deploy'
     upstart_desc: 'Transformations celery worker'
-    upstart_exec: 'celery -A backdrop.transformers.worker worker -l info'
+    upstart_exec: '/opt/backdrop.transformers.worker/shared/venv/bin/celery -A backdrop.transformers.worker worker -l info'
     statsd_prefix: 'backdrop.transformers.worker'
 
 backdrop_collectors:
