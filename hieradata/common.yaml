@@ -131,6 +131,16 @@ classes:
   - 'performanceplatform::pp_fail2ban'
 
 apt::always_apt_update: true
+apt::purge_preferences_d: true
+apt::purge_sources_list_d: true
+apt::unattended_upgrades::blacklist:
+ - 'postgresql-*'
+ - 'mongodb-10gen'
+apt::unattended_upgrades::mail_to: 'machine.email@digital.cabinet-office.gov.uk'
+apt::unattended_upgrades::origins:
+ - "%{::lsbdistid} stable"
+ - "%{::lsbdistid} %{::lsbdistcodename}-security"
+
 
 rsyslog::client::server: "logging"
 
