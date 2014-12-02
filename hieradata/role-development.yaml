@@ -117,15 +117,6 @@ vhost_proxies:
     ssl:           true
     upstream_port: 7999
 
-python_procs:
-  backdrop.transformers.worker:
-    app_module: 'backdrop.transformers.worker'
-    user: 'deploy'
-    group: 'deploy'
-    upstart_desc: 'Transformations celery worker'
-    upstart_exec: '/opt/backdrop.transformers.worker/shared/venv/bin/celery -A backdrop.transformers.worker worker -l info'
-    statsd_prefix: 'backdrop.transformers.worker'
-
 system_packages:
   - cmake
   - golang
