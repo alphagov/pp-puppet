@@ -78,7 +78,7 @@ gunicorn_apps:
     add_header:
       "Alternate-Protocol": "%{::pp_spdy_npn}"
 
-python_procs:
+python_app:
   backdrop.transformers.worker:
     app_module: 'backdrop.transformers.worker'
     user: 'deploy'
