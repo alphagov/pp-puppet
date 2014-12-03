@@ -69,8 +69,6 @@ graphite::gr_storage_schemas:
     retentions: "1s:30m,1m:1d,5m:100d"
     pattern: ".*"
 
-sensu::dashboard_user:     "%{::basic_auth_username}"
-sensu::dashboard_password: "%{::basic_auth_password}"
 sensu::dashboard_port: 8090
 sensu::server: true
 sensu::api: true
@@ -132,3 +130,5 @@ ruby_packages:
   - redis
 
 uchiwa::install_repo: false
+uchiwa::user: "%{::basic_auth_username}"
+uchiwa::pass: "%{::basic_auth_password}"
