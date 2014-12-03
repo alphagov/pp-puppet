@@ -74,4 +74,7 @@ class performanceplatform::monitoring::sensu (
     },
     require => File[$handler_file]
   }
+  uchiwa::api { 'sensu':
+    host    => 'localhost',
+  }
 }

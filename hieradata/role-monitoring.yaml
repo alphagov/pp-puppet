@@ -14,6 +14,7 @@ classes:
   - 'performanceplatform::checks::smokey_tests'
   - 'performanceplatform::checks::ssl'
   - 'performanceplatform::checks::elasticsearch_log_errors'
+  - 'uchiwa'
 
 nginx::confd_purge: true
 nginx::vhost_purge: true
@@ -72,6 +73,8 @@ sensu::dashboard_user:     "%{::basic_auth_username}"
 sensu::dashboard_password: "%{::basic_auth_password}"
 sensu::dashboard_port: 8090
 sensu::server: true
+sensu::api: true
+sensu::sensu_plugin_version: 'installed'
 
 ufw_rules:
   allowcarbonfromanywhere:
@@ -117,7 +120,7 @@ vhost_proxies:
     servername:      "%{::alerts_vhost}"
     ssl:             false
     upstream_server: 'localhost'
-    upstream_port:   8090
+    upstream_port:   3000
     sensu_check:     false
 
 lumberjack_instances:
@@ -127,3 +130,5 @@ lumberjack_instances:
 ruby_packages:
   - redphone
   - redis
+
+uchiwa::install_repo: false
