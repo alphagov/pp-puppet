@@ -36,7 +36,9 @@ define performanceplatform::gunicorn_app (
     $proxy_set_forwarded_host = false
   }
 
-  $config_path = "/etc/gds/${title}"
+  $config_path     = "/etc/gds/${title}"
+  $app_path        = "/opt/${title}"
+  $virtualenv_path = "${app_path}/shared/venv"
 
   performanceplatform::proxy_vhost { "${title}-vhost":
     port                        => 80,
