@@ -78,6 +78,15 @@ gunicorn_apps:
     add_header:
       "Alternate-Protocol": "%{::pp_spdy_npn}"
 
+python_app:
+  backdrop.transformers.worker:
+    app_module: 'backdrop.transformers.worker'
+    user: 'deploy'
+    group: 'deploy'
+    upstart_desc: 'Transformations celery worker'
+    upstart_exec: '/opt/backdrop.transformers.worker/shared/venv/bin/celery -A backdrop.transformers.worker worker -l info'
+    statsd_prefix: 'backdrop.transformers.worker'
+
 backdrop_collectors:
   performanceplatform-collector:
     user: 'deploy'

@@ -1,21 +1,32 @@
+# === Parameters
+#
+# [*request_uuid*]
+#   Optional boolean value. Whether to proxy_set_header the $request_uuid value or not.
+#   If set, this can be used to trace a request through all the systems that collaborate
+#   to service a single external request
+#
 define performanceplatform::gunicorn_app (
-  $description = $title,
-  $port        = undef,
-  $workers     = 4,
-  $timeout     = 30,
-  $app_module  = undef,
-  $user        = undef,
-  $group       = undef,
-  $client_max_body_size = '10m',
-  $is_django   = false,
-  $statsd_prefix = $title,
-  $add_header  = undef,
+  $description                 = $title,
+  $port                        = undef,
+  $workers                     = 4,
+  $timeout                     = 30,
+  $app_module                  = undef,
+  $user                        = undef,
+  $group                       = undef,
+  $servername                  = $title,
+  $serveraliases               = undef,
+  $proxy_ssl                   = false,
+  $add_header                  = undef,
+  $client_max_body_size        = '10m',
+  $is_django                   = false,
+  $client_max_body_size        = '10m',
+  $ssl_cert                    = hiera('public_ssl_cert'),
+  $ssl_key                     = hiera('public_ssl_key'),
+  $request_uuid                = false,
+  $statsd_prefix               = $title,
 ) {
-  # app_path is defined here so that the virtualenv can be
-  # created in the correct place
-  $app_path        = "/opt/${title}"
-  $config_path     = "/etc/gds/${title}"
-  $virtualenv_path = "${app_path}/shared/venv"
+  validate_bool($request_uuid)
+  include nginx
 
   if $is_django {
     $proxy_append_forwarded_host = false
@@ -25,30 +36,30 @@ define performanceplatform::gunicorn_app (
     $proxy_set_forwarded_host = false
   }
 
-  performanceplatform::app { $title:
-    port                        => $port,
-    workers                     => $workers,
-    app_module                  => $app_module,
-    user                        => $user,
-    group                       => $group,
-    app_path                    => $app_path,
-    config_path                 => $config_path,
-    upstart_desc                => $description,
-    upstart_exec                => "${virtualenv_path}/bin/gunicorn -c ${config_path}/gunicorn ${app_module}",
+  $config_path = "/etc/gds/${title}"
+
+  performanceplatform::proxy_vhost { "${title}-vhost":
+    port                        => 80,
+    upstream_port               => $port,
+    servername                  => $servername,
+    serveraliases               => $serveraliases,
+    ssl                         => $proxy_ssl,
+    ssl_cert                    => $ssl_cert,
+    ssl_key                     => $ssl_key,
     proxy_append_forwarded_host => $proxy_append_forwarded_host,
     proxy_set_forwarded_host    => $proxy_set_forwarded_host,
     client_max_body_size        => $client_max_body_size,
-    statsd_prefix               => $title,
     add_header                  => $add_header,
+    request_uuid                => $request_uuid,
   }
 
-  python::virtualenv { $virtualenv_path:
-    ensure     => present,
-    version    => '2.7',
-    systempkgs => false,
-    owner      => $user,
-    group      => $group,
-    require    => File["${app_path}/shared"],
+  performanceplatform::python_app { $title:
+    config_path  => $config_path,
+    app_module   => $app_module,
+    user         => $user,
+    group        => $group,
+    upstart_exec => "${virtualenv_path}/bin/gunicorn -c ${config_path}/gunicorn ${app_module}",
+    upstart_desc => $description,
   }
 
   file { "${config_path}/gunicorn":
