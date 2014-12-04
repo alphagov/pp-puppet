@@ -96,9 +96,10 @@ node default {
     create_resources( 'performanceplatform::gunicorn_app', $gunicorn_apps )
   }
 
-  $python_procs = hiera_hash( 'python_procs', {} )
-  if !empty($python_procs) {
-    create_resources( 'performanceplatform::python_proc', $python_procs )
+  # Install python processes
+  $python_apps = hiera_hash( 'python_apps', {} )
+  if !empty($python_apps) {
+    create_resources( 'performanceplatform::python_app', $python_apps )
   }
 
   # Collect some metrics
