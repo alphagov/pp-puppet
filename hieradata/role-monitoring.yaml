@@ -120,6 +120,21 @@ vhost_proxies:
     upstream_server: 'localhost'
     upstream_port:   3000
     sensu_check:     false
+    auth_basic: "Enter username/password"
+    auth_basic_user_file: /etc/nginx/htpasswd
+    custom_locations:
+      sensu_events:
+        location: '/events'
+        proxy: 'http://sensu-api'
+      sensu_clients:
+        location: '/clients'
+        proxy: 'http://sensu-api'
+
+nginx::nginx_upstreams:
+  'sensu-api':
+    ensure: present
+    members:
+      - localhost:4567
 
 lumberjack_instances:
   nginx:
