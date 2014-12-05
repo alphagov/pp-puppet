@@ -43,7 +43,7 @@ class performanceplatform::monitoring::logstash (
   }
 
   sensu::check { 'logstash_is_down':
-    command  => '/etc/sensu/community-plugins/plugins/processes/check-procs.rb -p logstash -C 1 -W 1',
+    command  => "/etc/sensu/community-plugins/plugins/processes/check-procs.rb -p 'logstash/runner.rb agent' -C 1 -W 1",
     interval => 60,
     handlers => ['default'],
   }
