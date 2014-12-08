@@ -130,13 +130,6 @@ GIT
       puppetlabs-stdlib (>= 2.0.0)
 
 GIT
-  remote: https://github.com/alphagov/puppet-lumberjack.git
-  ref: 57542743ffdbe940cf43909f29ac4a31561eef23
-  sha: 57542743ffdbe940cf43909f29ac4a31561eef23
-  specs:
-    alphagov-lumberjack (0.0.1)
-
-GIT
   remote: https://github.com/alphagov/puppet-redis.git
   ref: a2c4821e94bed725f69e40532fec41c6efa585fe
   sha: a2c4821e94bed725f69e40532fec41c6efa585fe
@@ -169,6 +162,14 @@ GIT
     elasticsearch-logstash (0.5.1)
       ispavailability-file_concat (>= 0.1.0)
       puppetlabs-stdlib (>= 3.2.0)
+
+GIT
+  remote: https://github.com/elasticsearch/puppet-logstashforwarder.git
+  ref: e07043db7c377da88d1d93b3ae967bf4b7f8dc32
+  sha: e07043db7c377da88d1d93b3ae967bf4b7f8dc32
+  specs:
+    elasticsearch-logstashforwarder (0.1.0)
+      puppetlabs-stdlib (>= 3.0.0)
 
 GIT
   remote: https://github.com/endore-me/puppet-tmux.git
@@ -218,7 +219,6 @@ DEPENDENCIES
   alphagov-gstatsd (>= 0)
   alphagov-harden (>= 0)
   alphagov-jenkins (>= 0)
-  alphagov-lumberjack (>= 0)
   alphagov-mongodb (>= 0)
   alphagov-redis (>= 0)
   attachmentgenie-ssh (= 1.4.1)
@@ -227,6 +227,7 @@ DEPENDENCIES
   dwerder-graphite (= 3.0.1)
   elasticsearch-elasticsearch (= 0.4.0)
   elasticsearch-logstash (>= 0)
+  elasticsearch-logstashforwarder (>= 0)
   endore-me-tmux (>= 0)
   gdsoperations-auditd (= 0.2.0)
   gdsoperations-openconnect (>= 0)

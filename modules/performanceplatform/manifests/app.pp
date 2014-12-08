@@ -79,9 +79,9 @@ define performanceplatform::app (
     exec          => $upstart_exec,
   }
 
-  lumberjack::logshipper { "app-logs-for-${title}":
-    log_files => [ "/opt/${title}/current/log/*.log.json" ],
-    fields    => { 'application' => $title },
+  logstashforwarder::file { "app-logs-for-${title}":
+    paths  => [ "/opt/${title}/current/log/*.log.json" ],
+    fields => { 'application' => $title },
   }
   sensu::check { "lumberjack_is_down_for_app-logs-for-${title}":
     command  => "/etc/sensu/community-plugins/plugins/processes/check-procs.rb -p 'lumberjack.*app-logs-for-${title}' -C 1 -W 1",
@@ -89,9 +89,9 @@ define performanceplatform::app (
     handlers => ['default'],
   }
 
-  lumberjack::logshipper { "var-logs-for-${title}":
-    log_files => [ "/var/log/${title}/*.log.json"],
-    fields    => { 'application' => $title },
+  logstashforwarder::file  { "var-logs-for-${title}":
+    paths  => [ "/var/log/${title}/*.log.json"],
+    fields => { 'application' => $title },
   }
   sensu::check { "lumberjack_is_down_for_var-logs-for-${title}":
     command  => "/etc/sensu/community-plugins/plugins/processes/check-procs.rb -p 'lumberjack.*var-logs-for-${title}' -C 1 -W 1",

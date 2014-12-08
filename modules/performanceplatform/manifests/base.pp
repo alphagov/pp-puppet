@@ -76,4 +76,12 @@ class performanceplatform::base(
         require  => Package['git'],
     }
 
+    # workaround for the elasticsearch puppet repo / logstash forwarder package
+    # creating an init file that doesnt work
+    # https://github.com/elasticsearch/puppet-logstashforwarder/pull/12/files
+    file { '/etc/logstash-forwarder':
+      ensure => link,
+      target => "${logstashforwarder::configdir}/config.json";
+    }
+
 }

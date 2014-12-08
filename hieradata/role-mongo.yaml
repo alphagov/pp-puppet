@@ -12,8 +12,8 @@ ufw_rules:
     port: 27017
     ip:   'any'
 
-lumberjack_instances:
+logstashforwarder_files:
   mongo:
-    log_files: [ '/var/log/mongodb/mongodb.log' ]
+    paths: [ '/var/log/mongodb/mongodb.log' ]
     fields:
       tags: 'mongo'

@@ -108,8 +108,8 @@ node default {
     collectd::plugin { $collectd_plugins: }
   }
 
-  $lumberjack_instances = hiera_hash( 'lumberjack_instances', {} )
-  if !empty($lumberjack_instances) {
-    create_resources( 'lumberjack::logshipper', $lumberjack_instances )
+  $logstashforwarder_files = hiera_hash( 'logstashforwarder_files', {} )
+  if !empty($logstashforwarder_files) {
+    create_resources( 'logstashforwarder::file', $logstashforwarder_files )
   }
 }
