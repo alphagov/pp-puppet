@@ -80,6 +80,7 @@ gunicorn_apps:
 
 python_apps:
   backdrop.transformers.worker:
+    virtualenv_path: '/opt/backdrop.transformers.worker/shared/venv'
     app_module: 'backdrop.transformers.worker'
     user: 'deploy'
     group: 'deploy'
