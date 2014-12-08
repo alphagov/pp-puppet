@@ -2,7 +2,7 @@ define performanceplatform::python_app (
   $description     = $title,
   $app_path        = "/opt/${title}",
   $config_path     = "/etc/gds/${title}",
-  $virtualenv_path = "${app_path}/shared/venv",
+  $virtualenv_path = undef,
   $app_module      = undef,
   $user            = undef,
   $group           = undef,
@@ -20,6 +20,15 @@ define performanceplatform::python_app (
     ensure => directory,
     owner  => $user,
     group  => $group,
+  }
+
+  python::virtualenv { $virtualenv_path:
+    ensure     => present,
+    version    => '2.7',
+    systempkgs => false,
+    owner      => $user,
+    group      => $group,
+    require    => File["${app_path}/shared"],
   }
 
   $base_environment = {

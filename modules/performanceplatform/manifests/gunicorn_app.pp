@@ -56,12 +56,14 @@ define performanceplatform::gunicorn_app (
   }
 
   performanceplatform::python_app { $title:
-    config_path  => $config_path,
-    app_module   => $app_module,
-    user         => $user,
-    group        => $group,
-    upstart_exec => "${virtualenv_path}/bin/gunicorn -c ${config_path}/gunicorn ${app_module}",
-    upstart_desc => $description,
+    app_path        => $app_path,
+    virtualenv_path => $virtualenv_path,
+    config_path     => $config_path,
+    app_module      => $app_module,
+    user            => $user,
+    group           => $group,
+    upstart_exec    => "${virtualenv_path}/bin/gunicorn -c ${config_path}/gunicorn ${app_module}",
+    upstart_desc    => $description,
   }
 
   file { "${config_path}/gunicorn":
