@@ -117,6 +117,7 @@ classes:
   - 'gcc'
   - 'harden'
   - 'logstashforwarder'
+  - 'performanceplatform::init_remove_lumberjack'
   - 'ntp'
   - 'python'
   - 'rsyslog::client'
@@ -158,6 +159,11 @@ ssh::server::ciphers:
   - aes128-ctr
   - aes192-ctr
   - aes256-ctr
+
+performanceplatform::init_remove_lumberjack::hosts:
+  - 'logstash:3456'
+performanceplatform::init_remove_lumberjack::cert_source: 'puppet:///modules/performanceplatform/logstash.pub'
+performanceplatform::init_remove_lumberjack::deb_source:  'puppet:///modules/performanceplatform/lumberjack_0.2.0_amd64.deb'
 
 logstashforwarder::servers:
   - 'logstash:3456'

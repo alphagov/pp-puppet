@@ -130,6 +130,13 @@ GIT
       puppetlabs-stdlib (>= 2.0.0)
 
 GIT
+  remote: https://github.com/alphagov/puppet-lumberjack.git
+  ref: 57542743ffdbe940cf43909f29ac4a31561eef23
+  sha: 57542743ffdbe940cf43909f29ac4a31561eef23
+  specs:
+    elasticsearch-lumberjack (0.0.1)
+
+GIT
   remote: https://github.com/alphagov/puppet-redis.git
   ref: a2c4821e94bed725f69e40532fec41c6efa585fe
   sha: a2c4821e94bed725f69e40532fec41c6efa585fe
@@ -228,6 +235,7 @@ DEPENDENCIES
   elasticsearch-elasticsearch (= 0.4.0)
   elasticsearch-logstash (>= 0)
   elasticsearch-logstashforwarder (>= 0)
+  elasticsearch-lumberjack (>= 0)
   endore-me-tmux (>= 0)
   gdsoperations-auditd (= 0.2.0)
   gdsoperations-openconnect (>= 0)

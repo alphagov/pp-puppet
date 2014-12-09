@@ -17,3 +17,9 @@ logstashforwarder_files:
     paths: [ '/var/log/mongodb/mongodb.log' ]
     fields:
       tags: 'mongo'
+
+lumberjack_instances:
+  mongo:
+    log_files: [ '/var/log/mongodb/mongodb.log' ]
+    fields:
+      tags: 'mongo'

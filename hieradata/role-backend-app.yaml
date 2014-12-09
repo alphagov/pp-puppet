@@ -107,6 +107,10 @@ logstashforwarder_files:
   nginx:
     paths: [ '/var/log/nginx/*.access.log.json' ]
 
+lumberjack_instances:
+   nginx:
+    log_files: [ '/var/log/nginx/*.access.log.json' ]
+
 ruby_packages:
   - curb
   - json

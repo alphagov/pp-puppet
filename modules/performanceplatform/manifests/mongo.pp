@@ -6,14 +6,8 @@ class performanceplatform::mongo (
     $data_dir,
     $disk_mount = undef,
     $mongo_hosts,
-    $require_logshipper = true,
     $version = undef,
 ){
-    if $require_logshipper {
-      $before = [Lumberjack::Logshipper['mongo']]
-    } else {
-      $before = []
-    }
 
     validate_string($version)
 
@@ -22,7 +16,6 @@ class performanceplatform::mongo (
         replSet         => 'production',
         logpath         => '/var/log/mongodb/mongodb.log',
         dbpath          => $data_dir,
-        before          => $before,
         nohttpinterface => true,
         version         => $version,
     }

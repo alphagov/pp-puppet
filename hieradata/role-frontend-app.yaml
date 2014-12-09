@@ -176,6 +176,12 @@ logstashforwarder_files:
   varnish:
     paths: [ '/var/log/varnish/varnishncsa.log' ]
 
+lumberjack_instances:
+   nginx:
+    log_files: [ '/var/log/nginx/*.access.log.json' ]
+   varnish:
+    log_files: [ '/var/log/varnish/varnishncsa.log' ]
+
 system_packages:
   - libcairo2-dev
   - libjpeg8-dev

@@ -29,8 +29,12 @@ define backdrop_collector::app ($user, $group, $ensure) {
     }
 
     logstashforwarder::file { "collector-logs-for-${title}":
-        ensure => $ensure,
         paths  => [ "${app_path}/current/log/collector.log.json" ],
+    }
+
+    performanceplatform::remove_lumberjack { "collector-logs-for-${title}":
+        ensure => absent,
+        log_files => [ "${app_path}/current/log/collector.log.json" ]
     }
 
     logrotate::rule { "${title}-collector":
