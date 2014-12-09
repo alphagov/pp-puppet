@@ -1,11 +1,11 @@
 define performanceplatform::checks::graphite (
-  $ensure = 'present',
   $target,
   $warning,
   $critical,
   $interval = 60,
   $handlers = undef,
   $below = false,
+  $ensure = 'present',
 ) {
 
   $check_data_path = '/etc/sensu/community-plugins/plugins/graphite/check-data.rb'
