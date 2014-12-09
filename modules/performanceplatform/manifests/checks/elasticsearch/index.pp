@@ -21,8 +21,8 @@ define performanceplatform::checks::elasticsearch::index(
   # the massive negative derivative (when rolling) causing the check to fire.
   performanceplatform::checks::graphite { $name:
     target   => "removeBelowValue(derivative(${graphite}),0)",
-    warning  => '0',
-    critical => '0',
+    warning  => '1',
+    critical => '1',
     below    => true,
     interval => 60,
     handlers => ['default'],
