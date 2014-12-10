@@ -50,6 +50,7 @@ define backdrop_collector::app ($user, $group, $ensure) {
     }
 
     sensu::check { "logstashforwarder_is_down_for_collector-logs-for-${title}":
+        ensure  => absent,
         command  => "/etc/sensu/community-plugins/plugins/processes/check-procs.rb -p 'lumberjack.*collector-logs-for-${title}' -C 1 -W 1",
         interval => 60,
         handlers => ['default'],

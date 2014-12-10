@@ -62,6 +62,7 @@ define performanceplatform::python_app (
   }
 
   sensu::check { "lumberjack_is_down_for_app-logs-for-${title}":
+    ensure  => absent,
     command  => "/etc/sensu/community-plugins/plugins/processes/check-procs.rb -p 'lumberjack.*app-logs-for-${title}' -C 1 -W 1",
     interval => 60,
     handlers => ['default'],
@@ -76,6 +77,7 @@ define performanceplatform::python_app (
     ensure => absent
   }
   sensu::check { "lumberjack_is_down_for_var-logs-for-${title}":
+    ensure  => absent,
     command  => "/etc/sensu/community-plugins/plugins/processes/check-procs.rb -p 'lumberjack.*var-logs-for-${title}' -C 1 -W 1",
     interval => 60,
     handlers => ['default'],
