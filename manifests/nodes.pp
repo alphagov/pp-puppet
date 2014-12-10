@@ -113,8 +113,4 @@ node default {
     create_resources( 'logstashforwarder::file', $logstashforwarder_files )
   }
 
-  $lumberjack_instances = hiera_hash( 'lumberjack_instances', {} )
-  if !empty($lumberjack_instances) {
-    create_resources( 'performanceplatform::remove_lumberjack', $lumberjack_instances, {'ensure' => absent} )
-  }
 }

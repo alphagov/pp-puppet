@@ -7,7 +7,7 @@ classes:
   - 'performanceplatform::big_screen'
   - 'performanceplatform::checks::admin'
   - 'performanceplatform::checks::clamav'
-  - 'performanceplatform::checks::lumberjack'
+  - 'performanceplatform::checks::logstashforwarder'
   - 'performanceplatform::pp_nginx'
   - 'performanceplatform::pp_nginx::rate_limit'
   - 'performanceplatform::pp_nginx::request_uuid'
@@ -176,12 +176,6 @@ logstashforwarder_files:
     paths: [ '/var/log/nginx/*.access.log.json' ]
   varnish:
     paths: [ '/var/log/varnish/varnishncsa.log' ]
-
-lumberjack_instances:
-   nginx:
-    log_files: [ '/var/log/nginx/*.access.log.json' ]
-   varnish:
-    log_files: [ '/var/log/varnish/varnishncsa.log' ]
 
 system_packages:
   - libcairo2-dev

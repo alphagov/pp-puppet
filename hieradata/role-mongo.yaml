@@ -1,6 +1,6 @@
 ---
 classes:
-  - 'performanceplatform::checks::lumberjack'
+  - 'performanceplatform::checks::logstashforwarder'
   - 'performanceplatform::mongo'
   - 'performanceplatform::mongo_backup'
 
@@ -16,11 +16,5 @@ ufw_rules:
 logstashforwarder_files:
   mongo:
     paths: [ '/var/log/mongodb/mongodb.log' ]
-    fields:
-      tags: 'mongo'
-
-lumberjack_instances:
-  mongo:
-    log_files: [ '/var/log/mongodb/mongodb.log' ]
     fields:
       tags: 'mongo'
