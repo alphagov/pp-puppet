@@ -25,45 +25,44 @@ hosts = [
 # Images are built for specific versions of virtualbox guest additions for now.
 # It has proven problematic to mix versions of virtualbox and guest additions
 # in the past and therefore they are pinned by what is available in this map.
-def create_box_details(virtualboxVersion)
-  boxName = "pp-ubuntu-12.04-virtualbox-#{virtualboxVersion}"
+def create_box_details(virtualbox_version)
+  box_name = "pp-ubuntu-12.04-virtualbox-#{virtualbox_version}"
   {
-    name: boxName,
-    url: "https://s3-eu-west-1.amazonaws.com/gds-boxes/#{boxName}.box",
-    link: "https://download.virtualbox.org/virtualbox/#{virtualboxVersion.split('r').first}"
+    name: box_name,
+    url: "https://s3-eu-west-1.amazonaws.com/gds-boxes/#{box_name}.box",
+    link: "http://download.virtualbox.org/virtualbox/#{virtualbox_version.split('r').first}"
   }
 end
 
-$boxVersions = [
+supported_box_versions = [
   "4.3.6r91406",
   "4.3.8r92456",
 ]
 
 # Create a hash of virtualbox version to box details hash
-$boxesByVersion = Hash[$boxVersions.map {|virtualboxVersion|
-  [virtualboxVersion, create_box_details(virtualboxVersion)]
+$boxes_by_version = Hash[supported_box_versions.map {|virtualbox_version|
+  [virtualbox_version, create_box_details(virtualbox_version)]
 }]
 
 def get_box(provider)
-  provider    ||= "virtualbox"
+  provider ||= "virtualbox"
   case provider
   when "vmware"
     name  = "puppetlabs-ubuntu-server-12042-x64-vf503-nocm"
     url   = "http://puppet-vagrant-boxes.puppetlabs.com/ubuntu-svr-12042-x64-vf503-nocm.box"
   else
-    virtualBoxVersion = `vboxmanage --version`.strip
-    box = $boxesByVersion[virtualBoxVersion]
+    virtualbox_version = `vboxmanage --version`.strip
+    box = $boxes_by_version[virtualbox_version]
     if box.nil?
-
       error = <<EOS
-Virtualbox version #{virtualBoxVersion} is not supported. Falling back to latest virtualbox box. See README.md.
-Supported: #{$boxesByVersion.keys} --> #{$boxesByVersion.values.map {|item| item[:link]}}
+VirtualBox version #{virtualbox_version} is not supported. Falling back to latest VirtualBox box. See README.md.
+Supported: #{$boxes_by_version.keys} --> #{$boxes_by_version.values.map {|item| item[:link]}}
 EOS
 $stderr.puts error unless @warned
     # Gem version to sort by version numbers, need to dup the string as it mutates
     # max by returns an array, which we convert back into a hash
-    latest = $boxesByVersion.keys.max_by{|v| Gem::Version.new(v.dup)}
-    box = $boxesByVersion[latest]
+    latest = $boxes_by_version.keys.max_by{|v| Gem::Version.new(v.dup)}
+    box = $boxes_by_version[latest]
     @warned = true
     end
 
