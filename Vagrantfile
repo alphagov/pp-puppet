@@ -54,11 +54,17 @@ def get_box(provider)
     virtualBoxVersion = `vboxmanage --version`.strip
     box = $boxesByVersion[virtualBoxVersion]
     if box.nil?
-      $stderr.puts <<EOS
-Virtualbox version #{virtualBoxVersion} is not supported. See README.md.
+
+      error = <<EOS
+Virtualbox version #{virtualBoxVersion} is not supported. Falling back to latest virtualbox box. See README.md.
 Supported: #{$boxesByVersion.keys} --> #{$boxesByVersion.values.map {|item| item[:link]}}
 EOS
-      exit 1
+$stderr.puts error unless @warned
+    # Gem version to sort by version numbers, need to dup the string as it mutates
+    # max by returns an array, which we convert back into a hash
+    latest = $boxesByVersion.keys.max_by{|v| Gem::Version.new(v.dup)}
+    box = $boxesByVersion[latest]
+    @warned = true
     end
 
     name, url = box[:name], box[:url]
