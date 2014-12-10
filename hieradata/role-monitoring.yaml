@@ -10,6 +10,7 @@ classes:
   - 'performanceplatform::pp_rabbitmq'
   - 'rabbitmq'
   - 'redis'
+  - 'performanceplatform::checks::lumberjack'
   - 'performanceplatform::checks::servers'
   - 'performanceplatform::checks::smokey_tests'
   - 'performanceplatform::checks::ssl'

@@ -1,5 +1,6 @@
 ---
 classes:
+  - 'performanceplatform::checks::lumberjack'
   - 'performanceplatform::mongo'
   - 'performanceplatform::mongo_backup'
 

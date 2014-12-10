@@ -1,4 +1,5 @@
 classes:
+    - 'performanceplatform::checks::lumberjack'
     - 'performanceplatform::jenkins'
     - 'performanceplatform::deploy'
     - 'performanceplatform::kibana'

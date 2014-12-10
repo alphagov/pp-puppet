@@ -6,6 +6,7 @@ classes:
   - 'performanceplatform::checks::backdrop'
   - 'performanceplatform::checks::clamav'
   - 'performanceplatform::checks::stagecraft'
+  - 'performanceplatform::checks::lumberjack'
   - 'performanceplatform::backdrop_smoke_tests'
   - 'performanceplatform::notifier'
   - 'performanceplatform::pp_nginx'
