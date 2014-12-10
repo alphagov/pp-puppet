@@ -30,7 +30,7 @@ def create_box_details(virtualbox_version)
   {
     name: box_name,
     url: "https://s3-eu-west-1.amazonaws.com/gds-boxes/#{box_name}.box",
-    link: "https://download.virtualbox.org/virtualbox/#{virtualbox_version.split('r').first}"
+    link: "http://download.virtualbox.org/virtualbox/#{virtualbox_version.split('r').first}"
   }
 end
 
