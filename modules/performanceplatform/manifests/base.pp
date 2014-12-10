@@ -84,4 +84,16 @@ class performanceplatform::base(
       target => "${logstashforwarder::configdir}/config.json";
     }
 
+    # Workaround for the logstashforwarder module not creating the config
+    # directory before using it. Because the config directory is already
+    # specified with a `file`, we can't duplicate that. So we have to do
+    # a horrible `exec` to get it to create the directory first. Yuck.
+    # We also can't use the `configdir` parameter because we need to run
+    # this exec before the class has been evaluated. Double yuck.
+    # https://github.com/elasticsearch/puppet-logstashforwarder/pull/13
+    exec { 'mkdir -p /etc/logstashforwarder':
+      unless => 'ls /etc/logstashforwarder',
+      before => Class[Logstashforwarder],
+    }
+
 }
