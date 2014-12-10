@@ -1,5 +1,6 @@
 ---
 classes:
+  - 'performanceplatform::checks::lumberjack'
   - 'performanceplatform::mongo'
   - 'performanceplatform::mongo_backup'
 
@@ -11,6 +12,12 @@ ufw_rules:
   allowmongo:
     port: 27017
     ip:   'any'
+
+logstashforwarder_files:
+  mongo:
+    paths: [ '/var/log/mongodb/mongodb.log' ]
+    fields:
+      tags: 'mongo'
 
 lumberjack_instances:
   mongo:

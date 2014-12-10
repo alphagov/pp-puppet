@@ -10,6 +10,7 @@ classes:
   - 'performanceplatform::pp_rabbitmq'
   - 'rabbitmq'
   - 'redis'
+  - 'performanceplatform::checks::lumberjack'
   - 'performanceplatform::checks::servers'
   - 'performanceplatform::checks::smokey_tests'
   - 'performanceplatform::checks::ssl'
@@ -78,11 +79,8 @@ ufw_rules:
   allowcarbonfromanywhere:
     port: 2003
     ip:   'any'
-  allowlumberjack1fromanywhere:
+  allowlogstashforwarderfromanywhere:
     port: 3456
-    ip:   'any'
-  allowlumberjack2fromanywhere:
-    port: 3457
     ip:   'any'
   allowhttpfromall:
     port: 80
@@ -135,6 +133,10 @@ nginx::nginx_upstreams:
     ensure: present
     members:
       - localhost:4567
+
+logstashforwarder_files:
+  nginx:
+    paths: [ '/var/log/nginx/*.access.log.json' ]
 
 lumberjack_instances:
   nginx:

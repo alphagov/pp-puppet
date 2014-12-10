@@ -1,4 +1,5 @@
 classes:
+    - 'performanceplatform::checks::lumberjack'
     - 'performanceplatform::jenkins'
     - 'performanceplatform::deploy'
     - 'performanceplatform::kibana'
@@ -118,9 +119,13 @@ vhost_proxies:
           - PUT
           - DELETE
 
-lumberjack_instances:
+logstashforwarder_files:
     nginx:
-        log_files: [ '/var/log/nginx/*.access.log.json' ]
+        paths: [ '/var/log/nginx/*.access.log.json' ]
+
+lumberjack_instances:
+   nginx:
+    log_files: [ '/var/log/nginx/*.access.log.json' ]
 
 nameservers:
   - 192.168.9.1

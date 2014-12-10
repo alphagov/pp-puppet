@@ -27,14 +27,20 @@ class performanceplatform::notifier(
     force   => true,
   }
 
-  lumberjack::logshipper { 'notifier-logshipper-app':
-    ensure    => $ensure,
+  logstashforwarder::file { 'notifier-logshipper-app':
+    paths  => [ "${app_path}/shared/log/app.log.json" ],
+  }
+  performanceplatform::remove_lumberjack { 'notifier-logshipper-app':
     log_files => [ "${app_path}/shared/log/app.log.json" ],
+    ensure => absent
   }
 
-  lumberjack::logshipper { 'notifier-logshipper-exceptions':
-    ensure    => $ensure,
+  logstashforwarder::file { 'notifier-logshipper-exceptions':
+    paths  => [ "${app_path}/shared/log/exceptions.log.json" ],
+  }
+  performanceplatform::remove_lumberjack { 'notifier-logshipper-exceptions':
     log_files => [ "${app_path}/shared/log/exceptions.log.json" ],
+    ensure => absent
   }
 
   logrotate::rule { 'notifier-logrotate-json':

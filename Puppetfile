@@ -38,7 +38,10 @@ mod 'alphagov/harden',              :git => 'https://github.com/alphagov/puppet-
                                     :ref => '0966c98cc3f54815c9aac0ebe6e900b70f85182d'
 mod 'alphagov/jenkins',             :git => 'https://github.com/alphagov/puppet-jenkins.git',
                                     :ref => '4c7990fa8495b6d84292c2153993ac91c3b2916d'
-mod 'alphagov/lumberjack',          :git => 'https://github.com/alphagov/puppet-lumberjack.git',
+mod 'elasticsearch/logstashforwarder',
+                                    :git => 'https://github.com/elasticsearch/puppet-logstashforwarder.git',
+                                    :ref => 'e07043db7c377da88d1d93b3ae967bf4b7f8dc32'
+mod 'elasticsearch/lumberjack',     :git => 'https://github.com/alphagov/puppet-lumberjack.git',
                                     :ref => '57542743ffdbe940cf43909f29ac4a31561eef23'
 mod 'puppetlabs/lvm',               :git => 'https://github.com/puppetlabs/puppetlabs-lvm.git',
                                     :ref => 'ba8efdd243cafa96b45d8d58dbef1d5ba74714ea'
