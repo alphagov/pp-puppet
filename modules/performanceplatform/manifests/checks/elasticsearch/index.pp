@@ -20,7 +20,7 @@ define performanceplatform::checks::elasticsearch::index(
   # the current index is rolled overnight. We use removeBelowValue to stop
   # the massive negative derivative (when rolling) causing the check to fire.
   performanceplatform::checks::graphite { $name:
-    target   => "removeBelowValue(derivative(${graphite}),0)",
+    target   => "removeBelowValue(movingAverage(derivative(${graphite}),5),0)",
     warning  => '1',
     critical => '1',
     below    => true,
