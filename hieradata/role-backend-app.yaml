@@ -6,7 +6,7 @@ classes:
   - 'performanceplatform::checks::backdrop'
   - 'performanceplatform::checks::clamav'
   - 'performanceplatform::checks::stagecraft'
-  - 'performanceplatform::checks::lumberjack'
+  - 'performanceplatform::checks::logstashforwarder'
   - 'performanceplatform::backdrop_smoke_tests'
   - 'performanceplatform::notifier'
   - 'performanceplatform::pp_nginx'
@@ -107,10 +107,6 @@ performanceplatform::pip::pip_cache_path: '/var/cache/pip-download-cache'
 logstashforwarder_files:
   nginx:
     paths: [ '/var/log/nginx/*.access.log.json' ]
-
-lumberjack_instances:
-   nginx:
-    log_files: [ '/var/log/nginx/*.access.log.json' ]
 
 ruby_packages:
   - curb

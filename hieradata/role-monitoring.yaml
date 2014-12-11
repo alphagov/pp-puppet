@@ -10,7 +10,7 @@ classes:
   - 'performanceplatform::pp_rabbitmq'
   - 'rabbitmq'
   - 'redis'
-  - 'performanceplatform::checks::lumberjack'
+  - 'performanceplatform::checks::logstashforwarder'
   - 'performanceplatform::checks::servers'
   - 'performanceplatform::checks::smokey_tests'
   - 'performanceplatform::checks::ssl'
@@ -137,10 +137,6 @@ nginx::nginx_upstreams:
 logstashforwarder_files:
   nginx:
     paths: [ '/var/log/nginx/*.access.log.json' ]
-
-lumberjack_instances:
-  nginx:
-    log_files: [ '/var/log/nginx/*.access.log.json' ]
 
 ruby_packages:
   - redphone

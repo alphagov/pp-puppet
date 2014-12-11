@@ -32,11 +32,6 @@ define backdrop_collector::app ($user, $group, $ensure) {
         paths  => [ "${app_path}/current/log/collector.log.json" ],
     }
 
-    performanceplatform::remove_lumberjack { "collector-logs-for-${title}":
-        ensure => absent,
-        log_files => [ "${app_path}/current/log/collector.log.json" ]
-    }
-
     logrotate::rule { "${title}-collector":
         path         => "${app_path}/shared/log/*.log ${app_path}/shared/log/*.log.json",
         rotate       => 10,
@@ -47,12 +42,5 @@ define backdrop_collector::app ($user, $group, $ensure) {
         create_mode  => '0640',
         create_owner => $user,
         create_group => $group,
-    }
-
-    sensu::check { "logstashforwarder_is_down_for_collector-logs-for-${title}":
-        ensure  => absent,
-        command  => "/etc/sensu/community-plugins/plugins/processes/check-procs.rb -p 'lumberjack.*collector-logs-for-${title}' -C 1 -W 1",
-        interval => 60,
-        handlers => ['default'],
     }
 }
