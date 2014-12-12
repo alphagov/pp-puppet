@@ -40,6 +40,13 @@ accounts:
         key: AAAAB3NzaC1yc2EAAAADAQABAAABAQC6JyuVYcNdZtPtX8oy8Q99E04e5u+Orv4YsWleWieLX2ETAVPry99yHmM6sDH+TMUxDEqWybFjkImb268Qh3CQKTl0lwWKkMHCUnfQnrnERmeAocNFC9XBfM0ZW/KUETp9bit2hs3jLAtL+eqcEThr7peq7PUkz1j4FekQSLyMv5HpvTxMWZCvKoL/sh8qx6J22ntfYCg1SRUU6sHx5Lykp1X4L74EoTSVohynirch+fTvV219zwdpjnbe+XrkE9u5TdVVEOtcSJat8upzBE30MQcvbTeXhlhZbCghm8GEFw3gYsvHBXl+DYjTiQYwHiCI/x2Z+quRBwMYzDsAVqA7
     groups:
       - gds
+  jonwyatt:
+    comment: Jon Wyatt
+    ssh_keys:
+      jonwyatt:
+        key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC3DX4WQ/3J3M4oMBFA8qqc+jNegtZi/jbWgFrcnJ6RCtPi8iAZcQUKBgWBBL1Atdg7wxHu3691pta/h8MLPDvReaBvKg6jTKbVciNks7ro6UC2xgNYTAm/HVctRP1FJknTp+akpBgUgl6bP38RvxkkUS7qsJWydCT6YB2jH+gmgNPLSG9Y8DBPAGE4zrBZvtziwmCpcM62St7/VAcl2v2PicmnQyFFBEDjOddhUQ6nmWJqLGVd3w4ZMhEM6K19uh3QMwhTBJB/VmRfPdhVeaWYMwP/zh7OhJLIJsKfbFivXaxXEAlWpbVxLZCVZCJJCgdqwvBIbty9vcCeK32ZCyyb jon.wyatt@digital.cabinet-office.gov.uk
+    groups:
+      - gds
   mattcottingham:
     comment: Matt Cottingham
     ssh_keys:
