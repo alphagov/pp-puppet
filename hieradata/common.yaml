@@ -8,12 +8,7 @@ accounts:
     groups:
       - gds
   anna:
-    comment: Anna Powell-Smith
-    ssh_keys:
-      anna:
-        key: AAAAB3NzaC1yc2EAAAADAQABAAABAQCVyRpGBL8wK26tlU1hgloZAmOQV+ljn7xjgFdmG3tmoikLyQ5KV3wqMkhXUW37ooHYDmD4ep3ITD8jmoto/WlPRXPpwJgbSQPBNGyUL+LEe2wNyg98SJBOam8UVhYn++zJ7W5SMaS0t/C+dNrtVpWGWOZszJ+RUhKIdP2FaxdRKc89651/ubWZSid446q18QrVrX++AgoO65fOJC7UYq5GDyguBiDJhEiR3QJeAtp/D7HicqcvoM6Buc3VNzILbUBW5//yIpjqWwklGCrrKRGJbQdmFUTEA/0ev6YUx3DkU+Xj/9G7HRRlG7H4hV85ZIxl4b34OnzmBTuKvKXhL4DV
-    groups:
-      - gds
+    ensure: absent
   dcarley:
     comment: Dan Carley
     ssh_keys:
@@ -59,12 +54,7 @@ accounts:
     groups:
       - gds
   roc:
-    comment: Ralph Cowling
-    ssh_keys:
-      roc:
-        key: AAAAB3NzaC1yc2EAAAADAQABAAABAQDZEAxcu70/IbytBYrTh6jDsouuH8mjBlRPoq8e3eEWryQWe6+wevh/c29hiG1J1iRVYfUzxnVV2lIlxh3YOPG4TIwMFHS1rMpmR8j0VTbNw89Jf2O90X+wZa5ERlBRpXWhV98EMLWPMXmSTo7bXAdIZvNolAkw0GaIV9ozbZHV69hcXLxXFgO7KSp6J5ByYcqPwHASmZhfSLEYNSmD8JnwU0Z9lJl+YrlT9x0OrY79lCfSMIfCJ+l8+nMsNi7YrPEP6RrtCR3mStKmBVtiLukclxKTkx4nDxxuYThlZwVz90VBiRQHerK62EKmxky9Wrmx3KPT5dQDOCQ8gTmfTPOl
-    groups:
-      - gds
+    ensure: absent
   ssharpe:
     comment: Sam J Sharpe
     ssh_keys:
