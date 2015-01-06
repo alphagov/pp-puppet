@@ -8,6 +8,7 @@ classes:
   - 'performanceplatform::checks::stagecraft'
   - 'performanceplatform::checks::logstashforwarder'
   - 'performanceplatform::backdrop_smoke_tests'
+  - 'performanceplatform::datastore'
   - 'performanceplatform::notifier'
   - 'performanceplatform::pp_nginx'
   - 'performanceplatform::pip'
@@ -26,6 +27,9 @@ nginx::manage_repo: false
 nginx::package_ensure: '1.4.4-4~precise0'
 nginx::package_name: 'nginx-extras'
 nginx::server_tokens: 'off'
+
+performanceplatform::datastore::config_api_url: 'https://stagecraft.development.performance.service.gov.uk'
+performanceplatform::datastore::mongo_url: 'localhost:27017'
 
 performanceplatform::notifier::app_path: '/opt/performanceplatform-notifier'
 performanceplatform::notifier::user: 'deploy'
