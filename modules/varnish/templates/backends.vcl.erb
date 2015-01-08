@@ -38,3 +38,13 @@ backend frontend_app_1 {
 backend frontend_app_2 {
   .host = "frontend-app-2";
 }
+
+backend data_backend_1 {
+    .host = "backend-app-1";
+    .probe = data_healthcheck;
+}
+
+backend data_backend_2 {
+    .host = "backend-app-2";
+    .probe = data_healthcheck;
+}

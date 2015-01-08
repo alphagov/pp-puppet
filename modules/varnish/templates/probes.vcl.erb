@@ -23,3 +23,10 @@ probe stagecraft_healthcheck {
                "User-Agent: Varnish-Healthcheck"
                "Connection: close";
 }
+
+probe data_healthcheck {
+    .request = "GET /_status HTTP/1.1"
+               "Host: datastore"
+               "User-Agent: Varnish-Healthcheck"
+               "Connection: close";
+}

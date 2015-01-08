@@ -33,6 +33,15 @@ director stagecraft_director round-robin {
     }
 }
 
+director data_director round-robin {
+    {
+        .backend = data_backend_1;
+    }
+    {
+        .backend = data_backend_2;
+    }
+}
+
 # Add a director for the frontend app servers
 # Note that Varnish currently runs on the frontend app servers,
 # so this might pretty much just pass things through.
