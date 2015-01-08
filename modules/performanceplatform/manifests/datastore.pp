@@ -24,6 +24,7 @@ class performanceplatform::datastore(
       statsd_prefix               => 'datastore',
       servername                  => 'datastore',
       extra_env                   => {
+        'HTTP_PORT'      => $port,
         'MONGO_URL'      => hiera('performanceplatform::datastore::mongo_url'),
         'CONFIG_API_URL' => hiera('performanceplatform::datastore::config_api_url'),
         'BEARER_TOKEN'   => hiera('performanceplatform::datastore::config_api_token'),
