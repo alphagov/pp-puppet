@@ -144,4 +144,5 @@ performanceplatform::mongo::data_dir: '/var/lib/mongodb'
 performanceplatform::mongo::require_logshipper: false
 
 performanceplatform::datastore::config_api_url: 'https://stagecraft.development.performance.service.gov.uk'
+performanceplatform::datastore::config_api_token: 'SET-ME'
 performanceplatform::datastore::mongo_url: 'localhost:27017'

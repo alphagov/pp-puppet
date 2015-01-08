@@ -18,6 +18,8 @@ $admin_beta_vhost     = join(['admin-beta',$public_domain_name],'.')
 $admin_beta_env_vhost = join(['admin-beta',$domain_name],'.')
 $assets_vhost         = join(['assets',$public_domain_name],'.')
 $stagecraft_vhost     = join(['stagecraft',$domain_name],'.')
+$data_vhost           = join(['data', $domain_name], '.')
+
 # Private vhosts
 $assets_internal_vhost = 'assets.frontend'
 $deploy_vhost        = join(['deploy',$domain_name],'.')

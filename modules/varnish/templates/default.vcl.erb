@@ -52,6 +52,10 @@ sub vcl_recv {
     #  (also include requests proxied through the admin app)
     set req.http.Host = "stagecraft";
     set req.backend = stagecraft_director;
+  } else if (req.http.Host ~ "^data\..*") {
+    # Send data requests to datastore
+    set req.http.Host = "datastore";
+    set req.backend = data_director;
   } else if (req.http.Host ~ "^www\..*") {
     # Send www requests to backdrop
     if (req.request ~ "^(PUT|POST|DELETE)$") {

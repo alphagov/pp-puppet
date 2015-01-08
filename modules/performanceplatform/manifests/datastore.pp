@@ -10,7 +10,7 @@ class performanceplatform::datastore(
   ) {
   
 
-  if $enabled {  
+  if $enabled {
     performanceplatform::app { 'performance-datastore':
       port                        => $port,
       app_module                  => $app_module,
@@ -24,8 +24,9 @@ class performanceplatform::datastore(
       statsd_prefix               => 'datastore',
       servername                  => 'datastore',
       extra_env                   => {
-        'MONGO_URL'  => hiera('performanceplatform::datastore::mongo_url'),
+        'MONGO_URL'      => hiera('performanceplatform::datastore::mongo_url'),
         'CONFIG_API_URL' => hiera('performanceplatform::datastore::config_api_url'),
+        'BEARER_TOKEN'   => hiera('performanceplatform::datastore::config_api_token'),
       },
     }
   }
