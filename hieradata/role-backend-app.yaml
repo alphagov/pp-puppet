@@ -10,6 +10,7 @@ classes:
   - 'performanceplatform::backdrop_smoke_tests'
   - 'performanceplatform::datastore'
   - 'performanceplatform::notifier'
+  - 'performanceplatform::organisation_api'
   - 'performanceplatform::pp_nginx'
   - 'performanceplatform::pip'
   - 'performanceplatform::python_lxml_deps'
