@@ -1,4 +1,5 @@
 define performanceplatform::python_app (
+  $ensure          = 'present',
   $description     = $title,
   $app_path        = "/opt/${title}",
   $config_path     = "/etc/gds/${title}",
@@ -15,15 +16,22 @@ define performanceplatform::python_app (
 
   include upstart
 
+  if $ensure == 'present' {
+      $ensure_directory = 'directory'
+  }
+  else {
+      $ensure_directory = 'absent'
+  }
+
   file { [$app_path, "${app_path}/releases", "${app_path}/shared",
       "${app_path}/shared/log", "${app_path}/shared/assets", $config_path, $log_path]:
-    ensure => directory,
+    ensure => $ensure_directory,
     owner  => $user,
     group  => $group,
   }
 
   python::virtualenv { $virtualenv_path:
-    ensure     => present,
+    ensure     => $ensure,
     version    => '2.7',
     systempkgs => false,
     owner      => $user,
@@ -42,6 +50,7 @@ define performanceplatform::python_app (
   }
 
   upstart::job { $title:
+    ensure        => $ensure,
     description   => $upstart_desc,
     respawn       => true,
     respawn_limit => '5 10',
@@ -52,6 +61,7 @@ define performanceplatform::python_app (
     exec          => $upstart_exec,
   }
 
+  # not sure what these are doing and they don't accept ensure
   logstashforwarder::file   { "app-logs-for-${title}":
     paths  => [ "/opt/${title}/current/log/*.log.json" ],
     fields => { 'application' => $title },
