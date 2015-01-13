@@ -6,6 +6,7 @@
 #   to service a single external request
 #
 define performanceplatform::gunicorn_app (
+  $ensure                      = 'present',
   $description                 = $title,
   $port                        = undef,
   $workers                     = 4,
@@ -41,6 +42,7 @@ define performanceplatform::gunicorn_app (
   $virtualenv_path = "${app_path}/shared/venv"
 
   performanceplatform::proxy_vhost { "${title}-vhost":
+    ensure                      => $ensure,
     port                        => 80,
     upstream_port               => $port,
     servername                  => $servername,
@@ -67,18 +69,19 @@ define performanceplatform::gunicorn_app (
   }
 
   file { "${config_path}/gunicorn":
-    ensure  => present,
+    ensure  => $ensure,
     owner   => $user,
     group   => $group,
     content => template('performanceplatform/gunicorn.erb')
   }
   file { "${config_path}/gunicorn.logging.conf":
-    ensure  => present,
+    ensure  => $ensure,
     owner   => $user,
     group   => $group,
     content => template('performanceplatform/gunicorn.logging.conf.erb')
   }
   logrotate::rule { "${title}-application":
+    ensure       => $ensure,
     path         => "/opt/${title}/shared/log/*.log /opt/${title}/shared/log/*.log.json /var/log/${title}/*.log /var/log/${title}/*.log.json",
     rotate       => 30,
     rotate_every => 'day',
