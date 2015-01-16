@@ -91,7 +91,7 @@ class performanceplatform::elasticsearch(
       'index.refresh_interval'   => '1s',
       'network.publish_host'     => $::hostname,
       'node.name'                => $::hostname,
-      'script.disable_dynamic'   => 'true'
+      'script.disable_dynamic'   => true
     },
     init_defaults => {
       'ES_HEAP_SIZE' => $heap_size,
