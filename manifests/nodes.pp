@@ -55,13 +55,15 @@ node default {
     package { $system_packages: ensure => installed }
   }
 
-  $python_packages = hiera_array( 'python_packages', [] )
+  $python_packages = hiera_hash( 'python_packages', {} )
   if !empty($python_packages) {
-    package { $python_packages:
-      ensure   => installed,
-      provider => 'pip',
-      require  => Package['python-pip'],
+    $defaults = {
+      'ensure'   => present,
+      'provider' => 'pip',
+      'require'  => Package['python-pip'],
     }
+
+    create_resources(package, $python_packages, $defaults)
   }
 
   $ruby_packages = hiera_array( 'ruby_packages', [] )
