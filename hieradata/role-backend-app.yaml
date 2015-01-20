@@ -91,7 +91,7 @@ python_apps:
     user: 'deploy'
     group: 'deploy'
     upstart_desc: 'Transformations celery worker'
-    upstart_exec: '/opt/backdrop.transformers.worker/shared/venv/bin/celery -A backdrop.transformers.worker worker -l info'
+    upstart_exec: "/opt/backdrop.transformers.worker/shared/venv/bin/celery -A backdrop.transformers.worker worker -l %{hiera('performanceplatform::celery_worker::log_level')}"
     statsd_prefix: 'backdrop.transformers.worker'
 
 backdrop_collectors:
