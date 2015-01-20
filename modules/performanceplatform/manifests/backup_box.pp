@@ -39,8 +39,8 @@ class performanceplatform::backup_box(
     performanceplatform::checks::disk { "${::fqdn}_/boot":
         fqdn                 => $::fqdn,
         disk                 => '/boot',
-        disk_space_warning   => '300000000', # 300 MB (megabytes)
-        disk_space_critical  => '400000000',  # 400 MB (megabytes) out of 474 total
+        disk_space_warning   => '150000000', # 150 MB (megabytes)
+        disk_space_critical  => '50000000',  # 50 MB (megabytes) out of 474 total
         inodes_warning       => '80000',
         inodes_critical      => '100000', #out of a total 124928
         disk_growth_warning  => '50000000', # 50 MB (megabytes)
