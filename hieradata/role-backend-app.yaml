@@ -116,3 +116,5 @@ logstashforwarder_files:
 ruby_packages:
   - curb
   - json
+
+performanceplatform::celery_worker::log_level: 'info'
