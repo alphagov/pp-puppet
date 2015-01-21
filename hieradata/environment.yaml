@@ -1,4 +1,12 @@
 ---
+# ---------------------------------------------------------------------
+# WARNING: This file is overwritten at deploy time with
+# environment-specific stuff. Changes in here are only used by the dev
+# VMs and not by a deployed environment.
+# You probably want to make your change in pp-deployment, or in a
+# role-* yaml file.
+# ---------------------------------------------------------------------
+
 domain_name: development.performance.service.gov.uk
 pp_environment: dev
 
