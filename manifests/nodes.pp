@@ -12,8 +12,6 @@ $public_domain_name   = hiera('public_domain_name', $domain_name)
 # Public vhosts
 $www_vhost            = join(['www',$public_domain_name],'.')
 $www_env_vhost        = join(['www',$domain_name],'.')
-$admin_vhost          = join(['admin',$public_domain_name],'.')
-$admin_env_vhost      = join(['admin',$domain_name],'.')
 $admin_beta_vhost     = join(['admin-beta',$public_domain_name],'.')
 $admin_beta_env_vhost = join(['admin-beta',$domain_name],'.')
 $assets_vhost         = join(['assets',$public_domain_name],'.')

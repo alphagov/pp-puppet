@@ -13,6 +13,7 @@ class performanceplatform::checks::backdrop (
       handlers => ['default'],
     }
     sensu::check { 'backdrop_admin_health_check':
+      ensure   => 'absent',
       interval => 120,
       command  => "${check_data_path} -u http://localhost:3203/_status",
       handlers => ['default'],
