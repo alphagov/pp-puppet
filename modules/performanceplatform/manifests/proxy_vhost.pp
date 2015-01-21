@@ -6,6 +6,7 @@
 #   to service a single external request
 #
 define performanceplatform::proxy_vhost(
+  $ensure              = 'present',
   $port                = '80',
   $priority            = '10',
   $upstream_server     = 'localhost',
@@ -60,6 +61,7 @@ define performanceplatform::proxy_vhost(
       critical => $five_critical,
       interval => 60,
       handlers => ['default'],
+      ensure   => $ensure,
     }
 
     performanceplatform::checks::graphite { "4xx_rate_${servername}":
@@ -69,13 +71,16 @@ define performanceplatform::proxy_vhost(
       critical => $four_critical,
       interval => 60,
       handlers => ['default'],
+      ensure   => $ensure,
     }
   } else {
     sensu::check { "5xx_rate_${servername}":
       command => '',
+      ensure  => $ensure,
     }
     sensu::check { "4xx_rate_${servername}":
       command => '',
+      ensure  => $ensure,
     }
   }
 
@@ -88,6 +93,7 @@ define performanceplatform::proxy_vhost(
   }
 
   logrotate::rule { "${title}-json-logs":
+    ensure       => $ensure,
     path         => "/var/log/nginx/${servername}.*.log.json",
     rotate       => 30,
     rotate_every => 'day',
@@ -103,6 +109,7 @@ define performanceplatform::proxy_vhost(
   $upstream_name = "${name}-upstream"
 
   nginx::resource::upstream { $upstream_name:
+    ensure  => $ensure,
     members => [
       "${upstream_server}:${upstream_port}",
     ]
@@ -173,6 +180,7 @@ define performanceplatform::proxy_vhost(
 
 
   nginx::resource::vhost { $servername:
+    ensure                => $ensure,
     listen_port           => $port,
     listen_options        => $listen_options,
     proxy                 => "http://${upstream_name}",
@@ -197,6 +205,7 @@ define performanceplatform::proxy_vhost(
 
   if $block_all_robots {
     nginx::resource::location { "${servername}-robots":
+      ensure              => $ensure,
       vhost               => $servername,
       location            => '/robots.txt',
       ssl                 => $ssl,
@@ -211,8 +220,9 @@ define performanceplatform::proxy_vhost(
       'nginx::resource::location',
       $custom_locations,
       {
-        vhost => $servername,
-        ssl   => $ssl,
+        ensure => $ensure,
+        vhost  => $servername,
+        ssl    => $ssl,
       }
     )
   }

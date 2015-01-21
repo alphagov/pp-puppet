@@ -148,6 +148,7 @@ ssh::server::ciphers:
   - aes192-ctr
   - aes256-ctr
 
+logstashforwarder::purge_configdir: true
 logstashforwarder::servers:
   - 'logstash:3456'
 logstashforwarder::ssl_ca: 'puppet:///modules/performanceplatform/logstash.pub'
