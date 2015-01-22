@@ -18,3 +18,12 @@ logstashforwarder_files:
     paths: [ '/var/log/mongodb/mongodb.log' ]
     fields:
       tags: 'mongo'
+
+lvm::volume_groups:
+  data:
+    physical_volumes:
+      - /dev/sdb1
+      - /dev/sdc1
+    logical_volumes:
+      mongo:
+        size: 63.99G
