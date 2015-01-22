@@ -10,6 +10,12 @@ backend read_backend {
 backend stagecraft_backend {
     .host = "backend-app-1";
 }
+backend data_backend_1 {
+    .host = "backend-app-1";
+}
+backend data_backend_2 {
+    .host = "backend-app-2";
+}
 director admin_director round-robin {
   { .backend = admin_backend; }
 }
@@ -24,4 +30,12 @@ director read_director round-robin {
 }
 director write_director round-robin {
   { .backend = write_backend; }
+}
+director data_director round-robin {
+    {
+        .backend = data_backend_1;
+    }
+    {
+        .backend = data_backend_2;
+    }
 }
