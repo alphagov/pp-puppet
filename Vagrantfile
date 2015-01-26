@@ -48,8 +48,8 @@ def get_box(provider)
   provider ||= "virtualbox"
   case provider
   when "vmware"
-    name  = "puppetlabs-ubuntu-server-12042-x64-vf503-nocm"
-    url   = "http://puppet-vagrant-boxes.puppetlabs.com/ubuntu-svr-12042-x64-vf503-nocm.box"
+    name  = "phusion/ubuntu-12.04-amd64"
+    url   = "https://oss-binaries.phusionpassenger.com/vagrant/boxes/latest/ubuntu-12.04-amd64-vmwarefusion.box"
   else
     virtualbox_version = `vboxmanage --version`.strip
     box = $boxes_by_version[virtualbox_version]
