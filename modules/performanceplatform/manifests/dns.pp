@@ -14,7 +14,6 @@ class performanceplatform::dns (
 
   dnsmasq::conf { 'internal-dns':
       ensure  => present,
-      #is this rewritten on each deploy?
       content => template('performanceplatform/internal-dns.erb'),
   }
 

@@ -11,7 +11,6 @@ class performanceplatform::checks::smokey_tests (
     }
 
     sensu::check { 'smoke_test_admin_uploader':
-      ensure   => absent,
       interval => 60,
       command  => "${smokey_checker_script} admin_uploader",
       handlers => ['default'],

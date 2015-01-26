@@ -90,7 +90,6 @@ vhost_proxies:
     proxy_append_forwarded_host: true
     client_max_body_size: '50m'
   backdrop_admin:
-    ensure:        'absent'
     servername:    "admin.backdrop"
     ssl:           true
     upstream_port: 3203

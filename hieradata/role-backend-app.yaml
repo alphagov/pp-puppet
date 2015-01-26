@@ -48,7 +48,6 @@ performanceplatform::notifier::cron_definition:
 
 gunicorn_apps:
   admin.backdrop:
-    ensure:        'absent'
     port:          3203
     # This is a placeholder until we extract a separate app
     app_module:    'backdrop.admin.app:app'
