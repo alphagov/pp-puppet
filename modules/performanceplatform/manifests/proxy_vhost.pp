@@ -55,32 +55,32 @@ define performanceplatform::proxy_vhost(
 
   if $sensu_check {
     performanceplatform::checks::graphite { "5xx_rate_${servername}":
+      ensure   => $ensure,
       # Total number of 5xx requests over the last minute
       target   => "hitcount(transformNull(stats.nginx.${::hostname}.${graphite_servername}.http_5*,0),'1min')",
       warning  => $five_warning,
       critical => $five_critical,
       interval => 60,
       handlers => ['default'],
-      ensure   => $ensure,
     }
 
     performanceplatform::checks::graphite { "4xx_rate_${servername}":
+      ensure   => $ensure,
       # Total number of 4xx requests over the last minute
       target   => "hitcount(transformNull(stats.nginx.${::hostname}.${graphite_servername}.http_4*,0),'1min')",
       warning  => $four_warning,
       critical => $four_critical,
       interval => 60,
       handlers => ['default'],
-      ensure   => $ensure,
     }
   } else {
     sensu::check { "5xx_rate_${servername}":
-      command => '',
       ensure  => $ensure,
+      command => '',
     }
     sensu::check { "4xx_rate_${servername}":
-      command => '',
       ensure  => $ensure,
+      command => '',
     }
   }
 

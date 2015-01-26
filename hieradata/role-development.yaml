@@ -90,6 +90,7 @@ vhost_proxies:
     proxy_append_forwarded_host: true
     client_max_body_size: '50m'
   backdrop_admin:
+    ensure:        'absent'
     servername:    "admin.backdrop"
     ssl:           true
     upstream_port: 3203
@@ -105,6 +106,7 @@ vhost_proxies:
     upstream_port: 7999
     client_max_body_size: '50m'
   admin:
+    ensure: absent
     servername:    "%{::admin_vhost}"
     ssl:           true
     upstream_port: 7999
