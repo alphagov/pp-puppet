@@ -38,6 +38,9 @@ class performanceplatform::mongo (
     }
 
     if ($disk_mount) {
+      # create lvm as defined in hiera
+      include ::lvm
+
       performanceplatform::mount { $data_dir:
         mountoptions => 'defaults',
         disk         => $disk_mount,
@@ -48,14 +51,6 @@ class performanceplatform::mongo (
       performanceplatform::checks::disk { "${::fqdn}_${data_dir}":
         fqdn => $::fqdn,
         disk => $data_dir,
-      }
-
-      lvm::volume { 'mongo':
-        ensure => 'present',
-        vg     => 'data',
-        pv     => '/dev/sdb1',
-        fstype => 'ext4',
-        before => Performanceplatform::Mount[$data_dir]
       }
     }
 

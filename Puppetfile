@@ -41,8 +41,7 @@ mod 'alphagov/jenkins',             :git => 'https://github.com/alphagov/puppet-
 mod 'elasticsearch/logstashforwarder',
                                     :git => 'https://github.com/elasticsearch/puppet-logstashforwarder.git',
                                     :ref => 'e07043db7c377da88d1d93b3ae967bf4b7f8dc32'
-mod 'puppetlabs/lvm',               :git => 'https://github.com/puppetlabs/puppetlabs-lvm.git',
-                                    :ref => 'ba8efdd243cafa96b45d8d58dbef1d5ba74714ea'
+mod 'puppetlabs/lvm',             '0.4.0'
 mod 'puppetlabs/rabbitmq',          :git => 'https://github.com/erhudy/puppetlabs-rabbitmq.git',
                                     :ref => '2f09f3a6a16291645e82daff5e0a22dbba137a22'
 mod 'alphagov/mongodb',             :git => 'https://github.com/alphagov/puppetlabs-mongodb.git',
