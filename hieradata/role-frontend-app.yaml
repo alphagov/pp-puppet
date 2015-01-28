@@ -93,6 +93,7 @@ vhost_proxies:
       - PURGE
 
   admin-vhost:
+    ensure: absent
     servername:    "%{::admin_vhost}"
     ssl:           true
     ssl_redirect:  true

@@ -214,8 +214,6 @@ performanceplatform::dns::hosts: |
   172.27.1.80 test-box-1 test-box
 
 performanceplatform::dns::cnames:
-  - [ "%{::admin_vhost}", "frontend" ]
-  - [ "%{::admin_env_vhost}", "frontend" ]
   - [ "%{::admin_beta_vhost}", "frontend" ]
   - [ "%{::admin_beta_env_vhost}", "frontend" ]
   - [ "%{::assets_vhost}", "frontend" ]
