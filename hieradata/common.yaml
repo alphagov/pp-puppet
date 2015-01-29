@@ -7,8 +7,6 @@ accounts:
         key: AAAAB3NzaC1yc2EAAAADAQABAAABAQDxuVkxqVy8kRncaG0cm/B8p7YTk7UjwE6xgUkfzIV97xAaRfNyZUI9Ur/w2x945r5IiuKGp61UHMzsGBEgmsDDNvukguY/a02yXZRySxf3ThlsqG/w7DX9uNwVEeLAA95es4P+6iApbRnBTQX7Nx/XsIa3hy8Uwr3T+pcrXCRIczhfuaiugQ/jh9IlkIC1I6UHbYoli8o5upTh9SbnimU/VXiUIO4v5z1CyLgQHfeE6VBxYO6HCQqRJg7uB4vNS5wAWyTYx4XinkS3ScjKmQr+wExyRy0vgnj5f+oVFNLgARh9lh2ViJ6ntGw8ww10b3xY/Bc/qoeFZKJjb89aMhLb
     groups:
       - gds
-  anna:
-    ensure: absent
   dcarley:
     comment: Dan Carley
     ssh_keys:
@@ -42,8 +40,6 @@ accounts:
         key: AAAAB3NzaC1yc2EAAAADAQABAAABAQDNf2T4vI0Fq1DK/hrv54fN7WR8IM32ItDsiRcOmsq807LXZkxn0Hbua8NP1KjtUt1Ks7kxQiXYp32S/LNi0G/Sr48BqFhCPFpEtOUexrX+wK+ndXNwP3XygTPKbgoPV/IXyDdjSvqOVmQKbWFGYCMn6+nGA+JaCbvt8Ink7lpRGLrf8W73rbcFcPCNuOtWvMT+WSspcqs9IifvwWaHDFX2Uj8DsE3rZcaeoxXPXNxc2mZ9/tKee6Ceg0Acmsywn/YsEwAv55ng73WMUE5y5KximZwGKBIQjjILTryPd7euztCFr5Y4UMEDbDz52ovmD+jtrI2hxRygAimTshJ5jeCb
     groups:
       - gds
-  nickg:
-    ensure: absent
   robyoung:
     comment: Rob Young
     ssh_keys:
@@ -53,8 +49,6 @@ accounts:
         key: AAAAB3NzaC1yc2EAAAADAQABAAABAQDNSWWdnRGOEO0lfF0dwLwgdkgoXyRjpjQBEG2CtnccRctQUA+xMZ4Wf+RO4BLdevfKG3Ac7mlvuyM8VIU8n6zp+yvOf73eUJMbWAESqrzWer0KvoFtOZTvlOiKMFXxccI1nRxOn239nB3XBXqZQ5H02R10/vqOn6enAnPP47OCqtmwoO+tv4vh5D0rzmDekiiciy/u1ensQI5JrBHSB4QbNlTOufRqs+Kp7aGQSpif02ualkj8/FO/Onv8RWXnl2TtDfxU7LNi0aw/8h2RdZWxC8i52LtiJOiKLB6cwc6D9j7G4d90DL3Y2zY3OJOWR8JYrHgHz+iXR9l96XnJJ/z7
     groups:
       - gds
-  roc:
-    ensure: absent
   ssharpe:
     comment: Sam J Sharpe
     ssh_keys:
@@ -85,8 +79,6 @@ accounts:
         key: AAAAB3NzaC1yc2EAAAADAQABAAABAQDInLW3HgZO91qmkIR0OcLLOPJ3yQ/cSAgdDs1ch9J78uXc2qLWEchqje5QrbNy/GRMory9CC04xf/Z3P0gQbNRx8lTJTo44iH0mgQu9IQLVY1E/lR48spGaBSsUobBX7Qx1dOFXc2yFlHTpASdYXShK3eh7sqyuK/oy6HJpfwCpQwJ+ttXloLZ3KiVaWBFBBj8sbzmogsKVN4uPZwRFGpcqGaybFGPhsVxBQQAUMjnL+d8xVfy0PKKHIEu7K3HaJhfFoI9AVjQnt05s+CdeAMTXiAjaxb3UM+j5WZNhI9X4vgnyiRxF3oSPNkfJ1luz6s4GFYXDVnqz2zXyqZM7m5b
     groups:
       - gds
-  scompton:
-    ensure: absent
 
 
 ppas:
