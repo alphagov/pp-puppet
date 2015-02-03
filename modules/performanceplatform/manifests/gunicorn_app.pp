@@ -58,6 +58,7 @@ define performanceplatform::gunicorn_app (
   }
 
   performanceplatform::python_app { $title:
+    ensure          => $ensure,
     app_path        => $app_path,
     virtualenv_path => $virtualenv_path,
     config_path     => $config_path,
