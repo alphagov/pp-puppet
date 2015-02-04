@@ -30,7 +30,9 @@ nginx::package_name: 'nginx-extras'
 nginx::server_tokens: 'off'
 
 performanceplatform::datastore::config_api_url: 'https://stagecraft.development.performance.service.gov.uk'
+performanceplatform::datastore::group: 'deploy'
 performanceplatform::datastore::mongo_url: 'localhost:27017'
+performanceplatform::datastore::user: 'deploy'
 
 performanceplatform::notifier::app_path: '/opt/performanceplatform-notifier'
 performanceplatform::notifier::user: 'deploy'
