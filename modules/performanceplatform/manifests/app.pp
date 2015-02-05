@@ -6,6 +6,7 @@
 #   to service a single external request
 #
 define performanceplatform::app (
+  $ensure                      = 'present',
   $port                        = undef,
   $workers                     = 4,
   $app_module                  = undef,
@@ -31,6 +32,13 @@ define performanceplatform::app (
 
   validate_bool($request_uuid)
 
+  if $ensure == 'present' {
+      $ensure_directory = 'directory'
+  }
+  else {
+      $ensure_directory = 'absent'
+  }
+
   include nginx
   include upstart
 
@@ -38,12 +46,13 @@ define performanceplatform::app (
 
   file { [$app_path, "${app_path}/releases", "${app_path}/shared",
           "${app_path}/shared/log", "${app_path}/shared/assets", $config_path, $log_path]:
-    ensure => directory,
+    ensure => $ensure_directory,
     owner  => $user,
     group  => $group,
   }
 
   performanceplatform::proxy_vhost { "${title}-vhost":
+    ensure                      => $ensure,
     port                        => 80,
     upstream_port               => $port,
     servername                  => $servername,
@@ -69,6 +78,7 @@ define performanceplatform::app (
   }
 
   upstart::job { $title:
+    ensure        => $ensure,
     description   => $upstart_desc,
     respawn       => true,
     respawn_limit => '5 10',
