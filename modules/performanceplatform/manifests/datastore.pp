@@ -1,6 +1,7 @@
 #
 
 class performanceplatform::datastore(
+  $ensure = 'present',
   $port = 3054,
   $healthcheck = '/_status',
   $app_module  = undef,
