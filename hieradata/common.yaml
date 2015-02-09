@@ -144,7 +144,7 @@ logstashforwarder::purge_configdir: true
 logstashforwarder::servers:
   - 'logstash:3456'
 logstashforwarder::ssl_ca: 'puppet:///modules/performanceplatform/logstash.pub'
-logstashforwarder::package_url: 'puppet:///modules/performanceplatform/files/logstashforwarder/logstash-forwarder_0.3.1_amd64.deb'
+logstashforwarder::package_url: 'puppet:///modules/performanceplatform/logstashforwarder/logstash-forwarder_0.3.1_amd64.deb'
 
 collectd_plugins:
   - 'cpu'
