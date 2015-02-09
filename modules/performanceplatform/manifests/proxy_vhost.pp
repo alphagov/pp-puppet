@@ -53,6 +53,13 @@ define performanceplatform::proxy_vhost(
 
   $graphite_servername = regsubst($servername, '\.', '_', 'G')
 
+  if ($serveraliases != undef) {
+    validate_array($serveraliases)
+    $vhost_names = $serveraliases
+  } else {
+    $vhost_names = [$servername]
+  }
+
   if $sensu_check {
     performanceplatform::checks::graphite { "5xx_rate_${servername}":
       ensure   => $ensure,
@@ -184,6 +191,7 @@ define performanceplatform::proxy_vhost(
     listen_port           => $port,
     listen_options        => $listen_options,
     proxy                 => "http://${upstream_name}",
+    server_name           => $vhost_names,
     spdy                  => 'on',
     ssl                   => $ssl,
     ssl_port              => $ssl_port,
