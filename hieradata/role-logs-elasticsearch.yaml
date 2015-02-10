@@ -24,3 +24,12 @@ ufw_rules:
 
 ruby_packages:
   - rest-client
+
+lvm::volume_groups:
+  data:
+    physical_volumes:
+      - /dev/sdb1
+      - /dev/sdc1
+    logical_volumes:
+      elasticsearch:
+        size: 255G
