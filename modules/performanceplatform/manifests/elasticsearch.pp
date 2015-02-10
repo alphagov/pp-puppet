@@ -21,13 +21,7 @@ class performanceplatform::elasticsearch(
     disk => $data_dir,
   }
 
-  lvm::volume { 'elasticsearch':
-    ensure => 'present',
-    vg     => 'data',
-    pv     => '/dev/sdb1',
-    fstype => 'ext4',
-    before => Performanceplatform::Mount[$data_dir]
-  }
+  include ::lvm
 
   package { 'estools':
     ensure   => '1.1.2',
