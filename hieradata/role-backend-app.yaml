@@ -4,6 +4,7 @@ classes:
   - 'clamav'
   - 'google_credentials'
   - 'performanceplatform::checks::backdrop'
+  - 'performanceplatform::checks::celery_worker'
   - 'performanceplatform::checks::clamav'
   - 'performanceplatform::checks::stagecraft'
   - 'performanceplatform::checks::logstashforwarder'

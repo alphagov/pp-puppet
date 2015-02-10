@@ -13,4 +13,6 @@ class performanceplatform::pp_rabbitmq ($transformer_password) {
     read_permission      => '.*',
     write_permission     => '.*',
   }
+
+  include performanceplatform::checks::rabbitmq
 }
