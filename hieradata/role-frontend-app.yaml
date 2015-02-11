@@ -110,6 +110,9 @@ vhost_proxies:
 
   admin-beta-vhost:
     servername:    "%{::admin_beta_vhost}"
+    serveraliases:
+      - "%{::admin_vhost}"
+      - "%{::admin_beta_vhost}"
     ssl:           true
     ssl_redirect:  true
     request_uuid:  true
