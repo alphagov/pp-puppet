@@ -89,6 +89,45 @@ your `hosts` file to the host-only IP address (eth1).
 Physical attributes like `memory` and `num_cores` will be ignored because
 they don't scale appropriately to local VMs (especially when running 10 of them)
 
+## Improving performance
+
+To improve the performance of your vm, you might want to do the following
+
+Install the vagrant cachier plugin - this caches downloaded deb packages so
+subsequent vm builds are faster. It is configured in the Vagrantfile
+
+```
+vagrant plugin install vagrant-cachier
+```
+
+Increase memory / cpu of vagrant boxes - create a file
+`~/.vagrant.d/Vagrantfile` and add the following contents
+
+```
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.vm.provider :virtualbox do |vb, override|
+      vb.customize ["modifyvm", :id, "--memory", "2048", "--cpus", "2"]
+  end
+end
+```
+
+or if using vmware
+
+```
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.vm.provider "vmware_fusion" do |v|
+    v.vmx["memsize"] = "2048"
+    v.vmx["numvcpus"] = "2"
+  end
+end
+```
+
+You can adjust memory and number of cpus as needed.
+
 ## Bringing up the MongoDB cluster
 
 MongoDB Replicaset configuration requires that all nodes are up and running Mongo first, on
