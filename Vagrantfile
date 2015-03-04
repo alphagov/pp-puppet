@@ -120,7 +120,7 @@ Vagrant.configure("2") do |config|
         modifyvm_args << "--natdnsproxy1" << "on"
         modifyvm_args << "--natdnshostresolver1" << "on"
         modifyvm_args << "--name" << host[:name]
-        if host[:name] == 'monitoring-1'
+        if ['development-1', 'monitoring-1'].include? host[:name]
           modifyvm_args << "--memory" << "1024"
         end
         vb.customize(modifyvm_args)
