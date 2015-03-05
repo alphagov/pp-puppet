@@ -87,6 +87,7 @@ gunicorn_apps:
     timeout:         2
     add_header:
       "Alternate-Protocol": "%{::pp_spdy_npn}"
+    capture_stderr:  true
 
 python_apps:
   backdrop.transformers.worker:

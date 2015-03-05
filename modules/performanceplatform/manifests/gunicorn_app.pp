@@ -25,6 +25,7 @@ define performanceplatform::gunicorn_app (
   $ssl_key                     = hiera('public_ssl_key'),
   $request_uuid                = false,
   $statsd_prefix               = $title,
+  $capture_stderr              = false,
 ) {
   validate_bool($request_uuid)
   include nginx
@@ -57,6 +58,12 @@ define performanceplatform::gunicorn_app (
     request_uuid                => $request_uuid,
   }
 
+  if $capture_stderr {
+    $stderr_string = ' 2>&1'
+  } else {
+    $stderr_string = ''
+  }
+
   performanceplatform::python_app { $title:
     ensure          => $ensure,
     app_path        => $app_path,
@@ -65,7 +72,7 @@ define performanceplatform::gunicorn_app (
     app_module      => $app_module,
     user            => $user,
     group           => $group,
-    upstart_exec    => "${virtualenv_path}/bin/gunicorn -c ${config_path}/gunicorn ${app_module}",
+    upstart_exec    => "${virtualenv_path}/bin/gunicorn -c ${config_path}/gunicorn ${app_module}${stderr_string}",
     upstart_desc    => $description,
   }
 
