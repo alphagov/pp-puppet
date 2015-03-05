@@ -145,3 +145,4 @@ ruby_packages:
 uchiwa::install_repo: false
 uchiwa::user: "%{::basic_auth_username}"
 uchiwa::pass: "%{::basic_auth_password}"
+uchiwa::version: '0.4.0-1'
