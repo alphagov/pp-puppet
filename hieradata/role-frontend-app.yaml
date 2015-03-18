@@ -36,7 +36,7 @@ spotlight::app::group:      'deploy'
 gunicorn_apps:
   performanceplatform-admin:
     port:          3070
-    app_module:    'admin:app'
+    app_module:    'application:app'
     user:          'deploy'
     group:         'deploy'
     statsd_prefix: 'admin.app'
