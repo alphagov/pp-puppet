@@ -43,7 +43,7 @@ mod 'elasticsearch/logstashforwarder',
                                     :ref => 'e07043db7c377da88d1d93b3ae967bf4b7f8dc32'
 mod 'puppetlabs/lvm',             '0.4.0'
 mod 'puppetlabs/rabbitmq',          :git => 'https://github.com/puppetlabs/puppetlabs-rabbitmq.git',
-                                    :ref => '4832bd61b5b1bfea7c9cc985508e65cd10081652'
+                                    :ref => '61991d76cda34c7af5c98ceb53666a0a2b57fda7'
 mod 'alphagov/mongodb',             :git => 'https://github.com/alphagov/puppetlabs-mongodb.git',
                                     :ref => 'dc077a209efdf8d80fac40d40fec575b6a0949d2'
 mod 'stankevich/python',            :git => 'https://github.com/stankevich/puppet-python.git',
