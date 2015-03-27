@@ -45,7 +45,8 @@ define performanceplatform::app (
   $log_path = "/var/log/${title}"
 
   file { [$app_path, "${app_path}/releases", "${app_path}/shared",
-          "${app_path}/shared/log", "${app_path}/shared/assets", $config_path, $log_path]:
+          "${app_path}/shared/log", "${app_path}/shared/log/audit",
+          "${app_path}/shared/assets", $config_path, $log_path]:
     ensure => $ensure_directory,
     owner  => $user,
     group  => $group,
@@ -89,14 +90,28 @@ define performanceplatform::app (
     exec          => $upstart_exec,
   }
 
-  logstashforwarder::file { "app-logs-for-${title}":
+  logstashforwarder::file   { "app-logs-for-${title}":
     paths  => [ "/opt/${title}/current/log/*.log.json" ],
-    fields => { 'application' => $title },
+    fields => {
+      'application' => $title,
+      'type'        => 'application',
+    },
+  }
+
+  logstashforwarder::file   { "auditing-logs-for-${title}":
+    paths  => [ "/opt/${title}/current/log/audit/*.log.json" ],
+    fields => {
+      'application' => $title,
+      'type'        => 'auditing',
+    },
   }
 
   logstashforwarder::file  { "var-logs-for-${title}":
     paths  => [ "/var/log/${title}/*.log.json"],
-    fields => { 'application' => $title },
+    fields => {
+      'application' => $title,
+      'type'        => 'application',
+    },
   }
 
 }
