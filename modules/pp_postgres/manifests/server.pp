@@ -44,4 +44,14 @@ class pp_postgres::server {
   postgresql::server::config_entry { 'log_autovacuum_min_duration':
       value => '0',
   }
+  postgresql::server::config_entry { 'log_filename':
+      value => 'server_log.%a',
+  }
+  postgresql::server::config_entry { 'log_truncate_on_rotation':
+      value => 'on',
+  }
+  postgresql::server::config_entry { 'log_rotation_age':
+      value => '1440',
+  }
+
 }
