@@ -1,5 +1,6 @@
 class pp_postgres::server {
   include('postgresql::server')
+  include 'postgresql::server::contrib'
 
   apt::pin { 'apt.postgresql.org':
     originator => 'apt.postgresql.org',
@@ -52,6 +53,12 @@ class pp_postgres::server {
   }
   postgresql::server::config_entry { 'log_rotation_age':
       value => '1440',
+  }
+  postgresql::server::config_entry { 'auto_explain.log_min_duration':
+      value => '50',
+  }
+  postgresql::server::config_entry { 'shared_preload_libraries':
+      value => 'auto_explain',
   }
 
 }
