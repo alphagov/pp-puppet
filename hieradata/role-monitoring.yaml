@@ -40,6 +40,7 @@ performanceplatform::monitoring::logstash::config:
 performanceplatform::checks::servers::boxes:
   - backend-app-1
   - backend-app-2
+  - backend-app-3
   - backup-box-1
   - frontend-app-1
   - frontend-app-2

@@ -199,6 +199,7 @@ performanceplatform::dns::hosts: |
   172.27.1.12 frontend-app-2 frontend
   172.27.1.21 backend-app-1 backend
   172.27.1.22 backend-app-2 backend
+  172.27.1.23 backend-app-3 backend
   172.27.1.31 mongo-1 mongo
   172.27.1.32 mongo-2 mongo
   172.27.1.33 mongo-3 mongo
