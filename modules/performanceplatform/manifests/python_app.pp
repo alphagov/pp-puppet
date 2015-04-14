@@ -66,7 +66,7 @@ define performanceplatform::python_app (
     paths  => [ "/opt/${title}/current/log/*.log.json" ],
     fields => {
       'application' => $title,
-      'type'        => 'application',
+      'log_type'    => 'application',
     },
   }
 
@@ -74,7 +74,7 @@ define performanceplatform::python_app (
     paths  => [ "/opt/${title}/current/log/audit/*.log.json" ],
     fields => {
       'application' => $title,
-      'type'        => 'auditing',
+      'log_type'    => 'audit',
     },
   }
 
@@ -82,7 +82,7 @@ define performanceplatform::python_app (
     paths  => [ "/var/log/${title}/*.log.json"],
     fields => {
       'application' => $title,
-      'type'        => 'application',
+      'log_type'    => 'application',
     },
   }
 
