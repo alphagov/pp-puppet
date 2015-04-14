@@ -7,6 +7,12 @@ backend admin_backend_2 {
     .host = "backend-app-2";
     .probe = admin_healthcheck;
 }
+<% if @pp_environment == 'production' -%>
+backend admin_backend_3 {
+    .host = "backend-app-2";
+    .probe = admin_healthcheck;
+}
+<% end -%>
 backend write_backend_1 {
     .host = "backend-app-1";
     .probe = write_healthcheck;
@@ -15,6 +21,12 @@ backend write_backend_2 {
     .host = "backend-app-2";
     .probe = write_healthcheck;
 }
+<% if @pp_environment == 'production' -%>
+backend write_backend_3 {
+    .host = "backend-app-3";
+    .probe = write_healthcheck;
+}
+<% end -%>
 backend read_backend_1 {
     .host = "backend-app-1";
     .probe = read_healthcheck;
@@ -23,6 +35,12 @@ backend read_backend_2 {
     .host = "backend-app-2";
     .probe = read_healthcheck;
 }
+<% if @pp_environment == 'production' -%>
+backend read_backend_3 {
+    .host = "backend-app-3";
+    .probe = read_healthcheck;
+}
+<% end -%>
 backend stagecraft_backend_1 {
     .host = "backend-app-1";
     .probe = stagecraft_healthcheck;
@@ -31,6 +49,12 @@ backend stagecraft_backend_2 {
     .host = "backend-app-2";
     .probe = stagecraft_healthcheck;
 }
+<% if @pp_environment == 'production' -%>
+backend stagecraft_backend_3 {
+    .host = "backend-app-3";
+    .probe = stagecraft_healthcheck;
+}
+<% end -%>
 
 backend frontend_app_1 {
   .host = "frontend-app-1";
@@ -48,3 +72,10 @@ backend data_backend_2 {
     .host = "backend-app-2";
     .probe = data_healthcheck;
 }
+
+<% if @pp_environment == 'production' -%>
+backend data_backend_3 {
+    .host = "backend-app-3";
+    .probe = data_healthcheck;
+}
+<% end -%>

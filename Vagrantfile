@@ -5,6 +5,7 @@
 hosts = [
   { name: 'backend-app-1',          ip: '172.27.1.21' },
   { name: 'backend-app-2',          ip: '172.27.1.22' },
+  { name: 'backend-app-3',          ip: '172.27.1.23' },
   # Note: development-1 also has the IP address 10.0.0.100 which services listen on.
   { name: 'development-1',          ip: '172.27.1.81'  },
   { name: 'frontend-app-1',         ip: '172.27.1.11' },
