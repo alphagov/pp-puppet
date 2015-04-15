@@ -48,4 +48,20 @@ class performanceplatform::monitoring::logstash (
     handlers => ['default'],
   }
 
+  file { '/var/log/centralised':
+    ensure => 'directory',
+    before => Class['::logstash'],
+  }
+
+  logrotate::rule { 'centralised-logs-rotate':
+    path         => '/var/log/centralised/*.log',
+    rotate       => 30,
+    rotate_every => 'day',
+    missingok    => true,
+    compress     => true,
+    create       => true,
+    create_mode  => '0640',
+    postrotate   => 'service logstash restart',
+  }
+
 }
