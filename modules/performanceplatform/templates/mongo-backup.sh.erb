@@ -9,17 +9,19 @@ DAY=$(date +%A |tr 'A-Z' 'a-z')
 MONTH=$(date +%B |tr 'A-Z' 'a-z')
 FILENAME=$TODAY-$DATABASE-$DAY.tar.gz
 
+START=$(date +%H:%M)
 mongodump -d $DATABASE
 tar -czf $BACKUP_DIR/$FILENAME "dump/$DATABASE"
 rm -rf dump
+END=$(date +%H:%M)
 
 # Write a log entry to show success or failure
 NOW=$(date +"%s")
 if [ -e $BACKUP_DIR/$FILENAME ];
 then
-    echo "SUCCESS: $NOW $BACKUP_DIR/$FILENAME write was successful" >> $BACKUP_LOG
+    echo "SUCCESS: $NOW $BACKUP_DIR/$FILENAME write was successful. Started $START, ended $END" >> $BACKUP_LOG
 else
-    echo "FAILURE: $NOW $BACKUP_DIR/$FILENAME write failed" >> $BACKUP_LOG
+    echo "FAILURE: $NOW $BACKUP_DIR/$FILENAME write failed. Started $START, ended $END" >> $BACKUP_LOG
 fi
 
 find ${BACKUP_DIR} -mtime +30 -exec rm {} +
