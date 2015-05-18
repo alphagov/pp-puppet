@@ -1,5 +1,6 @@
 class pp_postgres::primary(
   $stagecraft_password,
+  $env_sync_password,
 ) {
   include('pp_postgres::server')
   include('pp_postgres::backup')
@@ -43,4 +44,18 @@ class pp_postgres::primary(
     user    => 'postgres',
     require => File['/etc/postgresql/find_bad_seqs.sql'],
   }
+
+  postgresql::server::role { 'env-sync':
+    superuser     => true,
+    password_hash => postgresql_password('env-sync', $env_sync_password),
+  }
+
+  postgresql::server::pg_hba_rule { 'local access as env-sync user':
+    type        => 'local',
+    database    => 'all',
+    user        => 'env-sync',
+    auth_method => 'md5',
+    order       => '001', # necessary to ensure this is before the 'local all all ident' rule.
+  }
+
 }
