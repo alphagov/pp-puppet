@@ -140,6 +140,7 @@ python_packages:
   ipython: {}
 
 pp_postgres::primary::stagecraft_password: "securem8"
+pp_postgres::primary::env_sync_password: "securem8"
 performanceplatform::development::stagecraft_password: "securem8"
 apt::always_apt_update: false
 performanceplatform::mongo::data_dir: '/var/lib/mongodb'
