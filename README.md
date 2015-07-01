@@ -30,7 +30,7 @@ and will be combined with this when deploying real machines.
 
 You'll need [Vagrant](http://www.vagrantup.com/) installed on your machine to manage local VMs.
 
-You'll also need a provider for your virtual machines. [Virtualbox](http://virtualbox.com/)
+You'll also need a provider for your virtual machines. [Virtualbox](https://www.virtualbox.org/)
 is what most of the Performance Platform use, but [VMware](http://www.vmware.com/uk/)
 should also work. For VirtualBox, you need an exact version for which there exists a
 [machine image in `$boxVersions` in the Vagrantfile](./Vagrantfile). At the time of
