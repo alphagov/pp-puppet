@@ -75,6 +75,7 @@ sensu::dashboard_port: 8090
 sensu::server: true
 sensu::api: true
 sensu::sensu_plugin_version: 'installed'
+sensu::log_level: 'error'
 
 ufw_rules:
   allowcarbonfromanywhere:
