@@ -60,7 +60,7 @@ ufw_rules:
     port: 8080
     ip:   'any'
   allow-stagecraft:
-    port: 3204
+    port: 3103
     ip:   'any'
 
 nginx::names_hash_bucket_size: 128
@@ -98,7 +98,7 @@ vhost_proxies:
   stagecraft:
     servername:    "%{::stagecraft_vhost}"
     ssl:           true
-    upstream_port: 3204
+    upstream_port: 3103
   # For varnish
   www:
     servername:    "%{::www_vhost}"
