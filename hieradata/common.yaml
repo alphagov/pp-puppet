@@ -74,13 +74,6 @@ accounts:
         key: AAAAB3NzaC1yc2EAAAADAQABAAABAQDNSWWdnRGOEO0lfF0dwLwgdkgoXyRjpjQBEG2CtnccRctQUA+xMZ4Wf+RO4BLdevfKG3Ac7mlvuyM8VIU8n6zp+yvOf73eUJMbWAESqrzWer0KvoFtOZTvlOiKMFXxccI1nRxOn239nB3XBXqZQ5H02R10/vqOn6enAnPP47OCqtmwoO+tv4vh5D0rzmDekiiciy/u1ensQI5JrBHSB4QbNlTOufRqs+Kp7aGQSpif02ualkj8/FO/Onv8RWXnl2TtDfxU7LNi0aw/8h2RdZWxC8i52LtiJOiKLB6cwc6D9j7G4d90DL3Y2zY3OJOWR8JYrHgHz+iXR9l96XnJJ/z7
     groups:
       - gds
-  ssharpe:
-    comment: Sam J Sharpe
-    ssh_keys:
-      ssharpe:
-        key: AAAAB3NzaC1yc2EAAAABIwAAAQEAyNoMftFLf3w0NOW7J0KUwOx9897CU352n3zKD3p/GCcdH4eMv1QI0BhjItZplWG8TzFSBfWOOSruRh1Gksa1l1jiQcisEio6Wr7kZ7bpvMMA45ZoaDc26HTB+r0BZkNn7Lwwxxvy+1pbqStnnKzb9OTYIyVkb495LS0x1EL/P9S/NWtpm8ZULa1JDplYMA5SqMZnhmlGAXdh8UnjdcdOgOm2ngA+geJBSzVbABECiIAklHU1PRzOtrq8SuO8JmXW6NkuL0aabdTgE6noIm+Nn7T5ufZpOpIGYimVI8+mu+efcBzAp5Q0vTRgSBLfggdczZbFfPXpIt1Ib+LEf+Cuqw==
-    groups:
-      - gds
   tmower:
     comment: Tim Mower
     ssh_keys:
@@ -280,7 +273,7 @@ system_packages:
 
 python_packages:
   gds-nagios-plugins:
-    ensure: "1.3.1" 
+    ensure: "1.3.1"
 
 postgresql::globals::manage_package_repo: false
 postgresql::globals::version: '9.3'
