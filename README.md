@@ -1,6 +1,12 @@
 [![Build Status](https://travis-ci.org/alphagov/pp-puppet.png)]
 (https://travis-ci.org/alphagov/pp-puppet)
 
+# DEPRECATED
+
+This repository is no longer maintained. The Performance Platform was merged
+into GOV.UK's infrastructure mid-2015 and is since using [GOV.UK's main Puppet
+code base](https://github.com/alphagov/govuk-puppet).
+
 Performance Platform Puppet
 ===========================
 
