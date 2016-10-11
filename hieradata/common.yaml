@@ -101,6 +101,7 @@ accounts:
 
 ppas:
   - 'ppa:gds/performance-platform'
+  - 'ppa:gds/govuk'
 
 classes:
   - 'apt'
